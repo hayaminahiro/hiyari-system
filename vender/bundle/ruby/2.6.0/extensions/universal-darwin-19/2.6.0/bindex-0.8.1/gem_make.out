@@ -1,0 +1,16 @@
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /Library/Ruby/Site/2.6.0 -r ./siteconf20200305-17008-1e7voie.rb extconf.rb
+creating Makefile
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.Internal.sdk/usr/local/lib'
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20200305-17008-1dticoa/skiptrace/internal
