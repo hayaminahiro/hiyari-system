@@ -7,14 +7,16 @@
     <h1>ヒヤリ・事故報告書管理システム</h1>
     <p>このアプリでは、ヒヤリハット・事故報告書の管理を簡単にすることができます。</p>
     <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
-    <%# until logged_in? %>
+    <% if logged_in? %>
+
+    <% else %>
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
         ログイン
       </button>
       <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signup-Modal">
         施設新規登録
       </button>
-    <%# end %>
+    <% end %>
     <!-- ログインモーダル -->
     <div class="modal-position">
       <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
