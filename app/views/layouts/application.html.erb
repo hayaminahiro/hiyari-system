@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HiyariSystem</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg %></div>
+      <% end %>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
