@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     facility = Facility.find_by(email: params[:session][:email].downcase)
     if facility && facility.authenticate(params[:session][:password])
       log_in facility
+      params[:session][:remember_me] == '1' ? remember(facility) : forget(facility)
       redirect_to facility
     else
       flash.now[:danger] = '認証に失敗しました。'
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
