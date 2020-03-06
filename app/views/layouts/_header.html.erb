@@ -1,0 +1,33 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "ヒヤリ・事故管理システム", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to "利用者別ヒヤリ・事故一覧", '#' %></li>
+          <li><%= link_to "月別ヒヤリ・事故一覧", '#' %></li>
+          <li><%= link_to "ヒヤリ・事故作成", '#' %></li>
+          <li><%= link_to "ヒヤリ・事故集計", '#' %></li>
+          <li><%= link_to "定義・説明", '#' %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              設定・詳細 <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "施設情報設定", current_facility %></li>
+              <li><%= link_to "利用者一覧", '#' %></li>
+              <li><%= link_to "職員一覧", '#' %></li>
+              <li><%= link_to "システム利用施設一覧", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "ログアウト", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <!--          <li><%#= link_to "ログイン", login_path %></li>-->
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
