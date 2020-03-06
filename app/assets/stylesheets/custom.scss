@@ -1,0 +1,178 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+//背景画像の設定
+.main-img {
+  /* 画像ファイルの指定 */
+  background-image: url(/assets/kaigo.jpg);
+
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+  //background-size: contain;
+
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #464646;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* error_messages */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+//ジャンボトロンのタイトル
+
+#jumbo-position {
+  margin-top: 200px;
+  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 150px;
+  background-color: rgba( 254, 255, 255, 0.55 );
+  height: 220px;
+  background-size: cover;
+}
+
+#hiyari-title {
+  position: absolute;
+  text-align: center;
+  bottom: 500px;
+  left: 300px;
+  right: 300px;
+  top: 270px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 1.2vmax;
+}
+
+/* ログインフォーム */
+
+.label-login {
+  margin-top: 5px;
+}
+
+.btn-login {
+  margin-top: 10px;
+}
+
+/* モーダルウインドウの位置調整 */
+
+.modal-dialog-center {
+  padding-top: 20%;
+  width: 30%;
+}
+
+.login-btn {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.signup-font {
+  font-size: 18px;
+}
+
+.btn-position {
+  margin: 20px 0;
+}
