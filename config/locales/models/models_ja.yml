@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      facility: 施設ユーザー
+    attributes:
+      facility:
+        id: ID
+        name: 施設名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード再入力
+        created_at: 作成日
+        updated_at: 更新日
