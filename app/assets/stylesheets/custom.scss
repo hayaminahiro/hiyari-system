@@ -50,6 +50,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 h1 {
@@ -95,6 +96,10 @@ p {
   text-decoration: none;
 }
 
+#facility-name {
+  float: right;
+}
+
 /* debug */
 
 .debug_dump {
@@ -115,6 +120,10 @@ p {
     color: red;
     margin: 0 0 30px 0;
   }
+}
+
+#error_messages_position {
+  padding-top: 80px;
 }
 
 .field_with_errors {
@@ -176,3 +185,18 @@ p {
 .btn-position {
   margin: 20px 0;
 }
+
+//タイトルの位置
+.title-position {
+  margin-top: 70px;
+}
+
+.title-position-l {
+  margin-top: 80px;
+}
+
+#facility-title-name {
+  margin-top: 40px;
+  color: darkcyan;
+}
+

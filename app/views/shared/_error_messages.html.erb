@@ -3,7 +3,7 @@
     <div class="alert alert-danger">
       入力エラーが<%= model.errors.count %>件ありました。
     </div>
-    <ul>
+    <ul id="error_messages_position">
       <% model.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
