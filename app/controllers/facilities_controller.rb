@@ -1,5 +1,6 @@
 class FacilitiesController < ApplicationController
   def show
+    @facilities = Facility.all
     @facility = Facility.find(params[:id])
   end
 
@@ -16,6 +17,10 @@ class FacilitiesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @facility = Facility.find(params[:id])
   end
 
   private
