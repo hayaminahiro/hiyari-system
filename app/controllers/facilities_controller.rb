@@ -1,11 +1,11 @@
 class FacilitiesController < ApplicationController
-  before_action :set_facility, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_facility, only: [:show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   before_action :correct_facility, only: [:edit, :update]
-  before_action :admin_facility, only: :destroy
+  before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
 
   def index
-    @facilities = Facility.all
+    @facilities = Facility.all.order(id: "ASC")
   end
 
   def show
@@ -32,7 +32,7 @@ class FacilitiesController < ApplicationController
 
   def update
     if @facility.update_attributes(facility_params)
-      flash[:success] = "施設情報を更新しました。"
+      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
       redirect_to @facility
     else
       render :edit
@@ -44,6 +44,19 @@ class FacilitiesController < ApplicationController
     flash[:success] = "#{@facility.name}のデータを削除しました。"
     redirect_to facilities_url
   end
+
+  def edit_facility_info
+  end
+
+  def update_facility_info
+    if @facility.update_attributes(facility_params)
+      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
+    else
+      flash[:danger] = "施設情報の更新は失敗しました<br>" + @facility.errors.full_messages.join("<br>")
+    end
+    redirect_to facilities_url
+  end
+
 
   private
 
