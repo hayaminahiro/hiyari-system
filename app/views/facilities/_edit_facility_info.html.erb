@@ -1,0 +1,42 @@
+<% provide(:class_text, 'basic-info') %>
+<% provide(:button_text, '更新') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">施設情報編集</h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= form_with(model: @facility, url: update_facility_info_facility_path(@facility), local: true, method: :patch) do |f| %>
+
+            <%= render 'shared/error_messages', model: f.object %>
+
+            <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :name, class: "form-control" %>
+
+            <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+            <%= f.email_field :email, class: "form-control" %>
+
+            <%= f.label :password, class: "label-#{yield(:class_text)}" %>
+            <%= f.password_field :password, class: "form-control" %>
+
+            <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+
+            <div class="center">
+              <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:class_text)}" %>
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+              キャンセル
+              </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

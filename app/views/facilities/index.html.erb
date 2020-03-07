@@ -5,17 +5,25 @@
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-condensed table-hover" id="table-facilities">
     <thead>
-    <tr>
-      <th></th>
-    </tr>
+      <tr>
+        <th>施設名</th>
+        <th></th>
+      </tr>
     </thead>
 
-    <% @facilities.each do |f| %>
+    <% @facilities.each do |facility| %>
       <tr>
-        <td><%= link_to f.name, "#" %></td>
+        <td><%= link_to facility.name, "#" %></td>
         <td>
-          <% if current_facility.admin? && !current_facility?(f) %>
-            <%= link_to "削除", f, method: :delete,
+          <% if current_facility.admin? && !current_facility?(facility) %>
+            <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
+            <!--モーダルウインドウ表示-->
+            <div id="edit_facility_info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+
+
+
+            <%= link_to "削除", facility, method: :delete,
                         data: { confirm: "削除してよろしいですか？" },
                         class: "btn btn-danger" %>
           <% end %>
