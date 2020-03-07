@@ -1,0 +1,19 @@
+<% provide(title: 'システム利用施設一覧') %>
+
+<h1 class="title-position">システム利用施設一覧</h1>
+
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-facilities">
+    <thead>
+    <tr>
+      <th></th>
+    </tr>
+    </thead>
+
+    <% @facilities.each do |f| %>
+      <tr>
+        <td><%= link_to f.name, "#" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -50,6 +50,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 h1 {
@@ -121,6 +122,10 @@ p {
   }
 }
 
+#error_messages_position {
+  padding-top: 80px;
+}
+
 .field_with_errors {
   @extend .has-error;
   .form-control {
@@ -179,4 +184,13 @@ p {
 
 .btn-position {
   margin: 20px 0;
+}
+
+//タイトルの位置
+.title-position {
+  margin-top: 30px;
+}
+
+.title-position-l {
+  margin-top: 80px;
 }
