@@ -8,6 +8,9 @@
       <p>このアプリでは、ヒヤリハット・事故報告書の管理を簡単にすることができます。</p>
       <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
       <% if logged_in? %>
+        <div id="facility-title-name">
+          <%= current_facility.name %>
+        </div>
       <% else %>
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
           ログイン
