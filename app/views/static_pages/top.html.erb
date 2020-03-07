@@ -9,7 +9,7 @@
       <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
       <% if logged_in? %>
         <div id="facility-title-name">
-          <%= current_facility.name %>
+          <%= current_facility.name %>  　管理者画面
         </div>
       <% else %>
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
@@ -35,10 +35,10 @@
                   <div class="col-md-6 col-md-offset-3">
                     <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
 
-                      <%= f.label :email, class: "label-login" %>
+                      <%= f.label :email, "メールアドレス", class: "label-login" %>
                       <%= f.email_field :email, class: 'form-control' %>
 
-                      <%= f.label :password, class: "label-login" %>
+                      <%= f.label :password, "パスワード", class: "label-login" %>
                       <%= f.password_field :password, class: 'form-control' %>
 
                       <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
@@ -88,7 +88,7 @@
                       <%= f.label :password, class: "label-signup" %>
                       <%= f.password_field :password, class: "form-control" %>
 
-                      <%= f.label :password_confirmation, "Confirmation", class: "label-signup" %>
+                      <%= f.label :password_confirmation, class: "label-signup" %>
                       <%= f.password_field :password_confirmation, class: "form-control" %>
 
                       <div class="btn-position">
