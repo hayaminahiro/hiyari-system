@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'edit_facility_info'
       patch 'update_facility_info'
     end
+    resources :seniors
   end
 
 end

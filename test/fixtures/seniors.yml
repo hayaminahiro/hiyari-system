@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  senior_name: MyString
+  floor: MyString
+  charge_worker: MyString
+  using_flg: false
+  facility: one
+
+two:
+  senior_name: MyString
+  floor: MyString
+  charge_worker: MyString
+  using_flg: false
+  facility: two
