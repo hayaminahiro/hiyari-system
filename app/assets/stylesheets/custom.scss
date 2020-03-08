@@ -205,3 +205,37 @@ p {
 .modal-dialog-center {
   padding-top: 20%;
 }
+
+//施設利用者一覧ページ
+
+.active-color {
+  background-color: cornflowerblue;
+  color: #F7F7F7;
+}
+
+.no-active-color {
+  background-color: hotpink;
+  color: #F7F7F7;
+}
+
+.active-position {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.index-btn-position {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.senior_name_space {
+  width: 70%;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.off-senior {
+  background-color: #EFEFEF;
+}
