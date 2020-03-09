@@ -12,20 +12,15 @@ body {
 .main-img {
   /* 画像ファイルの指定 */
   background-image: url(/assets/kaigo.jpg);
-
   /* 画像を常に天地左右の中央に配置 */
   background-position: center center;
-
   /* 画像をタイル状に繰り返し表示しない */
   background-repeat: no-repeat;
-
   /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
   background-attachment: fixed;
-
   /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
   background-size: cover;
   //background-size: contain;
-
   /* 背景画像が読み込まれる前に表示される背景のカラー */
   background-color: #464646;
 }
@@ -78,7 +73,6 @@ p {
 }
 
 /* header */
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -101,7 +95,6 @@ p {
 }
 
 /* debug */
-
 .debug_dump {
   clear: both;
   float: left;
@@ -113,7 +106,6 @@ p {
 }
 
 /* error_messages */
-
 #error_explanation {
   color: red;
   ul {
@@ -134,7 +126,6 @@ p {
 }
 
 //ジャンボトロンのタイトル
-
 #jumbo-position {
   margin-top: 200px;
   margin-bottom: 100px;
@@ -157,7 +148,6 @@ p {
 }
 
 /* ログインフォーム */
-
 .label-login {
   margin-top: 5px;
 }
@@ -167,7 +157,6 @@ p {
 }
 
 /* モーダルウインドウの位置調整 */
-
 .modal-dialog-center {
   padding-top: 20%;
   width: 30%;
@@ -200,14 +189,7 @@ p {
   color: darkcyan;
 }
 
-/* モーダルウインドウの位置調整 */
-
-.modal-dialog-center {
-  padding-top: 20%;
-}
-
 //施設利用者一覧ページ
-
 .active-color {
   background-color: cornflowerblue;
   color: #F7F7F7;
@@ -238,4 +220,10 @@ p {
 
 .off-senior {
   background-color: #EFEFEF;
+}
+
+//bootstrapタブ調整
+.tab-table {
+  padding-right: 0;
+  padding-left: 0;
 }

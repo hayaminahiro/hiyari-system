@@ -2,60 +2,70 @@
 
 <h1 class="title-position">施設利用者一覧</h1>
 
-<div class="col-md-10 col-md-offset-1">
-  <table class="table table-bordered table-condensed table-hover">
-    <thead>
-      <tr class="active-color">
-        <th class="active-position" colspan="2">現在利用中</th>
-      </tr>
-    </thead>
-    <% @seniors.each do |senior| %>
-    <tbody>
-      <tr>
-       <td class="senior_name_space" rowspan="3">
-         <%= senior.senior_name %>
-       </td>
-       <td class="index-btn-position">
-         <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
-         <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
-         <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
-       </td>
-      </tr>
-    </tbody>
-    <% end %>
-    <thead>
-    <tr class="no-active-color">
-      <th class="active-position" colspan="2">退所者一覧</th>
-    </tr>
-    </thead>
-    <% @seniors.each do |senior| %>
-      <tbody>
-        <tr class="off-senior">
-          <td class="senior_name_space" rowspan="3">
-            <%= senior.senior_name %>
-          </td>
-          <td class="index-btn-position">
-            <%= link_to "再入所", "#", locale: true, class: "btn btn-info" %>
-            <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
-          </td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
+<div class="container">
+  <!-- 以下タブの表示設定 -->
+  <ul id="myTabs" class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="nav-link active">2階フロア</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link">3階フロア</a></li>
+    <li role="presentation"><a href="#message" aria-controls="message" role="tab" data-toggle="tab" class="nav-link">4階フロア</a></li>
+    <li role="presentation"><a href="#leaving" aria-controls="leaving" role="tab" data-toggle="tab" class="nav-link">退所者一覧</a></li>
+  </ul>
+  <!-- Tab panes(以下、タブを押したときに表示する中身) -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade show" id="home">
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr class="active-color">
+              <th class="active-position" colspan="2">現在利用中</th>
+            </tr>
+          </thead>
+          <% @seniors.each do |senior| %>
+            <tbody>
+              <tr>
+                <td class="senior_name_space" rowspan="3">
+                  <%= senior.senior_name %>
+                </td>
+                <td class="index-btn-position">
+                  <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                  <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
+                  <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+      <p>3階フロア</p>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="message">
+      <p>4階フロア</p>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="leaving">
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr class="no-active-color">
+            <th class="active-position" colspan="2">退所者一覧</th>
+          </tr>
+          </thead>
+          <% @seniors.each do |senior| %>
+            <tbody>
+            <tr class="off-senior">
+              <td class="senior_name_space" rowspan="3">
+                <%= senior.senior_name %>
+              </td>
+              <td class="index-btn-position">
+                <%= link_to "再入所", "#", locale: true, class: "btn btn-info" %>
+                <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="card">
-  <div class="card-header" role="tab" id="collapseListGroupHeading1">
-    <h5 class="mb-0">
-      <a href="#collapseListGroup1" class="collapsed text-body d-block p-3 m-n3" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapseListGroup1"> 折り畳みリストグループ </a>
-    </h5>
-  </div><!-- /.card-header -->
-  <div class="collapse" role="tabpanel" id="collapseListGroup1" aria-labelledby="collapseListGroupHeading1" aria-expanded="false">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">リスト1</li>
-      <li class="list-group-item">リスト2</li>
-      <li class="list-group-item">リスト3</li>
-    </ul>
-    <div class="card-footer">フッタ</div>
-  </div><!-- /.collapse -->
-</div><!-- /.card -->
