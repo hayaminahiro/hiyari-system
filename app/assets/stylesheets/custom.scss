@@ -216,6 +216,7 @@ p {
   text-align: center;
   font-size: 18px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-top: 10px;
 }
 
 .off-senior {
@@ -226,4 +227,33 @@ p {
 .tab-table {
   padding-right: 0;
   padding-left: 0;
+}
+
+//オシャレボタン
+#new-senior-btn {
+  float: right;
+}
+
+.btn-square-shadow {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 5px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//オシャレなフォント
+.font-M {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
