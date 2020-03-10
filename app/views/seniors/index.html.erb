@@ -1,0 +1,112 @@
+<% provide(title: '施設利用者一覧') %>
+<% provide(:class_text, 'senior') %>
+<% provide(:button_text, '登録') %>
+
+<h1 class="title-position">施設利用者一覧</h1>
+
+<div id="new-senior-btn">
+  <button type="button" class="btn-square-shadow" data-toggle="modal" data-target="#senior-Modal">
+    利用者新規登録
+  </button>
+</div>
+
+<div class="container">
+  <!-- 以下タブの表示設定 -->
+  <ul id="myTabs" class="nav nav-tabs font-M">
+    <li role="presentation" class="active"><a href="#home"  aria-controls="home" role="tab" data-toggle="tab" class="nav-link active">2階フロア</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" class="nav-link">3階フロア</a></li>
+    <li role="presentation"><a href="#message" aria-controls="message" role="tab" data-toggle="tab" class="nav-link">4階フロア</a></li>
+    <li role="presentation"><a href="#leaving" aria-controls="leaving" role="tab" data-toggle="tab" class="nav-link">退所者一覧</a></li>
+  </ul>
+  <!-- Tab panes(以下、タブを押したときに表示する中身) -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade show" id="home">
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr class="active-color">
+              <th class="active-position" colspan="2">現在利用中</th>
+            </tr>
+          </thead>
+          <% @seniors.each do |senior| %>
+            <tbody>
+              <tr>
+                <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                  <%= senior.senior_name %>
+                </td>
+                <td class="index-btn-position">
+                  <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                  <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
+                  <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+      <p>3階フロア</p>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="message">
+      <p>4階フロア</p>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="leaving">
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr class="no-active-color">
+            <th class="active-position" colspan="2">退所者一覧</th>
+          </tr>
+          </thead>
+          <% @seniors.each do |senior| %>
+            <tbody>
+            <tr class="off-senior">
+              <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                <%= senior.senior_name %>
+              </td>
+              <td class="index-btn-position">
+                <%= link_to "再入所", "#", locale: true, class: "btn btn-info" %>
+                <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 利用者新規登録モーダル -->
+<div class="modal-position">
+  <div class="modal fade" id="senior-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog modal-lg modal-dialog-center" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel" style="text-align: center">利用者新規登録</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <%= form_with(model: @facility, local: true) do |f| %>
+                <%#= render 'shared/error_messages', model: f.object %>
+
+                <%= f.label :senior_name, "利用者名", class: "label-#{yield(:class_text)}" %>
+                <%= f.text_field :senior_name, class: "form-control" %>
+
+                <%= f.label :floor, "利用階", class: "label-#{yield(:class_text)}" %>
+                <%= f.select :name, ['２階フロア', '３階フロア', '４階フロア'], {include_blank: '利用階を選択して下さい。'}, class: "form-control"%>
+
+                <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div>
