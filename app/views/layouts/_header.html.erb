@@ -15,9 +15,11 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to "施設情報設定", edit_facility_path(current_facility) %></li>
-              <li><%= link_to "利用者一覧", '#' %></li>
+              <li><%= link_to "利用者一覧", facility_seniors_path(current_facility) %></li>
               <li><%= link_to "職員一覧", '#' %></li>
-              <li><%= link_to "システム利用施設一覧", facilities_path %></li>
+              <% if current_facility.admin? %> <!--管理者限定閲覧可能-->
+                <li><%= link_to "システム利用施設一覧", facilities_path %></li>
+              <% end %>
               <li class="divider"></li>
               <li>
                 <%= link_to "ログアウト", logout_path, method: :delete %>
