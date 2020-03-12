@@ -8,8 +8,8 @@
 // fields in IE7-8. Source: https://github.com/twbs/bootstrap/pull/3552.
 
 .fade {
-  opacity: 1;
-  @include transition(opacity .35s linear);
+  opacity: 0;
+  @include transition(opacity .15s linear);
   &.in {
     opacity: 1;
   }
