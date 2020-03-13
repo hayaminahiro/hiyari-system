@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',        '5.2.3'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'faker'
 gem 'rails-i18n', '~> 5.1'
 gem 'rounding', '~> 1.0', '>= 1.0.1'
 gem 'roo'
