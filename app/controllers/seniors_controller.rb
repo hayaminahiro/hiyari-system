@@ -10,4 +10,20 @@ class SeniorsController < ApplicationController
     @seniors_off = Senior.where(using_flg: false)
   end
 
+  def new
+
+  end
+
+  def create
+    
+  end
+
+
+  #def new_senior
+    #@senior = Senior.new
+  #end
+  #
+  #def create_senior
+  #end
+
 end

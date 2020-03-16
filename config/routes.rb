@@ -9,11 +9,19 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :facilities do
-    member do
+    member do #memberはid付与
+      #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
     end
-    resources :seniors
+    resources :seniors do
+      collection do #collectionはid付与せず
+        #施設利用者新規作成
+        get 'new_senior'
+        post 'create_senior'
+      end
+
+    end
   end
 
 end
