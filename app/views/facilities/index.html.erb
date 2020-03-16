@@ -16,14 +16,13 @@
         <td>
           <% if current_facility.admin? && !current_facility?(facility) %>
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
-            <!--モーダルウインドウ表示-->
-            <div id="edit_facility_info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-            <%= link_to "削除", facility, method: :delete,
-                        data: { confirm: "削除してよろしいですか？" },
-                        class: "btn btn-danger" %>
+            <%= link_to "削除", facility, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
           <% end %>
         </td>
       </tr>
     <% end %>
   </table>
 </div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit_facility_info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

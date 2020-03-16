@@ -13,7 +13,8 @@ ja:
         created_at: 作成日
         updated_at: 更新日
       senior:
-        senior_name: 施設利用者名
+        senior_name: 利用者名
+        senior_name_call: ふりがな
         floor: 利用階
         charge_worker: 担当職員
 
