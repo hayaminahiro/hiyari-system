@@ -17,7 +17,7 @@ b = 0
 50.times do
   Senior.create!(facility_id: 1,
                  senior_name: "2F-SeniorUser-#{a += 1}",
-                 floor: "2階",
+                 floor: 2,
                  charge_worker: "2F-SampleWorker-#{b += 1}",
                  using_flg: true
                  )
@@ -29,7 +29,7 @@ b = 0
 50.times do
   Senior.create!(facility_id: 1,
                  senior_name: "3F-SeniorUser-#{a += 1}",
-                 floor: "3階",
+                 floor:3,
                  charge_worker: "3F-SampleWorker-#{b += 1}",
                  using_flg: true
   )
@@ -41,7 +41,7 @@ b = 0
 25.times do
   Senior.create!(facility_id: 1,
                  senior_name: "4F-SeniorUser-#{a += 1}",
-                 floor: "4階",
+                 floor: 4,
                  charge_worker: "4F-SampleWorker-#{b += 1}",
                  using_flg: true
   )
@@ -53,7 +53,7 @@ b = 0
 40.times do
   Senior.create!(facility_id: 1,
                  senior_name: "2F-OFF-SeniorUser-#{a += 1}",
-                 floor: "2階",
+                 floor: 2,
                  charge_worker: "2F-SampleWorker-#{b += 1}",
                  using_flg: false
   )
@@ -65,7 +65,7 @@ b = 0
 40.times do
   Senior.create!(facility_id: 1,
                  senior_name: "3F-OFF-SeniorUser-#{a += 1}",
-                 floor: "3階",
+                 floor: 3,
                  charge_worker: "3F-SampleWorker-#{b += 1}",
                  using_flg: false
   )
@@ -77,7 +77,7 @@ b = 0
 30.times do
   Senior.create!(facility_id: 1,
                  senior_name: "4F-OFF-SeniorUser-#{a += 1}",
-                 floor: "4階",
+                 floor: 4,
                  charge_worker: "4F-SampleWorker-#{b += 1}",
                  using_flg: false
   )
