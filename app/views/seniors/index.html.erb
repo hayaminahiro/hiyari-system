@@ -24,11 +24,11 @@
       <div class="col-md-12 tab-table">
         <table class="table table-bordered table-condensed table-hover">
           <thead>
-          <tr class="active-color">
-            <th class="active-position" colspan="2">現在利用中</th>
-          </tr>
+            <tr class="active-color">
+              <th class="active-position" colspan="2">現在利用中</th>
+            </tr>
           </thead>
-          <% @seniors.each do |senior| %>
+          <% @seniors2f.each do |senior| %>
             <tbody>
             <tr>
               <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
@@ -46,10 +46,54 @@
       </div>
     </div>
     <div class="tab-pane" id="3f">
-      <p>3fフロア</p>
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr class="active-color">
+            <th class="active-position" colspan="2">現在利用中</th>
+          </tr>
+          </thead>
+          <% @seniors3f.each do |senior| %>
+            <tbody>
+            <tr>
+              <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                <%= senior.senior_name %>
+              </td>
+              <td class="index-btn-position">
+                <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
+                <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
     </div>
     <div class="tab-pane" id="4f">
-      <p>4fフロア</p>
+      <div class="col-md-12 tab-table">
+        <table class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr class="active-color">
+            <th class="active-position" colspan="2">現在利用中</th>
+          </tr>
+          </thead>
+          <% @seniors4f.each do |senior| %>
+            <tbody>
+            <tr>
+              <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                <%= senior.senior_name %>
+              </td>
+              <td class="index-btn-position">
+                <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
+                <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
+              </td>
+            </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
     </div>
     <div class="tab-pane" id="no_present">
       <div class="col-md-12 tab-table">
@@ -59,7 +103,7 @@
             <th class="active-position" colspan="2">退所者一覧</th>
           </tr>
           </thead>
-          <% @seniors.each do |senior| %>
+          <% @seniors_off.each do |senior| %>
             <tbody>
             <tr class="off-senior">
               <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
