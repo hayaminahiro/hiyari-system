@@ -1,5 +1,5 @@
 <% provide(:class_text, 'basic-info') %>
-<% provide(:button_text, '更新') %>
+<% provide(:button_text, '新規登録') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
   <div class="modal-content">
@@ -12,27 +12,25 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <%#= form_with(model: @senior, url: create_senior_facility_seniors_path(@facility), local: true, method: :patch) do |f| %>
+          <%= form_with(model: @senior, url: create_senior_facility_seniors_path(@facility), local: true, method: :post) do |f| %>
             <%#= render 'shared/error_messages', object: f.model %>
 
-            <%#= f.label :name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :senior_name, class: "form-control" %>
 
-            <%#= f.label :department, class: "label-#{yield(:class_text)}" %>
-            <%#= f.text_field :department, class: "form-control" %>
+            <%= f.label :floor, class: "label-#{yield(:class_text)}" %>
+            <%= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {include_blank: true}, class: "form-control" %>
 
-            <%#= f.label :basic_time, class: "label-#{yield(:class_text)}" %>
-            <%#= f.time_field :basic_time, class: "form-control" %>
-
-            <%#= f.label :work_time, class: "label-#{yield(:class_text)}" %>
-            <%#= f.time_field :work_time, class: "form-control" %>
+            <%= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
+            <%= f.select :charge_worker, "#", {include_blank: true}, class: "form-control" %>
 
             <div class="center">
-              <%#= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:class_text)}" %>
+              <%= f.submit yield(:button_text), class: "btn btn-primary" %>
               <button type="button" class="btn btn-default btn-<%= yield(:class_text) %>" data-dismiss="modal">
                 キャンセル
               </button>
             </div>
-          <%# end %>
+          <% end %>
         </div>
       </div>
     </div>

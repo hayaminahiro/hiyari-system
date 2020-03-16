@@ -11,19 +11,33 @@ class SeniorsController < ApplicationController
   end
 
   def new
-
   end
 
   def create
-    
   end
 
 
-  #def new_senior
-    #@senior = Senior.new
-  #end
-  #
-  #def create_senior
-  #end
+
+  def new_senior
+    @facility = Facility.find(params[:facility_id])
+    @senior = Senior.new
+  end
+
+  def create_senior
+    @facility  = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.new(senior_params)
+    if @senior.save
+      flash[:success] = "利用者を新規登録しました。"
+      redirect_to facility_seniors_url
+    else
+      render :index
+    end
+  end
+
+  private
+
+    def senior_params
+      params.require(:senior).permit(:senior_name, :floor, :charge_worker, :using_flg)
+    end
 
 end
