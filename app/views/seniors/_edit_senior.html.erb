@@ -1,0 +1,40 @@
+<% provide(:class_text, 'basic-info') %>
+<% provide(:button_text, '新規登録') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">利用者新規登録</h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%#= form_with(model: @senior, url: facility_seniors_path(@facility), local: true, method: :post) do |f| %>
+
+            <%#= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
+            <%#= f.text_field :senior_name, placeholder: "山田 太郎", class: "form-control" %>
+
+            <%#= f.label :senior_name_call, class: "label-#{yield(:class_text)}" %>
+            <%#= f.text_field :senior_name_call, placeholder: "やまだ たろう", class: "form-control" %>
+
+            <%#= f.label :floor, class: "label-#{yield(:class_text)}" %>
+            <%#= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
+
+            <%#= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
+            <%#= f.select :charge_worker, "#", {prompt: "担当職員を選択"}, class: "form-control" %>
+
+<!--            <div class="center">-->
+              <%#= f.submit yield(:button_text), class: "btn btn-primary" %>
+<!--              <button type="button" class="btn btn-default btn-<%#= yield(:class_text) %>" data-dismiss="modal">-->
+<!--                キャンセル-->
+<!--              </button>-->
+<!--            </div>-->
+          <%# end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
