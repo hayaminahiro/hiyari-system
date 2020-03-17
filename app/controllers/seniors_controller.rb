@@ -55,6 +55,15 @@ class SeniorsController < ApplicationController
     redirect_to facility_seniors_url
   end
 
+  def destroy
+    @facility = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.find(params[:id])
+    if @senior.destroy
+      flash[:danger] = "#{@senior.senior_name}さんを削除しました。"
+      redirect_to facility_seniors_url
+    end
+  end
+
   private
 
     def senior_params
