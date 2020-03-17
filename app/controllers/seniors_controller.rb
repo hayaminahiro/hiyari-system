@@ -40,12 +40,13 @@ class SeniorsController < ApplicationController
   end
 
   def edit_senior
+    @facility = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.find(params[:id])
   end
 
   def update_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    raise
     if @senior.update_attributes(senior_params)
       flash[:success] = "利用者情報を更新しました。"
     else
@@ -53,8 +54,6 @@ class SeniorsController < ApplicationController
     end
     redirect_to facility_seniors_url
   end
-
-
 
   private
 
