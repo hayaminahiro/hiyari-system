@@ -66,7 +66,7 @@
                 <% end %>
               </td>
               <td class="index-btn-position">
-                <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
                 <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
                 <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
               </td>
@@ -96,7 +96,7 @@
                 <% end %>
               </td>
               <td class="index-btn-position">
-                <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
                 <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
                 <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
               </td>
