@@ -20,7 +20,11 @@ Rails.application.routes.draw do
         get 'new_senior'
         post 'create_senior'
       end
-
+      member do
+        #施設利用者新規作成
+        get 'edit_senior'
+        patch 'update_senior'
+      end
     end
   end
 
