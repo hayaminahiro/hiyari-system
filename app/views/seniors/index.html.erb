@@ -8,9 +8,6 @@
   <%= link_to "利用者新規作成", new_senior_facility_seniors_path(current_facility), remote: true, class: "btn-square-shadow" %>
 </div>
 
-<!--モーダルウインドウ表示-->
-<div id="new-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-
 <div class="container">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#2f" data-toggle="tab">2階フロア</a></li>
@@ -39,7 +36,7 @@
                 <% end %>
               </td>
               <td class="index-btn-position">
-                <%= link_to "編集", "#", locale: true, class: "btn btn-success" %>
+                <%= link_to "編集", edit_senior_facility_senior_path(current_facility, senior), remote: true, class: "btn btn-success" %>
                 <%= link_to "退所", "#", locale: true, class: "btn btn-warning" %>
                 <%= link_to "削除", "#", locale: true, class: "btn btn-danger" %>
               </td>
@@ -140,3 +137,8 @@
     </div>
   </div>
 </div>
+
+<!--利用者新規作成モーダル-->
+<div id="new-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<!--利用者情報編集モーダル-->
+<div id="edit-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

@@ -3,6 +3,7 @@ class SeniorsController < ApplicationController
   #before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
 
   def index
+    @facility = Facility.find(params[:facility_id])
     @seniors = Senior.all.includes(:facility)
     @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
     @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
@@ -11,16 +12,6 @@ class SeniorsController < ApplicationController
   end
 
   def show
-
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
   end
 
   def new_senior
@@ -46,6 +37,22 @@ class SeniorsController < ApplicationController
     end
     redirect_to facility_seniors_url
   end
+
+  def edit_senior
+  end
+
+  def update_senior
+    @facility = Facility.find(params[:facility_id])
+    @senior =  @facility.seniors.find(params[:id])
+    if @senior.update_attributes(senior_params)
+      flash[:success] = "利用者情報を更新しました。"
+    else
+      flash[:danger] = "入力項目に誤りがあります。"
+    end
+    redirect_to facility_seniors_url
+  end
+
+
 
   private
 
