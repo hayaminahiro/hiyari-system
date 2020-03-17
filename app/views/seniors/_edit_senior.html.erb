@@ -12,10 +12,10 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <%= form_with(model: @facility, url: update_senior_facility_senior_path(current_facility, @senior), local: true, method: :patch) do |f| %>
+          <%= form_with(model: @senior, url: update_senior_facility_senior_path(current_facility, @senior), local: true, method: :patch) do |f| %>
 
             <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
-            <%= f.text_field :senior_name, placeholder: "山田 太郎", class: "form-control" %>
+            <%= f.text_field :senior_name, class: "form-control" %>
 
             <%= f.label :senior_name_call, class: "label-#{yield(:class_text)}" %>
             <%= f.text_field :senior_name_call, placeholder: "やまだ たろう", class: "form-control" %>
