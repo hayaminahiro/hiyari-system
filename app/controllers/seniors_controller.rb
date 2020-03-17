@@ -4,6 +4,7 @@ class SeniorsController < ApplicationController
 
   def index
     @facility = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.find_by(params[:id])
     @seniors = Senior.all.includes(:facility)
     @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
     @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
@@ -43,7 +44,8 @@ class SeniorsController < ApplicationController
 
   def update_senior
     @facility = Facility.find(params[:facility_id])
-    @senior =  @facility.seniors.find(params[:id])
+    @senior = @facility.seniors.find(params[:id])
+    raise
     if @senior.update_attributes(senior_params)
       flash[:success] = "利用者情報を更新しました。"
     else
