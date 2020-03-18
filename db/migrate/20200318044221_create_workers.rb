@@ -6,7 +6,7 @@ class CreateWorkers < ActiveRecord::Migration[5.2]
       t.string :sign_name
       t.integer :working_floor
       t.string :charge_senior
-      t.boolean :working_flg
+      t.boolean :working_flg, default: true
       t.references :facility, foreign_key: true
 
       t.timestamps
