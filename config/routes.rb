@@ -8,12 +8,14 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  #施設関連: facilities
   resources :facilities do
     member do #memberはid付与
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
     end
+    #施設利用者関連: seniors
     resources :seniors do
       collection do #collectionはid付与せず
         #施設利用者新規作成
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
         patch 're_entry'
       end
     end
+    #職員関連: workers
+    resources :workers
   end
 
 end

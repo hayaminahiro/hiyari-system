@@ -196,7 +196,7 @@ p {
 }
 
 .no-active-color {
-  background-color: hotpink;
+  background-color: #c3325f;
   color: #F7F7F7;
 }
 
@@ -221,6 +221,12 @@ p {
 
 .off-senior {
   background-color: #EFEFEF;
+}
+
+//職員一覧ページ
+.active-color-worker {
+  background-color: #009999;
+  color: #F7F7F7;
 }
 
 //bootstrapタブ調整
