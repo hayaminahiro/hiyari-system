@@ -1,5 +1,6 @@
 class Facility < ApplicationRecord
   has_many :seniors, dependent: :destroy
+  has_many :workers, dependent: :destroy
 
   # 「remember_token」という仮想の属性を作成します。
   attr_accessor :remember_token
