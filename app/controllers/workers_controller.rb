@@ -20,7 +20,7 @@ class WorkersController < ApplicationController
     @facility  = Facility.find(params[:facility_id])
     @worker = @facility.workers.new(worker_params)
     if @worker.save
-      flash[:success] = "職員を新規登録しました。"
+      flash[:success] = "「#{@worker.worker_name}」職員を新規登録しました。"
     else
       flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
     end
