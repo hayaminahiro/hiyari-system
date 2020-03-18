@@ -33,7 +33,13 @@ Rails.application.routes.draw do
       end
     end
     #職員関連: workers
-    resources :workers
+    resources :workers do
+      collection do #collectionはid付与せず
+        #職員新規作成
+        get 'new_worker'
+        post 'create_worker'
+      end
+    end
   end
 
 end
