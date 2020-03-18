@@ -66,6 +66,16 @@ class SeniorsController < ApplicationController
     @senior = @facility.seniors.find(params[:id])
     if @senior.update_attributes(using_flg: false)
       flash[:warning] = "#{@senior.senior_name}さんを退所へ変更しました。"
+    end
+    redirect_to facility_seniors_url
+  end
+
+  #施設利用者再入所ボタン
+  def re_entry
+    @facility = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.find(params[:id])
+    if @senior.update_attributes(using_flg: true)
+      flash[:success] = "#{@senior.senior_name}さん（#{@senior.floor}階）を再入所へ変更しました。"
     else
       flash[:danger] = "入力項目に誤りがあります。"
     end
@@ -77,7 +87,7 @@ class SeniorsController < ApplicationController
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
     if @senior.destroy
-      flash[:danger] = "#{@senior.senior_name}さんを削除しました。"
+      flash[:warning] = "#{@senior.senior_name}さんを削除しました。"
       redirect_to facility_seniors_url
     end
   end
