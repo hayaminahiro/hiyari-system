@@ -39,6 +39,15 @@ Rails.application.routes.draw do
         get 'new_worker'
         post 'create_worker'
       end
+      member do #memberはid付与
+        #職員編集
+        get 'edit_worker'
+        patch 'update_worker'
+        #職員退職
+        patch 'retirement'
+        #職員再就業
+        patch 're_employment'
+      end
     end
   end
 

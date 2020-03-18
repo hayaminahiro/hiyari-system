@@ -27,6 +27,14 @@ class WorkersController < ApplicationController
     redirect_to facility_workers_url
   end
 
+  def edit_worker
+
+  end
+
+  def update_worker
+
+  end
+
   private
 
     #施設利用者情報
