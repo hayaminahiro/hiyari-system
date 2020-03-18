@@ -132,7 +132,8 @@
                 <% end %>
               </td>
               <td class="index-btn-position">
-                <%= link_to "再入所", "#", locale: true, class: "btn btn-info" %>
+                <%= link_to "再入所",re_entry_facility_senior_path(@facility, senior), method: :patch,
+                            data: { confirm: "#{senior.senior_name}さん（#{senior.floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
                 <%= link_to "削除", facility_senior_path(@facility, senior), method: :delete,
                             data: { confirm: "#{senior.senior_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
               </td>
