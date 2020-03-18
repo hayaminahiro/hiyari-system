@@ -37,7 +37,7 @@ class SeniorsController < ApplicationController
     if @senior.save
       flash[:success] = "利用者を新規登録しました。"
     else
-      flash[:danger] = "未入力項目があります。"
+      flash[:danger] = "入力項目に誤りがあります。"
     end
     redirect_to facility_seniors_url
   end
