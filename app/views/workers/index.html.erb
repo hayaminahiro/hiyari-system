@@ -4,7 +4,7 @@
 <h1 class="title-position">職員一覧</h1>
 
 <div id="new-senior-btn">
-  <%= link_to "職員新規作成", "#(current_facility)", remote: true, class: "btn-square-shadow" %>
+  <%= link_to "職員新規作成", new_worker_facility_workers_path(current_facility), remote: true, class: "btn-square-shadow" %>
 </div>
 
 <div class="container">
@@ -145,7 +145,7 @@
   </div>
 </div>
 
-<!--利用者新規作成モーダル-->
-<!--<div id="new-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>-->
+<!--職員新規作成モーダル-->
+<div id="new-worker" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <!--利用者情報編集モーダル-->
 <!--<div id="edit-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>-->
