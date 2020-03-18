@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worker_name: MyString
+  worker_name_call: MyString
+  sign_name: MyString
+  working_floor: 1
+  charge_senior: MyString
+  working_flg: false
+  facility: one
+
+two:
+  worker_name: MyString
+  worker_name_call: MyString
+  sign_name: MyString
+  working_floor: 1
+  charge_senior: MyString
+  working_flg: false
+  facility: two
