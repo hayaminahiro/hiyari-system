@@ -1,6 +1,7 @@
 class SeniorsController < ApplicationController
   #before_action :set_facility, only: [:show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :url_confirmation, only: :index
 
   #施設利用者一覧ページ
   def index
@@ -82,6 +83,17 @@ class SeniorsController < ApplicationController
     #施設利用者情報
     def senior_params
       params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker)
+    end
+
+    # beforeアクション
+
+    # 他のユーザーのページをURL上で入力しても拒否
+    def url_confirmation
+      @facility = Facility.find(params[:facility_id])
+      unless @facility.id == current_facility.id
+        flash[:danger] = "情報の閲覧・編集はできません。"
+        redirect_to root_url
+      end
     end
 
 end
