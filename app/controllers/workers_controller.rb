@@ -31,7 +31,7 @@ class WorkersController < ApplicationController
 
     #施設利用者情報
     def worker_params
-      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor, :charge_senior, :working_flg)
+      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor, :charge_senior)
     end
 
 end

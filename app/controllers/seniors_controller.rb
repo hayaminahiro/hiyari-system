@@ -81,7 +81,7 @@ class SeniorsController < ApplicationController
 
     #施設利用者情報
     def senior_params
-      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, :using_flg)
+      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker)
     end
 
 end
