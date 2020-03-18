@@ -20,10 +20,12 @@ Rails.application.routes.draw do
         get 'new_senior'
         post 'create_senior'
       end
-      member do
-        #施設利用者新規作成
+      member do #memberはid付与
+        #施設利用者編集
         get 'edit_senior'
         patch 'update_senior'
+        #施設利用者退所
+        patch 'leaving'
       end
     end
   end
