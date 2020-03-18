@@ -55,6 +55,17 @@ class SeniorsController < ApplicationController
     redirect_to facility_seniors_url
   end
 
+  def leaving
+    @facility = Facility.find(params[:facility_id])
+    @senior = @facility.seniors.find(params[:id])
+    if @senior.update_attributes(using_flg: false)
+      flash[:warning] = "#{@senior.senior_name}さんを退所へ変更しました。"
+    else
+      flash[:danger] = "入力項目に誤りがあります。"
+    end
+    redirect_to facility_seniors_url
+  end
+
   def destroy
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
@@ -68,6 +79,10 @@ class SeniorsController < ApplicationController
 
     def senior_params
       params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, :using_flg)
+    end
+
+    def leaving_params
+      params.require(:senior).permit(:using_flg)
     end
 
 end
