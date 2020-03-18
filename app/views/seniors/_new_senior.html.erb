@@ -18,7 +18,7 @@
             <%= f.text_field :senior_name, placeholder: "山田 太郎", class: "form-control" %>
 
             <%= f.label :senior_name_call, class: "label-#{yield(:class_text)}" %>
-            <%= f.text_field :senior_name_call, placeholder: "やまだ たろう（ひらがな）", class: "form-control" %>
+            <%= f.text_field :senior_name_call, placeholder: "やまだたろう（ひらがな）", class: "form-control" %>
 
             <%= f.label :floor, class: "label-#{yield(:class_text)}" %>
             <%= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
