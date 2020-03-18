@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_18_044221) do
     t.string "sign_name"
     t.integer "working_floor"
     t.string "charge_senior"
-    t.boolean "working_flg"
+    t.boolean "working_flg", default: true
     t.bigint "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

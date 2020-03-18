@@ -12,27 +12,30 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <%#= form_with(model: @senior, url: create_senior_facility_seniors_path(@facility), local: true, method: :post) do |f| %>
+          <%= form_with(model: @worker, url: create_worker_facility_workers_path(@facility), local: true, method: :post) do |f| %>
 
-            <%#= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
-            <%#= f.text_field :senior_name, placeholder: "山田 太郎", class: "form-control" %>
+            <%= f.label :worker_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :worker_name, placeholder: "田中 幸子", class: "form-control" %>
 
-            <%#= f.label :senior_name_call, class: "label-#{yield(:class_text)}" %>
-            <%#= f.text_field :senior_name_call, placeholder: "やまだ たろう（ひらがな）", class: "form-control" %>
+            <%= f.label :worker_name_call, class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :worker_name_call, placeholder: "たなかさちこ（ひらがな）", class: "form-control" %>
 
-            <%#= f.label :floor, class: "label-#{yield(:class_text)}" %>
-            <%#= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
+            <%= f.label :sign_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :sign_name, placeholder: "田中", class: "form-control" %>
 
-            <%#= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
-            <%#= f.select :charge_worker, "#", {prompt: "担当職員を選択"}, class: "form-control" %>
+            <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %>
+            <%= f.select :working_floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "所属階を選択"}, class: "form-control" %>
 
-<!--            <div class="center">-->
-              <%#= f.submit yield(:button_text), class: "btn btn-primary" %>
-<!--              <button type="button" class="btn btn-default btn-<%#= yield(:class_text) %>" data-dismiss="modal">-->
-<!--                キャンセル-->
-<!--              </button>-->
-<!--            </div>-->
-          <%# end %>
+            <%= f.label :charge_senior, class: "label-#{yield(:class_text)}" %>
+            <%= f.select :charge_senior, "#", {prompt: "担当利用者を選択"}, class: "form-control" %>
+
+            <div class="center">
+              <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+              <button type="button" class="btn btn-default btn-<%= yield(:class_text) %>" data-dismiss="modal">
+                キャンセル
+              </button>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
