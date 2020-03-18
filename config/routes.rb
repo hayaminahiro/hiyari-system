@@ -26,6 +26,8 @@ Rails.application.routes.draw do
         patch 'update_senior'
         #施設利用者退所
         patch 'leaving'
+        #施設利用者再入所
+        patch 're_entry'
       end
     end
   end
