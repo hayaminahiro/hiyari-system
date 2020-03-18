@@ -5,15 +5,10 @@ class SeniorsController < ApplicationController
   #施設利用者一覧ページ
   def index
     @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find_by(params[:id])
-    @seniors = Senior.all.includes(:facility)
     @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
     @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
     @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
     @seniors_off = Senior.where(using_flg: false).order(:senior_name_call)
-  end
-
-  def show
   end
 
   #施設利用者新規作成モーダル
