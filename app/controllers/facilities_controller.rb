@@ -17,8 +17,6 @@ class FacilitiesController < ApplicationController
   end
 
   def create
-    @seniors = Senior.all
-    binding.pry
     @facility = Facility.new(facility_params)
     if @facility.save
       log_in @facility
