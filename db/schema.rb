@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_18_044221) do
+ActiveRecord::Schema.define(version: 2020_03_19_141406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2020_03_18_044221) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_facilities_on_email", unique: true
+  end
+
+  create_table "senior_workers", force: :cascade do |t|
+    t.bigint "worker_id"
+    t.bigint "senior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["senior_id"], name: "index_senior_workers_on_senior_id"
+    t.index ["worker_id"], name: "index_senior_workers_on_worker_id"
   end
 
   create_table "seniors", force: :cascade do |t|
@@ -51,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_03_18_044221) do
     t.index ["facility_id"], name: "index_workers_on_facility_id"
   end
 
+  add_foreign_key "senior_workers", "seniors"
+  add_foreign_key "senior_workers", "workers"
   add_foreign_key "seniors", "facilities"
   add_foreign_key "workers", "facilities"
 end
