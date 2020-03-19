@@ -35,7 +35,8 @@ class SeniorsController < ApplicationController
   def edit_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    @workers = Worker.where(working_flg: true).includes(:facility)
+    #https://qiita.com/Kohei_Kishimoto0214/items/cb9a3d3da57708fb52c9 多対多呼び出し参照
+    @workers = current_facility.workers.where(working_flg: true).includes(:facility)
   end
 
   #施設利用者情報編集
