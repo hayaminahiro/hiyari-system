@@ -20,19 +20,29 @@ class WorkersController < ApplicationController
     @facility  = Facility.find(params[:facility_id])
     @worker = @facility.workers.new(worker_params)
     if @worker.save
-      flash[:success] = "「#{@worker.worker_name}」職員を新規登録しました。"
+      flash[:success] = "職員「#{@worker.worker_name}」さんを新規登録しました。"
     else
       flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
     end
     redirect_to facility_workers_url
   end
 
+  #職員情報編集モーダル
   def edit_worker
-
+    @facility = Facility.find(params[:facility_id])
+    @worker = @facility.workers.find(params[:id])
   end
 
+  #職員情報更新
   def update_worker
-
+    @facility = Facility.find(params[:facility_id])
+    @worker = @facility.workers.find(params[:id])
+    if @worker.update_attributes(worker_params)
+      flash[:success] = "職員「#{@worker.worker_name}」さんの情報を更新しました。"
+    else
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+    end
+    redirect_to facility_workers_url
   end
 
   private
