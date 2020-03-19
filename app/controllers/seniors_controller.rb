@@ -16,6 +16,7 @@ class SeniorsController < ApplicationController
   def new_senior
     @facility = Facility.find(params[:facility_id])
     @senior = Senior.new
+    @workers = Worker.where(working_flg: true).includes(:facility)
   end
 
   #施設利用者新規作成
@@ -34,6 +35,7 @@ class SeniorsController < ApplicationController
   def edit_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
+    @workers = Worker.where(working_flg: true).includes(:facility)
   end
 
   #施設利用者情報編集
