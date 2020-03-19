@@ -45,6 +45,16 @@ class WorkersController < ApplicationController
     redirect_to facility_workers_url
   end
 
+  #職員退職ボタン
+  def retirement
+    @facility = Facility.find(params[:facility_id])
+    @worker = @facility.workers.find(params[:id])
+    if @worker.update_attributes(working_flg: false)
+      flash[:warning] = "職員「#{@worker.worker_name}」さんを退職へ変更しました。"
+    end
+    redirect_to facility_workers_url
+  end
+
   private
 
     #施設利用者情報

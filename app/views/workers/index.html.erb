@@ -37,10 +37,10 @@
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
-                    <%= link_to "退職","(@facility, worker)", method: :patch,
-                                data: { confirm: "「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
                     <%= link_to "削除", "(@facility, worker)", method: :delete,
-                                data: { confirm: "「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>
@@ -70,11 +70,11 @@
                     <% end %>
                   </td>
                   <td class="index-btn-position">
-                    <%= link_to "編集", "(@facility, worker)", remote: true, class: "btn btn-success" %>
-                    <%= link_to "退職","(@facility, worker)", method: :patch,
-                                data: { confirm: "#{worker.worker_name}さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
                     <%= link_to "削除", "(@facility, worker)", method: :delete,
-                                data: { confirm: "#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>
@@ -104,11 +104,11 @@
                     <% end %>
                   </td>
                   <td class="index-btn-position">
-                    <%= link_to "編集", "(@facility, worker)", remote: true, class: "btn btn-success" %>
-                    <%= link_to "退職","(@facility, worker)", method: :patch,
-                                data: { confirm: "「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                 data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
                     <%= link_to "削除", "(@facility, worker)", method: :delete,
-                                data: { confirm: "「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                                 data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>
@@ -139,9 +139,9 @@
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "再就職", "#(@facility, worker)", method: :patch,
-                                data: { confirm: "#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
+                                data: { confirm: "職員#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
                     <%= link_to "削除", "#(@facility, worker)", method: :delete,
-                                data: { confirm: "#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                                data: { confirm: "職員#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>
