@@ -39,7 +39,7 @@
                     <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
                     <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
                                 data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                    <%= link_to "削除", "(@facility, worker)", method: :delete,
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
                                 data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
@@ -73,7 +73,7 @@
                     <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
                     <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
                                 data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                    <%= link_to "削除", "(@facility, worker)", method: :delete,
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
                                 data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
@@ -107,8 +107,8 @@
                     <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
                     <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
                                  data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                    <%= link_to "削除", "(@facility, worker)", method: :delete,
-                                 data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>
@@ -138,10 +138,10 @@
                     <% end %>
                   </td>
                   <td class="index-btn-position">
-                    <%= link_to "再就職", "#(@facility, worker)", method: :patch,
+                    <%= link_to "再就職", re_employment_facility_worker_path(@facility, worker), method: :patch,
                                 data: { confirm: "職員#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
-                    <%= link_to "削除", "#(@facility, worker)", method: :delete,
-                                data: { confirm: "職員#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
                 </tr>
               </tbody>

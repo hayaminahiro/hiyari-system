@@ -55,6 +55,26 @@ class WorkersController < ApplicationController
     redirect_to facility_workers_url
   end
 
+  #職員再就業ボタン
+  def re_employment
+    @facility = Facility.find(params[:facility_id])
+    @worker = @facility.workers.find(params[:id])
+    if @worker.update_attributes(working_flg: true)
+      flash[:success] = "職員「#{@worker.worker_name}」さん（#{@worker.working_floor}階）を再就業へ変更しました。"
+    end
+    redirect_to facility_workers_url
+  end
+
+  #施設利用者削除ボタン
+  def destroy
+    @facility = Facility.find(params[:facility_id])
+    @worker = @facility.workers.find(params[:id])
+    if @worker.destroy
+      flash[:warning] = "利用者「#{@worker.worker_name}」さんを削除しました。"
+      redirect_to facility_workers_url
+    end
+  end
+
   private
 
     #施設利用者情報
