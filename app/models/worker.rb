@@ -1,5 +1,8 @@
 class Worker < ApplicationRecord
   belongs_to :facility
+  has_many :seniors, through: :senior_workers
+  has_many :senior_workers
+  accepts_nested_attributes_for :senior_workers
 
   validates :worker_name, presence: true, length: { in: 1..25 }
   #ひらがな入力バリデーション
