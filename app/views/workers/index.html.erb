@@ -24,25 +24,27 @@
           </tr>
           </thead>
           <% @workers2f.each do |worker| %>
-            <tbody>
-              <tr>
-                <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
-                  <%= worker.worker_name %>
-                  <% if worker.worker_name_call.present? %>
-                    (<%= worker.worker_name_call %>)
-                  <% else %>
-                    <%= worker.worker_name_call %>
-                  <% end %>
-                </td>
-                <td class="index-btn-position">
-                  <%= link_to "編集", "(@facility, worker)", remote: true, class: "btn btn-success" %>
-                  <%= link_to "退職","(@facility, worker)", method: :patch,
-                              data: { confirm: "「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                  <%= link_to "削除", "(@facility, worker)", method: :delete,
-                              data: { confirm: "「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
-                </td>
-              </tr>
-            </tbody>
+            <% if current_facility.id == worker.facility_id %>
+              <tbody>
+                <tr>
+                  <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                    <%= worker.worker_name %>
+                    <% if worker.worker_name_call.present? %>
+                      (<%= worker.worker_name_call %>)
+                    <% else %>
+                      <%= worker.worker_name_call %>
+                    <% end %>
+                  </td>
+                  <td class="index-btn-position">
+                    <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
           <% end %>
         </table>
       </div>
@@ -56,25 +58,27 @@
           </tr>
           </thead>
           <% @workers3f.each do |worker| %>
-            <tbody>
-              <tr>
-                <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
-                  <%= worker.worker_name %>
-                  <% if worker.worker_name_call.present? %>
-                    (<%= worker.worker_name_call %>)
-                  <% else %>
-                    <%= worker.worker_name_call %>
-                  <% end %>
-                </td>
-                <td class="index-btn-position">
-                  <%= link_to "編集", "(@facility, worker)", remote: true, class: "btn btn-success" %>
-                  <%= link_to "退職","(@facility, worker)", method: :patch,
-                              data: { confirm: "#{worker.worker_name}さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                  <%= link_to "削除", "(@facility, worker)", method: :delete,
-                              data: { confirm: "#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
-                </td>
-              </tr>
-            </tbody>
+            <% if current_facility.id == worker.facility_id %>
+              <tbody>
+                <tr>
+                  <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                    <%= worker.worker_name %>
+                    <% if worker.worker_name_call.present? %>
+                      (<%= worker.worker_name_call %>)
+                    <% else %>
+                      <%= worker.worker_name_call %>
+                    <% end %>
+                  </td>
+                  <td class="index-btn-position">
+                    <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
           <% end %>
         </table>
       </div>
@@ -88,25 +92,27 @@
           </tr>
           </thead>
           <% @workers4f.each do |worker| %>
-            <tbody>
-              <tr>
-                <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
-                  <%= worker.worker_name %>
-                  <% if worker.worker_name_call.present? %>
-                    (<%= worker.worker_name_call %>)
-                  <% else %>
-                    <%= worker.worker_name_call %>
-                  <% end %>
-                </td>
-                <td class="index-btn-position">
-                  <%= link_to "編集", "(@facility, worker)", remote: true, class: "btn btn-success" %>
-                  <%= link_to "退職","(@facility, worker)", method: :patch,
-                              data: { confirm: "「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                  <%= link_to "削除", "(@facility, worker)", method: :delete,
-                              data: { confirm: "「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
-                </td>
-              </tr>
-            </tbody>
+            <% if current_facility.id == worker.facility_id %>
+              <tbody>
+                <tr>
+                  <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                    <%= worker.worker_name %>
+                    <% if worker.worker_name_call.present? %>
+                      (<%= worker.worker_name_call %>)
+                    <% else %>
+                      <%= worker.worker_name_call %>
+                    <% end %>
+                  </td>
+                  <td class="index-btn-position">
+                    <%= link_to "編集", edit_worker_facility_worker_path(@facility, worker), remote: true, class: "btn btn-success" %>
+                    <%= link_to "退職",retirement_facility_worker_path(@facility, worker), method: :patch,
+                                 data: { confirm: "職員「#{worker.worker_name}」さんを退職へ変更してよろしいですか？" }, class: "btn btn-warning"%>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
           <% end %>
         </table>
       </div>
@@ -120,24 +126,26 @@
           </tr>
           </thead>
           <% @workers_off.each do |worker| %>
-            <tbody>
-            <tr class="off-senior">
-              <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
-                <%= worker.worker_name %>
-                <% if worker.worker_name_call.present? %>
-                  (<%= worker.worker_name_call %>)
-                <% else %>
-                  <%= worker.worker_name_call %>
-                <% end %>
-              </td>
-              <td class="index-btn-position">
-                <%= link_to "再就職", "#(@facility, worker)", method: :patch,
-                            data: { confirm: "#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
-                <%= link_to "削除", "#(@facility, worker)", method: :delete,
-                            data: { confirm: "#{worker.worker_name}さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
-              </td>
-            </tr>
-            </tbody>
+            <% if current_facility.id == worker.facility_id %>
+              <tbody>
+                <tr class="off-senior">
+                  <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
+                    <%= worker.worker_name %>
+                    <% if worker.worker_name_call.present? %>
+                      (<%= worker.worker_name_call %>)
+                    <% else %>
+                      <%= worker.worker_name_call %>
+                    <% end %>
+                  </td>
+                  <td class="index-btn-position">
+                    <%= link_to "再就職", re_employment_facility_worker_path(@facility, worker), method: :patch,
+                                data: { confirm: "職員#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
+                    <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
+                                data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
           <% end %>
         </table>
       </div>
@@ -147,5 +155,5 @@
 
 <!--職員新規作成モーダル-->
 <div id="new-worker" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
-<!--利用者情報編集モーダル-->
-<!--<div id="edit-senior" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>-->
+<!--職員情報編集モーダル-->
+<div id="edit-worker" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
