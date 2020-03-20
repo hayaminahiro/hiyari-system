@@ -212,7 +212,15 @@ p {
 }
 
 .senior_name_space {
-  width: 70%;
+  width: 55%;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-top: 10px;
+}
+
+.charge_worker_space {
+  width: 20%;
   text-align: center;
   font-size: 18px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -221,6 +229,20 @@ p {
 
 .off-senior {
   background-color: #EFEFEF;
+}
+
+.th-index {
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-top: 10px;
+  background-color: lightblue;
+}
+
+.th-index-red {
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-top: 10px;
+  background-color: #f2dede;
 }
 
 //職員一覧ページ

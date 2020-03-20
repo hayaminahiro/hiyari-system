@@ -19,9 +19,15 @@
         <table class="table table-bordered table-condensed table-hover">
           <thead>
             <tr class="active-color">
-              <th class="active-position" colspan="2">現在利用中</th>
+              <th class="active-position" colspan="3">現在利用中</th>
+            </tr>
+            <tr class="th-index">
+              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">担当職員</th>
+              <th style="text-align: center"></th>
             </tr>
           </thead>
+
           <% @seniors2f.each do |senior| %>
             <% if current_facility.id == senior.facility_id %>
               <tbody>
@@ -33,6 +39,9 @@
                     <% else %>
                       <%= senior.senior_name_call %>
                     <% end %>
+                  </td>
+                  <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
+                    <%= senior.charge_worker %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
@@ -52,9 +61,14 @@
       <div class="col-md-12 tab-table">
         <table class="table table-bordered table-condensed table-hover">
           <thead>
-          <tr class="active-color">
-            <th class="active-position" colspan="2">現在利用中</th>
-          </tr>
+            <tr class="active-color">
+              <th class="active-position" colspan="3">現在利用中</th>
+            </tr>
+            <tr class="th-index">
+              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">担当職員</th>
+              <th style="text-align: center"></th>
+            </tr>
           </thead>
           <% @seniors3f.each do |senior| %>
             <% if current_facility.id == senior.facility_id %>
@@ -67,6 +81,9 @@
                     <% else %>
                       <%= senior.senior_name_call %>
                     <% end %>
+                  </td>
+                  <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
+                    <%= senior.charge_worker %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
@@ -86,9 +103,14 @@
       <div class="col-md-12 tab-table">
         <table class="table table-bordered table-condensed table-hover">
           <thead>
-          <tr class="active-color">
-            <th class="active-position" colspan="2">現在利用中</th>
-          </tr>
+            <tr class="active-color">
+              <th class="active-position" colspan="3">現在利用中</th>
+            </tr>
+            <tr class="th-index">
+              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">担当職員</th>
+              <th style="text-align: center"></th>
+            </tr>
           </thead>
           <% @seniors4f.each do |senior| %>
             <% if current_facility.id == senior.facility_id %>
@@ -101,6 +123,9 @@
                     <% else %>
                       <%= senior.senior_name_call %>
                     <% end %>
+                  <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
+                    <%= senior.charge_worker %>
+                  </td>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
@@ -121,8 +146,13 @@
         <table class="table table-bordered table-condensed table-hover">
           <thead>
           <tr class="no-active-color">
-            <th class="active-position" colspan="2">退所者一覧</th>
+            <th class="active-position" colspan="3">退所者一覧</th>
           </tr>
+            <tr class="th-index-red">
+              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">担当職員</th>
+              <th style="text-align: center"></th>
+            </tr>
           </thead>
           <% @seniors_off.each do |senior| %>
             <% if current_facility.id == senior.facility_id %>
@@ -135,6 +165,9 @@
                     <% else %>
                       <%= senior.senior_name_call %>
                     <% end %>
+                  </td>
+                  <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
+                    <%= senior.charge_worker %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "再入所",re_entry_facility_senior_path(@facility, senior), method: :patch,

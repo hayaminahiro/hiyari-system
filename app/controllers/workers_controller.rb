@@ -65,21 +65,21 @@ class WorkersController < ApplicationController
     redirect_to facility_workers_url
   end
 
-  #施設利用者削除ボタン
+  #職員削除ボタン
   def destroy
     @facility = Facility.find(params[:facility_id])
     @worker = @facility.workers.find(params[:id])
     if @worker.destroy
-      flash[:warning] = "利用者「#{@worker.worker_name}」さんを削除しました。"
+      flash[:warning] = "職員「#{@worker.worker_name}」さんを削除しました。"
       redirect_to facility_workers_url
     end
   end
 
   private
 
-    #施設利用者情報
+    #職員情報
     def worker_params
-      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor, :charge_senior)
+      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor)
     end
 
 end
