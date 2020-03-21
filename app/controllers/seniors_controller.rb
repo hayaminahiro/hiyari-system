@@ -24,8 +24,8 @@ class SeniorsController < ApplicationController
   def create_senior
     @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
-    #@senior.worker_ids.count < 1
-    if @senior.save
+    if @senior.worker_ids.count == 1
+      @senior.save
       flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
     else
       flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
@@ -88,7 +88,6 @@ class SeniorsController < ApplicationController
     def senior_params
       params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, worker_ids: [])
     end
-
 
     # beforeアクション
 
