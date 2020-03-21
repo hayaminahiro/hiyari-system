@@ -23,6 +23,7 @@ class SeniorsController < ApplicationController
   def create_senior
     @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
+    #raise
     if @senior.save
       flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
     else
@@ -35,7 +36,6 @@ class SeniorsController < ApplicationController
   def edit_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    #https://qiita.com/Kohei_Kishimoto0214/items/cb9a3d3da57708fb52c9 多対多呼び出し参照
     @workers = @facility.workers.where(working_flg: true).includes(:facility)
   end
 
@@ -85,8 +85,9 @@ class SeniorsController < ApplicationController
 
     #施設利用者情報
     def senior_params
-      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker)
+      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, worker_ids: [])
     end
+
 
     # beforeアクション
 
