@@ -24,15 +24,8 @@
             <%= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
 
             <%= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
-            <%#= f.collection_select :charge_worker, @workers, :worker_name, :worker_name,  {prompt: "担当職員を選択"}, class: "form-control" %>
 
-            <%#= f.fields_for :senior_worker do |sw| %>
-              <%= f.collection_check_boxes :worker_ids, @workers, :worker_name, :worker_name %>
-
-              <%#= sw.collection_select :worker_ids, @workers, :worker_name, :worker_name,  {prompt: "担当職員を選択"}, class: "form-control" %>
-            <%# raise %>
-            <%# end %>
-
+            <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control" %>
 
             <div class="center">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>

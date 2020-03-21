@@ -10,6 +10,7 @@ class SeniorsController < ApplicationController
     @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
     @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
     @seniors_off = Senior.where(using_flg: false).order(:senior_name_call)
+    @senior_workers = SeniorWorker.all
   end
 
   #施設利用者新規作成モーダル
@@ -23,7 +24,7 @@ class SeniorsController < ApplicationController
   def create_senior
     @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
-    #raise
+    #@senior.worker_ids.count < 1
     if @senior.save
       flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
     else
