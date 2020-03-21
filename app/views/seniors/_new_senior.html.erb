@@ -25,7 +25,10 @@
 
             <%= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
 
-            <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control" %>
+            <p id="choice">※１名のみ選択して下さい。</p>
+            <div class="check-position">
+            <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control check-hidden" %>
+            </div>
 
             <div class="center">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>

@@ -305,3 +305,24 @@ label.label-senior{
   margin: 15px 0;
   width: 50%;
 }
+
+//利用者新規登録の担当者選択案内
+#choice {
+  font-size: 10px;
+  color: red;
+  float: right;
+  margin-top: 12px;
+  margin-right: 60px;
+}
+
+.check-position {
+  font-size: 18px;
+  padding: 20px 50px 20px 40px;
+  margin: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.check-hidden {
+  width: 12px;
+  height: 12px;
+}
