@@ -41,7 +41,10 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %><br>
+                    <% end %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
@@ -83,7 +86,10 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %>
+                    <% end %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
@@ -124,7 +130,10 @@
                       <%= senior.senior_name_call %>
                     <% end %>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %>
+                    <% end %>
                   </td>
                   </td>
                   <td class="index-btn-position">
@@ -167,7 +176,10 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %>
+                    <% end %>
                   </td>
                   <td class="index-btn-position">
                     <%= link_to "再入所",re_entry_facility_senior_path(@facility, senior), method: :patch,
