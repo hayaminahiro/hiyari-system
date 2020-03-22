@@ -1,7 +1,7 @@
 class Worker < ApplicationRecord
   belongs_to :facility
 
-  has_many :senior_workers
+  has_many :senior_workers, dependent: :destroy
   has_many :seniors, through: :senior_workers
 
   accepts_nested_attributes_for :senior_workers
