@@ -23,6 +23,8 @@
             <%= f.label :floor, class: "label-#{yield(:class_text)}" %>
             <%= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
 
+            <%= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
+
             <p id="choice">※ 最大２名まで登録できます。</p>
             <div class="check-position">
               <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control check-hidden" %>

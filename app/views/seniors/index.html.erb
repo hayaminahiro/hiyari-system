@@ -2,7 +2,6 @@
 
 <h1 class="title-position">利用者一覧</h1>
 
-
 <div id="new-senior-btn">
   <%= link_to "利用者新規作成", new_senior_facility_seniors_path(current_facility), remote: true, class: "btn-square-shadow" %>
 </div>
@@ -23,12 +22,11 @@
               <th class="active-position" colspan="3">現在利用中</th>
             </tr>
             <tr class="th-index">
-              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">利用者名</th>
               <th style="text-align: center">担当職員</th>
               <th style="text-align: center"></th>
             </tr>
           </thead>
-
           <% @seniors2f.each do |senior| %>
             <% if current_facility.id == senior.facility_id %>
               <tbody>
@@ -44,7 +42,13 @@
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
                     <% seniors = senior.senior_workers %>
                     <% seniors.each do |se| %>
-                      <%= se.worker.worker_name %><br>
+                      <% if se.worker.working_flg == true && seniors.count < 3 %>
+                        <%= se.worker.worker_name %><br>
+                      <% elsif se.worker.working_flg == true && seniors.count >= 3 %>
+                        <div class="count-warning">
+                        <%= se.worker.worker_name %><br>
+                        </div>
+                      <% end %>
                     <% end %>
                   </td>
                   <td class="index-btn-position" rowspan="3">
@@ -69,7 +73,7 @@
               <th class="active-position" colspan="3">現在利用中</th>
             </tr>
             <tr class="th-index">
-              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">利用者名</th>
               <th style="text-align: center">担当職員</th>
               <th style="text-align: center"></th>
             </tr>
@@ -89,7 +93,13 @@
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
                     <% seniors = senior.senior_workers %>
                     <% seniors.each do |se| %>
-                      <%= se.worker.worker_name %><br>
+                      <% if se.worker.working_flg == true && seniors.count < 3 %>
+                        <%= se.worker.worker_name %><br>
+                      <% elsif se.worker.working_flg == true && seniors.count >= 3 %>
+                        <div class="count-warning">
+                          <%= se.worker.worker_name %><br>
+                        </div>
+                      <% end %>
                     <% end %>
                   </td>
                   <td class="index-btn-position" rowspan="3">
@@ -114,7 +124,7 @@
               <th class="active-position" colspan="3">現在利用中</th>
             </tr>
             <tr class="th-index">
-              <th style="text-align: center">利用者</th>
+              <th style="text-align: center">利用者名</th>
               <th style="text-align: center">担当職員</th>
               <th style="text-align: center"></th>
             </tr>
@@ -133,7 +143,13 @@
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
                     <% seniors = senior.senior_workers %>
                     <% seniors.each do |se| %>
-                      <%= se.worker.worker_name %><br>
+                      <% if se.worker.working_flg == true && seniors.count < 3 %>
+                        <%= se.worker.worker_name %><br>
+                      <% elsif se.worker.working_flg == true && seniors.count >= 3 %>
+                        <div class="count-warning">
+                          <%= se.worker.worker_name %><br>
+                        </div>
+                      <% end %>
                     <% end %>
                   </td>
                   </td>
@@ -159,8 +175,8 @@
             <th class="active-position" colspan="3">退所者一覧</th>
           </tr>
             <tr class="th-index-red">
-              <th style="text-align: center">利用者</th>
-              <th style="text-align: center">担当職員</th>
+              <th style="text-align: center">利用者名</th>
+              <th style="text-align: center">旧担当職員</th>
               <th style="text-align: center"></th>
             </tr>
           </thead>
@@ -179,7 +195,13 @@
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
                     <% seniors = senior.senior_workers %>
                     <% seniors.each do |se| %>
-                      <%= se.worker.worker_name %><br>
+                      <% if se.worker.working_flg == true && seniors.count < 3 %>
+                        <%= se.worker.worker_name %><br>
+                      <% elsif se.worker.working_flg == true && seniors.count >= 3 %>
+                        <div class="count-warning">
+                          <%= se.worker.worker_name %><br>
+                        </div>
+                      <% end %>
                     <% end %>
                   </td>
                   <td class="index-btn-position" rowspan="3">
