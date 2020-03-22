@@ -92,6 +92,7 @@ p {
 
 #facility-name {
   float: right;
+  margin-top: 120px;
 }
 
 /* debug */
@@ -178,6 +179,10 @@ p {
 //タイトルの位置
 .title-position {
   margin-top: 70px;
+}
+
+.month-title-position {
+  margin: 70px 0 50px 250px;
 }
 
 .title-position-l {

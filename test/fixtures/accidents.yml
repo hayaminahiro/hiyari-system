@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  which_accident: false
+  reporter: MyString
+  accident_datetime: 2020-03-23 00:36:31
+  accident_senior: MyString
+  accident_scene: MyString
+  senior: one
+
+two:
+  which_accident: false
+  reporter: MyString
+  accident_datetime: 2020-03-23 00:36:31
+  accident_senior: MyString
+  accident_scene: MyString
+  senior: two
