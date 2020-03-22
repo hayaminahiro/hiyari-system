@@ -25,9 +25,9 @@
 
             <%= f.label :charge_worker, class: "label-#{yield(:class_text)}" %>
 
-            <p id="choice">※１名のみ選択して下さい。</p>
+            <p id="choice">※ 最大２名まで登録できます。</p>
             <div class="check-position">
-            <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control check-hidden" %>
+              <%= f.collection_check_boxes :worker_ids, @workers, :id, :worker_name, {}, class: "form-control check-hidden" %>
             </div>
 
             <div class="center">
@@ -42,3 +42,4 @@
     </div>
   </div>
 </div>
+

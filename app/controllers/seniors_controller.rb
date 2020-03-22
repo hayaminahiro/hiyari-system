@@ -24,11 +24,11 @@ class SeniorsController < ApplicationController
   def create_senior
     @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
-    if @senior.worker_ids.count == 1
+    if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
       @senior.save
       flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
     redirect_to facility_seniors_url
   end
@@ -44,10 +44,11 @@ class SeniorsController < ApplicationController
   def update_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    if @senior.update_attributes(senior_params)
+    if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
+      @senior.update_attributes(senior_params)
       flash[:success] = "利用者「#{@senior.senior_name}」さんの情報を更新しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
     redirect_to facility_seniors_url
   end
