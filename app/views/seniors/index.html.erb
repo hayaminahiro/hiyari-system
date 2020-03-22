@@ -2,6 +2,7 @@
 
 <h1 class="title-position">利用者一覧</h1>
 
+
 <div id="new-senior-btn">
   <%= link_to "利用者新規作成", new_senior_facility_seniors_path(current_facility), remote: true, class: "btn-square-shadow" %>
 </div>
@@ -41,9 +42,12 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %><br>
+                    <% end %>
                   </td>
-                  <td class="index-btn-position">
+                  <td class="index-btn-position" rowspan="3">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
                     <%= link_to "退所",leaving_facility_senior_path(@facility, senior), method: :patch,
                                 data: { confirm: "「#{senior.senior_name}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-warning"%>
@@ -83,9 +87,12 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %><br>
+                    <% end %>
                   </td>
-                  <td class="index-btn-position">
+                  <td class="index-btn-position" rowspan="3">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
                     <%= link_to "退所",leaving_facility_senior_path(@facility, senior), method: :patch,
                                 data: { confirm: "「#{senior.senior_name}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-warning"%>
@@ -124,10 +131,13 @@
                       <%= senior.senior_name_call %>
                     <% end %>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %><br>
+                    <% end %>
                   </td>
                   </td>
-                  <td class="index-btn-position">
+                  <td class="index-btn-position" rowspan="3">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>
                     <%= link_to "退所",leaving_facility_senior_path(@facility, senior), method: :patch,
                                 data: { confirm: "「#{senior.senior_name}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-warning"%>
@@ -167,9 +177,12 @@
                     <% end %>
                   </td>
                   <td class="charge_worker_space" rowspan="3" style="padding-top: 9px">
-                    <%= senior.charge_worker %>
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <%= se.worker.worker_name %><br>
+                    <% end %>
                   </td>
-                  <td class="index-btn-position">
+                  <td class="index-btn-position" rowspan="3">
                     <%= link_to "再入所",re_entry_facility_senior_path(@facility, senior), method: :patch,
                                 data: { confirm: "「#{senior.senior_name}」さん（#{senior.floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
                     <%= link_to "削除", facility_senior_path(@facility, senior), method: :delete,

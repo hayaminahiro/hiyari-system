@@ -10,6 +10,7 @@ class SeniorsController < ApplicationController
     @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
     @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
     @seniors_off = Senior.where(using_flg: false).order(:senior_name_call)
+    @senior_workers = SeniorWorker.all
   end
 
   #施設利用者新規作成モーダル
@@ -23,10 +24,11 @@ class SeniorsController < ApplicationController
   def create_senior
     @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
-    if @senior.save
+    if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
+      @senior.save
       flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
     redirect_to facility_seniors_url
   end
@@ -35,7 +37,6 @@ class SeniorsController < ApplicationController
   def edit_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    #https://qiita.com/Kohei_Kishimoto0214/items/cb9a3d3da57708fb52c9 多対多呼び出し参照
     @workers = @facility.workers.where(working_flg: true).includes(:facility)
   end
 
@@ -43,10 +44,11 @@ class SeniorsController < ApplicationController
   def update_senior
     @facility = Facility.find(params[:facility_id])
     @senior = @facility.seniors.find(params[:id])
-    if @senior.update_attributes(senior_params)
+    if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
+      @senior.update_attributes(senior_params)
       flash[:success] = "利用者「#{@senior.senior_name}」さんの情報を更新しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
     redirect_to facility_seniors_url
   end
@@ -85,7 +87,7 @@ class SeniorsController < ApplicationController
 
     #施設利用者情報
     def senior_params
-      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker)
+      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, worker_ids: [])
     end
 
     # beforeアクション
