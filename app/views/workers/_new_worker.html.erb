@@ -26,6 +26,13 @@
             <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %>
             <%= f.select :working_floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "所属階を選択"}, class: "form-control" %>
 
+            <%= f.label :charge_senior, class: "label-#{yield(:class_text)}" %>
+
+            <p id="choice">※ 最大６名まで登録できます。</p>
+            <div class="check-position">
+              <%= f.collection_check_boxes :senior_ids, @seniors, :id, :senior_name, {}, class: "form-control check-hidden" %>
+            </div>
+
             <div class="center">
               <%= f.submit yield(:button_text), class: "btn btn-primary" %>
               <button type="button" class="btn btn-default btn-<%= yield(:class_text) %>" data-dismiss="modal">

@@ -315,6 +315,7 @@ label.label-senior{
   margin-right: 60px;
 }
 
+//チェックボックスデザイン
 .check-position {
   font-size: 16px;
   padding: 20px 50px 20px 40px;
@@ -325,4 +326,9 @@ label.label-senior{
 .check-hidden {
   width: 12px;
   height: 12px;
+}
+
+//担当職員数警告
+.count-warning {
+  color: #c7254e;
 }
