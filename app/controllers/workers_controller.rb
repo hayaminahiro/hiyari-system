@@ -13,16 +13,18 @@ class WorkersController < ApplicationController
   def new_worker
     @facility = Facility.find(params[:facility_id])
     @worker = Worker.new
+    @seniors = Senior.where(using_flg: true).includes(:facility)
   end
 
   #職員新規作成
   def create_worker
     @facility  = Facility.find(params[:facility_id])
     @worker = @facility.workers.new(worker_params)
-    if @worker.save
+    if worker_valid?((worker_params)[:worker_name], (worker_params)[:senior_ids])
+      @worker.save
       flash[:success] = "職員「#{@worker.worker_name}」さんを新規登録しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大６名までです。"
     end
     redirect_to facility_workers_url
   end
@@ -31,16 +33,18 @@ class WorkersController < ApplicationController
   def edit_worker
     @facility = Facility.find(params[:facility_id])
     @worker = @facility.workers.find(params[:id])
+    @seniors = Senior.where(using_flg: true).includes(:facility)
   end
 
   #職員情報更新
   def update_worker
     @facility = Facility.find(params[:facility_id])
     @worker = @facility.workers.find(params[:id])
-    if @worker.update_attributes(worker_params)
+    if worker_valid?((worker_params)[:worker_name], (worker_params)[:senior_ids])
+      @worker.update_attributes(worker_params)
       flash[:success] = "職員「#{@worker.worker_name}」さんの情報を更新しました。"
     else
-      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。"
+      flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大６名までです。"
     end
     redirect_to facility_workers_url
   end
@@ -79,7 +83,7 @@ class WorkersController < ApplicationController
 
     #職員情報
     def worker_params
-      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor)
+      params.require(:worker).permit(:worker_name, :worker_name_call, :sign_name, :working_floor, senior_ids: [])
     end
 
 end
