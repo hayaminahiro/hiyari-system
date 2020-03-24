@@ -1,0 +1,2 @@
+class AccidentsController < ApplicationController
+end

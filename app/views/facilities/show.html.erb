@@ -23,21 +23,27 @@
               <th class="active-position" colspan="3">年月</th>
             </tr>
           </thead>
-          <%# @seniors2f.each do |senior| %>
-            <%# if current_facility.id == senior.facility_id %>
-              <tbody>
-                <tr>
-
-                  <td class="index-btn-position" rowspan="2">
-                    2020年6月
-                  </td>
-                  <td>
-                    ヒヤリ◯件
-                  </td>
-                </tr>
-              </tbody>
-            <%# end %>
-          <%# end %>
+          <% check = [] %>
+          <% count = nil %>
+          <% @accidents.each do |accident| %>
+            <tbody>
+              <tr>
+                <td class="index-btn-position" colspan="2">
+                  <% if accident.accident_datetime != check %>
+                    <%= l(accident.accident_datetime, format: :middle) %>
+                  <% end %>
+                  <% check = accident.accident_datetime %>
+                </td>
+                <td class="accidents-count">
+                  <% if accident.accident_datetime != count %>
+                    ヒヤリ <%= @accidents.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件
+                    事故 <%= @accidents.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件
+                  <% end %>
+                  <% count = accident.accident_datetime %>
+                </td>
+              </tr>
+            </tbody>
+          <% end %>
         </table>
       </div>
     </div>

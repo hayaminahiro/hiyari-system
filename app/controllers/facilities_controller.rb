@@ -9,7 +9,8 @@ class FacilitiesController < ApplicationController
   end
 
   def show
-    @facilities = Facility.all
+    @accidents = Accident.all
+
   end
 
   def new

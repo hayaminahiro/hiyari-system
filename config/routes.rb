@@ -31,9 +31,7 @@ Rails.application.routes.draw do
         #施設利用者再入所
         patch 're_entry'
       end
-      resources :accidents do
-
-      end
+      resources :accidents
     end
     #職員関連: workers
     resources :workers do
