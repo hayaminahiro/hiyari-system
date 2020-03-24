@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_03_22_153631) do
   enable_extension "plpgsql"
 
   create_table "accidents", force: :cascade do |t|
-    t.boolean "which_accident"
+    t.string "which_accident"
     t.string "reporter"
-    t.datetime "accident_datetime"
+    t.datetime "accident_datetime", default: "2020-03-31 22:30:00"
     t.string "accident_senior"
     t.string "accident_scene"
     t.bigint "senior_id"
