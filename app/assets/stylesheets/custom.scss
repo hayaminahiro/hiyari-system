@@ -344,3 +344,78 @@ label.label-senior{
   font-family: 'M PLUS Rounded 1c', sans-serif;
   text-align: center;
 }
+
+.active-position {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+//ヒヤリ一覧
+.accidents-thead {
+  font-size: 18px;
+  background-color: #c7254e;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
+.accidents-th {
+  text-align: center;
+  font-size: 17px;
+  color: #2E2F30;
+  background-color: violet;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.month {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+}
+
+.month-count {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  color: #c7254e;
+}
+
+.accident-senior {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.show-btn-position {
+  text-align: center;
+}
+
+//オシャレボタンミニ
+.btn-square-shadow-mini {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//テーブルストライプ
+.tr-back0 {
+  background: red;
+}
+
+.tr-back1 {
+  background: red;
+}

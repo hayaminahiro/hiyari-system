@@ -6,7 +6,6 @@
 
 <h1 class="month-title-position">月別ヒヤリ・事故報告書</h1>
 
-
 <div class="container">
   <ul class="nav nav-tabs font-M">
     <li class="active"><a href="#2f" data-toggle="tab">2階フロア</a></li>
@@ -20,29 +19,54 @@
         <table class="table table-bordered table-condensed table-hover">
           <thead>
             <tr class="active-color">
-              <th class="active-position" colspan="3">年月</th>
+              <th class="accidents-thead" colspan="3">年月</th>
             </tr>
           </thead>
-          <% check = [] %>
-          <% count = nil %>
+          <% num = 1 %>
+          <% check = nil %>
           <% @accidents.each do |accident| %>
+            <%# raise %>
             <tbody>
-              <tr>
-                <td class="index-btn-position" colspan="2">
-                  <% if accident.accident_datetime != check %>
+              <% if accident.accident_datetime != check %>
+                <tr>
+                  <td class="month">
                     <%= l(accident.accident_datetime, format: :middle) %>
-                  <% end %>
-                  <% check = accident.accident_datetime %>
-                </td>
-                <td class="accidents-count">
-                  <% if accident.accident_datetime != count %>
+                  </td>
+                  <td class="month-count">
                     ヒヤリ <%= @accidents.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件
                     事故 <%= @accidents.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件
-                  <% end %>
-                  <% count = accident.accident_datetime %>
+                  </td>
+                  <td class="show-btn-position">
+                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="accidents-th">氏名</th>
+                  <th class="accidents-th">ヒヤリ・事故内容</th>
+                  <th class="accidents-th">閲覧</th>
+                <tr>
+                <% check = accident.accident_datetime %>
+              <% end %>
+              <% color = num % 2 %>
+              <tr class=“tr-back<%= color %>”>
+                <td class="accident-senior">
+                  <%= accident.accident_senior %>
+                </td>
+                <td class="accident-senior">
+                  <%= accident.accident_scene %>
+                </td>
+                <td class="show-btn-position">
+                  <%= link_to "閲覧", "#", remote: true, class: "btn btn-warning btn-xs" %>
+                  <%= link_to "編集","#", method: :patch,
+                              data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs"%>
+                  <%= link_to "削除", "#", method: :delete,
+                              data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
+                  <%= link_to "印刷画面", "#", remote: true, class: "btn btn-info btn-xs" %>
                 </td>
               </tr>
             </tbody>
+            <% num += 1 %>
+            <%# raise %>
           <% end %>
         </table>
       </div>
@@ -104,3 +128,4 @@
     </div>
   </div>
 </div>
+
