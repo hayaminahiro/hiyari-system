@@ -10,7 +10,6 @@ class FacilitiesController < ApplicationController
 
   def show
     @accidents = Accident.all
-
   end
 
   def new
