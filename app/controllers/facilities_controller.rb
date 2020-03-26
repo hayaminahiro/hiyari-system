@@ -32,7 +32,7 @@ class FacilitiesController < ApplicationController
 
   def update
     if @facility.update_attributes(facility_params)
-      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
+      flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
       redirect_to @facility
     else
       render :edit
@@ -41,7 +41,7 @@ class FacilitiesController < ApplicationController
 
   def destroy
     @facility.destroy
-    flash[:success] = "#{@facility.name}のデータを削除しました。"
+    flash[:success] = "「#{@facility.name}」のデータを削除しました。"
     redirect_to facilities_url
   end
 
@@ -50,7 +50,7 @@ class FacilitiesController < ApplicationController
 
   def update_facility_info
     if @facility.update_attributes(facility_params)
-      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
+      flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
     else
       flash[:danger] = "施設情報の更新は失敗しました<br>" + @facility.errors.full_messages.join("<br>")
     end

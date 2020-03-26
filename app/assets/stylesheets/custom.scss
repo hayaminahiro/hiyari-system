@@ -8,6 +8,10 @@ body {
   padding-top: 60px;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+  color: #CCCCCC;
+}
+
 //背景画像の設定
 .main-img {
   /* 画像ファイルの指定 */
@@ -265,6 +269,12 @@ p {
 //オシャレボタン
 #new-senior-btn {
   float: right;
+  a {
+    text-decoration: none;
+  }
+  a:visited {
+    color: white;
+  }
 }
 
 .btn-square-shadow {
@@ -388,6 +398,13 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
+  a:visited {
+    color: white;
+    //text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
 //オシャレボタンミニ
@@ -412,10 +429,6 @@ label.label-senior{
 }
 
 //テーブルストライプ
-.tr-back0 {
-  background: red;
-}
-
 .tr-back1 {
-  background: red;
+  background: #f0f0f0;
 }

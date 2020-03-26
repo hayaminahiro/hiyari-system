@@ -1,5 +1,17 @@
 <% provide(:title, '月別ヒヤリ・事故') %>
 
+<style type="text/css">
+  #table_detail .hidden_row {
+    display: none;
+  }
+</style>
+
+<script>
+  function show_hide_row(row) {
+      $("." + row).toggle();
+  }
+</script>
+
 <div id="facility-name">
   <h3><%= current_facility.name %></h3>
 </div>
@@ -13,21 +25,25 @@
     <li><a href="#4f" data-toggle="tab">4階フロア</a></li>
     <li><a href="#no_present" data-toggle="tab">退所者一覧</a></li>
   </ul>
+
   <div class="tab-content">
     <div class="tab-pane active" id="2f">
       <div class="col-md-12 tab-table">
-        <table class="table table-bordered table-condensed table-hover">
+        <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
             <tr class="active-color">
-              <th class="accidents-thead" colspan="3">年月</th>
+              <th class="accidents-thead">年月</th>
+              <th class="accidents-thead">ヒヤリ・事故件数</th>
+              <th class="accidents-thead">閲覧</th>
             </tr>
           </thead>
-          <% num = 1 %>
           <% check = nil %>
-          <% @accidents.each do |accident| %>
-            <%# raise %>
+          <% @accidents.each_with_index do |accident, i| %>
+            <% month = l(accident.accident_datetime, format: :integer).to_i %>
             <tbody>
+              <!--月の最初一行だけを取り出す為のcheck-->
               <% if accident.accident_datetime != check %>
+<!--                <tr onclick="show_hide_row('hidden_row<%= month %>');">-->
                 <tr>
                   <td class="month">
                     <%= l(accident.accident_datetime, format: :middle) %>
@@ -36,96 +52,58 @@
                     ヒヤリ <%= @accidents.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件
                     事故 <%= @accidents.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件
                   </td>
-                  <td class="show-btn-position">
+                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                   </td>
                 </tr>
-                <tr>
+                <tr class="hidden_row hidden_row<%= month %>">
                   <th class="accidents-th">氏名</th>
                   <th class="accidents-th">ヒヤリ・事故内容</th>
                   <th class="accidents-th">閲覧</th>
                 <tr>
                 <% check = accident.accident_datetime %>
               <% end %>
-              <% color = num % 2 %>
-              <tr class=“tr-back<%= color %>”>
-                <td class="accident-senior">
-                  <%= accident.accident_senior %>
-                </td>
-                <td class="accident-senior">
-                  <%= accident.accident_scene %>
-                </td>
-                <td class="show-btn-position">
-                  <%= link_to "閲覧", "#", remote: true, class: "btn btn-warning btn-xs" %>
-                  <%= link_to "編集","#", method: :patch,
-                              data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs"%>
-                  <%= link_to "削除", "#", method: :delete,
-                              data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
-                  <%= link_to "印刷画面", "#", remote: true, class: "btn btn-info btn-xs" %>
-                </td>
-              </tr>
+
+                <% if i % 2 == 0 %>
+                <tr class="hidden_row hidden_row<%= month %>">
+                  <td class="accident-senior tr-back1">
+                    <%= accident.accident_senior %>
+                    <%# raise %>
+                  </td>
+                  <td class="accident-senior tr-back1">
+                    <%= accident.accident_scene %>
+                  </td>
+                  <td class="show-btn-position tr-back1">
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-warning btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", "#", remote: true, class: "btn btn-info btn-xs" %>
+                  </td>
+                </tr>
+              <% else %>
+                <tr class="hidden_row hidden_row<%= month %>">
+                  <td class="accident-senior">
+                    <%= accident.accident_senior %>
+                  </td>
+                  <td class="accident-senior">
+                    <%= accident.accident_scene %>
+                  </td>
+                  <td class="show-btn-position">
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-warning btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs"%>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
+                    <%= link_to "印刷画面", "#", remote: true, class: "btn btn-info btn-xs" %>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
-            <% num += 1 %>
-            <%# raise %>
           <% end %>
-        </table>
-      </div>
-    </div>
-    <div class="tab-pane" id="3f">
-      <div class="col-md-12 tab-table">
-        <table class="table table-bordered table-condensed table-hover">
-          <thead>
-          <tr class="active-color">
-            <th class="active-position" colspan="3">現在利用中</th>
-          </tr>
-          <tr class="th-index">
-            <th style="text-align: center">利用者名</th>
-            <th style="text-align: center">担当職員</th>
-            <th style="text-align: center"></th>
-          </tr>
-          </thead>
-          <%# @seniors3f.each do |senior| %>
-            <%# if current_facility.id == senior.facility_id %>
-              <tbody>
-              <tr>
-
-                <td class="index-btn-position" rowspan="3">
-                  <%= link_to "編集", "#", remote: true, class: "btn btn-success" %>
-                  <%= link_to "退所","#", method: :patch,
-                              data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                  <%= link_to "削除", "#", method: :delete,
-                              data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
-                </td>
-              </tr>
-              </tbody>
-            <%# end %>
-          <%# end %>
-        </table>
-      </div>
-    </div>
-    <div class="tab-pane" id="4f">
-      <div class="col-md-12 tab-table">
-        <table class="table table-bordered table-condensed table-hover">
-          <thead>
-          <tr class="active-color">
-            <th class="active-position" colspan="3">現在利用中</th>
-          </tr>
-          <tr class="th-index">
-            <th style="text-align: center">利用者名</th>
-            <th style="text-align: center">担当職員</th>
-            <th style="text-align: center"></th>
-          </tr>
-          </thead>
-          <%# @seniors4f.each do |senior| %>
-            <%# if current_facility.id == senior.facility_id %>
-              <tbody>
-
-              </tbody>
-            <%# end %>
-          <%# end %>
         </table>
       </div>
     </div>
   </div>
 </div>
-
