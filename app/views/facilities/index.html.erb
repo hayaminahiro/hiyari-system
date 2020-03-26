@@ -11,8 +11,8 @@
       </tr>
     </thead>
     <% @facilities.each do |facility| %>
-      <tr>
-        <td><%= link_to facility.name, "#" %></td>
+      <tr class="font-M">
+        <td><%= facility.name %></td>
         <td>
           <% if current_facility.admin? && !current_facility?(facility) %>
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
