@@ -147,6 +147,36 @@ b = 0
   )
 end
 
+#2F-Seniorに紐づくヒヤリ・事故作成
+a = 0
+20.times do
+  Accident.create!(senior_id: a += 1,
+                   which_accident: "事故",
+                   accident_datetime: "2020-05-28 22:30:00",
+                   accident_scene: "2F-ヒヤリ・事故の内容記載、エピソード"
+  )
+end
+
+#3F-Seniorに紐づくヒヤリ・事故作成
+a = 19
+20.times do
+  Accident.create!(senior_id: a += 1,
+                   which_accident: "ヒヤリ",
+                   accident_datetime: "2020-06-28 22:30:00",
+                   accident_scene: "3F-ヒヤリ・事故の内容記載、エピソード"
+  )
+end
+
+#4F-Seniorに紐づくヒヤリ・事故作成
+a = 39
+10.times do
+  Accident.create!(senior_id: a += 1,
+                   which_accident: "事故",
+                   accident_datetime: "2020-02-28 22:30:00",
+                   accident_scene: "4F-ヒヤリ・事故の内容記載、エピソード"
+  )
+end
+
 #ヒヤリ・事故報告書サンプル 3月分
 Accident.create!(senior_id: 1,
                  which_accident: "ヒヤリハット",

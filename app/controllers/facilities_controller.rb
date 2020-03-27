@@ -9,7 +9,13 @@ class FacilitiesController < ApplicationController
   end
 
   def show
+    #ヒヤリ事故一覧
     @accidents = Accident.all
+    #利用者一覧
+    @seniors = @facility.seniors.where(floor: 2)
+    raise
+    #@seniors2f = Senior.where(floor: 2)
+
   end
 
   def new

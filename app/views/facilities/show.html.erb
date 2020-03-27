@@ -39,11 +39,11 @@
           </thead>
           <% check = nil %>
           <% @accidents.each_with_index do |accident, i| %>
+            <!--各月毎に共通する整数を作成しmonthに代入-->
             <% month = l(accident.accident_datetime, format: :integer).to_i %>
             <tbody>
               <!--月の最初一行だけを取り出す為のcheck-->
               <% if accident.accident_datetime != check %>
-<!--                <tr onclick="show_hide_row('hidden_row<%= month %>');">-->
                 <tr>
                   <td class="month">
                     <%= l(accident.accident_datetime, format: :middle) %>
