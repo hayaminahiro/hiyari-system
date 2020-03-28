@@ -8,14 +8,12 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all.order(id: "ASC")
   end
 
+  #月別ヒヤリ・事故ページ
   def show
-    #ヒヤリ事故一覧
-    @accidents = Accident.all
-    #利用者一覧
-    @seniors = @facility.seniors.where(floor: 2)
-    raise
-    #@seniors2f = Senior.where(floor: 2)
-
+    #@accidents = Accident.includes(:senior).all.order(accident_datetime: "desc")
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
   end
 
   def new
