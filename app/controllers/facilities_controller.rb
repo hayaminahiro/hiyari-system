@@ -8,8 +8,12 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all.order(id: "ASC")
   end
 
+  #月別ヒヤリ・事故ページ
   def show
-    @facilities = Facility.all
+    #@accidents = Accident.includes(:senior).all.order(accident_datetime: "desc")
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
   end
 
   def new
@@ -32,7 +36,7 @@ class FacilitiesController < ApplicationController
 
   def update
     if @facility.update_attributes(facility_params)
-      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
+      flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
       redirect_to @facility
     else
       render :edit
@@ -41,7 +45,7 @@ class FacilitiesController < ApplicationController
 
   def destroy
     @facility.destroy
-    flash[:success] = "#{@facility.name}のデータを削除しました。"
+    flash[:success] = "「#{@facility.name}」のデータを削除しました。"
     redirect_to facilities_url
   end
 
@@ -50,7 +54,7 @@ class FacilitiesController < ApplicationController
 
   def update_facility_info
     if @facility.update_attributes(facility_params)
-      flash[:success] = "#{@facility.name}の施設情報を更新しました。"
+      flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
     else
       flash[:danger] = "施設情報の更新は失敗しました<br>" + @facility.errors.full_messages.join("<br>")
     end

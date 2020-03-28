@@ -8,6 +8,10 @@ body {
   padding-top: 60px;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+  color: #CCCCCC;
+}
+
 //背景画像の設定
 .main-img {
   /* 画像ファイルの指定 */
@@ -92,6 +96,7 @@ p {
 
 #facility-name {
   float: right;
+  margin-top: 120px;
 }
 
 /* debug */
@@ -180,6 +185,10 @@ p {
   margin-top: 70px;
 }
 
+.month-title-position {
+  margin: 70px 0 50px 250px;
+}
+
 .title-position-l {
   margin-top: 80px;
 }
@@ -260,6 +269,12 @@ p {
 //オシャレボタン
 #new-senior-btn {
   float: right;
+  a {
+    text-decoration: none;
+  }
+  a:visited {
+    color: white;
+  }
 }
 
 .btn-square-shadow {
@@ -331,4 +346,102 @@ label.label-senior{
 //担当職員数警告
 .count-warning {
   color: #c7254e;
+}
+
+//ヒヤリ・事故件数カウント
+.accidents-count {
+  color: #c7254e;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
+.active-position {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+//ヒヤリ一覧
+.accidents-thead {
+  font-size: 18px;
+  background-color: #c7254e;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
+.accidents-th {
+  text-align: center;
+  font-size: 17px;
+  color: #2E2F30;
+  background-color: violet;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.month {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+}
+
+.month-count {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  color: #c7254e;
+}
+
+.accident-senior {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.show-btn-position {
+  text-align: center;
+  a:visited {
+    color: white;
+    //text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+//オシャレボタンミニ
+.btn-square-shadow-mini {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  background: #f0ad4e;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px darkgoldenrod;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//テーブルストライプ
+.tr-back1 {
+  background: #f0f0f0;
+}
+
+//ヒヤリ・事故判別
+.which-accident {
+  color: #c3325f;
+  float: left;
+  padding-left: 30px;
+  padding-right: 15px;
+}
+
+//ヒヤリ・事故情報の位置
+.accident-scene-position {
+  text-align: left;
 }
