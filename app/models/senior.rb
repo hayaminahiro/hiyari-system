@@ -3,6 +3,7 @@ class Senior < ApplicationRecord
 
   has_many :senior_workers, dependent: :destroy
   has_many :workers, through: :senior_workers
+  has_many :accidents, dependent: :destroy
 
   accepts_nested_attributes_for :senior_workers
 

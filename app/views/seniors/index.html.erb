@@ -1,5 +1,7 @@
 <% provide(:title, '施設利用者一覧') %>
 
+<img src="/assets/1862315.jpg" alt="" width="130" height="130" border="0" style="margin-top: 50px; float: right;"/>
+
 <h1 class="title-position">利用者一覧</h1>
 
 <div id="new-senior-btn">
@@ -151,7 +153,6 @@
                         </div>
                       <% end %>
                     <% end %>
-                  </td>
                   </td>
                   <td class="index-btn-position" rowspan="3">
                     <%= link_to "編集", edit_senior_facility_senior_path(@facility, senior), remote: true, class: "btn btn-success" %>

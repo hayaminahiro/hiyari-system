@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_141406) do
+ActiveRecord::Schema.define(version: 2020_03_27_063003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accidents", force: :cascade do |t|
+    t.string "which_accident"
+    t.string "reporter"
+    t.datetime "accident_datetime", default: "2020-03-31 22:30:00"
+    t.string "accident_senior"
+    t.string "accident_scene"
+    t.bigint "senior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "accident_floor"
+    t.index ["senior_id"], name: "index_accidents_on_senior_id"
+  end
 
   create_table "facilities", force: :cascade do |t|
     t.string "name"
@@ -60,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_03_19_141406) do
     t.index ["facility_id"], name: "index_workers_on_facility_id"
   end
 
+  add_foreign_key "accidents", "seniors"
   add_foreign_key "senior_workers", "seniors"
   add_foreign_key "senior_workers", "workers"
   add_foreign_key "seniors", "facilities"
