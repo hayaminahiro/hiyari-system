@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       end
       resources :accidents
     end
+    resources :accidents , only: [:new]
+
     #職員関連: workers
     resources :workers do
       collection do #collectionはid付与せず
