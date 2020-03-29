@@ -9,26 +9,38 @@ class AccidentsController < ApplicationController
 
   def new
     @facility = Facility.find(params[:facility_id])
-    @accident = Accident.new
+    @senior = @facility.seniors.find(params[:senior_id])
+  end
+
+  def seniors_list
+    @facility = Facility.find(params[:facility_id])
+    @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
+    @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
+    @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
+    @seniors_off = Senior.where(using_flg: false).order(:senior_name_call)
+    @senior_workers = SeniorWorker.all
   end
 
   def create
     @facility = Facility.find(params[:facility_id])
-    @accident = Accident.new(accident_params)
+    @senior = @facility.seniors.find(params[:senior_id])
+    #raise
+    @accident = @senior.accidents.new(accident_params)
+    #raise
     if @accident.save
       flash[:success] = "ヒヤリ・事故報告書を新規作成しました。"
-      redirect_to @accident
+      redirect_to facility_accidents_url
     else
       render :new
     end
-
   end
 
   private
 
     #ヒヤリ・事故情報
     def accident_params
-      params.require(:accident).permit(:which_accident, :accident_scene)
+      params.require(:senior).permit(accidents: [:which_accident, :accident_scene])[:accidents]
+      #params.require(:article).permit(:title, images_attributes: [:content])
     end
 
 end
