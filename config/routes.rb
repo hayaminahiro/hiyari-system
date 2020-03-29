@@ -33,7 +33,12 @@ Rails.application.routes.draw do
       end
       resources :accidents
     end
-    resources :accidents
+    resources :accidents do
+      collection do
+        #ヒヤリ・事故新規作成前の利用者一覧
+        get 'seniors_list'
+      end
+    end
 
     #職員関連: workers
     resources :workers do
