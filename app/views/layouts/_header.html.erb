@@ -6,9 +6,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right" >
         <% if logged_in? %>
-          <li><%= link_to "月別ヒヤリ・事故一覧", facility_path(current_facility) %></li>
+          <li><%= link_to "月別ヒヤリ・事故一覧", facility_accidents_path(current_facility) %></li>
           <li><%= link_to "利用者別ヒヤリ・事故一覧", '#' %></li>
-          <li><%= link_to "ヒヤリ・事故作成", '#' %></li>
+          <li><%= link_to "ヒヤリ・事故作成", new_facility_accident_path(current_facility) %></li>
           <li><%= link_to "ヒヤリ・事故集計", '#' %></li>
           <li><%= link_to "定義・説明", '#' %></li>
           <li class="dropdown">

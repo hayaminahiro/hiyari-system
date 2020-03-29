@@ -4,6 +4,7 @@ ja:
       facility: 施設ユーザー
       senior: 施設利用者
       worker: 職員
+      accident: ヒヤリ・事故
     attributes:
       facility:
         id: ID
@@ -24,4 +25,11 @@ ja:
         sign_name: サイン名
         working_floor: 所属フロア
         charge_senior: 担当利用者
+      accident:
+        which_accident: ヒヤリ・事故の選択
+        reporter: 報告者
+        accident_datetime: 日時
+        accident_senior: 対象者
+        accident_scene: 状況・職員の動き
+        accident_floor: フロア
 

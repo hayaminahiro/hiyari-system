@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       end
       resources :accidents
     end
-    resources :accidents , only: [:new]
+    resources :accidents
 
     #職員関連: workers
     resources :workers do
