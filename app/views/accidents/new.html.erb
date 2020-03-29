@@ -1,0 +1,30 @@
+<% provide(:title, 'ヒヤリ新規作成') %>
+<% provide(:class_text, '') %>
+<% provide(:button_text, 'ヒヤリ・事故報告書 / 新規作成 ') %>
+
+<h1>ヒヤリ・事故報告書 新規作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @accident, url: facility_accidents_path(@facility), local: true) do |f| %>
+      <%= render 'shared/error_messages', model: f.object %>
+
+      <%= f.label :which_accident, class: "label-#{yield(:class_text)}" %>
+      <%= f.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {}, class: "form-control"  %>
+
+      <%#= f.label :reporter, class: "label-#{yield(:class_text)}" %>
+      <%#= f.text_field :reporter, class: "form-control" %>
+
+      <%#= f.label :accident_datetime, class: "label-#{yield(:class_text)}" %>
+      <%#= f.time_field :accident_datetime, class: "form-control" %>
+
+      <%#= f.label :accident_senior, class: "label-#{yield(:class_text)}" %>
+      <%#= f.select :accident_senior, class: "form-control" %>
+
+      <%= f.label :accident_scene, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :accident_scene, class: "form-control" %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+    <% end %>
+  </div>
+</div>
