@@ -37,6 +37,8 @@ Rails.application.routes.draw do
       collection do
         #ヒヤリ・事故新規作成前の利用者一覧
         get 'seniors_list'
+        #利用者別ヒヤリ・事故一覧
+        get 'senior_accidents_index'
       end
     end
 

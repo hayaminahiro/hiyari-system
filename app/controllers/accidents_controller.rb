@@ -31,6 +31,7 @@ class AccidentsController < ApplicationController
       flash[:success] = "ヒヤリ・事故報告書を新規作成しました。"
       redirect_to facility_accidents_url
     else
+      flash[:danger] = "aa"
       render :new
     end
   end
