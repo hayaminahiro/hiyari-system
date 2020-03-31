@@ -1,19 +1,11 @@
 class FacilitiesController < ApplicationController
-  before_action :set_facility, only: [:show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
-  before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :set_facility, only: [:edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   before_action :correct_facility, only: [:edit, :update]
   before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
 
   def index
     @facilities = Facility.all.order(id: "ASC")
-  end
-
-  #月別ヒヤリ・事故ページ
-  def show
-    #@accidents = Accident.includes(:senior).all.order(accident_datetime: "desc")
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
   end
 
   def new
