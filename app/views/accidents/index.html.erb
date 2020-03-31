@@ -42,7 +42,7 @@
             <% month = (l(accident.accident_datetime, format: :integer) + accident.accident_floor.to_s).to_i %>
             <tbody>
             <!--月の最初一行だけを取り出す為のcheck-->
-            <% if accident.accident_datetime != check %>
+            <% if l(accident.accident_datetime, format: :integer) != check %>
               <tr>
                 <td class="month">
                   <%= l(accident.accident_datetime, format: :middle) %>
@@ -60,7 +60,7 @@
                 <th class="accidents-th"><%= l(accident.accident_datetime, format: :middle) %>&emsp;&emsp;ヒヤリ・事故内容</th>
                 <th class="accidents-th">閲覧</th>
               <tr>
-                <% check = accident.accident_datetime %>
+              <% check = l(accident.accident_datetime, format: :integer) %>
             <% end %>
             <% if i % 2 == 0 %>
               <tr class="hidden_row hidden_row<%= month %>">
@@ -129,7 +129,7 @@
             <% month = (l(accident.accident_datetime, format: :integer) + accident.accident_floor.to_s).to_i %>
             <tbody>
             <!--月の最初一行だけを取り出す為のcheck-->
-            <% if accident.accident_datetime != check %>
+            <% if l(accident.accident_datetime, format: :integer) != check %>
               <tr>
                 <td class="month">
                   <%= l(accident.accident_datetime, format: :middle) %>
@@ -147,7 +147,7 @@
                 <th class="accidents-th">ヒヤリ・事故内容</th>
                 <th class="accidents-th">閲覧</th>
               <tr>
-                <% check = accident.accident_datetime %>
+              <% check = l(accident.accident_datetime, format: :integer) %>
             <% end %>
             <% if i % 2 == 0 %>
               <tr class="hidden_row hidden_row<%= month %>">
@@ -216,7 +216,7 @@
             <% month = (l(accident.accident_datetime, format: :integer) + accident.accident_floor.to_s).to_i %>
             <tbody>
             <!--月の最初一行だけを取り出す為のcheck-->
-            <% if accident.accident_datetime != check %>
+            <% if l(accident.accident_datetime, format: :integer) != check %>
               <tr>
                 <td class="month">
                   <%= l(accident.accident_datetime, format: :middle) %>
@@ -234,7 +234,7 @@
                 <th class="accidents-th">ヒヤリ・事故内容</th>
                 <th class="accidents-th">閲覧</th>
               <tr>
-                <% check = accident.accident_datetime %>
+                <% check = l(accident.accident_datetime, format: :integer) %>
             <% end %>
             <% if i % 2 == 0 %>
               <tr class="hidden_row hidden_row<%= month %>">

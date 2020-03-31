@@ -381,7 +381,6 @@ label.label-senior{
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 16px;
-  width: 25%;
 }
 
 .month-count {
@@ -389,7 +388,6 @@ label.label-senior{
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 16px;
   color: #c7254e;
-  width: 40%;
 }
 
 .accident-senior {
@@ -400,7 +398,7 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
-  width: 12%;
+  width: 20%;
   a:visited {
     color: white;
     //text-decoration: none;
@@ -525,6 +523,33 @@ label.label-senior{
 .create_accident {
   text-align: center;
   width: 14%;
+  a:visited {
+    color: white;
+    //text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.accident-index {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  width: 25%;
+}
+
+.accident-index-count {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  color: #c7254e;
+  width: 40%;
+}
+
+.index-btn-position {
+  text-align: center;
+  width: 12%;
   a:visited {
     color: white;
     //text-decoration: none;
