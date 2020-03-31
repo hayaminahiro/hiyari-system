@@ -138,7 +138,7 @@
                   【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件】
                   【事故 <%= @accidents3f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件】
                 </td>
-                <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
+                <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                   <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                 </td>
               </tr>
@@ -225,7 +225,7 @@
                   【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件】
                   【事故 <%= @accidents4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件】
                 </td>
-                <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
+                <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                   <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                 </td>
               </tr>
