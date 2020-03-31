@@ -127,14 +127,14 @@
               <!--最初一行だけを取り出す為のcheck-->
               <% if senior.senior_name != check %>
                 <tr>
-                  <td class="month">
+                  <td class="accident-index">
                     <%= senior.senior_name %>
                   </td>
-                  <td class="month-count">
+                  <td class="accident-index-count">
                     【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
                     【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                   </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
+                  <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
                     <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                   </td>
                   <td class="create_accident">
