@@ -255,7 +255,7 @@ p {
 }
 
 //職員一覧ページ
-.active-color-worker {
+.active-color-green {
   background-color: #009999;
   color: #F7F7F7;
 }
@@ -292,7 +292,7 @@ p {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
   border-bottom: none;
 }
 
@@ -381,6 +381,7 @@ label.label-senior{
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 16px;
+  width: 25%;
 }
 
 .month-count {
@@ -388,6 +389,7 @@ label.label-senior{
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 16px;
   color: #c7254e;
+  width: 40%;
 }
 
 .accident-senior {
@@ -398,6 +400,7 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
+  width: 12%;
   a:visited {
     color: white;
     //text-decoration: none;
@@ -420,7 +423,71 @@ label.label-senior{
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-.btn-square-shadow:active {
+.btn-square-shadow-mini:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//オシャレボタン青
+.btn-square-shadow-blue {
+  display: inline-block;
+  padding: 0.3em 40px;
+  text-decoration: none;
+  background: #428bca;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #445588;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow-blue:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//オシャレボタン赤
+.btn-square-shadow-red {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  background: #c7254e;/*ボタン色*/
+  //background: #009999;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #730E15;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow-red:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//オシャレボタン緑
+.btn-square-shadow-green {
+  display: inline-block;
+  padding: 0.3em 40px;
+  text-decoration: none;
+  background: teal;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px darkslategray;
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow-green:active {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
@@ -437,11 +504,32 @@ label.label-senior{
 .which-accident {
   color: #c3325f;
   float: left;
-  padding-left: 30px;
+  padding-left: 10px;
   padding-right: 15px;
 }
 
 //ヒヤリ・事故情報の位置
 .accident-scene-position {
   text-align: left;
+}
+
+//利用者別ヒヤリ一覧
+.pink-thead {
+  font-size: 18px;
+  background-color: hotpink;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
+//ヒヤリ新規作成ボタン位置
+.create_accident {
+  text-align: center;
+  width: 14%;
+  a:visited {
+    color: white;
+    //text-decoration: none;
+  }
+  a {
+    text-decoration: none;
+  }
 }

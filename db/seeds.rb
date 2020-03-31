@@ -159,7 +159,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "ベッドから車椅子移乗時、頭から転落"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 2,
                  which_accident: "事故",
                  reporter: "井上良子",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -169,7 +169,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 3,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -178,35 +178,35 @@ Accident.create!(senior_id: 1,
                  accident_scene: "飾り物の柿を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 7,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
-                 accident_datetime: "2020-04-30 22:30:00",
+                 accident_datetime: "2020-04-30 09:30:00",
                  accident_senior: "佐藤金太郎",
                  accident_floor: 2,
                  accident_scene: "利用者Cの食事を横から食べてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 7,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
-                 accident_datetime: "2020-04-30 22:30:00",
+                 accident_datetime: "2020-04-30 05:30:00",
                  accident_senior: "飯島寒子",
                  accident_floor: 2,
                  accident_scene: "利用者Bの眼鏡を取り上げ破壊してしまう"
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 7,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
-                 accident_datetime: "2020-05-31 22:30:00",
+                 accident_datetime: "2020-05-31 20:30:00",
                  accident_senior: "佐藤金太郎",
                  accident_floor: 2,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 7,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -215,10 +215,10 @@ Accident.create!(senior_id: 1,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 7,
                  which_accident: "事故",
                  reporter: "高橋敦子",
-                 accident_datetime: "2020-05-31 22:30:00",
+                 accident_datetime: "2020-05-31 09:30:00",
                  accident_senior: "鮫島正",
                  accident_floor: 2,
                  accident_scene: "薬が落ちているのを発見"
@@ -227,7 +227,7 @@ Accident.create!(senior_id: 1,
 #=================================
 
 #3Fヒヤリ・事故報告書サンプル 3月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 21,
                  which_accident: "ヒヤリハット",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -236,7 +236,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "ベッドから車椅子移乗時、頭から転落"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 21,
                  which_accident: "事故",
                  reporter: "井上良子",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -245,7 +245,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "廊下で歩行中に転倒、左大腿部骨折"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 22,
                  which_accident: "ヒヤリハット",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -254,7 +254,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 23,
                  which_accident: "事故",
                  reporter: "井上良子",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -264,7 +264,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 22,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -273,7 +273,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "偽物の柿を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 24,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -282,7 +282,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "利用者Cの髪の毛を食べてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 24,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -292,7 +292,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 25,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -301,7 +301,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 25,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -310,7 +310,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 25,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -319,7 +319,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "薬が落ちているのを発見"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 26,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -328,7 +328,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 26,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -337,7 +337,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 28,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -349,7 +349,7 @@ Accident.create!(senior_id: 1,
 #=================================
 
 #4Fヒヤリ・事故報告書サンプル 3月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 41,
                  which_accident: "ヒヤリハット",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -358,7 +358,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "ベッドから車椅子移乗時、頭から転落"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 42,
                  which_accident: "事故",
                  reporter: "井上良子",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -367,7 +367,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "廊下で歩行中に転倒、左大腿部骨折"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 44,
                  which_accident: "ヒヤリハット",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -376,7 +376,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 44,
                  which_accident: "事故",
                  reporter: "井上良子",
                  accident_datetime: "2020-03-31 22:30:00",
@@ -386,7 +386,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 49,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -395,7 +395,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "偽物の柿を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 49,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -404,7 +404,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "利用者Cの髪の毛を食べてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 49,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-04-30 22:30:00",
@@ -414,7 +414,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 47,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -423,7 +423,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 44,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -432,7 +432,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 41,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -441,7 +441,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "薬が落ちているのを発見"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 46,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -450,7 +450,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 41,
                  which_accident: "事故",
                  reporter: "齋藤隼人",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -459,7 +459,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 48,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -468,7 +468,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "薬が落ちているのを発見"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 45,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 22:30:00",
@@ -478,7 +478,7 @@ Accident.create!(senior_id: 1,
 )
 
 #ヒヤリ・事故報告書サンプル 6月分
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 46,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-06-15 22:30:00",
@@ -487,7 +487,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "折り紙を口の中に入れてしまう"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 50,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-06-15 22:30:00",
@@ -496,7 +496,7 @@ Accident.create!(senior_id: 1,
                  accident_scene: "薬が落ちているのを発見"
 )
 
-Accident.create!(senior_id: 1,
+Accident.create!(senior_id: 50,
                  which_accident: "ヒヤリハット",
                  reporter: "大野元治",
                  accident_datetime: "2020-06-15 22:30:00",
