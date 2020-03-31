@@ -215,11 +215,6 @@ p {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-.index-btn-position {
-  text-align: center;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
-}
-
 .senior_name_space {
   width: 55%;
   text-align: center;
@@ -398,14 +393,17 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
-  width: 20%;
+  width: 15%;
   a:visited {
     color: white;
-    //text-decoration: none;
   }
   a {
     text-decoration: none;
   }
+}
+
+td .show-btn-position {
+  width: 20%;
 }
 
 //オシャレボタンミニ
@@ -532,6 +530,7 @@ label.label-senior{
   }
 }
 
+//利用者別ヒヤリ一覧
 .accident-index {
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -549,10 +548,10 @@ label.label-senior{
 
 .index-btn-position {
   text-align: center;
-  width: 12%;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  width: 22%;
   a:visited {
     color: white;
-    //text-decoration: none;
   }
   a {
     text-decoration: none;

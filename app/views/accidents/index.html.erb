@@ -30,11 +30,11 @@
       <div class="col-md-12 tab-table">
         <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
-          <tr class="active-color">
-            <th class="accidents-thead">年月</th>
-            <th class="accidents-thead">ヒヤリ・事故件数</th>
-            <th class="accidents-thead">閲覧</th>
-          </tr>
+            <tr class="active-color">
+              <th class="accidents-thead">年月</th>
+              <th class="accidents-thead">ヒヤリ・事故件数</th>
+              <th class="accidents-thead">閲覧</th>
+            </tr>
           </thead>
           <% check = nil %>
           <% @accidents2f.each_with_index do |accident, i| %>
@@ -51,7 +51,7 @@
                   【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(accident_datetime: accident.accident_datetime).count %>件】
                   【事故 <%= @accidents2f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime).count %>件】
                 </td>
-                <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
+                <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                   <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                 </td>
               </tr>
@@ -234,7 +234,7 @@
                 <th class="accidents-th">ヒヤリ・事故内容</th>
                 <th class="accidents-th">閲覧</th>
               <tr>
-                <% check = l(accident.accident_datetime, format: :integer) %>
+              <% check = l(accident.accident_datetime, format: :integer) %>
             <% end %>
             <% if i % 2 == 0 %>
               <tr class="hidden_row hidden_row<%= month %>">
