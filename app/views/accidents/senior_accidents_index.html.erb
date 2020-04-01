@@ -16,7 +16,7 @@
   <h3><%= current_facility.name %></h3>
 </div>
 
-<h1 class="month-title-position">利用者別ヒヤリ一覧/報告書作成</h1>
+<h1 class="title-position">利用者別ヒヤリ一覧/報告書作成</h1>
 
 <div class="container">
   <ul class="nav nav-tabs font-M">
@@ -80,7 +80,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% else %>
@@ -97,7 +102,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% end %>
@@ -135,7 +145,7 @@
                     【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                   </td>
                   <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
-                    <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
+
                   </td>
                   <td class="create_accident">
                     <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
@@ -162,7 +172,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% else %>
@@ -179,7 +194,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% end %>
@@ -244,7 +264,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% else %>
@@ -261,7 +286,12 @@
                     </div>
                   </td>
                   <td class="show-btn-position" colspan="2">
-                    <%= link_to "ヒヤリ詳細", "#", remote: true, class: "btn-square-shadow-blue" %>
+                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                    <%= link_to "編集","#", method: :patch,
+                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                    <%= link_to "削除", "#", method: :delete,
+                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
               <% end %>
