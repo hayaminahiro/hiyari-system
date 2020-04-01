@@ -41,6 +41,7 @@
           <% @seniors2f.each_with_index do |senior, i| %>
             <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc") %>
             <% accidents.each_with_index do |accident, a| %>
+              <% senior_id = i.to_s + accident.accident_floor.to_s %>
               <tbody>
               <!--最初一行だけを取り出す為のcheck-->
               <% if senior.senior_name != check %>
@@ -52,14 +53,14 @@
                     【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
                     【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                   </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
+                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                     <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                   </td>
                   <td class="create_accident">
                     <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                   </td>
                 </tr>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <th class="accidents-th">日時</th>
                   <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
                   <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
@@ -67,7 +68,7 @@
                   <% check = senior.senior_name %>
               <% end %>
               <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior tr-back1">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
@@ -89,7 +90,7 @@
                   </td>
                 </tr>
               <% else %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
@@ -133,6 +134,7 @@
           <% @seniors3f.each_with_index do |senior, i| %>
             <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc") %>
             <% accidents.each_with_index do |accident, a| %>
+              <% senior_id = i.to_s + accident.accident_floor.to_s %>
               <tbody>
               <!--最初一行だけを取り出す為のcheck-->
               <% if senior.senior_name != check %>
@@ -144,14 +146,14 @@
                     【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
                     【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                   </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
-
+                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
+                    <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                   </td>
                   <td class="create_accident">
                     <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                   </td>
                 </tr>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <th class="accidents-th">日時</th>
                   <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
                   <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
@@ -159,7 +161,7 @@
                   <% check = senior.senior_name %>
               <% end %>
               <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior tr-back1">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
@@ -181,7 +183,7 @@
                   </td>
                 </tr>
               <% else %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
@@ -225,6 +227,7 @@
           <% @seniors4f.each_with_index do |senior, i| %>
             <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc") %>
             <% accidents.each_with_index do |accident, a| %>
+              <% senior_id = i.to_s + accident.accident_floor.to_s %>
               <tbody>
               <!--最初一行だけを取り出す為のcheck-->
               <% if senior.senior_name != check %>
@@ -236,14 +239,14 @@
                     【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
                     【事故 <%= @accidents4f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                   </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= i %>');">
+                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                     <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
                   </td>
                   <td class="create_accident">
                     <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                   </td>
                 </tr>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <th class="accidents-th">日時</th>
                   <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
                   <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
@@ -251,7 +254,7 @@
                   <% check = senior.senior_name %>
               <% end %>
               <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior tr-back1">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
@@ -273,7 +276,7 @@
                   </td>
                 </tr>
               <% else %>
-                <tr class="hidden_row hidden_row<%= i %>">
+                <tr class="hidden_row hidden_row<%= senior_id %>">
                   <td class="accident-senior">
                     <%= l(accident.accident_datetime, format: :half) %>
                   </td>
