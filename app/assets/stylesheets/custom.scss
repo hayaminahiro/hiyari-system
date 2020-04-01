@@ -185,12 +185,17 @@ p {
   margin-top: 70px;
 }
 
-.month-title-position {
+.title-position {
   margin: 70px 0 50px 250px;
 }
 
 .title-position-l {
   margin-top: 80px;
+}
+
+.title-position-top {
+  font-size: 30px;
+  margin: 10px;
 }
 
 #facility-title-name {
@@ -556,4 +561,67 @@ td .show-btn-position {
   a {
     text-decoration: none;
   }
+}
+
+//ヒヤリ報告書
+.sign-table {
+  margin-top: 30px;
+}
+
+.title-position-print {
+  position: absolute;
+  font-size: 30px;
+  margin: 50px 10px 30px 30px;
+}
+
+th.sign-th {
+  text-align: center;
+  height: 20px;
+  width:10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: #f0ad4e;
+  font-size: 16px;
+}
+
+th.report-th {
+  text-align: center;
+  height: 20px;
+  width:10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background-color: #fff3c2;
+  font-size: 16px;
+}
+
+.sign-box {
+  text-align: center;
+  height: 50px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+#level {
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.report-index {
+  width: 150px;
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.report-td {
+  width: 36%;
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.report-td-left {
+  width: 36%;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.title-position-department {
+  position: absolute;
+  font-size: 20px;
+  margin: 95px 10px 30px 30px;
 }
