@@ -2,6 +2,13 @@ class AccidentsController < ApplicationController
 
   #月別ヒヤリ・事故ページ /facilities/:facility_id/accidents
   def index
+    @facility = Facility.find(params[:facility_id])
+    #@seniors = Senior.where(using_flg: true).order(:senior_name_call)
+    @seniors = Senior.joins(:accidents).where(using_flg: true).order(:senior_name_call)
+    @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
+    @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
+    @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
+    @accidents = Accident.joins(:seniors).where(accident_floor: 2).order(accident_datetime: "DESC")
     @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
     @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
     @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
