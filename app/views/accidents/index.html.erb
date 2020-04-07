@@ -37,10 +37,9 @@
             </tr>
           </thead>
           <% check = nil %>
-          <% @seniors.each do |senior| %>
-            <% accidents = Accident.where(senior_id: senior.id).where(accident_floor: 2) %>
-            <% accidents.order(accident_datetime: :desc) %>
-            <% accidents.each_with_index do |accident, i| %>
+
+
+            <% @accidents2f.each_with_index do |accident, i| %>
               <!--各月毎に共通する整数を作成しmonthに代入-->
               <% month = (l(accident.accident_datetime, format: :integer) + accident.accident_floor.to_s).to_i %>
               <tbody>
@@ -68,7 +67,8 @@
               <% if i % 2 == 0 %>
                 <tr class="hidden_row hidden_row<%= month %>">
                   <td class="accident-senior tr-back1">
-                    <%= senior.senior_name %>
+                    シニアID:<%= accident.senior.id %>
+                    <%= accident.senior.senior_name %>
                   </td>
                   <td class="accident-senior tr-back1">
                     <div class="which-accident">
@@ -90,7 +90,8 @@
               <% else %>
                 <tr class="hidden_row hidden_row<%= month %>">
                   <td class="accident-senior">
-                    <%= senior.senior_name %>
+                    シニアID:<%= accident.senior.id %>
+                    <%= accident.senior.senior_name %>
                   </td>
                   <td class="accident-senior">
                     <div class="which-accident">
@@ -112,7 +113,7 @@
               <% end %>
               </tbody>
             <% end %>
-          <% end %>
+
         </table>
       </div>
     </div>
