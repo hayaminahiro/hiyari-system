@@ -215,7 +215,7 @@ Accident.create!(senior_id: 7,
                  accident_scene: "食事中突然立ち上がり転倒"
 )
 
-Accident.create!(senior_id: 7,
+Accident.create!(senior_id: 2,
                  which_accident: "事故",
                  reporter: "高橋敦子",
                  accident_datetime: "2020-05-31 09:30:00",
