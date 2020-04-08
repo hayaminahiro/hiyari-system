@@ -39,80 +39,82 @@
           </thead>
           <% check = nil %>
           <% @seniors2f.each_with_index do |senior, i| %>
-            <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc") %>
-            <% accidents.each_with_index do |accident, a| %>
-              <% senior_id = i.to_s + accident.accident_floor.to_s %>
-              <tbody>
-              <!--最初一行だけを取り出す為のcheck-->
-              <% if senior.senior_name != check %>
-                <tr>
-                  <td class="month">
-                    <%= senior.senior_name %>
-                  </td>
-                  <td class="month-count">
-                    【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
-                    【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
-                  </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
-                    <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                  </td>
-                  <td class="create_accident">
-                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
-                  </td>
-                </tr>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <th class="accidents-th">日時</th>
-                  <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
-                  <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
-                <tr>
-                  <% check = senior.senior_name %>
+            <% if current_facility.id == senior.facility_id %>
+              <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc") %>
+              <% accidents.each_with_index do |accident, a| %>
+                <% senior_id = i.to_s + accident.accident_floor.to_s %>
+                <tbody>
+                <!--最初一行だけを取り出す為のcheck-->
+                <% if senior.senior_name != check %>
+                  <tr>
+                    <td class="month">
+                      <%= senior.senior_name %>
+                    </td>
+                    <td class="month-count">
+                      【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    </td>
+                    <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
+                      <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
+                    </td>
+                    <td class="create_accident">
+                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                    </td>
+                  </tr>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <th class="accidents-th">日時</th>
+                    <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
+                    <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
+                  <tr>
+                    <% check = senior.senior_name %>
+                <% end %>
+                <% if a % 2 == 0 %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior tr-back1">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior tr-back1">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position tr-back1" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
               <% end %>
-              <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior tr-back1">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior tr-back1">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% else %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
             <% end %>
           <% end %>
         </table>
@@ -132,80 +134,82 @@
           </thead>
           <% check = nil %>
           <% @seniors3f.each_with_index do |senior, i| %>
-            <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc") %>
-            <% accidents.each_with_index do |accident, a| %>
-              <% senior_id = i.to_s + accident.accident_floor.to_s %>
-              <tbody>
-              <!--最初一行だけを取り出す為のcheck-->
-              <% if senior.senior_name != check %>
-                <tr>
-                  <td class="accident-index">
-                    <%= senior.senior_name %>
-                  </td>
-                  <td class="accident-index-count">
-                    【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
-                    【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
-                  </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
-                    <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                  </td>
-                  <td class="create_accident">
-                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
-                  </td>
-                </tr>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <th class="accidents-th">日時</th>
-                  <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
-                  <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
-                <tr>
-                  <% check = senior.senior_name %>
+            <% if current_facility.id == senior.facility_id %>
+              <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc") %>
+              <% accidents.each_with_index do |accident, a| %>
+                <% senior_id = i.to_s + accident.accident_floor.to_s %>
+                <tbody>
+                <!--最初一行だけを取り出す為のcheck-->
+                <% if senior.senior_name != check %>
+                  <tr>
+                    <td class="accident-index">
+                      <%= senior.senior_name %>
+                    </td>
+                    <td class="accident-index-count">
+                      【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    </td>
+                    <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
+                      <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
+                    </td>
+                    <td class="create_accident">
+                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                    </td>
+                  </tr>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <th class="accidents-th">日時</th>
+                    <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
+                    <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
+                  <tr>
+                    <% check = senior.senior_name %>
+                <% end %>
+                <% if a % 2 == 0 %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior tr-back1">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior tr-back1">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position tr-back1" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
               <% end %>
-              <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior tr-back1">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior tr-back1">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% else %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
             <% end %>
           <% end %>
         </table>
@@ -225,80 +229,82 @@
           </thead>
           <% check = nil %>
           <% @seniors4f.each_with_index do |senior, i| %>
-            <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc") %>
-            <% accidents.each_with_index do |accident, a| %>
-              <% senior_id = i.to_s + accident.accident_floor.to_s %>
-              <tbody>
-              <!--最初一行だけを取り出す為のcheck-->
-              <% if senior.senior_name != check %>
-                <tr>
-                  <td class="month">
-                    <%= senior.senior_name %>
-                  </td>
-                  <td class="month-count">
-                    【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
-                    【事故 <%= @accidents4f.where(which_accident: "事故").where(senior_id: senior).count %>件】
-                  </td>
-                  <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
-                    <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                  </td>
-                  <td class="create_accident">
-                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
-                  </td>
-                </tr>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <th class="accidents-th">日時</th>
-                  <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
-                  <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
-                <tr>
-                  <% check = senior.senior_name %>
+            <% if current_facility.id == senior.facility_id %>
+              <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc") %>
+              <% accidents.each_with_index do |accident, a| %>
+                <% senior_id = i.to_s + accident.accident_floor.to_s %>
+                <tbody>
+                <!--最初一行だけを取り出す為のcheck-->
+                <% if senior.senior_name != check %>
+                  <tr>
+                    <td class="month">
+                      <%= senior.senior_name %>
+                    </td>
+                    <td class="month-count">
+                      【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents4f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    </td>
+                    <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
+                      <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
+                    </td>
+                    <td class="create_accident">
+                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                    </td>
+                  </tr>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <th class="accidents-th">日時</th>
+                    <th class="accidents-th"><%= senior.senior_name %>&emsp;ヒヤリ・事故内容</th>
+                    <th class="accidents-th" colspan="2">ヒヤリ・事故内容</th>
+                  <tr>
+                    <% check = senior.senior_name %>
+                <% end %>
+                <% if a % 2 == 0 %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior tr-back1">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior tr-back1">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position tr-back1" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr class="hidden_row hidden_row<%= senior_id %>">
+                    <td class="accident-senior">
+                      <%= l(accident.accident_datetime, format: :half) %>
+                    </td>
+                    <td class="accident-senior">
+                      <div class="which-accident">
+                        <%= accident.which_accident %>
+                      </div>
+                      <div class="accident-scene-position">
+                        <%= accident.accident_scene %>
+                      </div>
+                    </td>
+                    <td class="show-btn-position" colspan="2">
+                      <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
+                      <%= link_to "編集","#", method: :patch,
+                                  data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
+                      <%= link_to "削除", "#", method: :delete,
+                                  data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                      <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
               <% end %>
-              <% if a % 2 == 0 %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior tr-back1">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior tr-back1">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position tr-back1" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% else %>
-                <tr class="hidden_row hidden_row<%= senior_id %>">
-                  <td class="accident-senior">
-                    <%= l(accident.accident_datetime, format: :half) %>
-                  </td>
-                  <td class="accident-senior">
-                    <div class="which-accident">
-                      <%= accident.which_accident %>
-                    </div>
-                    <div class="accident-scene-position">
-                      <%= accident.accident_scene %>
-                    </div>
-                  </td>
-                  <td class="show-btn-position" colspan="2">
-                    <%= link_to "閲覧", "#", remote: true, class: "btn btn-primary btn-xs" %>
-                    <%= link_to "編集","#", method: :patch,
-                                data: { confirm: "「#{}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
-                    <%= link_to "印刷画面", facility_senior_accident_path(@facility, senior, accident), local: true, class: "btn btn-info btn-xs" %>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
             <% end %>
           <% end %>
         </table>
