@@ -8,6 +8,20 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all.order(id: "ASC")
   end
 
+  #月別ヒヤリ・事故一覧ページ・・・ログイン/サインアップ後遷移
+  def show
+    @facility = Facility.find(params[:id])
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
+    @hat_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "事故").order(accident_datetime: :desc)
+    @hat_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "事故").order(accident_datetime: :desc)
+    @hat_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "事故").order(accident_datetime: :desc)
+  end
+
   def new
     @facility = Facility.new
   end
