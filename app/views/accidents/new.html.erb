@@ -1,34 +1,172 @@
-
-
 <% provide(:title, 'ヒヤリ新規作成') %>
 <% provide(:class_text, 'basic-info') %>
 <% provide(:button_text, 'ヒヤリ・事故報告書 / 新規作成 ') %>
 
 <h1>ヒヤリ・事故報告書 新規作成</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @senior, url: facility_senior_accidents_path, local: true, method: :post) do |f| %>
-
-      <%= f.fields_for :accidents do |m| %>
-
-        <%= m.label :which_accident, class: "label-#{yield(:class_text)}" %>
-        <%= m.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {}, class: "form-control"  %>
-
-        <%= m.label :accident_scene, class: "label-#{yield(:class_text)}" %>
-        <%= m.text_field :accident_scene, class: "form-control" %>
-
-        <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
 <%#= f.label :reporter, class: "label-#{yield(:class_text)}" %>
 <%#= f.text_field :reporter, class: "form-control" %>
 
-<%#= f.label :accident_datetime, class: "label-#{yield(:class_text)}" %>
-<%#= f.time_field :accident_datetime, class: "form-control" %>
+
 
 <%#= f.label :accident_senior, class: "label-#{yield(:class_text)}" %>
 <%#= f.select :accident_senior, class: "form-control" %>
+
+<% provide(:title, @senior.senior_name + "-印刷画面") %>
+
+<%= form_with(model: @senior, url: facility_senior_accidents_path, local: true, method: :post) do |f| %>
+
+  <%= f.fields_for :accidents do |ac| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-6">
+          <table class="table table-bordered table-condensed sign-table">
+            <thead>
+              <tr>
+                <th class="sign-th">施設長</th>
+                <th class="sign-th">次長</th>
+                <th class="sign-th">リスマネ</th>
+                <th class="sign-th">担当係長</th>
+                <th class="sign-th">担当職員</th>
+                <th class="sign-th">家族連絡</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="sign-box">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="pull-left">
+        <%= ac.label "ヒヤリ・事故選択" %>
+        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, { prompt: "報告書種類を選択" }, class: "form-control"  %>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-condensed table-hover sign-table">
+
+            <thead>
+              <tr>
+                <th class="report-th" colspan="4">具体的内容</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th class="report-index">日付</th>
+              <td class="report-td">
+                <div>
+                  <%= ac.date_select :accident_datetime,  {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+                </div>
+              </td>
+              <th class="report-index">時間</th>
+              <td class="report-td">
+                <%= ac.time_field :accident_time, class: "form-control" %>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index">対象者</th>
+              <td class="report-td"><%= @senior.senior_name %></td>
+              <%= ac.hidden_field :accident_floor, value: @senior.floor %>
+              <th class="report-index">関与者</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th class="report-index">場所</th>
+              <td class="report-td"></td>
+              <th class="report-index">活動等</th>
+              <td class="report-td"></td>
+            </tr>
+            <tr>
+              <th class="report-index">状況・職員の動き</th>
+              <td class="report-td-left" colspan="3">
+                <%= ac.text_field :accident_scene, class: "form-control" %>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index">結果</th>
+              <td class="report-td-left" colspan="3"></td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+              <th class="report-th" colspan="2">場面・活動状況</th>
+              <th class="report-th" colspan="4">出来事の領域別分類</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="report-td" colspan="2">トイレ・排泄</td>
+              <td class="report-td"colspan="2">転倒・転落</td>
+            </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th class="report-th" colspan="4">原因・対策・効果等</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="report-index">原因・要因</th>
+                <td class="report-td-left" colspan="3"></td>
+              </tr>
+              <tr>
+                <th class="report-index">教訓・対策</th>
+                <td class="report-td-left" colspan="3"></td>
+              </tr>
+              <tr>
+                <th class="report-index">対策変更</th>
+                <td class="report-td-left" colspan="3"></td>
+              </tr>
+              <tr>
+                <th class="report-index">効果<br>（翌月評価）</th>
+                <td class="report-td-left" colspan="2"></td>
+                <td class="report-td-left"></td>
+              </tr>
+              <tr>
+                <th class="report-index">責任者等<br>コメント</th>
+                <td class="report-td-left" colspan="3"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+          <table class="table table-bordered table-condensed sign-table">
+            <thead>
+            <tr>
+              <th class="sign-th">施設長</th>
+              <th class="sign-th">次長</th>
+              <th class="sign-th">リスマネ</th>
+              <th class="sign-th">担当係長</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="sign-box">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+<% end %>
