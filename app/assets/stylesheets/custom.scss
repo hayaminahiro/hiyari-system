@@ -182,10 +182,10 @@ p {
 
 //タイトルの位置
 .title-position {
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
-.title-position {
+.title-position-center {
   margin: 70px 0 50px 250px;
 }
 
@@ -613,6 +613,7 @@ th.report-th {
 .report-td {
   width: 36%;
   text-align: center;
+  font-size: 15px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -637,4 +638,11 @@ th.report-th {
   display: inline-block;
   width: auto;
   margin-right: 5px;
+}
+
+.select-choice {
+  font-size: 10px;
+  color: red;
+  margin-top: 12px;
+  margin-left: 8px;
 }

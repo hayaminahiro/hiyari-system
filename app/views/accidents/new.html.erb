@@ -2,15 +2,11 @@
 <% provide(:class_text, 'basic-info') %>
 <% provide(:button_text, 'ヒヤリ・事故報告書 / 新規作成 ') %>
 
-<h1>ヒヤリ・事故報告書 新規作成</h1>
+<h1 class="title-position">ヒヤリ・事故報告書 新規作成</h1>
 
 <%#= f.label :reporter, class: "label-#{yield(:class_text)}" %>
 <%#= f.text_field :reporter, class: "form-control" %>
 
-
-
-<%#= f.label :accident_senior, class: "label-#{yield(:class_text)}" %>
-<%#= f.select :accident_senior, class: "form-control" %>
 
 <% provide(:title, @senior.senior_name + "-印刷画面") %>
 
@@ -46,10 +42,9 @@
       </div>
     </div>
 
-
     <div class="container">
       <div class="pull-left">
-        <%= ac.label "ヒヤリ・事故選択" %>
+        <%= ac.label "ヒヤリ・事故選択" %><span class="select-choice">※ 必須</span>
         <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, { prompt: "報告書種類を選択" }, class: "form-control"  %>
       </div>
       <div class="row">

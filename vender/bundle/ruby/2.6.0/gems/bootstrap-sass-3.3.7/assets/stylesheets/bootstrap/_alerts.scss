@@ -8,8 +8,8 @@
 
 .alert {
   padding: $alert-padding;
-  //margin-bottom: $line-height-computed;
-  margin-bottom: -50px;
+  margin-bottom: $line-height-computed;
+  //margin-bottom: -50px;
   border: 1px solid transparent;
   border-radius: $alert-border-radius;
 
