@@ -27,7 +27,7 @@ class AccidentsController < ApplicationController
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
-      flash[:success] = "ヒヤリ・事故報告書を新規作成しました。"
+      flash[:success] = "「#{@senior.senior_name}」さんのヒヤリ・事故報告書を新規作成しました。"
       redirect_to senior_accidents_index_facility_accidents_path
     else
       flash[:danger] = "aa"
@@ -39,7 +39,8 @@ class AccidentsController < ApplicationController
 
     #ヒヤリ・事故情報
     def accident_params
-      params.require(:senior).permit(accidents: [:which_accident, :accident_scene])[:accidents]
+      params.require(:senior).permit(accidents: [:which_accident, :reporter, :accident_datetime, :accident_time,
+                                                 :accident_senior, :accident_scene, :accident_floor])[:accidents]
     end
 
 end

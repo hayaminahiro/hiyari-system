@@ -3,7 +3,7 @@ class CreateAccidents < ActiveRecord::Migration[5.2]
     create_table :accidents do |t|
       t.string :which_accident
       t.string :reporter
-      t.datetime :accident_datetime, default: Time.zone.parse('2020-04-01 07:30:00')
+      t.datetime :accident_datetime
       t.string :accident_senior
       t.string :accident_scene
       t.references :senior, foreign_key: true
