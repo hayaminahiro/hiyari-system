@@ -2,10 +2,10 @@
 
 <% if @accident.which_accident == "ヒヤリハット" %>
   <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
-  <p class="title-position-department">部署名: 特養&emsp;&emsp;報告者: <%= @accident.reporter %></p>
+  <p class="title-position-department">部署名: &emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% else %>
   <h3 class="title-position-print">事故報告書</h3>
-  <p class="title-position-department">部署名: 特養&emsp;&emsp;報告者: <%= @accident.reporter %></p>
+  <p class="title-position-department">部署名: &emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% end %>
 
 <div class="container">
@@ -67,11 +67,11 @@
           </tr>
           <tr>
             <th class="report-index">状況・職員の動き</th>
-            <td class="report-td-left" colspan="3"><%= @accident.accident_scene %></td>
+            <td class="report-td-left" colspan="3">&emsp;<%= @accident.accident_scene %></td>
           </tr>
           <tr>
             <th class="report-index">結果</th>
-            <td class="report-td-left" colspan="3"></td>
+            <td class="report-td-left" colspan="3">&emsp;<%= @accident.accident_result %></td>
           </tr>
         </tbody>
         <thead>

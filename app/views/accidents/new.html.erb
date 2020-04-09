@@ -71,16 +71,24 @@
             </tr>
             <tr>
               <th class="report-index">対象者</th>
-              <td class="report-td"><%= @senior.senior_name %></td>
-              <%= ac.hidden_field :accident_floor, value: @senior.floor %>
+              <td class="report-td">
+                <%= @senior.senior_name %>
+                <%= ac.hidden_field :accident_floor, value: @senior.floor %>
+              </td>
               <th class="report-index">関与者</th>
-              <td></td>
+              <td>
+                <%#= ac.text_field :accident_worker, class: "form-control" %>
+              </td>
             </tr>
             <tr>
               <th class="report-index">場所</th>
-              <td class="report-td"></td>
+              <td class="report-td">
+                <%#= ac.text_field :accident_place, class: "form-control" %>
+              </td>
               <th class="report-index">活動等</th>
-              <td class="report-td"></td>
+              <td class="report-td">
+                <%#= ac.text_field :active, class: "form-control" %>
+              </td>
             </tr>
             <tr>
               <th class="report-index">状況・職員の動き</th>
@@ -90,7 +98,22 @@
             </tr>
             <tr>
               <th class="report-index">結果</th>
-              <td class="report-td-left" colspan="3"></td>
+              <td class="report-td-left" colspan="3">
+                <%#= ac.radio_button :accident_result, :male, checked: true %>
+                <%#= ac.label :accident_result, "ヒヤリのみ", {value: :male, style: "display: inline-block;"} %>
+<!--                <br>-->
+                <%#= ac.radio_button :accident_result, :female %>
+                <%#= ac.label :accident_result, "軽事故等 ➡︎", {value: :female, style: "display: inline-block;"} %>
+                <div class="radio-inline">
+                  <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
+                  <%= ac.label "ヒヤリのみ" %>
+                </div><br>
+                <div class="radio-inline">
+                  <%= ac.radio_button :accident_result, "軽事故等" %>
+                  <%= ac.label "軽事故等" %>
+                  <%#= ac.text_field :accident_scene, class: "form-control" %>
+                </div>
+              </td>
             </tr>
             </tbody>
             <thead>
@@ -165,3 +188,7 @@
   <% end %>
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>
+
+
+
+
