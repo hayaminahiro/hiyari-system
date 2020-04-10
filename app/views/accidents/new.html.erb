@@ -38,12 +38,11 @@
     <div class="container">
       <div class="pull-left">
         <%= ac.label "ヒヤリ・事故選択" %><span class="select-choice">※ 必須</span>
-        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: @accident.which_accident}, class: "form-control"  %>
+        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: @accident.which_accident},class: "form-control" %>
       </div>
       <div class="row">
         <div class="col-md-12">
           <table class="table table-bordered table-condensed table-hover sign-table">
-
             <thead>
               <tr>
                 <th class="report-th" colspan="4">具体的内容</th>
@@ -54,12 +53,12 @@
               <th class="report-index">日付</th>
               <td class="report-td">
                 <div>
-                  <%= ac.date_select :accident_datetime,  {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+                  <%= ac.date_select :accident_datetime, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
                 </div>
               </td>
-              <th class="report-index">時間</th>
+              <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
               <td class="report-td">
-                <%= ac.time_field :accident_time, class: "form-control" %>
+                <%= ac.time_select :accident_time, {}, {class: "form-control bootstrap-date"} %>
               </td>
             </tr>
             <tr>
@@ -86,7 +85,7 @@
             <tr>
               <th class="report-index">状況・職員の動き</th>
               <td class="report-td-left" colspan="3">
-                <%= ac.text_field :accident_scene, :value => @accident.accident_scene, class: "form-control" %>
+                <%= ac.text_field :accident_scene, value: @accident.accident_scene, class: "form-control" %>
               </td>
             </tr>
             <tr>
