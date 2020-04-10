@@ -4,7 +4,6 @@
 <h1 class="title-position">ヒヤリ・事故報告書 新規作成</h1>
 
 <%= form_with(model: @senior, url: facility_senior_accidents_path, local: true, method: :post) do |f| %>
-
   <%= f.fields_for :accidents do |ac| %>
     <div class="container">
       <div class="row">
@@ -58,7 +57,7 @@
               </td>
               <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
               <td class="report-td">
-                <%= ac.time_select :accident_time, {}, {class: "form-control bootstrap-date"} %>
+                <%= ac.time_select :accident_time, {minute_step: 15}, {class: "form-control bootstrap-date"} %>
               </td>
             </tr>
             <tr>
