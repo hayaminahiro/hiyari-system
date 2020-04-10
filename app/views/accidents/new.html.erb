@@ -57,7 +57,7 @@
               </td>
               <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
               <td class="report-td">
-                <%= ac.time_select :accident_time, {minute_step: 15}, {class: "form-control bootstrap-date"} %>
+                <%= ac.time_select :accident_time, {prompt: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
               </td>
             </tr>
             <tr>
@@ -82,9 +82,10 @@
               </td>
             </tr>
             <tr>
-              <th class="report-index">状況・職員の動き</th>
+              <th class="report-index">状況・職員の動き<div class="select-choice">※ 必須</div></th>
               <td class="report-td-left" colspan="3">
-                <%= ac.text_field :accident_scene, value: @accident.accident_scene, class: "form-control" %>
+                <%= ac.text_area :accident_scene, value: @accident.accident_scene, rows: 3, class: 'form-control',
+                                 placeholder: "ヒヤリ・事故が起こった状況の詳細を記載" %>
               </td>
             </tr>
             <tr>
