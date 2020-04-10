@@ -54,7 +54,7 @@ class AccidentsController < ApplicationController
     #ヒヤリ・事故情報
     def accident_params
       params.require(:senior).permit(accidents: [:which_accident, :reporter, :accident_datetime, :accident_time,
-                                                 :accident_senior, :accident_scene, :accident_floor, :accident_result])[:accidents]
+                                                 :accident_senior, :accident_scene, :accident_floor, :accident_result, :accident_result_comment])[:accidents]
     end
 
 end
