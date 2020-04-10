@@ -1,14 +1,7 @@
 <% provide(:title, 'ヒヤリ新規作成') %>
-<% provide(:class_text, 'basic-info') %>
 <% provide(:button_text, 'ヒヤリ・事故報告書 / 新規作成 ') %>
 
 <h1 class="title-position">ヒヤリ・事故報告書 新規作成</h1>
-
-<%#= f.label :reporter, class: "label-#{yield(:class_text)}" %>
-<%#= f.text_field :reporter, class: "form-control" %>
-
-
-<% provide(:title, @senior.senior_name + "-印刷画面") %>
 
 <%= form_with(model: @senior, url: facility_senior_accidents_path, local: true, method: :post) do |f| %>
 
@@ -45,7 +38,7 @@
     <div class="container">
       <div class="pull-left">
         <%= ac.label "ヒヤリ・事故選択" %><span class="select-choice">※ 必須</span>
-        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, { prompt: "報告書種類を選択" }, class: "form-control"  %>
+        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: @accident.which_accident}, class: "form-control"  %>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -93,7 +86,7 @@
             <tr>
               <th class="report-index">状況・職員の動き</th>
               <td class="report-td-left" colspan="3">
-                <%= ac.text_field :accident_scene, class: "form-control" %>
+                <%= ac.text_field :accident_scene, :value => @accident.accident_scene, class: "form-control" %>
               </td>
             </tr>
             <tr>
@@ -105,14 +98,16 @@
                 <%#= ac.radio_button :accident_result, :female %>
                 <%#= ac.label :accident_result, "軽事故等 ➡︎", {value: :female, style: "display: inline-block;"} %>
                 <div class="radio-inline">
+
                   <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
                   <%= ac.label "ヒヤリのみ" %>
                 </div><br>
                 <div class="radio-inline">
                   <%= ac.radio_button :accident_result, "軽事故等" %>
                   <%= ac.label "軽事故等" %>
-                  <%#= ac.text_field :accident_scene, class: "form-control" %>
+                  <%= ac.text_field :accident_result_comment, class: "form-control" %>
                 </div>
+
               </td>
             </tr>
             </tbody>
