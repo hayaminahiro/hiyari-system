@@ -2,10 +2,8 @@
 
 <% if @accident.which_accident == "ヒヤリハット" %>
   <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
-  <p class="title-position-department">部署名: <%= @accident.department %>&emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% else %>
   <h3 class="title-position-print">事故報告書</h3>
-  <p class="title-position-department">部署名: <%= @accident.department %>&emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% end %>
 
 <div class="container">
@@ -32,6 +30,20 @@
             <td></td>
           </tr>
         </tbody>
+        <tbody>
+        <tr>
+          <td colspan="3">
+            <div class="label-inline-flex">
+              <%= @accident.reporting_date.present? ? l(@accident.reporting_date, format: :date) : nil %>
+            </div>
+          </td>
+          <td colspan="3">
+            <div class="label-inline-flex">
+              <%= @accident.last_reporting_date.present? ? l(@accident.last_reporting_date, format: :date) : nil %>
+            </div>
+          </td>
+        </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -41,6 +53,21 @@
   <div class="row">
     <div class="col-md-12">
       <table class="table table-bordered table-condensed table-hover sign-table">
+        <thead>
+        <tr>
+          <th class="report-th" colspan="4">部署・報告者</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th class="report-index">部署</th>
+          <td class="report-td">
+            <div><%= @accident.department %></div>
+          </td>
+          <th class="report-index">報告者</th>
+          <td class="report-td"><%= @accident.reporter %></td>
+        </tr>
+        </tbody>
         <thead>
           <tr>
             <th class="report-th" colspan="4">具体的内容</th>

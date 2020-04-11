@@ -31,12 +31,18 @@
             </tbody>
             <tbody>
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="3">
+                  <div class="label-inline-flex-new">
+                    <%= ac.label "報告書" %>&emsp;
+                    <%= ac.date_select :reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                  </div>
+                </td>
+                <td colspan="3">
+                  <div class="label-inline-flex-new">
+                    <%= ac.label "最終報告日" %>&emsp;
+                    <%= ac.date_select :last_reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -53,9 +59,9 @@
         <div class="col-md-12">
           <table class="table table-bordered table-condensed table-hover sign-table">
             <thead>
-            <tr>
-              <th class="report-th" colspan="4">分類・所属・報告者</th>
-            </tr>
+              <tr>
+                <th class="report-th" colspan="4">部署・報告者</th>
+              </tr>
             </thead>
             <tbody>
               <tr>
@@ -68,8 +74,8 @@
                 </td>
                 <th class="report-index" style="padding-left: 40px">報告者<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
-                  <%= ac.select :reporter,
-                                {prompt: @accident.department}, class: "form-control" %>
+                  <%= ac.select :reporter, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                {prompt: @accident.reporter}, class: "form-control" %>
                 </td>
               </tr>
             </tbody>
