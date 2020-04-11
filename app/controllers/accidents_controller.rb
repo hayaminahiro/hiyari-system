@@ -40,7 +40,7 @@ class AccidentsController < ApplicationController
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
-      flash[:success] = "「#{@senior.senior_name}」さんのヒヤリ・事故報告書を新規作成しました。"
+      flash[:success] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を新規作成しました。"
       redirect_to senior_accidents_index_facility_accidents_path
     else
       flash.now[:danger] = "未入力項目があります。再度確認して下さい。"
@@ -53,8 +53,23 @@ class AccidentsController < ApplicationController
 
     #ヒヤリ・事故情報
     def accident_params
-      params.require(:senior).permit(accidents: [:which_accident, :reporter, :accident_datetime, :accident_time,
-                                                 :accident_senior, :accident_scene, :accident_floor, :accident_result, :accident_result_comment])[:accidents]
+      params.require(:senior).permit(accidents: [
+          #table外
+          :which_accident, :reporting_date, :last_reporting_date, :department, :reporter,
+          #具体的内容
+          :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
+          :accident_scene, :accident_result, :accident_result_comment,
+          #場面、出来事の領域別分類
+          :activity_scene, :event_classification, :other_event,
+          #原因・対策・効果等
+          :result_comment, :result_worker, :result_senior, :measures_comment, :measures, :change_measures_comment,
+          #評価・結果
+          :evaluation_date, :evaluation_comment, :measures_result, :superior_comment,
+          #発生直後サイン
+          :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
+          #周知後サイン
+          :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last
+      ])[:accidents]
     end
 
 end
