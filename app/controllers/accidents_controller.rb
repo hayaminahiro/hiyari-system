@@ -40,7 +40,7 @@ class AccidentsController < ApplicationController
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
-      flash[:success] = "「#{@senior.senior_name}」さん(#{@accident.accident_floor})の#{@accident.which_accident}報告書を新規作成しました。"
+      flash[:success] = "「#{@senior.senior_name}」さん（#{@accident.accident_floor}階）の#{@accident.which_accident}報告書を新規作成しました。"
       redirect_to facility_accidents_path
     else
       flash.now[:danger] = "未入力項目があります。再度確認して下さい。"

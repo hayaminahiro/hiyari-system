@@ -29,6 +29,16 @@
                 <td></td>
               </tr>
             </tbody>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
@@ -43,72 +53,93 @@
         <div class="col-md-12">
           <table class="table table-bordered table-condensed table-hover sign-table">
             <thead>
+            <tr>
+              <th class="report-th" colspan="4">分類・所属・報告者</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="report-index">部署</th>
+                <td class="report-td">
+                  <div>
+                    <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
+                                  {prompt: @accident.department}, class: "form-control" %>
+                  </div>
+                </td>
+                <th class="report-index" style="padding-left: 40px">報告者<span class="select-choice">※ 必須</span></th>
+                <td class="report-td">
+                  <%= ac.select :reporter,
+                                {prompt: @accident.department}, class: "form-control" %>
+                </td>
+              </tr>
+            </tbody>
+
+            <thead>
               <tr>
                 <th class="report-th" colspan="4">具体的内容</th>
               </tr>
             </thead>
             <tbody>
-            <tr>
-              <th class="report-index">日付</th>
-              <td class="report-td">
-                <div>
-                  <%= ac.date_select :accident_datetime, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
-                </div>
-              </td>
-              <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
-              <td class="report-td">
-                <%= ac.time_select :accident_time, {prompt: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
-              </td>
-            </tr>
-            <tr>
-              <th class="report-index">対象者</th>
-              <td class="report-td">
-                <%= @senior.senior_name %>
-                <%= ac.hidden_field :accident_floor, value: @senior.floor %>
-              </td>
-              <th class="report-index">関与者</th>
-              <td>
-                <%#= ac.text_field :accident_worker, class: "form-control" %>
-              </td>
-            </tr>
-            <tr>
-              <th class="report-index">場所</th>
-              <td class="report-td">
-                <%#= ac.text_field :accident_place, class: "form-control" %>
-              </td>
-              <th class="report-index">活動等</th>
-              <td class="report-td">
-                <%#= ac.text_field :active, class: "form-control" %>
-              </td>
-            </tr>
-            <tr>
-              <th class="report-index">状況・職員の動き<div class="select-choice">※ 必須</div></th>
-              <td class="report-td-left" colspan="3">
-                <%= ac.text_area :accident_scene, value: @accident.accident_scene, rows: 3, class: 'form-control',
-                                 placeholder: "ヒヤリ・事故が起こった状況の詳細を記載" %>
-              </td>
-            </tr>
-            <tr>
-              <th class="report-index">結果</th>
-              <td class="report-td-left" colspan="3">
-                <%#= ac.radio_button :accident_result, :male, checked: true %>
-                <%#= ac.label :accident_result, "ヒヤリのみ", {value: :male, style: "display: inline-block;"} %>
-<!--                <br>-->
-                <%#= ac.radio_button :accident_result, :female %>
-                <%#= ac.label :accident_result, "軽事故等 ➡︎", {value: :female, style: "display: inline-block;"} %>
-                <div class="radio-inline">
+              <tr>
+                <th class="report-index">日付</th>
+                <td class="report-td">
+                  <div>
+                    <%= ac.date_select :accident_datetime, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+                  </div>
+                </td>
+                <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
+                <td class="report-td">
+                  <%= ac.time_select :accident_time, {prompt: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
+                </td>
+              </tr>
+              <tr>
+                <th class="report-index">対象者</th>
+                <td class="report-td">
+                  <%= @senior.senior_name %>
+                  <%= ac.hidden_field :accident_floor, value: @senior.floor %>
+                </td>
+                <th class="report-index">関与者</th>
+                <td>
+                  <%#= ac.text_field :accident_worker, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <th class="report-index">場所</th>
+                <td class="report-td">
+                  <%#= ac.text_field :accident_place, class: "form-control" %>
+                </td>
+                <th class="report-index">活動等</th>
+                <td class="report-td">
+                  <%#= ac.text_field :active, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <th class="report-index">状況・職員の動き<div class="select-choice">※ 必須</div></th>
+                <td class="report-td-left" colspan="3">
+                  <%= ac.text_area :accident_scene, value: @accident.accident_scene, rows: 3, class: 'form-control',
+                                   placeholder: "ヒヤリ・事故が起こった状況の詳細を記載" %>
+                </td>
+              </tr>
+              <tr>
+                <th class="report-index">結果</th>
+                <td class="report-td-left" colspan="3">
+                  <%#= ac.radio_button :accident_result, :male, checked: true %>
+                  <%#= ac.label :accident_result, "ヒヤリのみ", {value: :male, style: "display: inline-block;"} %>
+  <!--                <br>-->
+                  <%#= ac.radio_button :accident_result, :female %>
+                  <%#= ac.label :accident_result, "軽事故等 ➡︎", {value: :female, style: "display: inline-block;"} %>
+                  <div class="radio-inline">
 
-                  <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
-                  <%= ac.label "ヒヤリのみ" %>
-                </div><br>
-                <div class="radio-inline">
-                  <%= ac.radio_button :accident_result, "軽事故等" %>
-                  <%= ac.label "軽事故等" %>
-                  <%= ac.text_field :accident_result_comment, class: "form-control" %>
-                </div>
-
-              </td>
-            </tr>
+                    <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
+                    <%= ac.label "ヒヤリのみ" %>
+                  </div><br>
+                  <div class="radio-inline">
+                    <%= ac.radio_button :accident_result, "軽事故等" %>
+                    <%= ac.label "軽事故等" %>
+                    <%= ac.text_field :accident_result_comment, class: "form-control" %>
+                  </div>
+                </td>
+              </tr>
             </tbody>
             <thead>
             <tr>
