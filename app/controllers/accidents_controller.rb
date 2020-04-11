@@ -34,6 +34,8 @@ class AccidentsController < ApplicationController
   def new
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new
+    #@workers = Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] }
+    #Worker.where(working_floor: 2).where(working_flg: true).order(:worker_name_call)
   end
 
   def create
