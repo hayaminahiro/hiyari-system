@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_063003) do
+ActiveRecord::Schema.define(version: 2020_04_11_215115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,13 +18,46 @@ ActiveRecord::Schema.define(version: 2020_03_27_063003) do
   create_table "accidents", force: :cascade do |t|
     t.string "which_accident"
     t.string "reporter"
-    t.datetime "accident_datetime", default: "2020-03-31 22:30:00"
+    t.datetime "accident_datetime"
     t.string "accident_senior"
     t.string "accident_scene"
     t.bigint "senior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "accident_floor"
+    t.datetime "accident_time"
+    t.string "department"
+    t.string "accident_worker"
+    t.string "accident_place"
+    t.string "active"
+    t.integer "accident_result", default: 0
+    t.string "accident_result_comment"
+    t.integer "activity_scene"
+    t.integer "event_classification"
+    t.string "other_event"
+    t.string "result_comment"
+    t.string "result_worker"
+    t.string "result_senior"
+    t.string "measures_comment"
+    t.string "measures"
+    t.string "change_measures"
+    t.datetime "evaluation_date"
+    t.string "evaluation_comment"
+    t.string "measures_result"
+    t.string "superior_comment"
+    t.datetime "reporting_date"
+    t.datetime "last_reporting_date"
+    t.string "superior_a"
+    t.string "superior_b"
+    t.string "superior_c"
+    t.string "superior_d"
+    t.string "charge_sign"
+    t.string "family_comment"
+    t.string "superior_a_last"
+    t.string "superior_b_last"
+    t.string "superior_c_last"
+    t.string "superior_d_last"
+    t.string "other_activity_scene"
     t.index ["senior_id"], name: "index_accidents_on_senior_id"
   end
 

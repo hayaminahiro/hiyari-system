@@ -1,4 +1,4 @@
-<% provide(:title, '利用者別ヒヤリ/報告書作成') %>
+<% provide(:title, '利用者別ヒヤリ一覧') %>
 
 <style type="text/css">
   #table_detail .hidden_row {
@@ -16,7 +16,7 @@
   <h3><%= current_facility.name %></h3>
 </div>
 
-<h1 class="title-position">利用者別ヒヤリ一覧/報告書作成</h1>
+<h1 class="title-position-center">利用者別ヒヤリ一覧</h1>
 
 <div class="container">
   <ul class="nav nav-tabs font-M">
@@ -30,12 +30,12 @@
       <div class="col-md-12 tab-table">
         <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
-            <tr>
-              <th class="pink-thead">利用者</th>
-              <th class="pink-thead">ヒヤリ・事故件数</th>
-              <th class="pink-thead">閲覧</th>
-              <th class="pink-thead">ヒヤリ新規作成</th>
-            </tr>
+          <tr>
+            <th class="pink-thead" style="width: 28%">利用者</th>
+            <th class="pink-thead">ヒヤリ・事故件数</th>
+            <th class="pink-thead">閲覧</th>
+            <th class="pink-thead">ヒヤリ新規作成</th>
+          </tr>
           </thead>
           <% check = nil %>
           <% @seniors2f.each_with_index do |senior, i| %>
@@ -71,7 +71,8 @@
                 <% if a % 2 == 0 %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior tr-back1">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior tr-back1">
                       <div class="which-accident">
@@ -93,7 +94,8 @@
                 <% else %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior">
                       <div class="which-accident">
@@ -126,7 +128,7 @@
         <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
           <tr>
-            <th class="pink-thead">利用者</th>
+            <th class="pink-thead" style="width: 28%">利用者</th>
             <th class="pink-thead">ヒヤリ・事故件数</th>
             <th class="pink-thead">閲覧</th>
             <th class="pink-thead">ヒヤリ新規作成</th>
@@ -166,7 +168,8 @@
                 <% if a % 2 == 0 %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior tr-back1">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior tr-back1">
                       <div class="which-accident">
@@ -188,7 +191,8 @@
                 <% else %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior">
                       <div class="which-accident">
@@ -221,7 +225,7 @@
         <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
           <tr>
-            <th class="pink-thead">利用者</th>
+            <th class="pink-thead" style="width: 28%">利用者</th>
             <th class="pink-thead">ヒヤリ・事故件数</th>
             <th class="pink-thead">閲覧</th>
             <th class="pink-thead">ヒヤリ新規作成</th>
@@ -261,7 +265,8 @@
                 <% if a % 2 == 0 %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior tr-back1">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior tr-back1">
                       <div class="which-accident">
@@ -283,7 +288,8 @@
                 <% else %>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
                     <td class="accident-senior">
-                      <%= l(accident.accident_datetime, format: :half) %>
+                      <%= l(accident.accident_datetime, format: :date) %>&nbsp;
+                      <%= l(accident.accident_time, format: :ja_time_index) %>
                     </td>
                     <td class="accident-senior">
                       <div class="which-accident">

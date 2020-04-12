@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     @facility = Facility.find(params[:id])
   end
 
+  #facility_idを取得
+  def set_facility_id
+    @facility = Facility.find(params[:facility_id])
+  end
+
   # ログイン済みのユーザーか確認します。
   def logged_in_facility
     unless logged_in?

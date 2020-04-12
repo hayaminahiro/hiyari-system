@@ -1,11 +1,12 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "ヒヤリ・事故管理システム", root_path, id: "logo" %>
+    <%= link_to "ヒヤリ・事故報告書管理システム", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right" >
         <% if logged_in? %>
           <li><%= link_to "月別ヒヤリ一覧", facility_path(current_facility) %></li>
-          <li><%= link_to "利用者別ヒヤリ一覧 / 報告書新規作成", senior_accidents_index_facility_accidents_path(current_facility) %></li>
+          <li><%= link_to "利用者別ヒヤリ一覧", facility_accidents_path(current_facility) %></li>
+          <li><%= link_to "ヒヤリ新規作成", new_accidents_index_facility_accidents_path(current_facility) %></li>
           <li><%= link_to "ヒヤリ事故集計", '#' %></li>
           <li><%= link_to "定義・説明", '#' %></li>
           <li class="dropdown">
