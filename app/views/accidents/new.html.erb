@@ -149,10 +149,17 @@
             </thead>
             <tbody>
             <tr>
-              <td class="report-td" style="width: 15%;"><%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {}, { class: "form-control" } %></td>
-              <td class="report-td"><%= ac.text_field :other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %></td>
-              <td class="report-td" style="width: 15%;">転倒・転落</td>
-              <td class="report-td"></td>
+              <td class="report-td" style="width: 15%;">
+                <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {}, { class: "form-control" } %></td>
+              <td class="report-td">
+                <%= ac.text_field :other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+              </td>
+              <td class="report-td" style="width: 15%;">
+                <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {}, { class: "form-control" } %>
+              </td>
+              <td class="report-td">
+                <%= ac.text_field :other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+              </td>
             </tr>
             </tbody>
             <thead>
