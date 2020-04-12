@@ -84,13 +84,13 @@
             <th class="report-index">対象者</th>
             <td class="report-td"><%= @senior.senior_name %></td>
             <th class="report-index">関与者</th>
-            <td></td>
+            <td class="report-td"><%= @accident.accident_worker %></td>
           </tr>
           <tr>
             <th class="report-index">場所</th>
-            <td class="report-td"></td>
+            <td class="report-td"><%= @accident.accident_place %></td>
             <th class="report-index">活動等</th>
-            <td class="report-td"></td>
+            <td class="report-td"><%= @accident.active %></td>
           </tr>
           <tr>
             <th class="report-index">状況・職員の動き</th>
@@ -98,19 +98,29 @@
           </tr>
           <tr>
             <th class="report-index">結果</th>
-            <td class="report-td-left" colspan="3">&emsp;<%= @accident.accident_result %></td>
+            <td class="report-td-left" colspan="3">
+              <% if @accident.accident_result.present? %>
+                【<%= @accident.accident_result %>】<%= @accident.accident_result_comment %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <thead>
           <tr>
-            <th class="report-th" colspan="2">場面・活動状況</th>
-            <th class="report-th" colspan="4">出来事の領域別分類</th>
+            <th class="report-th" colspan="4">状況分類</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="report-td" colspan="2">トイレ・排泄</td>
-            <td class="report-td"colspan="2">転倒・転落</td>
+            <td class="report-index" style="width: 15%;">場面・活動状況</td>
+            <td class="report-td">
+              <%= @accident.activity_scene %>
+              <% if @accident.other_activity_scene.present? %>
+                （<%= @accident.other_activity_scene %>）
+              <% end %>
+            </td>
+            <td class="report-index" style="width: 15%;">出来事の領域別分類</td>
+            <td class="report-td"><%= @accident.event_classification %></td>
           </tr>
         </tbody>
         <thead>
