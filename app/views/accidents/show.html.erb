@@ -120,7 +120,12 @@
               <% end %>
             </td>
             <td class="report-index" style="width: 15%;">出来事の領域別分類</td>
-            <td class="report-td"><%= @accident.event_classification %></td>
+            <td class="report-td">
+              <%= @accident.event_classification %>
+              <% if @accident.other_event.present? %>
+                （<%= @accident.other_event %>）
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <thead>

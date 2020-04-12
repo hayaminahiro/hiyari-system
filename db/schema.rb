@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_215115) do
     t.integer "accident_result", default: 0
     t.string "accident_result_comment"
     t.integer "activity_scene"
-    t.string "event_classification"
+    t.integer "event_classification"
     t.string "other_event"
     t.string "result_comment"
     t.string "result_worker"
