@@ -62,7 +62,7 @@ class AccidentsController < ApplicationController
           :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
           :accident_scene, :accident_result, :accident_result_comment,
           #場面、出来事の領域別分類
-          :activity_scene, :event_classification, :other_event,
+          :activity_scene, :other_activity_scene, :event_classification, :other_event,
           #原因・対策・効果等
           :result_comment, :result_worker, :result_senior, :measures_comment, :measures, :change_measures_comment,
           #評価・結果

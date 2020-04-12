@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_023344) do
+ActiveRecord::Schema.define(version: 2020_04_11_215115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_023344) do
     t.string "active"
     t.integer "accident_result", default: 0
     t.string "accident_result_comment"
-    t.string "activity_scene"
+    t.integer "activity_scene"
     t.string "event_classification"
     t.string "other_event"
     t.string "result_comment"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_023344) do
     t.string "superior_b_last"
     t.string "superior_c_last"
     t.string "superior_d_last"
+    t.string "other_activity_scene"
     t.index ["senior_id"], name: "index_accidents_on_senior_id"
   end
 
