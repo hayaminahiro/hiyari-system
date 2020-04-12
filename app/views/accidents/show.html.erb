@@ -2,10 +2,8 @@
 
 <% if @accident.which_accident == "ヒヤリハット" %>
   <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
-  <p class="title-position-department">部署名: 特養&emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% else %>
   <h3 class="title-position-print">事故報告書</h3>
-  <p class="title-position-department">部署名: 特養&emsp;&emsp;報告者: <%= @accident.reporter %></p>
 <% end %>
 
 <div class="container">
@@ -32,6 +30,20 @@
             <td></td>
           </tr>
         </tbody>
+        <tbody>
+        <tr>
+          <td colspan="3">
+            <div class="label-inline-flex">
+              <%= @accident.reporting_date.present? ? l(@accident.reporting_date, format: :date) : nil %>
+            </div>
+          </td>
+          <td colspan="3">
+            <div class="label-inline-flex">
+              <%= @accident.last_reporting_date.present? ? l(@accident.last_reporting_date, format: :date) : nil %>
+            </div>
+          </td>
+        </tr>
+        </tbody>
       </table>
     </div>
   </div>
@@ -42,6 +54,21 @@
     <div class="col-md-12">
       <table class="table table-bordered table-condensed table-hover sign-table">
         <thead>
+        <tr>
+          <th class="report-th" colspan="4">部署・報告者</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th class="report-index">部署</th>
+          <td class="report-td">
+            <div><%= @accident.department %></div>
+          </td>
+          <th class="report-index">報告者</th>
+          <td class="report-td"><%= @accident.reporter %></td>
+        </tr>
+        </tbody>
+        <thead>
           <tr>
             <th class="report-th" colspan="4">具体的内容</th>
           </tr>
@@ -51,39 +78,54 @@
             <th class="report-index">日付</th>
             <td class="report-td"><%= l(@accident.accident_datetime, format: :date) %></td>
             <th class="report-index">時間</th>
-            <td class="report-td"><%= l(@accident.accident_datetime, format: :ja_time) %></td>
+            <td class="report-td"><%= l(@accident.accident_time, format: :ja_time) %></td>
           </tr>
           <tr>
             <th class="report-index">対象者</th>
             <td class="report-td"><%= @senior.senior_name %></td>
             <th class="report-index">関与者</th>
-            <td></td>
+            <td class="report-td"><%= @accident.accident_worker %></td>
           </tr>
           <tr>
             <th class="report-index">場所</th>
-            <td class="report-td"></td>
+            <td class="report-td"><%= @accident.accident_place %></td>
             <th class="report-index">活動等</th>
-            <td class="report-td"></td>
+            <td class="report-td"><%= @accident.active %></td>
           </tr>
           <tr>
             <th class="report-index">状況・職員の動き</th>
-            <td class="report-td-left" colspan="3"><%= @accident.accident_scene %></td>
+            <td class="report-td-left" colspan="3">&emsp;<%= @accident.accident_scene %></td>
           </tr>
           <tr>
             <th class="report-index">結果</th>
-            <td class="report-td-left" colspan="3"></td>
+            <td class="report-td-left" colspan="3">
+              <% if @accident.accident_result.present? %>
+                【<%= @accident.accident_result %>】<%= @accident.accident_result_comment %>
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <thead>
           <tr>
-            <th class="report-th" colspan="2">場面・活動状況</th>
-            <th class="report-th" colspan="4">出来事の領域別分類</th>
+            <th class="report-th" colspan="4">状況分類</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="report-td" colspan="2">トイレ・排泄</td>
-            <td class="report-td"colspan="2">転倒・転落</td>
+            <td class="report-index" style="width: 15%;">場面・活動状況</td>
+            <td class="report-td">
+              <%= @accident.activity_scene %>
+              <% if @accident.other_activity_scene.present? %>
+                （<%= @accident.other_activity_scene %>）
+              <% end %>
+            </td>
+            <td class="report-index" style="width: 15%;">出来事の領域別分類</td>
+            <td class="report-td">
+              <%= @accident.event_classification %>
+              <% if @accident.other_event.present? %>
+                （<%= @accident.other_event %>）
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <thead>

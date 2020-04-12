@@ -1,0 +1,203 @@
+<% provide(:title, 'ヒヤリ新規作成') %>
+
+<div id="facility-name">
+  <h3><%= current_facility.name %></h3>
+</div>
+
+<h1 class="title-position-center">ヒヤリ報告書新規作成</h1>
+
+<div class="container">
+  <ul class="nav nav-tabs font-M">
+    <li class="active"><a href="#2f" data-toggle="tab">2階フロア</a></li>
+    <li><a href="#3f" data-toggle="tab">3階フロア</a></li>
+    <li><a href="#4f" data-toggle="tab">4階フロア</a></li>
+  </ul>
+  <div class="tab-content">
+    <!--2F-利用者一覧-->
+    <div class="tab-pane active" id="2f">
+      <div class="col-md-12 tab-table">
+        <table id="table_detail" class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th class="little-pink-thead" style="width: 20%">利用者</th>
+              <th class="little-pink-thead">担当職員</th>
+              <th class="little-pink-thead">ヒヤリ・事故件数</th>
+              <th class="little-pink-thead" style="width: 20%">ヒヤリ新規作成</th>
+            </tr>
+          </thead>
+          <% @seniors2f.each_with_index do |senior, i| %>
+            <% if current_facility.id == senior.facility_id %>
+              <tbody>
+                <% if i % 2 == 0 %>
+                  <tr>
+                    <td class="accident-senior tr-back1">
+                      <%= senior.senior_name %>
+                    </td>
+                    <td class="accident-senior tr-back1">
+                      <% seniors = senior.senior_workers %>
+                      <% seniors.each do |se| %>
+                        <!--三項演算子・・・退職した職員は非表示-->
+                        <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                      <% end %>
+                    </td>
+                    <td class="accident-senior tr-back1" style="color: #c7254e;">
+                      【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    </td>
+                    <td class="accident-senior tr-back1">
+                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                    </td>
+                  </tr>
+                <% else %>
+                  <tr>
+                    <td class="accident-senior">
+                      <%= senior.senior_name %>
+                    </td>
+                    <td class="accident-senior">
+                      <% seniors = senior.senior_workers %>
+                      <% seniors.each do |se| %>
+                        <!--三項演算子・・・退職した職員は非表示-->
+                        <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                      <% end %>
+                    </td>
+                    <td class="accident-senior" style="color: #c7254e;">
+                      【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    </td>
+                    <td class="accident-senior">
+                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <!--3F-利用者一覧-->
+    <div class="tab-pane" id="3f">
+      <div class="col-md-12 tab-table">
+        <table id="table_detail" class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr>
+            <th class="little-pink-thead" style="width: 20%">利用者</th>
+            <th class="little-pink-thead">担当職員</th>
+            <th class="little-pink-thead">ヒヤリ・事故件数</th>
+            <th class="little-pink-thead" style="width: 20%">ヒヤリ新規作成</th>
+          </tr>
+          </thead>
+          <% @seniors3f.each_with_index do |senior, i| %>
+            <% if current_facility.id == senior.facility_id %>
+              <tbody>
+              <% if i % 2 == 0 %>
+                <tr>
+                  <td class="accident-senior tr-back1">
+                    <%= senior.senior_name %>
+                  </td>
+                  <td class="accident-senior tr-back1">
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <!--三項演算子・・・退職した職員は非表示-->
+                      <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                    <% end %>
+                  </td>
+                  <td class="accident-senior tr-back1" style="color: #c7254e;">
+                    【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                    【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                  </td>
+                  <td class="accident-senior tr-back1">
+                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                  </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td class="accident-senior">
+                    <%= senior.senior_name %>
+                  </td>
+                  <td class="accident-senior">
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <!--三項演算子・・・退職した職員は非表示-->
+                      <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                    <% end %>
+                  </td>
+                  <td class="accident-senior" style="color: #c7254e;">
+                    【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                    【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                  </td>
+                  <td class="accident-senior">
+                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <!--4F-利用者一覧-->
+    <div class="tab-pane" id="4f">
+      <div class="col-md-12 tab-table">
+        <table id="table_detail" class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr>
+            <th class="little-pink-thead" style="width: 20%">利用者</th>
+            <th class="little-pink-thead">担当職員</th>
+            <th class="little-pink-thead">ヒヤリ・事故件数</th>
+            <th class="little-pink-thead" style="width: 20%">ヒヤリ新規作成</th>
+          </tr>
+          </thead>
+          <% @seniors4f.each_with_index do |senior, i| %>
+            <% if current_facility.id == senior.facility_id %>
+              <tbody>
+              <% if i % 2 == 0 %>
+                <tr>
+                  <td class="accident-senior tr-back1">
+                    <%= senior.senior_name %>
+                  </td>
+                  <td class="accident-senior tr-back1">
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <!--三項演算子・・・退職した職員は非表示-->
+                      <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                    <% end %>
+                  </td>
+                  <td class="accident-senior tr-back1" style="color: #c7254e;">
+                    【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                    【事故 <%= @accidents4f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                  </td>
+                  <td class="accident-senior tr-back1">
+                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                  </td>
+                </tr>
+              <% else %>
+                <tr>
+                  <td class="accident-senior">
+                    <%= senior.senior_name %>
+                  </td>
+                  <td class="accident-senior">
+                    <% seniors = senior.senior_workers %>
+                    <% seniors.each do |se| %>
+                      <!--三項演算子・・・退職した職員は非表示-->
+                      <%= se.worker.working_flg == true ? se.worker.worker_name : nil %>&emsp;
+                    <% end %>
+                  </td>
+                  <td class="accident-senior" style="color: #c7254e;">
+                    【ヒヤリ <%= @accidents4f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                    【事故 <%= @accidents4f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                  </td>
+                  <td class="accident-senior">
+                    <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

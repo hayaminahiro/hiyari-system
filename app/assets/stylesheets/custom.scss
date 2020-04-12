@@ -182,10 +182,10 @@ p {
 
 //タイトルの位置
 .title-position {
-  margin-top: 70px;
+  margin-top: 80px;
 }
 
-.title-position {
+.title-position-center {
   margin: 70px 0 50px 250px;
 }
 
@@ -577,7 +577,7 @@ td .show-btn-position {
 th.sign-th {
   text-align: center;
   height: 20px;
-  width:10px;
+  width: 10%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: #f0ad4e;
   font-size: 16px;
@@ -613,6 +613,7 @@ th.report-th {
 .report-td {
   width: 36%;
   text-align: center;
+  font-size: 15px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -621,8 +622,58 @@ th.report-th {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
+td.report-td-left {
+  padding-left: 20px;
+}
+
 .title-position-department {
   position: absolute;
   font-size: 20px;
   margin: 95px 10px 30px 30px;
+}
+
+//ヒヤリ新規作成利用者一覧ページ
+.little-pink-thead {
+  font-size: 18px;
+  background-color: lightpink;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
+//ヒヤリ新規作成ページ
+.pull-left {
+  display: inline-block;
+  margin-top: -70px;
+  width: 150px;
+}
+
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+  margin-right: 5px;
+}
+
+.select-choice {
+  font-size: 10px;
+  color: red;
+  margin-top: 12px;
+  margin-left: 8px;
+}
+
+input#senior_accidents_accident_result_comment.form-control {
+  margin-top: -50px;
+  margin-left: 100px;
+  height: 45px;
+  width: 600px;
+}
+
+.label-inline-flex {
+  display: inline-flex;
+  margin-left: 60px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.label-inline-flex-new {
+  display: inline-flex;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
