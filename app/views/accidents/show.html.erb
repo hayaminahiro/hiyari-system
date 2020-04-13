@@ -136,7 +136,12 @@
         <tbody>
           <tr>
             <th class="report-index">原因・要因</th>
-            <td class="report-td-left" colspan="3"></td>
+            <td class="report-td-left" colspan="3">
+              <p>【職員側】
+                <% str = @accident.result_worker %>
+                <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %>
+              </p>
+            </td>
           </tr>
           <tr>
             <th class="report-index">教訓・対策</th>
