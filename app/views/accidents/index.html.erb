@@ -34,7 +34,6 @@
             <th class="pink-thead" style="width: 28%">利用者</th>
             <th class="pink-thead">ヒヤリ・事故件数</th>
             <th class="pink-thead">閲覧</th>
-            <th class="pink-thead">ヒヤリ新規作成</th>
           </tr>
           </thead>
           <% check = nil %>
@@ -56,9 +55,6 @@
                     </td>
                     <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                       <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                    </td>
-                    <td class="create_accident">
-                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                     </td>
                   </tr>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
@@ -131,7 +127,6 @@
             <th class="pink-thead" style="width: 28%">利用者</th>
             <th class="pink-thead">ヒヤリ・事故件数</th>
             <th class="pink-thead">閲覧</th>
-            <th class="pink-thead">ヒヤリ新規作成</th>
           </tr>
           </thead>
           <% check = nil %>
@@ -153,9 +148,6 @@
                     </td>
                     <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                       <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                    </td>
-                    <td class="create_accident">
-                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                     </td>
                   </tr>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
@@ -228,7 +220,6 @@
             <th class="pink-thead" style="width: 28%">利用者</th>
             <th class="pink-thead">ヒヤリ・事故件数</th>
             <th class="pink-thead">閲覧</th>
-            <th class="pink-thead">ヒヤリ新規作成</th>
           </tr>
           </thead>
           <% check = nil %>
@@ -250,9 +241,6 @@
                     </td>
                     <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                       <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
-                    </td>
-                    <td class="create_accident">
-                      <%= link_to "ヒヤリ新規作成", new_facility_senior_accident_path(@facility, senior), local: true, class: "btn-square-shadow-red" %>
                     </td>
                   </tr>
                   <tr class="hidden_row hidden_row<%= senior_id %>">
