@@ -34,9 +34,6 @@ class AccidentsController < ApplicationController
   def new
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new
-    @result_worker = %w(支援ミス スキル不足 勤務態度 情報の共有 アセス不足 環境・設備面)
-    @result_senior = %w(体調不良 精神的不安定 発作 特性 加齢)
-    @measures = %w(支援の改善 利用者の把握 周知の徹底 マニュアル整備 情報の共有 職員教育 環境改善 その他)
   end
 
   def create
