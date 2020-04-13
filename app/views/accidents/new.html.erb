@@ -170,11 +170,27 @@
             <tbody>
               <tr>
                 <th class="report-index">原因・要因</th>
-                <td class="report-td-left" colspan="3"></td>
+                <td class="report-td-left" colspan="2">
+                  <%= ac.text_area :result_comment, value: @accident.result_comment, rows: 3, class: 'form-control',
+                                   placeholder: "具体的な原因・要因を記載" %>
+                </td>
+                <td class="report-td-left">
+
+                  <div class="field">
+                    <% @result_worker.each do |item| %>
+                        <%= check_box_tag 'senior[accidents][result_worker][]', item %>
+                        <%= item %>
+                    <% end %>
+                  </div>
+                </td>
+
               </tr>
               <tr>
                 <th class="report-index">教訓・対策</th>
-                <td class="report-td-left" colspan="3"></td>
+                <td class="report-td-left" colspan="3">
+                  <%= ac.text_area :measures_comment, value: @accident.measures_comment, rows: 3, class: 'form-control',
+                                   placeholder: "フロミ後、教訓・対策を記載" %>
+                </td>
               </tr>
               <tr>
                 <th class="report-index">対策変更</th>
