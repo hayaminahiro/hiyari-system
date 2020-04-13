@@ -35,8 +35,8 @@ class AccidentsController < ApplicationController
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new
     @result_worker = %w(支援ミス スキル不足 勤務態度 情報の共有 アセス不足 環境・設備面)
-    #@workers = Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] }
-    #Worker.where(working_floor: 2).where(working_flg: true).order(:worker_name_call)
+    @result_senior = %w(体調不良 精神的不安定 発作 特性 加齢)
+    @measures = %w(支援の改善 利用者の把握 周知の徹底 マニュアル整備 情報の共有 職員教育 環境改善 その他)
   end
 
   def create
@@ -65,15 +65,15 @@ class AccidentsController < ApplicationController
           #場面、出来事の領域別分類
           :activity_scene, :other_activity_scene, :event_classification, :other_event,
           #原因・対策・効果等
-          :result_comment, :result_senior, :measures_comment, :measures, :change_measures_comment,
+          :result_comment, :measures_comment, :change_measures,
           #評価・結果
           :evaluation_date, :evaluation_comment, :measures_result, :superior_comment,
           #発生直後サイン
           :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
           #周知後サイン
           :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
-
-          result_worker: []
+          #複数チェックボックス
+          result_worker: [], result_senior: [], measures: []
       ])[:accidents]
     end
 
