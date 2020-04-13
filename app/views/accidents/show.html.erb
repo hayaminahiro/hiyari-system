@@ -34,12 +34,20 @@
         <tr>
           <td colspan="3">
             <div class="label-inline-flex">
-              <%= @accident.reporting_date.present? ? l(@accident.reporting_date, format: :date) : nil %>
+              <% if @accident.reporting_date.present? %>
+                【報告日】<%=  l(@accident.reporting_date, format: :date) %>
+              <% else %>
+                【報告日】未登録
+              <% end %>
             </div>
           </td>
           <td colspan="3">
             <div class="label-inline-flex">
-              <%= @accident.last_reporting_date.present? ? l(@accident.last_reporting_date, format: :date) : nil %>
+              <% if @accident.last_reporting_date.present? %>
+                【最終報告日】<%= l(@accident.last_reporting_date, format: :date) %>
+              <% else %>
+                【最終報告日】未登録
+              <% end %>
             </div>
           </td>
         </tr>
@@ -60,11 +68,13 @@
         </thead>
         <tbody>
         <tr>
-          <th class="report-index">部署</th>
+          <th class="report-index" style="vertical-align: middle">部署</th>
           <td class="report-td">
-            <div><%= @accident.department %></div>
+            <div>
+              <p class="left-space"><%= @accident.department %></p>
+            </div>
           </td>
-          <th class="report-index">報告者</th>
+          <th class="report-index" style="vertical-align: middle">報告者</th>
           <td class="report-td"><%= @accident.reporter %></td>
         </tr>
         </tbody>
@@ -82,7 +92,7 @@
           </tr>
           <tr>
             <th class="report-index">対象者</th>
-            <td class="report-td"><%= @senior.senior_name %></td>
+            <td class="report-td" style="color: red"><%= @senior.senior_name %></td>
             <th class="report-index">関与者</th>
             <td class="report-td"><%= @accident.accident_worker %></td>
           </tr>
@@ -93,14 +103,20 @@
             <td class="report-td"><%= @accident.active %></td>
           </tr>
           <tr>
-            <th class="report-index">状況・職員の動き</th>
-            <td class="report-td-left" colspan="3">&emsp;<%= @accident.accident_scene %></td>
+            <th class="report-index"style="vertical-align: middle">状況・職員の動き</th>
+            <td class="report-td-left" colspan="3">
+              <p class="left-space">
+                <%= @accident.accident_scene %>
+              </p>
+            </td>
           </tr>
           <tr>
-            <th class="report-index">結果</th>
+            <th class="report-index" style="vertical-align: middle">結果</th>
             <td class="report-td-left" colspan="3">
               <% if @accident.accident_result.present? %>
-                【<%= @accident.accident_result %>】<%= @accident.accident_result_comment %>
+                <p class="left-space">
+                  【<%= @accident.accident_result %>】<%= @accident.accident_result_comment %>
+                </p>
               <% end %>
             </td>
           </tr>
@@ -112,19 +128,23 @@
         </thead>
         <tbody>
           <tr>
-            <td class="report-index" style="width: 15%;">場面・活動状況</td>
+            <td class="report-index" style="width: 15%; vertical-align: middle;">場面・活動状況</td>
             <td class="report-td">
-              <%= @accident.activity_scene %>
-              <% if @accident.other_activity_scene.present? %>
-                （<%= @accident.other_activity_scene %>）
-              <% end %>
+              <p class="left-space">
+                <%= @accident.activity_scene %>
+                <% if @accident.other_activity_scene.present? %>
+                  （<%= @accident.other_activity_scene %>）
+                <% end %>
+              </p>
             </td>
-            <td class="report-index" style="width: 15%;">出来事の領域別分類</td>
+            <td class="report-index" style="width: 15%; vertical-align: middle;">出来事の領域別分類</td>
             <td class="report-td">
-              <%= @accident.event_classification %>
-              <% if @accident.other_event.present? %>
-                （<%= @accident.other_event %>）
-              <% end %>
+              <p class="left-space">
+                <%= @accident.event_classification %>
+                <% if @accident.other_event.present? %>
+                  （<%= @accident.other_event %>）
+                <% end %>
+              </p>
             </td>
           </tr>
         </tbody>
@@ -135,25 +155,62 @@
         </thead>
         <tbody>
           <tr>
-            <th class="report-index">原因・要因</th>
-            <td class="report-td-left" colspan="3"></td>
+            <th class="report-index" style="vertical-align: middle">原因・要因</th>
+            <td class="report-td-left" colspan="3">
+              <p class="left-space"><%= @accident.result_comment %></p>
+              <p class="left-space">
+                【職員側】
+                <% if @accident.result_worker.present? %>
+                  <% str = @accident.result_worker %>
+                  <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %><br>
+                <% end %>
+              </p>
+              <p class="left-space">
+                【利用者側】
+                <% if @accident.result_senior.present?  %>
+                  <% str = @accident.result_senior %>
+                  <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %>
+                <% end %>
+              </p>
+            </td>
           </tr>
           <tr>
-            <th class="report-index">教訓・対策</th>
-            <td class="report-td-left" colspan="3"></td>
+            <th class="report-index" style="vertical-align: middle">教訓・対策</th>
+            <td class="report-td-left" colspan="3">
+              <p class="left-space"><%= @accident.measures_comment %></p>
+              <p class="left-space">
+                【改善点】
+                <% if @accident.measures.present? %>
+                  <% str = @accident.measures %>
+                  <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %><br>
+                <% end %>
+              </p>
+            </td>
           </tr>
           <tr>
-            <th class="report-index">対策変更</th>
-            <td class="report-td-left" colspan="3"></td>
+            <th class="report-index" style="vertical-align: middle">対策変更</th>
+            <td class="report-td-left" colspan="3">
+              <p class="left-space"><%= @accident.change_measures %></p>
+            </td>
           </tr>
           <tr>
-            <th class="report-index">効果<br>（翌月評価）</th>
-            <td class="report-td-left" colspan="2"></td>
-            <td class="report-td-left"></td>
+            <th class="report-index" style="vertical-align: middle">効果<br>（翌月評価）</th>
+            <td class="report-td-left" colspan="2">
+              <p class="left-space">
+                【評価日】
+                <%= @accident.evaluation_date.present? ? l(@accident.evaluation_date, format: :date) : nil %><br>
+                <%= @accident.evaluation_comment %>
+              </p>
+            </td>
+            <td class="report-td-left">
+              <p class="left-space">【解決状況】<br><%= @accident.measures_result %></p>
+            </td>
           </tr>
           <tr>
             <th class="report-index">責任者等<br>コメント</th>
-            <td class="report-td-left" colspan="3"></td>
+            <td class="report-td-left" colspan="3">
+              <p class="left-space"><%= @accident.superior_comment %></p>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -398,7 +398,7 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
-  width: 15%;
+  width: 25%;
   a:visited {
     color: white;
   }
@@ -580,7 +580,7 @@ th.sign-th {
   width: 10%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: #f0ad4e;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 th.report-th {
@@ -589,7 +589,7 @@ th.report-th {
   width:10px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: blanchedalmond;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .sign-box {
@@ -605,6 +605,7 @@ th.report-th {
 
 .report-index {
   width: 150px;
+  font-size: 16px;
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: #fcf8e3;
@@ -613,13 +614,15 @@ th.report-th {
 .report-td {
   width: 36%;
   text-align: center;
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .report-td-left {
   width: 36%;
+  font-size: 16px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-left: 20px;
 }
 
 td.report-td-left {
@@ -644,7 +647,8 @@ td.report-td-left {
 .pull-left {
   display: inline-block;
   margin-top: -70px;
-  width: 150px;
+  width: 160px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .bootstrap-date {
@@ -669,7 +673,8 @@ input#senior_accidents_accident_result_comment.form-control {
 
 .label-inline-flex {
   display: inline-flex;
-  margin-left: 60px;
+  font-size: 14px;
+  margin-left: 8px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -677,3 +682,41 @@ input#senior_accidents_accident_result_comment.form-control {
   display: inline-flex;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+
+.field {
+  padding: 0 8px;
+}
+
+.left-space {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+#evaluation-top {
+  padding-top: 5px;
+}
+
+p.left-space {
+ margin-bottom: 0;
+}
+
+.btn-flat-logo {
+  margin: -110px 0 0 20px;
+  position: absolute;
+  font-size: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-flat-logo:hover {
+  background: #1ec7bb;
+}
+
+
