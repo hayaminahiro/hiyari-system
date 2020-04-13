@@ -33,6 +33,7 @@
               <tr>
                 <td colspan="3">
                   <div class="label-inline-flex-new">
+                    <div></div>
                     <%= ac.label "報告日" %>&emsp;
                     <%= ac.date_select :reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
                   </div>
@@ -64,14 +65,14 @@
             </thead>
             <tbody>
               <tr>
-                <th class="report-index">部署<span class="select-choice">※ 必須</span></th>
+                <th class="report-index" style="vertical-align: middle">部署<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
                   <div>
                     <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
                                   {prompt: @accident.department}, class: "form-control" %>
                   </div>
                 </td>
-                <th class="report-index" style="padding-left: 40px">報告者<span class="select-choice">※ 必須</span></th>
+                <th class="report-index" style="padding-left: 40px; vertical-align: middle;">報告者<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
                   <%= ac.select :reporter, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
                                 {prompt: @accident.reporter}, class: "form-control" %>
@@ -86,48 +87,48 @@
             </thead>
             <tbody>
               <tr>
-                <th class="report-index">日付</th>
+                <th class="report-index" style="vertical-align: middle">日付</th>
                 <td class="report-td">
                   <div>
                     <%= ac.date_select :accident_datetime, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
                   </div>
                 </td>
-                <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
+                <th class="report-index" style="padding-left: 40px; vertical-align: middle">時間<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
                   <%= ac.time_select :accident_time, {value: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
                 </td>
               </tr>
               <tr>
-                <th class="report-index">対象者</th>
-                <td class="report-td" style="color: red">
+                <th class="report-index" style="vertical-align: middle">対象者</th>
+                <td class="report-td" style="color: red; vertical-align: middle;">
                   <%= @senior.senior_name %>
                   <%= ac.hidden_field :accident_floor, value: @senior.floor %>
                 </td>
-                <th class="report-index">関与者</th>
+                <th class="report-index" style="vertical-align: middle">関与者</th>
                 <td>
                   <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
                                 {prompt: "選択して下さい。"}, class: "form-control" %>
                 </td>
               </tr>
               <tr>
-                <th class="report-index">場所</th>
+                <th class="report-index" style="vertical-align: middle">場所</th>
                   <td class="report-td">
                     <%= ac.text_field :accident_place, value: @accident.accident_place, placeholder: "ヒヤリ・事故が起こった場所", class: "form-control" %>
                   </td>
-                <th class="report-index">活動等</th>
+                <th class="report-index" style="vertical-align: middle">活動等</th>
                 <td class="report-td">
                   <%= ac.text_field :active, value: @accident.active, placeholder: "職員の活動内容", class: "form-control" %>
                 </td>
               </tr>
               <tr>
-                <th class="report-index">状況・職員の動き<div class="select-choice">※ 必須</div></th>
+                <th class="report-index" style="vertical-align: middle">状況・職員の動き<div class="select-choice">※ 必須</div></th>
                 <td class="report-td-left" colspan="3">
                   <%= ac.text_area :accident_scene, value: @accident.accident_scene, rows: 3, class: 'form-control',
                                    placeholder: "ヒヤリ・事故が起こった状況の詳細を記載" %>
                 </td>
               </tr>
               <tr>
-                <th class="report-index">結果</th>
+                <th class="report-index" style="vertical-align: middle">結果</th>
                 <td class="report-td-left" colspan="3">
                   <div class="radio-inline">
                     <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
@@ -170,7 +171,7 @@
             </thead>
             <tbody>
               <tr>
-                <th class="report-index">原因・要因</th>
+                <th class="report-index" style="vertical-align: middle">原因・要因</th>
                 <td class="report-td-left" colspan="2">
                   <%= ac.text_area :result_comment, value: @accident.result_comment, rows: 4, class: 'form-control',
                                    placeholder: "具体的な原因・要因を記載" %>
@@ -191,7 +192,7 @@
                 </td>
               </tr>
               <tr>
-                <th class="report-index">教訓・対策</th>
+                <th class="report-index" style="vertical-align: middle">教訓・対策</th>
                 <td class="report-td-left" colspan="2">
                   <%= ac.text_area :measures_comment, value: @accident.measures_comment, rows: 4, class: 'form-control',
                                    placeholder: "フロミ後、教訓・対策を記載" %>
@@ -207,13 +208,13 @@
                 </td>
               </tr>
               <tr>
-                <th class="report-index">対策変更</th>
+                <th class="report-index" style="vertical-align: middle">対策変更</th>
                 <td class="report-td-left" colspan="3">
                   <%= ac.text_field :change_measures, value: @accident.change_measures, placeholder: "事故防止の為に変更した対策を記載", class: "form-control" %>
                 </td>
               </tr>
               <tr>
-                <th class="report-index">効果<br>（翌月評価）</th>
+                <th class="report-index" style="vertical-align: middle">効果<br>（翌月評価）</th>
                 <td class="report-td-left" colspan="2">
                   <%= ac.label "評価日" %>
                   <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
@@ -227,7 +228,7 @@
                 </td>
               </tr>
               <tr>
-                <th class="report-index">責任者等<br>コメント</th>
+                <th class="report-index" style="vertical-align: middle">責任者等<br>コメント</th>
                 <td class="report-td-left" colspan="3">
                   <%= ac.text_area :superior_comment, value: @accident.superior_comment, rows: 2, class: "form-control" %>
                 </td>
