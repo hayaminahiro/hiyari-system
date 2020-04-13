@@ -398,7 +398,7 @@ label.label-senior{
 
 .show-btn-position {
   text-align: center;
-  width: 15%;
+  width: 25%;
   a:visited {
     color: white;
   }
@@ -699,4 +699,24 @@ input#senior_accidents_accident_result_comment.form-control {
 p.left-space {
  margin-bottom: 0;
 }
+
+.btn-flat-logo {
+  margin: -110px 0 0 20px;
+  position: absolute;
+  font-size: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-flat-logo:hover {
+  background: #1ec7bb;
+}
+
 
