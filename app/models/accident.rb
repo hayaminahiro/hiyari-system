@@ -17,4 +17,8 @@ class Accident < ApplicationRecord
       感染症: 12, 忘れ物・返却忘れ: 13, その他: 14
   }, _suffix: true
 
+  enum measures_result: {
+      上記対策にて解決: 0, 対策変更にて解決: 1, 未解決: 2, その他: 3
+  }, _suffix: true
+
 end

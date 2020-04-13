@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_215115) do
     t.string "change_measures"
     t.datetime "evaluation_date"
     t.string "evaluation_comment"
-    t.string "measures_result"
+    t.integer "measures_result"
     t.string "superior_comment"
     t.datetime "reporting_date"
     t.datetime "last_reporting_date"
