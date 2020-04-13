@@ -64,7 +64,7 @@
             </thead>
             <tbody>
               <tr>
-                <th class="report-index">部署</th>
+                <th class="report-index">部署<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
                   <div>
                     <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
@@ -94,7 +94,7 @@
                 </td>
                 <th class="report-index" style="padding-left: 40px">時間<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
-                  <%= ac.time_select :accident_time, {prompt: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
+                  <%= ac.time_select :accident_time, {value: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
                 </td>
               </tr>
               <tr>
@@ -112,11 +112,11 @@
               <tr>
                 <th class="report-index">場所</th>
                   <td class="report-td">
-                    <%= ac.text_field :accident_place, placeholder: "ヒヤリ・事故が起こった場所", class: "form-control" %>
+                    <%= ac.text_field :accident_place, value: @accident.accident_place, placeholder: "ヒヤリ・事故が起こった場所", class: "form-control" %>
                   </td>
                 <th class="report-index">活動等</th>
                 <td class="report-td">
-                  <%= ac.text_field :active, placeholder: "職員の活動内容", class: "form-control" %>
+                  <%= ac.text_field :active, value: @accident.active, placeholder: "職員の活動内容", class: "form-control" %>
                 </td>
               </tr>
               <tr>
@@ -136,7 +136,7 @@
                   <div class="radio-inline">
                     <%= ac.radio_button :accident_result, "軽事故等" %>
                     <%= ac.label "軽事故等" %>
-                    <%= ac.text_field :accident_result_comment, placeholder: "その後の経過や家族との連絡状況等を記載", class: "form-control" %>
+                    <%= ac.text_field :accident_result_comment, value: @accident.accident_result_comment, placeholder: "その後の経過や家族との連絡状況等を記載", class: "form-control" %>
                   </div>
                 </td>
               </tr>
@@ -150,16 +150,16 @@
             <tbody>
             <tr>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {}, { class: "form-control" } %>
+                <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリの場面を選択"}, { class: "form-control" } %>
               </td>
               <td class="report-td">
-                <%= ac.text_field :other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+                <%= ac.text_field :other_activity_scene, value: @accident.other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {}, { class: "form-control" } %>
+                <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事の領域を選択"}, { class: "form-control" } %>
               </td>
               <td class="report-td">
-                <%= ac.text_field :other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+                <%= ac.text_field :other_event, value: @accident.other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
             </tr>
             </tbody>
@@ -209,7 +209,7 @@
               <tr>
                 <th class="report-index">対策変更</th>
                 <td class="report-td-left" colspan="3">
-                  <%= ac.text_field :change_measures, placeholder: "事故防止の為に変更した対策を記載", class: "form-control" %>
+                  <%= ac.text_field :change_measures, value: @accident.change_measures, placeholder: "事故防止の為に変更した対策を記載", class: "form-control" %>
                 </td>
               </tr>
               <tr>
@@ -218,18 +218,18 @@
                   <%= ac.label "評価日" %>
                   <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
                   <div id="evaluation-top">
-                    <%= ac.text_field :evaluation_comment, placeholder: "対策後の状況を評価", class: "form-control" %>
+                    <%= ac.text_field :evaluation_comment, value: @accident.evaluation_comment, placeholder: "対策後の状況を評価", class: "form-control" %>
                   </div>
                 </td>
                 <td class="report-td-left" style="padding-top: 14px">
                   <%= ac.label "【解決状況】" %>
-                  <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "選択して下さい。"}, { class: "form-control" } %>
+                  <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "その後の経過を選択して下さい。"}, { class: "form-control" } %>
                 </td>
               </tr>
               <tr>
                 <th class="report-index">責任者等<br>コメント</th>
                 <td class="report-td-left" colspan="3">
-                  <%= ac.text_area :superior_comment, class: "form-control" %>
+                  <%= ac.text_area :superior_comment, value: @accident.superior_comment, rows: 2, class: "form-control" %>
                 </td>
               </tr>
             </tbody>
