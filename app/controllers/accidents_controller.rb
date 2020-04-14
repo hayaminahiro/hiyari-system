@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create]
+  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :browsing]
   #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :correct_facility, only: [:edit, :update]
   #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
@@ -49,30 +49,36 @@ class AccidentsController < ApplicationController
     end
   end
 
-  private
+  #ヒヤリ閲覧モーダル
+  def browsing
+    @senior = @facility.seniors.find(params[:senior_id])
+    @accident = @senior.accidents.find(params[:id])
+  end
 
-    #ヒヤリ・事故情報
-    def accident_params
-      params.require(:senior).permit(accidents: [
-          #table外
-          :which_accident, :reporting_date, :last_reporting_date, :department, :reporter,
-          #具体的内容
-          :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
-          :accident_scene, :accident_result, :accident_result_comment,
-          #場面、出来事の領域別分類
-          :activity_scene, :other_activity_scene, :event_classification, :other_event,
-          #原因・対策・効果等
-          :result_comment, :measures_comment, :change_measures,
-          #評価・結果
-          :evaluation_date, :evaluation_comment, :measures_result, :superior_comment,
-          #発生直後サイン
-          :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
-          #周知後サイン
-          :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
-          #複数チェックボックス
-          result_worker: [], result_senior: [], measures: []
-      ])[:accidents]
-    end
+    private
+
+      #ヒヤリ・事故情報
+      def accident_params
+        params.require(:senior).permit(accidents: [
+            #table外
+            :which_accident, :reporting_date, :last_reporting_date, :department, :reporter,
+            #具体的内容
+            :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
+            :accident_scene, :accident_result, :accident_result_comment,
+            #場面、出来事の領域別分類
+            :activity_scene, :other_activity_scene, :event_classification, :other_event,
+            #原因・対策・効果等
+            :result_comment, :measures_comment, :change_measures,
+            #評価・結果
+            :evaluation_date, :evaluation_comment, :measures_result, :superior_comment,
+            #発生直後サイン
+            :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
+            #周知後サイン
+            :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
+            #複数チェックボックス
+            result_worker: [], result_senior: [], measures: []
+        ])[:accidents]
+      end
 
 end
 
