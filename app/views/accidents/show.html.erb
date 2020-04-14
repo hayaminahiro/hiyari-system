@@ -3,7 +3,7 @@
 <% if @accident.which_accident == "ヒヤリハット" %>
   <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
 <% else %>
-  <h3 class="title-position-print">事故報告書</h3>
+  <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;事故報告書</h3>
 <% end %>
 
 <div class="container">

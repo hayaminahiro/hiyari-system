@@ -31,7 +31,12 @@ Rails.application.routes.draw do
         #施設利用者再入所
         patch 're_entry'
       end
-      resources :accidents
+      resources :accidents do
+        member do
+          #ヒヤリ閲覧モーダル
+          get 'browsing'
+        end
+      end
     end
     resources :accidents do
       collection do
