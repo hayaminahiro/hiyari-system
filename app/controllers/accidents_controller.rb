@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :browsing]
+  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :browsing]
   #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :correct_facility, only: [:edit, :update]
   #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
@@ -47,6 +47,12 @@ class AccidentsController < ApplicationController
       @accident = @senior.accidents.new(accident_params)
       render :new
     end
+  end
+
+  def edit
+    @senior = @facility.seniors.find(params[:senior_id])
+    @accident = @senior.accidents.new
+
   end
 
   #ヒヤリ閲覧モーダル
