@@ -237,14 +237,22 @@
               <th class="report-index" style="vertical-align: middle">効果<br>（翌月評価）</th>
               <td class="report-td-left" colspan="2">
                 <%= ac.label "評価日" %>
-                <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                <% if @accident.evaluation_date.present? %>
+                  <%= ac.date_select :evaluation_date, {default: @accident.evaluation_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
+                <% else %>
+                  <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                <% end %>
                 <div id="evaluation-top">
                   <%= ac.text_field :evaluation_comment, value: @accident.evaluation_comment, placeholder: "対策後の状況を評価", class: "form-control" %>
                 </div>
               </td>
               <td class="report-td-left" style="padding-top: 14px">
                 <%= ac.label "【解決状況】" %>
-                <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "その後の経過を選択して下さい。"}, { class: "form-control" } %>
+                <% if @accident.measures_result.present? %>
+                  <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {selected: @accident.measures_result}, { class: "form-control" } %>
+                <% else %>
+                  <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "その後の経過を選択して下さい。"}, { class: "form-control" } %>
+                <% end %>
               </td>
             </tr>
             <tr>
