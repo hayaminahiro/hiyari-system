@@ -1,7 +1,7 @@
 <% provide(:title, 'ヒヤリ新規作成') %>
-<% provide(:button_text, 'ヒヤリ・事故報告書 / 新規作成 ') %>
+<% provide(:button_text, 'ヒヤリ・事故報告書　新規作成 ') %>
 
-<h1 class="title-position">ヒヤリ・事故報告書 新規作成</h1>
+<h1 class="title-position">【新規作成】ヒヤリ・事故報告書</h1>
 
 <%= form_with(model: @senior, url: facility_senior_accidents_path, local: true, method: :post) do |f| %>
   <%= f.fields_for :accidents do |ac| %>
