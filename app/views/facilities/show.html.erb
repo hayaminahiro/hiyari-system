@@ -79,8 +79,8 @@
                   <td class="show-btn-position tr-back1">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
@@ -100,8 +100,8 @@
                   <td class="show-btn-position">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
@@ -166,8 +166,8 @@
                   <td class="show-btn-position tr-back1">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
@@ -187,8 +187,8 @@
                   <td class="show-btn-position">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
@@ -253,8 +253,8 @@
                   <td class="show-btn-position tr-back1">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
@@ -274,8 +274,8 @@
                   <td class="show-btn-position">
                     <%= link_to "閲覧", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn btn-primary btn-xs" %>
                     <%= link_to "編集", edit_facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-success btn-xs" %>
-                    <%= link_to "削除", "#", method: :delete,
-                                data: { confirm: "「#{}」さんを削除してよろしいですか？" }, class: "btn btn-danger btn-xs"  %>
+                    <%= link_to "削除", facility_senior_accident_path(@facility, accident.senior, accident), method: :delete,
+                                data: { confirm: "「#{accident.senior.senior_name}」さんの#{accident.which_accident}報告書を削除してよろしいですか？" }, class: "btn btn-danger btn-xs" %>
                     <%= link_to "印刷画面", facility_senior_accident_path(@facility, accident.senior, accident), local: true, class: "btn btn-info btn-xs" %>
                   </td>
                 </tr>
