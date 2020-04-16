@@ -35,13 +35,21 @@
                   <div class="label-inline-flex-new">
                     <div></div>
                     <%= ac.label "報告日" %>&emsp;
-                    <%= ac.date_select :reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% if @accident.reporting_date.present? %>
+                      <%= ac.date_select :reporting_date, {default: @accident.reporting_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% else %>
+                      <%= ac.date_select :reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% end %>
                   </div>
                 </td>
                 <td colspan="3">
                   <div class="label-inline-flex-new">
                     <%= ac.label "最終報告日" %>&emsp;
-                    <%= ac.date_select :last_reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% if @accident.last_reporting_date.present? %>
+                      <%= ac.date_select :last_reporting_date, {default: @accident.last_reporting_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% else %>
+                      <%= ac.date_select :last_reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                    <% end %>
                   </div>
                 </td>
               </tr>
@@ -53,7 +61,11 @@
     <div class="container">
       <div class="pull-left">
         <%= ac.label "ヒヤリ・事故選択" %><span class="select-choice">※ 必須</span>
-        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: @accident.which_accident},class: "form-control" %>
+        <% if @accident.which_accident.present? %>
+          <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {selected: @accident.which_accident}, class: "form-control" %>
+        <% else %>
+          <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: "選択して下さい。"}, class: "form-control" %>
+        <% end %>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -68,14 +80,24 @@
                 <th class="report-index" style="vertical-align: middle">部署<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
                   <div>
-                    <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
-                                  {prompt: @accident.department}, class: "form-control" %>
+                    <% if @accident.department.present? %>
+                      <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
+                                    {selected: @accident.department}, class: "form-control" %>
+                    <% else %>
+                      <%= ac.select :department, {特養: "特養", 通所: "通所", 居宅サービス: "居宅サービス", 管理: "管理", 栄養: "栄養"},
+                                    {prompt: "選択して下さい。"}, class: "form-control" %>
+                    <% end %>
                   </div>
                 </td>
                 <th class="report-index" style="padding-left: 40px; vertical-align: middle;">報告者<span class="select-choice">※ 必須</span></th>
                 <td class="report-td">
-                  <%= ac.select :reporter, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
-                                {prompt: @accident.reporter}, class: "form-control" %>
+                  <% if @accident.reporter.present? %>
+                    <%= ac.select :reporter, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                {selected: @accident.reporter}, class: "form-control" %>
+                  <% else %>
+                    <%= ac.select :reporter, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                  {prompt: "選択して下さい。"}, class: "form-control" %>
+                  <% end %>
                 </td>
               </tr>
             </tbody>
@@ -90,12 +112,12 @@
                 <th class="report-index" style="vertical-align: middle">日付</th>
                 <td class="report-td">
                   <div>
-                    <%= ac.date_select :accident_datetime, {use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
+                    <%= ac.date_select :accident_datetime, {default: @accident.accident_datetime, use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
                   </div>
                 </td>
-                <th class="report-index" style="padding-left: 40px; vertical-align: middle">時間<span class="select-choice">※ 必須</span></th>
+                <th class="report-index" style="padding-left: 40px; vertical-align: middle">時間</th>
                 <td class="report-td">
-                  <%= ac.time_select :accident_time, {value: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
+                  <%= ac.time_select :accident_time, {default: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
                 </td>
               </tr>
               <tr>
@@ -106,8 +128,13 @@
                 </td>
                 <th class="report-index" style="vertical-align: middle">関与者</th>
                 <td>
-                  <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
-                                {prompt: "選択して下さい。"}, class: "form-control" %>
+                  <% if @accident.accident_worker.present? %>
+                    <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                  {selected: @accident.accident_worker}, class: "form-control" %>
+                  <% else %>
+                    <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                  {prompt: "選択して下さい。"}, class: "form-control" %>
+                  <% end %>
                 </td>
               </tr>
               <tr>
@@ -130,15 +157,27 @@
               <tr>
                 <th class="report-index" style="vertical-align: middle">結果</th>
                 <td class="report-td-left" colspan="3">
-                  <div class="radio-inline">
-                    <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
-                    <%= ac.label "ヒヤリのみ" %>
-                  </div><br>
-                  <div class="radio-inline">
-                    <%= ac.radio_button :accident_result, "軽事故等" %>
-                    <%= ac.label "軽事故等" %>
-                    <%= ac.text_field :accident_result_comment, value: @accident.accident_result_comment, placeholder: "その後の経過や家族との連絡状況等を記載", class: "form-control" %>
-                  </div>
+                  <% if @accident.accident_result == "ヒヤリのみ" || @accident.accident_result.blank? %>
+                    <div class="radio-inline">
+                      <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
+                      <%= ac.label "ヒヤリのみ" %>
+                    </div><br>
+                    <div class="radio-inline">
+                      <%= ac.radio_button :accident_result, "軽事故等" %>
+                      <%= ac.label "軽事故等" %>
+                      <%= ac.text_field :accident_result_comment, value: @accident.accident_result_comment, placeholder: "その後の経過や家族との連絡状況等を記載", class: "form-control" %>
+                    </div>
+                  <% else %>
+                    <div class="radio-inline">
+                      <%= ac.radio_button :accident_result, "ヒヤリのみ" %>
+                      <%= ac.label "ヒヤリのみ" %>
+                    </div><br>
+                    <div class="radio-inline">
+                      <%= ac.radio_button :accident_result, "軽事故等", checked: "checked" %>
+                      <%= ac.label "軽事故等" %>
+                      <%= ac.text_field :accident_result_comment, value: @accident.accident_result_comment, placeholder: "その後の経過や家族との連絡状況等を記載", class: "form-control" %>
+                    </div>
+                  <% end %>
                 </td>
               </tr>
             </tbody>
@@ -151,13 +190,21 @@
             <tbody>
             <tr>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリの場面を選択"}, { class: "form-control" } %>
+                <% if @accident.activity_scene.present? %>
+                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {selected: @accident.activity_scene}, { class: "form-control" } %>
+                <% else %>
+                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリの場面を選択"}, { class: "form-control" } %>
+                <% end %>
               </td>
               <td class="report-td">
                 <%= ac.text_field :other_activity_scene, value: @accident.other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事の領域を選択"}, { class: "form-control" } %>
+                <% if @accident.event_classification.present? %>
+                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {selected: @accident.event_classification}, { class: "form-control" } %>
+                <% else %>
+                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事の領域を選択"}, { class: "form-control" } %>
+                <% end %>
               </td>
               <td class="report-td">
                 <%= ac.text_field :other_event, value: @accident.other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
@@ -217,14 +264,22 @@
                 <th class="report-index" style="vertical-align: middle">効果<br>（翌月評価）</th>
                 <td class="report-td-left" colspan="2">
                   <%= ac.label "評価日" %>
-                  <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                  <% if @accident.evaluation_date.present? %>
+                    <%= ac.date_select :evaluation_date, {default: @accident.evaluation_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
+                  <% else %>
+                    <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                  <% end %>
                   <div id="evaluation-top">
                     <%= ac.text_field :evaluation_comment, value: @accident.evaluation_comment, placeholder: "対策後の状況を評価", class: "form-control" %>
                   </div>
                 </td>
                 <td class="report-td-left" style="padding-top: 14px">
                   <%= ac.label "【解決状況】" %>
-                  <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "その後の経過を選択して下さい。"}, { class: "form-control" } %>
+                  <% if @accident.measures_result.present? %>
+                    <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {selected: @accident.measures_result}, { class: "form-control" } %>
+                  <% else %>
+                    <%= ac.select :measures_result, Accident.measures_results.keys.to_a, {prompt: "その後の経過を選択して下さい。"}, { class: "form-control" } %>
+                  <% end %>
                 </td>
               </tr>
               <tr>
