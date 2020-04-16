@@ -68,10 +68,10 @@ class FacilitiesController < ApplicationController
   end
 
 
-  private
+    private
 
-    def facility_params
-      params.require(:facility).permit(:name, :email, :password, :password_confirmation)
-    end
+      def facility_params
+        params.require(:facility).permit(:name, :email, :password, :password_confirmation)
+      end
 
 end
