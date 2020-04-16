@@ -138,7 +138,7 @@
             <tr>
               <th class="report-index" style="vertical-align: middle">結果</th>
               <td class="report-td-left" colspan="3">
-                <% if @accident.accident_result == "ヒヤリのみ" %>
+                <% if @accident.accident_result == "ヒヤリのみ" || @accident.accident_result.blank?  %>
                   <div class="radio-inline">
                     <%= ac.radio_button :accident_result, "ヒヤリのみ", checked: "checked" %>
                     <%= ac.label "ヒヤリのみ" %>
