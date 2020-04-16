@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing]
+  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing, :destroy]
   #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :correct_facility, only: [:edit, :update]
   #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
@@ -61,7 +61,7 @@ class AccidentsController < ApplicationController
       flash[:success] = "ヒヤリ・事故報告書の内容を更新しました。"
       redirect_to facility_senior_accident_path
     else
-      flash[:danger] = "未入力項目があります。再度確認して下さい。"
+      flash.now[:danger] = "未入力項目があります。再度確認して下さい。"
       render :edit
     end
   end
@@ -70,6 +70,16 @@ class AccidentsController < ApplicationController
   def browsing
     @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.find(params[:id])
+  end
+
+  #ヒヤリ削除ボタン
+  def destroy
+    @senior = @facility.seniors.find(params[:senior_id])
+    @accident = @senior.accidents.find(params[:id])
+    if @accident.destroy
+      flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
+      redirect_to facility_accidents_url
+    end
   end
 
     private
