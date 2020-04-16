@@ -61,7 +61,11 @@
     <div class="container">
       <div class="pull-left">
         <%= ac.label "ヒヤリ・事故選択" %>
-        <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {selected: @accident.which_accident}, class: "form-control" %>
+        <% if @accident.which_accident.present? %>
+          <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {selected: @accident.which_accident}, class: "form-control" %>
+        <% else %>
+          <%= ac.select :which_accident, {ヒヤリハット: "ヒヤリハット", 事故: "事故"}, {prompt: "選択して下さい。"}, class: "form-control" %>
+        <% end %>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -89,9 +93,9 @@
             </tbody>
 
             <thead>
-            <tr>
-              <th class="report-th" colspan="4">具体的内容</th>
-            </tr>
+              <tr>
+                <th class="report-th" colspan="4">具体的内容</th>
+              </tr>
             </thead>
             <tbody>
             <tr>
@@ -114,8 +118,13 @@
               </td>
               <th class="report-index" style="vertical-align: middle">関与者</th>
               <td>
-                <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
-                              {selected: @accident.accident_worker}, class: "form-control" %>
+                <% if @accident.accident_worker.present? %>
+                  <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                {selected: @accident.accident_worker}, class: "form-control" %>
+                <% else %>
+                  <%= ac.select :accident_worker, Worker.all.where(working_flg: true).order(:worker_name_call).map { |worker| [worker.worker_name, worker.worker_name] },
+                                {prompt: "選択して下さい。"}, class: "form-control" %>
+                <% end %>
               </td>
             </tr>
             <tr>
@@ -171,13 +180,21 @@
             <tbody>
             <tr>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {selected: @accident.activity_scene}, { class: "form-control" } %>
+                <% if @accident.activity_scene.present? %>
+                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {selected: @accident.activity_scene}, { class: "form-control" } %>
+                <% else %>
+                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリの場面を選択"}, { class: "form-control" } %>
+                <% end %>
               </td>
               <td class="report-td">
                 <%= ac.text_field :other_activity_scene, value: @accident.other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
               <td class="report-td" style="width: 15%;">
-                <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {selected: @accident.event_classification}, { class: "form-control" } %>
+                <% if @accident.event_classification.present? %>
+                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {selected: @accident.event_classification}, { class: "form-control" } %>
+                <% else %>
+                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事の領域を選択"}, { class: "form-control" } %>
+                <% end %>
               </td>
               <td class="report-td">
                 <%= ac.text_field :other_event, value: @accident.other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
