@@ -102,8 +102,10 @@ class AccidentsController < ApplicationController
             :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
             #周知後サイン
             :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
-            #複数チェックボックス
-            result_worker: [], result_senior: [], measures: []
+            #複数チェックボックス・・・原因・要因（職員側）
+            support_mistake: [], not_enough_skills: [], work_attitude: [], information_sharing_worker: [], not_enough_assessment: [], environment: []
+            #複数チェックボックス・・・原因・要因（利用者側）
+
         ])[:accidents]
       end
 
