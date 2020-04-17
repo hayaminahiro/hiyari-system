@@ -226,10 +226,24 @@
                 <td class="report-td-left">
                   <div class="field">
                     【<%= ac.label :result_worker, "職員側" %>】&nbsp;
-                    <% %w(支援ミス スキル不足 勤務態度 情報の共有 アセス不足 環境・設備面).each do |item| %>
-                        <%= check_box_tag 'senior[accidents][result_worker][]', item %>
-                        <%= item %>
-                    <% end %><br>
+                    <%= check_box_tag 'senior[accidents][support_mistake][]', false, checked = checkbox_judgment(@accident.support_mistake) %> 支援ミス,
+                    <%= check_box_tag 'senior[accidents][not_enough_skills][]', false, checked = checkbox_judgment(@accident.not_enough_skills) %> スキル不足
+                    <%= check_box_tag 'senior[accidents][work_attitude][]', false, checked = checkbox_judgment(@accident.work_attitude) %> 勤務態度
+                    <%= check_box_tag 'senior[accidents][information_sharing_worker][]', false, checked = checkbox_judgment(@accident.information_sharing_worker) %> 情報の共有
+                    <%= check_box_tag 'senior[accidents][not_enough_assessment][]', false, checked = checkbox_judgment(@accident.not_enough_assessment) %> アセス不足
+                    <%= check_box_tag 'senior[accidents][environment][]', false, checked = checkbox_judgment(@accident.environment) %> 環境・設備面
+
+
+
+
+                    <%# %w(支援ミス スキル不足 勤務態度 情報の共有 アセス不足 環境・設備面).each do |item| %>
+                        <%#= check_box_tag 'senior[accidents][result_worker][]', item %>
+
+                        <%#= check_box_tag 'senior[accidents][result_worker][]', item, checked = checkbox_judgment(@accident.result_worker) %>
+
+                        <%#= item %>
+                    <%# end %>
+                    <br>
                     【<%= ac.label :result_senior, "利用者側" %>】&nbsp;
                     <% %w(体調不良 精神的不安定 発作 特性 加齢).each do |item| %>
                       <%= check_box_tag 'senior[accidents][result_senior][]', item %>

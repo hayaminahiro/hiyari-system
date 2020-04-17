@@ -160,17 +160,19 @@
               <p class="left-space"><%= @accident.result_comment %></p>
               <p class="left-space">
                 【職員側】
-                <% if @accident.result_worker.present? %>
-                  <% str = @accident.result_worker %>
-                  <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %><br>
-                <% end %>
+                <%= @accident.support_mistake == true ? "支援ミス" : nil %>
+                <%= @accident.not_enough_skills == true ? "スキル不足" : nil %>
+                <%= @accident.work_attitude == true ? "勤務態度" : nil %>
+                <%= @accident.information_sharing_worker == true ? "情報の共有" : nil %>
+                <%= @accident.not_enough_assessment == true ? "アセス不足" : nil %>
+                <%= @accident.environment == true ? "環境・設備面" : nil %>
               </p>
               <p class="left-space">
                 【利用者側】
-                <% if @accident.result_senior.present?  %>
-                  <% str = @accident.result_senior %>
-                  <%= str.gsub!("[", "").gsub!("]", "").delete(str[0]) %>
-                <% end %>
+
+
+
+
               </p>
             </td>
           </tr>
