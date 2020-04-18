@@ -206,7 +206,7 @@
                     <td class="report-td-left" colspan="2">
                       <p class="left-space">
                         【評価日】
-                        <%= @accident.evaluation_date.present? ? l(@accident.evaluation_date, format: :date) : nil %><br>
+                        <%= l(@accident.evaluation_date, format: :date) if @accident.evaluation_date.present? %><br>
                         <%= @accident.evaluation_comment %>
                       </p>
                     </td>

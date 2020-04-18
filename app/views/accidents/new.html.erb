@@ -225,7 +225,7 @@
                 </td>
                 <td class="report-td-left">
                   <div class="field">
-                    【<%= ac.label :result_worker, "職員側" %>】&nbsp;
+                    【<%= ac.label "職員側" %>】&nbsp;
                     <%= check_box_tag 'senior[accidents][support_mistake][]', false, checked = checkbox_judgment(@accident.support_mistake) %> 支援ミス
                     <%= check_box_tag 'senior[accidents][not_enough_skills][]', false, checked = checkbox_judgment(@accident.not_enough_skills) %> スキル不足
                     <%= check_box_tag 'senior[accidents][work_attitude][]', false, checked = checkbox_judgment(@accident.work_attitude) %> 勤務態度
@@ -233,7 +233,7 @@
                     <%= check_box_tag 'senior[accidents][not_enough_assessment][]', false, checked = checkbox_judgment(@accident.not_enough_assessment) %> アセス不足
                     <%= check_box_tag 'senior[accidents][environment][]', false, checked = checkbox_judgment(@accident.environment) %> 環境・設備面
                     <br>
-                    【<%= ac.label :result_senior, "利用者側" %>】&nbsp;
+                    【<%= ac.label "利用者側" %>】&nbsp;
                     <%= check_box_tag 'senior[accidents][poor_health][]', false, checked = checkbox_judgment(@accident.poor_health) %> 体調不良
                     <%= check_box_tag 'senior[accidents][mental_instability][]', false, checked = checkbox_judgment(@accident.mental_instability) %> 精神的不安定<br>
                     <%= check_box_tag 'senior[accidents][seizure][]', false, checked = checkbox_judgment(@accident.seizure) %> 発作
@@ -250,7 +250,7 @@
                 </td>
                 <td class="report-td-left">
                   <div class="field" style="padding-top: 11px">
-                    【<%= ac.label :measures, "改善点" %>】&nbsp;
+                    【<%= ac.label "改善点" %>】&nbsp;
                     <%= check_box_tag 'senior[accidents][improved_support][]', false, checked = checkbox_judgment(@accident.improved_support) %> 支援の改善
                     <%= check_box_tag 'senior[accidents][understanding_seniors][]', false, checked = checkbox_judgment(@accident.understanding_seniors) %> 利用者の把握<br>
                     <%= check_box_tag 'senior[accidents][well_known][]', false, checked = checkbox_judgment(@accident.well_known) %> 周知の徹底
