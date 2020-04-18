@@ -38,7 +38,7 @@
                     <% if @accident.reporting_date.present? %>
                       <%= ac.date_select :reporting_date, {default: @accident.reporting_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                     <% else %>
-                      <%= ac.date_select :reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                      <%= ac.date_select :reporting_date, {prompt: :include_blank, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                     <% end %>
                   </div>
                 </td>
@@ -48,7 +48,7 @@
                     <% if @accident.last_reporting_date.present? %>
                       <%= ac.date_select :last_reporting_date, {default: @accident.last_reporting_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                     <% else %>
-                      <%= ac.date_select :last_reporting_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                      <%= ac.date_select :last_reporting_date, {prompt: :include_blank, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                     <% end %>
                   </div>
                 </td>
@@ -226,29 +226,19 @@
                 <td class="report-td-left">
                   <div class="field">
                     【<%= ac.label :result_worker, "職員側" %>】&nbsp;
-                    <%= check_box_tag 'senior[accidents][support_mistake][]', false, checked = checkbox_judgment(@accident.support_mistake) %> 支援ミス,
+                    <%= check_box_tag 'senior[accidents][support_mistake][]', false, checked = checkbox_judgment(@accident.support_mistake) %> 支援ミス
                     <%= check_box_tag 'senior[accidents][not_enough_skills][]', false, checked = checkbox_judgment(@accident.not_enough_skills) %> スキル不足
                     <%= check_box_tag 'senior[accidents][work_attitude][]', false, checked = checkbox_judgment(@accident.work_attitude) %> 勤務態度
                     <%= check_box_tag 'senior[accidents][information_sharing_worker][]', false, checked = checkbox_judgment(@accident.information_sharing_worker) %> 情報の共有
                     <%= check_box_tag 'senior[accidents][not_enough_assessment][]', false, checked = checkbox_judgment(@accident.not_enough_assessment) %> アセス不足
                     <%= check_box_tag 'senior[accidents][environment][]', false, checked = checkbox_judgment(@accident.environment) %> 環境・設備面
-
-
-
-
-                    <%# %w(支援ミス スキル不足 勤務態度 情報の共有 アセス不足 環境・設備面).each do |item| %>
-                        <%#= check_box_tag 'senior[accidents][result_worker][]', item %>
-
-                        <%#= check_box_tag 'senior[accidents][result_worker][]', item, checked = checkbox_judgment(@accident.result_worker) %>
-
-                        <%#= item %>
-                    <%# end %>
                     <br>
                     【<%= ac.label :result_senior, "利用者側" %>】&nbsp;
-                    <% %w(体調不良 精神的不安定 発作 特性 加齢).each do |item| %>
-                      <%= check_box_tag 'senior[accidents][result_senior][]', item %>
-                      <%= item %>
-                    <% end %>
+                    <%= check_box_tag 'senior[accidents][poor_health][]', false, checked = checkbox_judgment(@accident.poor_health) %> 体調不良
+                    <%= check_box_tag 'senior[accidents][mental_instability][]', false, checked = checkbox_judgment(@accident.mental_instability) %> 精神的不安定<br>
+                    <%= check_box_tag 'senior[accidents][seizure][]', false, checked = checkbox_judgment(@accident.seizure) %> 発作
+                    <%= check_box_tag 'senior[accidents][characteristic][]', false, checked = checkbox_judgment(@accident.characteristic) %> 特性
+                    <%= check_box_tag 'senior[accidents][aging][]', false, checked = checkbox_judgment(@accident.aging) %> 加齢
                   </div>
                 </td>
               </tr>
@@ -261,10 +251,15 @@
                 <td class="report-td-left">
                   <div class="field" style="padding-top: 11px">
                     【<%= ac.label :measures, "改善点" %>】&nbsp;
-                    <% %w(支援の改善 利用者の把握 周知の徹底 マニュアル整備 情報の共有 職員教育 環境改善 その他).each do |item| %>
-                      <%= check_box_tag 'senior[accidents][measures][]', item %>
-                      <%= item %>
-                    <% end %><br>
+                    <%= check_box_tag 'senior[accidents][improved_support][]', false, checked = checkbox_judgment(@accident.improved_support) %> 支援の改善
+                    <%= check_box_tag 'senior[accidents][understanding_seniors][]', false, checked = checkbox_judgment(@accident.understanding_seniors) %> 利用者の把握<br>
+                    <%= check_box_tag 'senior[accidents][well_known][]', false, checked = checkbox_judgment(@accident.well_known) %> 周知の徹底
+                    <%= check_box_tag 'senior[accidents][manual_maintenance][]', false, checked = checkbox_judgment(@accident.manual_maintenance) %> マニュアル整備
+                    <%= check_box_tag 'senior[accidents][information_sharing][]', false, checked = checkbox_judgment(@accident.information_sharing) %> 情報の共有<br>
+                    <%= check_box_tag 'senior[accidents][worker_education][]', false, checked = checkbox_judgment(@accident.worker_education) %> 職員教育
+                    <%= check_box_tag 'senior[accidents][environmental_improvement][]', false, checked = checkbox_judgment(@accident.environmental_improvement) %> 環境改善
+                    <%= check_box_tag 'senior[accidents][other][]', false, checked = checkbox_judgment(@accident.other) %> その他
+                    <br>
                   </div>
                 </td>
               </tr>
@@ -281,7 +276,7 @@
                   <% if @accident.evaluation_date.present? %>
                     <%= ac.date_select :evaluation_date, {default: @accident.evaluation_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                   <% else %>
-                    <%= ac.date_select :evaluation_date, {prompt: :include_blank}, {class: "form-control bootstrap-date input-sm"} %>
+                    <%= ac.date_select :evaluation_date, {prompt: :include_blank, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
                   <% end %>
                   <div id="evaluation-top">
                     <%= ac.text_field :evaluation_comment, value: @accident.evaluation_comment, placeholder: "対策後の状況を評価", class: "form-control" %>

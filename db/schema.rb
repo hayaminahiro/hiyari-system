@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_081829) do
+ActiveRecord::Schema.define(version: 2020_04_17_210259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 2020_04_17_081829) do
     t.boolean "information_sharing_worker"
     t.boolean "not_enough_assessment"
     t.boolean "environment"
+    t.boolean "poor_health"
+    t.boolean "mental_instability"
+    t.boolean "seizure"
+    t.boolean "characteristic"
+    t.boolean "aging"
+    t.boolean "improved_support"
+    t.boolean "understanding_seniors"
+    t.boolean "well_known"
+    t.boolean "manual_maintenance"
+    t.boolean "information_sharing"
+    t.boolean "worker_education"
+    t.boolean "environmental_improvement"
+    t.boolean "other"
     t.index ["senior_id"], name: "index_accidents_on_senior_id"
   end
 

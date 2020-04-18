@@ -103,9 +103,12 @@ class AccidentsController < ApplicationController
             #周知後サイン
             :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
             #複数チェックボックス・・・原因・要因（職員側）
-            support_mistake: [], not_enough_skills: [], work_attitude: [], information_sharing_worker: [], not_enough_assessment: [], environment: []
+            support_mistake: [], not_enough_skills: [], work_attitude: [], information_sharing_worker: [], not_enough_assessment: [], environment: [],
             #複数チェックボックス・・・原因・要因（利用者側）
-
+            poor_health: [], mental_instability: [], seizure: [], characteristic: [], aging: [],
+            #複数チェックボックス・・・改善点
+            improved_support: [], understanding_seniors: [], well_known: [], manual_maintenance: [], information_sharing: [],
+            worker_education: [], environmental_improvement: [], other: []
         ])[:accidents]
       end
 
