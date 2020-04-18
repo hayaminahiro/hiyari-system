@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include SeniorsHelper
   include WorkersHelper
+  include AccidentsHelper
 
   # beforeフィルター
 
