@@ -726,3 +726,35 @@ p.left-space {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   text-align: center;
 }
+
+//スクロール
+.vertical-scroll-table{
+  color: #5e5e5e;
+  max-height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.vertical-scroll-table table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.vertical-scroll-table table thead tr{
+  font-weight: bold;
+  text-align: center;
+  background-color: #f3f4f5;
+}
+
+.vertical-scroll-table table tbody tr:nth-child(even){
+  background-color: #fafbfc;
+}
+
+.vertical-scroll-table table td{
+  padding: 10px;
+}
+
+
+
+

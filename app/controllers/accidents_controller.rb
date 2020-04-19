@@ -66,6 +66,26 @@ class AccidentsController < ApplicationController
     @accident = @senior.accidents.find(params[:id])
   end
 
+  #月別ヒヤリ集計リンク
+  def spreadsheet
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
+    @hat_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "事故").order(accident_datetime: :desc)
+    @hat_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "事故").order(accident_datetime: :desc)
+    @hat_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accident_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "事故").order(accident_datetime: :desc)
+  end
+
+  #各月別ヒヤリ集計表
+  def month_spreadsheet
+    @facility = Facility.find(params[:facility_id])
+    @month = params[:month]
+    @accidents = Accident.all.includes(:senior).order(accident_datetime: :desc)
+  end
+
   #ヒヤリ削除ボタン
   def destroy
     @senior = @facility.seniors.find(params[:senior_id])

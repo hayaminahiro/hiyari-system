@@ -9,20 +9,21 @@
 <div class="container">
   <div class="tab-content">
     <div class="col-md-12 tab-table">
-      <table id="table_detail" class="table table-bordered table-condensed table-hover">
-        <thead>
-        <tr class="active-color">
-          <th class="spreadsheet-thead" style="width: 20%">年月</th>
-          <th class="spreadsheet-thead">2F/ヒヤリ・事故件数</th>
-          <th class="spreadsheet-thead">3F/ヒヤリ・事故件数</th>
-          <th class="spreadsheet-thead">4F/ヒヤリ・事故件数</th>
-          <th class="spreadsheet-thead">閲覧</th>
-        </tr>
-        </thead>
-        <% check = nil %>
-        <% @accidents2f.each do |accident| %>
-          <% if current_facility.id == accident.senior.facility_id %>
-            <tbody>
+      <div class="vertical-scroll-table">
+        <table id="table-scroll" class="table table-bordered table-condensed table-hover">
+          <thead>
+          <tr class="active-color">
+            <th class="spreadsheet-thead" style="width: 20%">年月</th>
+            <th class="spreadsheet-thead">2F/ ヒヤリ・事故件数</th>
+            <th class="spreadsheet-thead">3F/ ヒヤリ・事故件数</th>
+            <th class="spreadsheet-thead">4F/ ヒヤリ・事故件数</th>
+            <th class="spreadsheet-thead">閲覧</th>
+          </tr>
+          </thead>
+          <% check = nil %>
+          <% @accidents2f.each do |accident| %>
+            <% if current_facility.id == accident.senior.facility_id %>
+              <tbody>
               <!--月の最初一行だけを取り出す為のcheck-->
               <% if l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) != check %>
                 <tr>
@@ -42,32 +43,20 @@
                     【事故 <%= @accident_count4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
                   </td>
                   <td class="index-btn-position" style="width: 18%;">
-                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表", "#", remote: true, class: "btn-square-shadow-mini" %>
+                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
+                                month_spreadsheet_path(current_facility, l(accident.accident_datetime, format: :integer)), local: true, class: "btn-square-shadow-mini" %>
                   </td>
                 </tr>
                 <% check = l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) %>
               <% end %>
-            </tbody>
+              </tbody>
+            <% end %>
           <% end %>
-        <% end %>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <%#= Accident.where(accident_floor: 2).where(event_classification: "薬に関すること").count %>
 

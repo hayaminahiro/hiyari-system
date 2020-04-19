@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  #各月ヒヤリ集計表
+  get '/facilities/:facility_id/accidents/spreadsheet/:month',
+      to: 'accidents#month_spreadsheet', as: :month_spreadsheet
+
   #施設関連: facilities
   resources :facilities do
     member do #memberはid付与
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
-      #ヒヤリ集計表
-      get 'spreadsheet'
     end
     #施設利用者関連: seniors
     resources :seniors do
@@ -44,6 +46,8 @@ Rails.application.routes.draw do
       collection do
         #新規作成
         get 'new_accidents_index'
+        #ヒヤリ集計表
+        get 'spreadsheet'
       end
     end
 
