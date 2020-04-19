@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
+      #ヒヤリ集計表
+      get 'spreadsheet'
     end
     #施設利用者関連: seniors
     resources :seniors do
