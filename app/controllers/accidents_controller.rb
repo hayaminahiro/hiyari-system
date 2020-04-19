@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :new_accidents_index, :new, :create, :edit, :update, :browsing, :destroy]
+  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing, :destroy]
   #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :correct_facility, only: [:edit, :update]
   #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
@@ -13,6 +13,12 @@ class AccidentsController < ApplicationController
     @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
     @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
     @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
+  end
+
+  #ヒヤリ印刷画面詳細
+  def show
+    @senior = @facility.seniors.find(params[:senior_id])
+    @accident = @senior.accidents.find(params[:id])
   end
 
   #ヒヤリ新規作成
@@ -82,7 +88,7 @@ class AccidentsController < ApplicationController
   #各月別ヒヤリ集計表
   def month_spreadsheet
     @facility = Facility.find(params[:facility_id])
-    @month = params[:month]
+    #@month = params[:month]
     @accidents = Accident.all.includes(:senior).order(accident_datetime: :desc)
   end
 

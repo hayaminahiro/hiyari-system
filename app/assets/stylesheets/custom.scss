@@ -727,10 +727,19 @@ p.left-space {
   text-align: center;
 }
 
+//各月ヒヤリ事故集計表
+.month-spreadsheet-thead {
+  font-size: 12px;
+  color: #2E2F30;
+  background-color: orange;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
+
 //スクロール
 .vertical-scroll-table{
   color: #5e5e5e;
-  max-height: 500px;
+  max-height: 600px;
   overflow: auto;
   overflow-x: hidden;
 }
@@ -755,6 +764,18 @@ p.left-space {
   padding: 10px;
 }
 
+.floor-color {
+  background-color: #fcf8e3;
+  color: #2E2F30;
+  font-size: 12px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  text-align: center;
+}
 
-
+.event-td {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 12px;
+  color: #2E2F30;
+}
 
