@@ -88,8 +88,10 @@ class AccidentsController < ApplicationController
   #各月別ヒヤリ集計表
   def month_spreadsheet
     @facility = Facility.find(params[:facility_id])
-    #@month = params[:month]
     @accidents = Accident.all.includes(:senior).order(accident_datetime: :desc)
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
   end
 
   #ヒヤリ削除ボタン
