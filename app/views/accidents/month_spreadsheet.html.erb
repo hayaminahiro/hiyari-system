@@ -4,9 +4,7 @@
   <h3><%= current_facility.name %></h3>
 </div>
 
-<% month = params[:month] %>
-
-<h1 class="title-position-center"><%= month.insert(4, "年 ").insert(8, "月  ") %>ヒヤリ・事故集計</h1>
+<h1 class="title-position-center"><%= params[:month].to_date.strftime("%Y年 %m月 ") %>ヒヤリ・事故集計</h1>
 
 <div class="container">
   <div class="col-md-12 tab-table">
@@ -205,11 +203,16 @@
             <td></td>
             <td></td>
             <td></td>
-<!--             時間の範囲指定-->
-            <td><%= @accidents2f.where(event_classification: "薬に関すること").count %></td>
+            <td>
+              <%= @accidents2f.where(event_classification: "薬に関すること").where(accident_datetime: @month).count %>
+            </td>
+
+            <%# raise %>
+
 <!--            部署名-->
 <!--            ヒヤリOR事故-->
-            <%raise %>
+            <%# l(@accident.accident_time, format: :date) %>
+
             <td></td>
             <td></td>
             <td></td>
