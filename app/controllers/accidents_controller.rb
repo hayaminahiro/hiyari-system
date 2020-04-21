@@ -92,6 +92,11 @@ class AccidentsController < ApplicationController
     @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
     @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
     @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
+    #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
+    day = params[:month].to_date
+    first_day = day.beginning_of_month
+    last_day = first_day.end_of_month
+    @month = first_day..last_day
   end
 
   #ヒヤリ削除ボタン

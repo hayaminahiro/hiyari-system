@@ -43,8 +43,10 @@
                     【事故 <%= @accident_count4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
                   </td>
                   <td class="index-btn-position" style="width: 18%;">
-                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
+                    <%#= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
                                 month_spreadsheet_path(current_facility, l(accident.accident_datetime, format: :integer)), local: true, class: "btn-square-shadow-mini" %>
+                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
+                                month_spreadsheet_path(current_facility, accident.accident_datetime), local: true, class: "btn-square-shadow-mini" %>
                   </td>
                 </tr>
                 <% check = l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) %>
@@ -57,9 +59,3 @@
     </div>
   </div>
 </div>
-
-<%#= Accident.where(accident_floor: 2).where(event_classification: "薬に関すること").count %>
-
-<!--何月？-->
-
-<!--時間帯-->
