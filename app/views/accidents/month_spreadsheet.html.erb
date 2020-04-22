@@ -66,17 +66,42 @@
         <tbody>
           <tr>
             <td class="event-td">転倒・転落</td>
-            <td><%= @accidents2f.where(event_classification: "転倒・転落").count %></td>
-            <td><%= @accidents3f.where(event_classification: "転倒・転落").count %></td>
-            <td><%= @accidents4f.where(event_classification: "転倒・転落").count %></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td> <!--2f/転倒/7~9時/-->
+              <% range = [] %>
+              <% accidents2f = @accidents2f.where(event_classification: "転倒・転落").where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(accident_floor: 2) %>
+              <% accidents2f.each do |ac2f| %>
+                <% if ac2f.accident_time.strftime("%k").gsub(" ", "").to_i >= 7 && ac2f.accident_time.strftime("%k").gsub(" ", "").to_i < 9 %>
+                  <% range << ac2f %>
+                <% end %>
+              <% end %>
+              <%= range.count %>
+            </td>
+            <td> <!--3f/転倒/7~9時/-->
+              3f/転倒/7~9時/
+            </td>
+            <td> <!--4f/転倒/7~9時/-->
+              4f/転倒/7~9時/
+            </td>
+            <td>医務</td>
+            <td> <!--2f/転倒/9~12時/-->
+              2f/転倒/9~12時/
+            </td>
+            <td> <!--3f/転倒/9~12時/-->
+              3f/転倒/9~12時/
+            </td>
+            <td> <!--4f/転倒/9~12時/-->
+              4f/転倒/9~12時/
+            </td>
+            <td>医務</td>
+            <td> <!--2f/転倒/12~14時/-->
+              2f/転倒/12~14時/
+            </td>
+            <td> <!--3f/転倒/12~14時/-->
+              3f/転倒/12~14時/
+            </td>
+            <td> <!--4f/転倒/12~14時/-->
+              4f/転倒/12~14時/
+            </td>
             <td></td>
             <td></td>
             <td></td>
@@ -204,11 +229,32 @@
             <td></td>
             <td></td>
             <td>
-              <%= @accidents2f.where(event_classification: "薬に関すること").where(accident_datetime: @month).count %>
-            </td>
+              <% range = [] %>
+              <% accidents2f = @accidents2f.where(event_classification: "薬に関すること").where(accident_datetime: @month) %>
+                <% accidents2f.each do |ac2f| %>
+                <% if ac2f.accident_time.strftime("%k").gsub(" ", "").to_i >= 10 && ac2f.accident_time.strftime("%k").gsub(" ", "").to_i <= 19 %>
+                  <%#= ac2f %>
+                  <% range.push(ac2f) %>
+                <% end %>
+              <% end %>
+              <%# raise %>
+              <%= range.count %>
 
+              <%# a2f_res = a2f.map {|n| n.accident_time.strftime("%k").gsub(" ", "").to_i > 10 && n.accident_time.strftime("%k").gsub(" ", "").to_i < 22 } %>
+              <%#= a2f_res.count if a2f.present? %>
+            </td>
             <%# raise %>
 
+
+            <%# a2f_res = a2f.filter {|n| n.accident_time.strftime("%k").gsub(" ", "").to_i > 10 && n.accident_time.strftime("%k").gsub(" ", "").to_i < 22 } %>
+            <%#= a2f_res.count if a2f.present? %>
+<!--            a2f = @accidents2f.where(event_classification: "薬に関すること").where(accident_time: "2020-04-21-19:00:00".."2020-04-21 22:00:00")-->
+<!--            a2f_res = a2f.filter {|n| n.accident_time.strftime("%H") > 19 && n.accident_time.strftime("%H") < 22 }-->
+<!--            a2f_res.count-->
+            <%#= @accidents2f.where(event_classification: "薬に関すること").where(accident_datetime: @month).count %>
+
+<!--            4/21/15:00    "2020-04-21 00:15:00"-->
+<!--            .where(accident_time: "2020-04-21 14:15:00".."2020-04-21 16:15:00")-->
 <!--            部署名-->
 <!--            ヒヤリOR事故-->
             <%# l(@accident.accident_time, format: :date) %>
