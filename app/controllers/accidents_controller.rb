@@ -88,15 +88,16 @@ class AccidentsController < ApplicationController
   #各月別ヒヤリ集計表
   def month_spreadsheet
     @facility = Facility.find(params[:facility_id])
-    @accidents = Accident.all.includes(:senior).order(accident_datetime: :desc)
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
     #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
     day = params[:month].to_date
     first_day = day.beginning_of_month
     last_day = first_day.end_of_month
     @month = first_day..last_day
+    @accidents = Accident.all.includes(:senior).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    #転倒・転落のヒヤリハット
+    @fall_hat_accidents2f = Accident.includes(:senior).where(accident_floor: 2).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
+    @fall_hat_accidents3f = Accident.includes(:senior).where(accident_floor: 3).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
+    @fall_hat_accidents4f = Accident.includes(:senior).where(accident_floor: 4).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
   end
 
   #ヒヤリ削除ボタン
