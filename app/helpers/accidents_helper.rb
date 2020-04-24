@@ -36,7 +36,7 @@ module AccidentsHelper
   end
 
   #22:00~3:00で時間範囲限定
-  def time_range_22_03(time)
+  def time_range_22_3(time)
     time.accident_time.strftime("%k").gsub(" ", "").to_i >= 22 || time.accident_time.strftime("%k").gsub(" ", "").to_i < 3
   end
 
