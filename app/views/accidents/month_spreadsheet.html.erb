@@ -66,102 +66,196 @@
         <tbody>
           <tr>
             <td class="event-td">転倒・転落</td>
-            <td> <!--2f/転倒/7~9時/-->
+            <td class="event-td"> <!--2f/転倒/7~9時/-->
               <% range = [] %>
-              <% @fall_hat_accidents2f.each do |ac2f| %>
-                <% range << ac2f if time_range_7_9(ac2f) %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--3f/転倒/7~9時/-->
+            <td class="event-td"> <!--3f/転倒/7~9時/-->
               <% range = [] %>
-              <% @fall_hat_accidents3f.each do |ac2f| %>
-                <% range << ac2f if time_range_7_9(ac2f) %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--4f/転倒/7~9時/-->
+            <td class="event-td"> <!--4f/転倒/7~9時/-->
               <% range = [] %>
-              <% @fall_hat_accidents4f.each do |ac2f| %>
-                <% range << ac2f if time_range_7_9(ac2f) %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td></td>
-            <td> <!--2f/転倒/9~12時/-->
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/9~12時/-->
               <% range = [] %>
-              <% @fall_hat_accidents2f.each do |ac2f| %>
-                <% range << ac2f if time_range_9_12(ac2f) %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--3f/転倒/9~12時/-->
+            <td class="event-td"> <!--3f/転倒/9~12時/-->
               <% range = [] %>
-              <% @fall_hat_accidents3f.each do |ac2f| %>
-                <% range << ac2f if time_range_9_12(ac2f) %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--4f/転倒/9~12時/-->
+            <td class="event-td"> <!--4f/転倒/9~12時/-->
               <% range = [] %>
-              <% @fall_hat_accidents4f.each do |ac2f| %>
-                <% range << ac2f if time_range_9_12(ac2f) %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td></td>
-            <td> <!--2f/転倒/12~14時/-->
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/12~14時/-->
               <% range = [] %>
-              <% @fall_hat_accidents2f.each do |ac2f| %>
-                <% range << ac2f if time_range_12_14(ac2f) %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--3f/転倒/12~14時/-->
+            <td class="event-td"> <!--3f/転倒/12~14時/-->
               <% range = [] %>
-              <% @fall_hat_accidents3f.each do |ac2f| %>
-                <% range << ac2f if time_range_12_14(ac2f) %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td> <!--4f/転倒/12~14時/-->
+            <td class="event-td"> <!--4f/転倒/12~14時/-->
               <% range = [] %>
-              <% @fall_hat_accidents4f.each do |ac2f| %>
-                <% range << ac2f if time_range_12_14(ac2f) %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td></td>
-            <td> <!--2f/転倒/14~17時/-->
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/14~17時/-->
               <% range = [] %>
-              <% @fall_hat_accidents2f.each do |ac2f| %>
-                <% range << ac2f if time_range_14_17(ac2f) %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
               <% end %>
-              <%= range.count %>
+              <%= range.count if range.count > 0 %>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="event-td"> <!--3f/転倒/14~17時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/14~17時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td">
+              医務
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
           </tr>
           <tr>
             <td class="event-td">行方不明・所在不明</td>
