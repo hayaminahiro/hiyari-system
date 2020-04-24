@@ -1,6 +1,7 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing, :destroy]
+  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
+                                         :month_spreadsheet, :destroy]
   #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   #before_action :correct_facility, only: [:edit, :update]
   #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
@@ -74,30 +75,29 @@ class AccidentsController < ApplicationController
 
   #月別ヒヤリ集計リンク
   def spreadsheet
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: :desc)
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: :desc)
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: :desc)
-    @hat_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
-    @accident_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "事故").order(accident_datetime: :desc)
-    @hat_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
-    @accident_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "事故").order(accident_datetime: :desc)
-    @hat_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
-    @accident_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "事故").order(accident_datetime: :desc)
+    @accidents2f = Accident.includes(:senior).where(accident_floor: 2)
+    @accidents3f = Accident.includes(:senior).where(accident_floor: 3)
+    @accidents4f = Accident.includes(:senior).where(accident_floor: 4)
+    @hat_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "ヒヤリハット")
+    @accident_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "事故")
+    @hat_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "ヒヤリハット")
+    @accident_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "事故")
+    @hat_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "ヒヤリハット")
+    @accident_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "事故")
   end
 
   #各月別ヒヤリ集計表
   def month_spreadsheet
-    @facility = Facility.find(params[:facility_id])
     #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
     day = params[:month].to_date
     first_day = day.beginning_of_month
     last_day = first_day.end_of_month
     @month = first_day..last_day
-    @accidents = Accident.all.includes(:senior).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").order(accident_datetime: :desc)
+    @accidents = Accident.includes(:senior).date(@month).hat
     #転倒・転落のヒヤリハット
-    @fall_hat_accidents2f = Accident.includes(:senior).where(accident_floor: 2).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
-    @fall_hat_accidents3f = Accident.includes(:senior).where(accident_floor: 3).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
-    @fall_hat_accidents4f = Accident.includes(:senior).where(accident_floor: 4).where(accident_datetime: @month).where(which_accident: "ヒヤリハット").where(event_classification: "転倒・転落").order(accident_datetime: :desc)
+    @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
+    @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_fall
+    @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_fall
   end
 
   #ヒヤリ削除ボタン

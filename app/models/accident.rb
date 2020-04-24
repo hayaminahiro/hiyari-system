@@ -22,4 +22,11 @@ class Accident < ApplicationRecord
       上記対策にて解決: 0, 対策変更にて解決: 1, 未解決: 2, その他: 3
   }, _suffix: true
 
+  scope :date, -> (date) { where(accident_datetime: date) }
+  scope :floor, -> (num) { where(accident_floor: num) }
+  scope :which_accident, -> (num) { where(which_accident: num) }
+  scope :hat, -> { where(which_accident: "ヒヤリハット") }
+  scope :accident, -> { where(which_accident: "事故") }
+  scope :event_fall, -> { where(event_classification: "転倒・転落") }
+
 end
