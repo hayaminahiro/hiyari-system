@@ -98,6 +98,62 @@ class AccidentsController < ApplicationController
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
     @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_fall
     @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_fall
+    #行方不明・所在不明のヒヤリハット
+    @missing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_missing
+    @missing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_missing
+    @missing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_missing
+    #飲食に関することのヒヤリハット
+    @meal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_meal
+    @meal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_meal
+    @meal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_meal
+    #薬に関することのヒヤリハット
+    @medicine_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medicine
+    @medicine_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medicine
+    @medicine_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medicine
+    #他害・自傷行為のヒヤリハット
+    @scratch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_scratch
+    @scratch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_scratch
+    @scratch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_scratch
+    #環境のヒヤリハット
+    @environment_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_environment
+    @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_environment
+    @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_environment
+    #情報・連絡・報告のヒヤリハット
+    @info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_info_contact
+    @info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_info_contact
+    @info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_info_contact
+    #個人情報・人権のヒヤリハット
+    @personal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_personal_info
+    @personal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_personal_info
+    @personal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_personal_info
+    #紛失のヒヤリハット
+    @lost_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_lost
+    @lost_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_lost
+    @lost_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_lost
+    #器物破損のヒヤリハット
+    @damage_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_damage
+    @damage_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_damage
+    @damage_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_damage
+    #金銭のヒヤリハット
+    @money_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_money
+    @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_money
+    @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_money
+    #医療的ケアのヒヤリハット
+    @medical_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medical_care
+    @medical_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medical_care
+    @medical_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medical_care
+    #感染症のヒヤリハット
+    @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_infection
+    @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_infection
+    @infection_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_infection
+    #忘れ物・返却忘れのヒヤリハット
+    @forget_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_forget
+    @forget_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_forget
+    @forget_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_forget
+    #その他のヒヤリハット
+    @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other
+    @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other
+    @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other
   end
 
   #ヒヤリ削除ボタン

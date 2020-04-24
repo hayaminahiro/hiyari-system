@@ -22,11 +22,30 @@ class Accident < ApplicationRecord
       上記対策にて解決: 0, 対策変更にて解決: 1, 未解決: 2, その他: 3
   }, _suffix: true
 
+  #日付
   scope :date, -> (date) { where(accident_datetime: date) }
+  #フロア
   scope :floor, -> (num) { where(accident_floor: num) }
-  scope :which_accident, -> (num) { where(which_accident: num) }
+  #ヒヤリor事故
   scope :hat, -> { where(which_accident: "ヒヤリハット") }
   scope :accident, -> { where(which_accident: "事故") }
-  scope :event_fall, -> { where(event_classification: "転倒・転落") }
+  #出来事の領域別分類
+  scope :event_fall, -> { where(event_classification: 0) }
+  scope :event_missing, -> { where(event_classification: 1) }
+  scope :event_meal, -> { where(event_classification: 2) }
+  scope :event_medicine, -> { where(event_classification: 3) }
+  scope :event_scratch, -> { where(event_classification: 4) }
+  scope :event_environment, -> { where(event_classification: 5) }
+  scope :event_info_contact, -> { where(event_classification: 6) }
+  scope :event_personal_info, -> { where(event_classification: 7) }
+  scope :event_lost, -> { where(event_classification: 8) }
+  scope :event_damage, -> { where(event_classification: 9) }
+  scope :event_money, -> { where(event_classification: 10) }
+  scope :event_medical_care, -> { where(event_classification: 11) }
+  scope :event_infection, -> { where(event_classification: 12) }
+  scope :event_forget, -> { where(event_classification: 13) }
+  scope :event_other, -> { where(event_classification: 14) }
+
+
 
 end
