@@ -1,0 +1,1223 @@
+<% provide(:title, 'ヒヤリ・事故集計') %>
+
+<div id="facility-name" style="margin-bottom: 30px;">
+  <h3><%= current_facility.name %></h3>
+</div>
+
+<h1 class="title-position-center"><%= params[:month].to_date.strftime("%Y年 %m月 ") %>ヒヤリ・事故集計</h1>
+
+<div class="container">
+  <div class="col-md-12 tab-table">
+    <div class="vertical-scroll-table">
+      <table id="table-scroll" class="table table-bordered table-condensed table-hover">
+        <thead>
+          <tr>
+            <th class="month-spreadsheet-thead" style="width: 12%"></th>
+            <th class="month-spreadsheet-thead" colspan="4">7:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">9:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">12:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">14:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">17:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">19:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">22:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">3:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">合計</th>
+          </tr>
+          <tr>
+            <th class="floor-color">出来事</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="event-td">転倒・転落</td>
+            <td class="event-td"> <!--2f/転倒/7~9時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/7~9時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/7~9時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_7_9(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/9~12時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/9~12時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/9~12時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_9_12(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/12~14時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/12~14時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/12~14時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_12_14(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/14~17時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/14~17時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/14~17時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_14_17(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/17~19時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_17_19(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/19~22時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_19_22(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/22~3時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_22_3(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"></td>
+            <td class="event-td"> <!--2f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents2f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--3f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents3f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td"> <!--4f/転倒/3~7時/-->
+              <% range = [] %>
+              <% @fall_hat_accidents4f.each do |hat| %>
+                <% range << hat if time_range_3_7(hat) %>
+              <% end %>
+              <%= range.count if range.count > 0 %>
+            </td>
+            <td class="event-td">
+              医務
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
+            <td class="event-td">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="event-td">行方不明・所在不明</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">飲食に関すること</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">薬に関すること</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <%# range = [] %>
+              <%# accidents2f = @hat_accidents2f.where(event_classification: "薬に関すること") %>
+                <%# accidents2f.each do |ac2f| %>
+                <%# if ac2f.accident_time.strftime("%k").gsub(" ", "").to_i >= 10 && ac2f.accident_time.strftime("%k").gsub(" ", "").to_i <= 19 %>
+                  <%#= ac2f %>
+                  <%# range.push(ac2f) %>
+                <%# end %>
+              <%# end %>
+              <%# raise %>
+              <%#= range.count %>
+
+              <%# a2f_res = a2f.map {|n| n.accident_time.strftime("%k").gsub(" ", "").to_i > 10 && n.accident_time.strftime("%k").gsub(" ", "").to_i < 22 } %>
+              <%#= a2f_res.count if a2f.present? %>
+            </td>
+            <%# raise %>
+
+
+            <%# a2f_res = a2f.filter {|n| n.accident_time.strftime("%k").gsub(" ", "").to_i > 10 && n.accident_time.strftime("%k").gsub(" ", "").to_i < 22 } %>
+            <%#= a2f_res.count if a2f.present? %>
+<!--            a2f = @accidents2f.where(event_classification: "薬に関すること").where(accident_time: "2020-04-21-19:00:00".."2020-04-21 22:00:00")-->
+<!--            a2f_res = a2f.filter {|n| n.accident_time.strftime("%H") > 19 && n.accident_time.strftime("%H") < 22 }-->
+<!--            a2f_res.count-->
+            <%#= @accidents2f.where(event_classification: "薬に関すること").where(accident_datetime: @month).count %>
+
+<!--            4/21/15:00    "2020-04-21 00:15:00"-->
+<!--            .where(accident_time: "2020-04-21 14:15:00".."2020-04-21 16:15:00")-->
+<!--            部署名-->
+<!--            ヒヤリOR事故-->
+            <%# l(@accident.accident_time, format: :date) %>
+
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">他害・自傷行為</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">環境</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">情報・連絡・報告</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">個人情報・人権</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">紛失</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">器物破損</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">金銭</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">医療的ケア</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">感染症</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">忘れ物・返却忘れ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">その他 ※</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">総合計</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-12 tab-table">
+    <div class="vertical-scroll-table">
+      <table id="table-scroll" class="table table-bordered table-condensed table-hover">
+        <thead>
+          <tr>
+            <th class="month-spreadsheet-thead" style="width: 12%"></th>
+            <th class="month-spreadsheet-thead" colspan="4">7:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">9:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">12:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">14:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">17:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">19:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">22:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">3:00~</th>
+            <th class="month-spreadsheet-thead" colspan="4">合計</th>
+          </tr>
+          <tr>
+            <th class="floor-color">場面</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+            <th class="floor-color">2F</th>
+            <th class="floor-color">3F</th>
+            <th class="floor-color">4F</th>
+            <th class="floor-color">医務</th>
+          </tr>
+          </thead>
+          <% check = nil %>
+          <%# @accidents.each do |accident| %>
+
+          <%# if current_facility.id == accident.senior.facility_id %>
+
+          <tbody>
+          <tr>
+            <td class="event-td">通所・送迎</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">活動・支援（施設内/外出）</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">給食・配膳</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">トイレ・排泄</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">入浴</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">その他 ※</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="event-td">総合計</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+        <%# end %>
+        <%# end %>
+      </table>
+    </div>
+  </div>
+</div>
