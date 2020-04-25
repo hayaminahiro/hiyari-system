@@ -1,0 +1,207 @@
+<tr>
+  <td class="event-td">飲食に関すること</td>
+  <td class="event-td"> <!--2f/飲食/7~9時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_7_9(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/7~9時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_7_9(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/7~9時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_7_9(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/7~9時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/9~12時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_9_12(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/9~12時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_9_12(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/9~12時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_9_12(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/9~12時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/12~14時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_12_14(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/12~14時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_12_14(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/12~14時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_12_14(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/12~14時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/14~17時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_14_17(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/14~17時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_14_17(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/14~17時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_14_17(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/14~17時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/17~19時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_17_19(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/17~19時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_17_19(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/17~19時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_17_19(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/17~19時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/19~22時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_19_22(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/19~22時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_19_22(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/19~22時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_19_22(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/19~22時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/22~3時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_22_3(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/22~3時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_22_3(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/22~3時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_22_3(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/22~3時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/3~7時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents2f.each do |hat| %>
+      <% range << hat if time_range_3_7(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/3~7時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents3f.each do |hat| %>
+      <% range << hat if time_range_3_7(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/3~7時/-->
+    <% range = [] %>
+    <% @meal_hat_accidents4f.each do |hat| %>
+      <% range << hat if time_range_3_7(hat) %>
+    <% end %>
+    <%= range.count if range.count > 0 %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/3~7時/-->
+
+  </td>
+  <td class="event-td"> <!--2f/飲食/合計/-->
+    <%= @meal_hat_accidents2f.count %>
+  </td>
+  <td class="event-td"> <!--3f/飲食/合計/-->
+    <%= @meal_hat_accidents3f.count %>
+  </td>
+  <td class="event-td"> <!--4f/飲食/合計/-->
+    <%= @meal_hat_accidents4f.count %>
+  </td>
+  <td class="event-td"> <!--医務/飲食/合計/-->
+
+  </td>
+</tr>
