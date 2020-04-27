@@ -93,7 +93,10 @@ class AccidentsController < ApplicationController
     first_day = day.beginning_of_month
     last_day = first_day.end_of_month
     @month = first_day..last_day
-    @accidents = Accident.includes(:senior).date(@month).hat
+
+
+
+
     #転倒・転落のヒヤリハット
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
     @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_fall
@@ -154,6 +157,75 @@ class AccidentsController < ApplicationController
     @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other
     @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other
     @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other
+
+    @accidents = Accident.includes(:senior).date(@month)
+
+
+    #時間帯別ヒヤリ・事故
+    #accidents_7_9 = []
+    #accidents_9_12 = []
+    #accidents_12_14 =[]
+    #accidents_14_17 =[]
+    #accidents_17_19 =[]
+    #accidents_19_22 =[]
+    #accidents_22_3 =[]
+    #
+    #if @fall_hat_accidents2f.each do |ac|
+    #  if time_range_7_9(ac)
+    #    accidents_7_9 << ac
+    #  elsif time_range_9_12(ac)
+    #    accidents_9_12 << ac
+    #  elsif time_range_12_14(ac)
+    #    accidents_12_14 << ac
+    #  elsif time_range_14_17(ac)
+    #    accidents_14_17 << ac
+    #  elsif time_range_17_19(ac)
+    #    accidents_17_19 << ac
+    #  elsif time_range_19_22(ac)
+    #    accidents_19_22 << ac
+    #  elsif time_range_22_3(ac)
+    #    accidents_22_3 << ac
+    #  end
+    #end
+
+
+    #7~9時の転倒・転落ヒヤリ
+    fall_hat2f_7_9 = []
+    fall_hat3f_7_9 = []
+    fall_hat4f_7_9 = []
+    #9~12時の転倒・転落ヒヤリ
+    fall_hat2f_9_12 = []
+    fall_hat3f_9_12 = []
+    fall_hat4f_9_12 = []
+
+    @accidents.each do |hat|
+      #7~9時の転倒・転落ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
+        @fall_hat2f_7_9 = fall_hat2f_7_9.count if fall_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.fall
+        @fall_hat3f_7_9 = fall_hat3f_7_9.count if fall_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.fall
+        @fall_hat4f_7_9 = fall_hat4f_7_9.count if fall_hat4f_7_9 << hat
+      #9~12時の転倒・転落ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.fall
+        @fall_hat2f_9_12 = fall_hat2f_9_12.count if fall_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.fall
+        @fall_hat3f_9_12 = fall_hat3f_9_12.count if fall_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.fall
+        @fall_hat4f_9_12  = fall_hat4f_9_12.count if fall_hat4f_9_12 << hat
+
+      end
+    end
+
+    #7~9時の転倒・転落ヒヤリカウント
+    #@fall_hat2f_7_9 = fall_hat2f_7_9.count
+    #@fall_hat3f_7_9 = fall_hat3f_7_9.count
+    #@fall_hat4f_7_9 = fall_hat4f_7_9.count
+    #9~12時の転倒・転落ヒヤリカウント
+    #@fall_hat2f_9_12 = fall_hat2f_9_12.count
+    #@fall_hat3f_9_12 = fall_hat3f_9_12.count
+    #@fall_hat4f_9_12 = fall_hat4f_9_12.count
+
   end
 
   #ヒヤリ削除ボタン
