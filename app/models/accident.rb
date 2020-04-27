@@ -46,6 +46,34 @@ class Accident < ApplicationRecord
   scope :event_forget, -> { where(event_classification: 13) }
   scope :event_other, -> { where(event_classification: 14) }
 
+  #which_accident（ヒヤリor事故）の選択
+  def hat
+    "ヒヤリハット" if self.which_accident == "ヒヤリハット"
+  end
+
+  def accident
+    "事故" if self.which_accident == "事故"
+  end
+
+  #accident_floor（利用階）の選択
+  def floor2
+    2 if self.accident_floor == 2
+  end
+
+  def floor3
+    3 if self.accident_floor == 3
+  end
+
+  def floor4
+    4 if self.accident_floor == 4
+  end
+
+  #event_classification（出来事の領域的分類）の選択
+
+  def fall
+    "転倒・転落" if self.event_classification == "転倒・転落"
+  end
+
 
 
 end
