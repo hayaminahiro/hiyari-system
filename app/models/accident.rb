@@ -76,4 +76,6 @@ class Accident < ApplicationRecord
 
 
 
+
+
 end
