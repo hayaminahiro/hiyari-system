@@ -94,100 +94,15 @@ class AccidentsController < ApplicationController
     last_day = first_day.end_of_month
     @month = first_day..last_day
     #各月のヒヤリ・事故一覧
-    @accidents = Accident.includes(:senior).date(@month)
+    accidents = Accident.includes(:senior).date(@month)
+    @fall_hat2f_7_9, @fall_hat3f_7_9, @fall_hat4f_7_9, @fall_hat2f_9_12, @fall_hat3f_9_12,
+    @fall_hat4f_9_12, @fall_hat2f_12_14, @fall_hat3f_12_14, @fall_hat4f_12_14, @fall_hat2f_14_17,
+    @fall_hat3f_14_17, @fall_hat4f_14_17, @fall_hat2f_17_19, @fall_hat3f_17_19, @fall_hat4f_17_19,
+    @fall_hat2f_19_22, @fall_hat3f_19_22, @fall_hat4f_19_22, @fall_hat2f_22_3,  @fall_hat3f_22_3,
+    @fall_hat4f_22_3, @fall_hat2f_3_7, @fall_hat3f_3_7, @fall_hat4f_3_7 = Accident.time_division(accidents)
 
-    #7~9時の転倒・転落ヒヤリ
-    fall_hat2f_7_9 = []
-    fall_hat3f_7_9 = []
-    fall_hat4f_7_9 = []
-    #9~12時の転倒・転落ヒヤリ
-    fall_hat2f_9_12 = []
-    fall_hat3f_9_12 = []
-    fall_hat4f_9_12 = []
-    #12~14時の転倒・転落ヒヤリ
-    fall_hat2f_12_14 = []
-    fall_hat3f_12_14 = []
-    fall_hat4f_12_14 = []
-    #14~17時の転倒・転落ヒヤリ
-    fall_hat2f_14_17 = []
-    fall_hat3f_14_17 = []
-    fall_hat4f_14_17 = []
-    #17~19時の転倒・転落ヒヤリ
-    fall_hat2f_17_19 = []
-    fall_hat3f_17_19 = []
-    fall_hat4f_17_19 = []
-    #19~22時の転倒・転落ヒヤリ
-    fall_hat2f_19_22 = []
-    fall_hat3f_19_22 = []
-    fall_hat4f_19_22 = []
-    #22~3時の転倒・転落ヒヤリ
-    fall_hat2f_22_3 = []
-    fall_hat3f_22_3 = []
-    fall_hat4f_22_3 = []
-    #3~7時の転倒・転落ヒヤリ
-    fall_hat2f_3_7 = []
-    fall_hat3f_3_7 = []
-    fall_hat4f_3_7 = []
 
-    @accidents.each do |hat|
-      #7~9時の転倒・転落ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_7_9 = fall_hat2f_7_9.count if fall_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_7_9 = fall_hat3f_7_9.count if fall_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_7_9 = fall_hat4f_7_9.count if fall_hat4f_7_9 << hat
-        #9~12時の転倒・転落ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_9_12 = fall_hat2f_9_12.count if fall_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_9_12 = fall_hat3f_9_12.count if fall_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_9_12  = fall_hat4f_9_12.count if fall_hat4f_9_12 << hat
-        #12~14時の転倒・転落ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_12_14 = fall_hat2f_12_14.count if fall_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_12_14 = fall_hat3f_12_14.count if fall_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_12_14  = fall_hat4f_12_14.count if fall_hat4f_12_14 << hat
-        #14~17時の転倒・転落ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_14_17 = fall_hat2f_14_17.count if fall_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_14_17 = fall_hat3f_14_17.count if fall_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_14_17  = fall_hat4f_14_17.count if fall_hat4f_14_17 << hat
-        #17~19時の転倒・転落ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_17_19 = fall_hat2f_17_19.count if fall_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_17_19 = fall_hat3f_17_19.count if fall_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_17_19  = fall_hat4f_17_19.count if fall_hat4f_17_19 << hat
-        #19~22時の転倒・転落ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_19_22 = fall_hat2f_19_22.count if fall_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_19_22 = fall_hat3f_19_22.count if fall_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_19_22  = fall_hat4f_19_22.count if fall_hat4f_19_22 << hat
-        #22~3時の転倒・転落ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_22_3 = fall_hat2f_22_3.count if fall_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_22_3 = fall_hat3f_22_3.count if fall_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_22_3  = fall_hat4f_22_3.count if fall_hat4f_22_3 << hat
-        #3~7時の転倒・転落ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.fall
-        @fall_hat2f_3_7 = fall_hat2f_3_7.count if fall_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.fall
-        @fall_hat3f_3_7 = fall_hat3f_3_7.count if fall_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.fall
-        @fall_hat4f_3_7  = fall_hat4f_3_7.count if fall_hat4f_3_7 << hat
-      end
-    end
+
 
     #転倒・転落のヒヤリハット
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
