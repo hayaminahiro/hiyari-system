@@ -96,6 +96,8 @@ class AccidentsController < ApplicationController
     #各月のヒヤリ・事故一覧
     accidents = Accident.includes(:senior).date(@month)
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
+    #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
+    # 転倒・転落
     @fall_hat2f_7_9, @fall_hat3f_7_9, @fall_hat4f_7_9,
     @fall_hat2f_9_12, @fall_hat3f_9_12, @fall_hat4f_9_12,
     @fall_hat2f_12_14, @fall_hat3f_12_14, @fall_hat4f_12_14,
@@ -103,8 +105,17 @@ class AccidentsController < ApplicationController
     @fall_hat2f_17_19, @fall_hat3f_17_19, @fall_hat4f_17_19,
     @fall_hat2f_19_22, @fall_hat3f_19_22, @fall_hat4f_19_22,
     @fall_hat2f_22_3,  @fall_hat3f_22_3, @fall_hat4f_22_3,
-    @fall_hat2f_3_7, @fall_hat3f_3_7, @fall_hat4f_3_7 = Accident.time_division(accidents)
-    #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
+    @fall_hat2f_3_7, @fall_hat3f_3_7, @fall_hat4f_3_7,
+    #行方不明・所在不明
+    @missing_hat2f_7_9, @missing_hat3f_7_9, @missing_hat4f_7_9,
+    @missing_hat2f_9_12, @missing_hat3f_9_12, @missing_hat4f_9_12,
+    @missing_hat2f_12_14, @missing_hat3f_12_14, @missing_hat4f_12_14,
+    @missing_hat2f_14_17, @missing_hat3f_14_17, @missing_hat4f_14_17,
+    @missing_hat2f_17_19, @missing_hat3f_17_19, @missing_hat4f_17_19,
+    @missing_hat2f_19_22, @missing_hat3f_19_22, @missing_hat4f_19_22,
+    @missing_hat2f_22_3, @missing_hat3f_22_3, @missing_hat4f_22_3,
+    @missing_hat2f_3_7, @missing_hat3f_3_7, @missing_hat4f_3_7 = Accident.time_division(accidents)
+
 
     #転倒・転落のヒヤリハット
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
