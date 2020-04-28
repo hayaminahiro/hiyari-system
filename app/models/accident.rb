@@ -73,6 +73,62 @@ class Accident < ApplicationRecord
     "転倒・転落" if self.event_classification == "転倒・転落"
   end
 
+  def missing
+    "行方不明・所在不明" if self.event_classification == "行方不明・所在不明"
+  end
+
+  def meal
+    "飲食に関すること" if self.event_classification == "飲食に関すること"
+  end
+
+  def medicine
+    "薬に関すること" if self.event_classification == "薬に関すること"
+  end
+
+  def scratch
+    "他害・自傷行為" if self.event_classification == "他害・自傷行為"
+  end
+
+  def environment
+    "環境" if self.event_classification == "環境"
+  end
+
+  def info_contact
+    "情報・連絡・報告" if self.event_classification == "情報・連絡・報告"
+  end
+
+  def personal_info
+    "個人情報・人権" if self.event_classification == "個人情報・人権"
+  end
+
+  def lost
+    "紛失" if self.event_classification == "紛失"
+  end
+
+  def damage
+    "器物破損" if self.event_classification == "器物破損"
+  end
+
+  def money
+    "金銭" if self.event_classification == "金銭"
+  end
+
+  def medical_care
+    "医療的ケア" if self.event_classification == "医療的ケア"
+  end
+
+  def infection
+    "感染症" if self.event_classification == "感染症"
+  end
+
+  def forget
+    "忘れ物・返却忘れ" if self.event_classification == "忘れ物・返却忘れ"
+  end
+
+  def other
+    "その他" if self.event_classification == "その他"
+  end
+
   #7:00~9:00で時間範囲限定
   def self.time_range_7_9(time)
     time.accident_time.strftime("%k").gsub(" ", "").to_i >= 7 && time.accident_time.strftime("%k").gsub(" ", "").to_i < 9
@@ -147,6 +203,39 @@ class Accident < ApplicationRecord
     fall_hat3f_3_7 = []
     fall_hat4f_3_7 = []
 
+    #7~9時の行方不明・所在不明ヒヤリ
+    missing_hat2f_7_9 = []
+    missing_hat3f_7_9 = []
+    missing_hat4f_7_9 = []
+    #9~12時の行方不明・所在不明ヒヤリ
+    missing_hat2f_9_12 = []
+    missing_hat3f_9_12 = []
+    missing_hat4f_9_12 = []
+    #12~14時の行方不明・所在不明ヒヤリ
+    missing_hat2f_12_14 = []
+    missing_hat3f_12_14 = []
+    missing_hat4f_12_14 = []
+    #14~17時の行方不明・所在不明ヒヤリ
+    missing_hat2f_14_17 = []
+    missing_hat3f_14_17 = []
+    missing_hat4f_14_17 = []
+    #17~19時の行方不明・所在不明ヒヤリ
+    missing_hat2f_17_19 = []
+    missing_hat3f_17_19 = []
+    missing_hat4f_17_19 = []
+    #19~22時の行方不明・所在不明ヒヤリ
+    missing_hat2f_19_22 = []
+    missing_hat3f_19_22 = []
+    missing_hat4f_19_22 = []
+    #22~3時の行方不明・所在不明ヒヤリ
+    missing_hat2f_22_3 = []
+    missing_hat3f_22_3 = []
+    missing_hat4f_22_3 = []
+    #3~7時の行方不明・所在不明ヒヤリ
+    missing_hat2f_3_7 = []
+    missing_hat3f_3_7 = []
+    missing_hat4f_3_7 = []
+
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
       if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
@@ -161,49 +250,107 @@ class Accident < ApplicationRecord
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_9_12 = fall_hat3f_9_12 if fall_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_9_12  = fall_hat4f_9_12 if fall_hat4f_9_12 << hat
+        fall_hat4f_9_12 = fall_hat4f_9_12 if fall_hat4f_9_12 << hat
       #12~14時の転倒・転落ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_12_14 = fall_hat2f_12_14 if fall_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_12_14 = fall_hat3f_12_14 if fall_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_12_14  = fall_hat4f_12_14 if fall_hat4f_12_14 << hat
+        fall_hat4f_12_14 = fall_hat4f_12_14 if fall_hat4f_12_14 << hat
       #14~17時の転倒・転落ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_14_17 = fall_hat2f_14_17 if fall_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_14_17 = fall_hat3f_14_17 if fall_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_14_17  = fall_hat4f_14_17 if fall_hat4f_14_17 << hat
+        fall_hat4f_14_17 = fall_hat4f_14_17 if fall_hat4f_14_17 << hat
       #17~19時の転倒・転落ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_17_19 = fall_hat2f_17_19 if fall_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_17_19 = fall_hat3f_17_19 if fall_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_17_19  = fall_hat4f_17_19 if fall_hat4f_17_19 << hat
+        fall_hat4f_17_19 = fall_hat4f_17_19 if fall_hat4f_17_19 << hat
       #19~22時の転倒・転落ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_19_22 = fall_hat2f_19_22 if fall_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_19_22 = fall_hat3f_19_22 if fall_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_19_22  = fall_hat4f_19_22 if fall_hat4f_19_22 << hat
+        fall_hat4f_19_22 = fall_hat4f_19_22 if fall_hat4f_19_22 << hat
       #22~3時の転倒・転落ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_22_3 = fall_hat2f_22_3 if fall_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_22_3 = fall_hat3f_22_3 if fall_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_22_3  = fall_hat4f_22_3 if fall_hat4f_22_3 << hat
+        fall_hat4f_22_3 = fall_hat4f_22_3 if fall_hat4f_22_3 << hat
       #3~7時の転倒・転落ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.fall
         fall_hat2f_3_7 = fall_hat2f_3_7 if fall_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.fall
         fall_hat3f_3_7 = fall_hat3f_3_7 if fall_hat3f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.fall
-        fall_hat4f_3_7  = fall_hat4f_3_7 if fall_hat4f_3_7 << hat
+        fall_hat4f_3_7 = fall_hat4f_3_7 if fall_hat4f_3_7 << hat
+      end
+
+      #7~9時の行方不明・所在不明ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_7_9 = missing_hat2f_7_9 if missing_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_7_9 = missing_hat3f_7_9 if missing_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_7_9 = missing_hat4f_7_9 if missing_hat4f_7_9 << hat
+        #9~12時の行方不明・所在不明ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_9_12 = missing_hat2f_9_12 if missing_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_9_12 = missing_hat3f_9_12 if missing_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_9_12 = missing_hat4f_9_12 if missing_hat4f_9_12 << hat
+        #12~14時の行方不明・所在不明ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_12_14 = missing_hat2f_12_14 if missing_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_12_14 = missing_hat3f_12_14 if missing_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_12_14 = missing_hat4f_12_14 if missing_hat4f_12_14 << hat
+        #14~17時の行方不明・所在不明ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_14_17 = missing_hat2f_14_17 if missing_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_14_17 = missing_hat3f_14_17 if missing_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_14_17 = missing_hat4f_14_17 if missing_hat4f_14_17 << hat
+        #17~19時の行方不明・所在不明ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_17_19 = missing_hat2f_17_19 if missing_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_17_19 = missing_hat3f_17_19 if missing_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_17_19 = missing_hat4f_17_19 if missing_hat4f_17_19 << hat
+        #19~22時の行方不明・所在不明ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_19_22 = missing_hat2f_19_22 if missing_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_19_22 = missing_hat3f_19_22 if missing_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_19_22 = missing_hat4f_19_22 if missing_hat4f_19_22 << hat
+        #22~3時の行方不明・所在不明ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_22_3 = missing_hat2f_22_3 if missing_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_22_3 = missing_hat3f_22_3 if missing_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_22_3 = missing_hat4f_22_3 if missing_hat4f_22_3 << hat
+        #3~7時の行方不明・所在不明ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.missing
+        missing_hat2f_3_7 = missing_hat2f_3_7 if missing_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.missing
+        missing_hat3f_3_7 = missing_hat3f_3_7 if missing_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.missing
+        missing_hat4f_3_7 = missing_hat4f_3_7 if missing_hat4f_3_7 << hat
       end
     end
 
@@ -223,7 +370,24 @@ class Accident < ApplicationRecord
     #返り値：22~3時の転倒・転落ヒヤリ
     fall_hat2f_22_3, fall_hat3f_22_3, fall_hat4f_22_3,
     #返り値：3~7時の転倒・転落ヒヤリ
-    fall_hat2f_3_7, fall_hat3f_3_7, fall_hat4f_3_7
+    fall_hat2f_3_7, fall_hat3f_3_7, fall_hat4f_3_7,
+
+    #返り値：7~9時の行方不明・所在不明ヒヤリ
+    missing_hat2f_7_9, missing_hat3f_7_9, missing_hat4f_7_9,
+    #返り値：9~12時の行方不明・所在不明ヒヤリ
+    missing_hat2f_9_12, missing_hat3f_9_12, missing_hat4f_9_12,
+    #返り値：12~14時の行方不明・所在不明ヒヤリ
+    missing_hat2f_12_14, missing_hat3f_12_14, missing_hat4f_12_14,
+    #返り値：14~17時の行方不明・所在不明ヒヤリ
+    missing_hat2f_14_17, missing_hat3f_14_17, missing_hat4f_14_17,
+    #返り値：17~19時の行方不明・所在不明ヒヤリ
+    missing_hat2f_17_19, missing_hat3f_17_19, missing_hat4f_17_19,
+    #返り値：19~22時の行方不明・所在不明ヒヤリ
+    missing_hat2f_19_22, missing_hat3f_19_22, missing_hat4f_19_22,
+    #返り値：22~3時の行方不明・所在不明ヒヤリ
+    missing_hat2f_22_3, missing_hat3f_22_3, missing_hat4f_22_3,
+    #返り値：3~7時の行方不明・所在不明ヒヤリ
+    missing_hat2f_3_7, missing_hat3f_3_7, missing_hat4f_3_7
     ]
   end
 
