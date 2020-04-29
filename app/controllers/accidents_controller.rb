@@ -123,7 +123,16 @@ class AccidentsController < ApplicationController
     @meal_hat2f_17_19, @meal_hat3f_17_19, @meal_hat4f_17_19,
     @meal_hat2f_19_22, @meal_hat3f_19_22, @meal_hat4f_19_22,
     @meal_hat2f_22_3,  @meal_hat3f_22_3, @meal_hat4f_22_3,
-    @meal_hat2f_3_7, @meal_hat3f_3_7, @meal_hat4f_3_7 = Accident.time_division(accidents)
+    @meal_hat2f_3_7, @meal_hat3f_3_7, @meal_hat4f_3_7,
+    # 薬関連
+    @medicine_hat2f_7_9, @medicine_hat3f_7_9, @medicine_hat4f_7_9,
+    @medicine_hat2f_9_12, @medicine_hat3f_9_12, @medicine_hat4f_9_12,
+    @medicine_hat2f_12_14, @medicine_hat3f_12_14, @medicine_hat4f_12_14,
+    @medicine_hat2f_14_17, @medicine_hat3f_14_17, @medicine_hat4f_14_17,
+    @medicine_hat2f_17_19, @medicine_hat3f_17_19, @medicine_hat4f_17_19,
+    @medicine_hat2f_19_22, @medicine_hat3f_19_22, @medicine_hat4f_19_22,
+    @medicine_hat2f_22_3,  @medicine_hat3f_22_3, @medicine_hat4f_22_3,
+    @medicine_hat2f_3_7, @medicine_hat3f_3_7, @medicine_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット

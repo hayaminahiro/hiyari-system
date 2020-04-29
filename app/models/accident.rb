@@ -269,6 +269,39 @@ class Accident < ApplicationRecord
     meal_hat3f_3_7 = []
     meal_hat4f_3_7 = []
 
+    #7~9時の薬関係ヒヤリ
+    medicine_hat2f_7_9 = []
+    medicine_hat3f_7_9 = []
+    medicine_hat4f_7_9 = []
+    #9~12時の薬関係ヒヤリ
+    medicine_hat2f_9_12 = []
+    medicine_hat3f_9_12 = []
+    medicine_hat4f_9_12 = []
+    #12~14時の薬関係ヒヤリ
+    medicine_hat2f_12_14 = []
+    medicine_hat3f_12_14 = []
+    medicine_hat4f_12_14 = []
+    #14~17時の薬関係ヒヤリ
+    medicine_hat2f_14_17 = []
+    medicine_hat3f_14_17 = []
+    medicine_hat4f_14_17 = []
+    #17~19時の薬関係ヒヤリ
+    medicine_hat2f_17_19 = []
+    medicine_hat3f_17_19 = []
+    medicine_hat4f_17_19 = []
+    #19~22時の薬関係ヒヤリ
+    medicine_hat2f_19_22 = []
+    medicine_hat3f_19_22 = []
+    medicine_hat4f_19_22 = []
+    #22~3時の薬関係ヒヤリ
+    medicine_hat2f_22_3 = []
+    medicine_hat3f_22_3 = []
+    medicine_hat4f_22_3 = []
+    #3~7時の薬関係ヒヤリ
+    medicine_hat2f_3_7 = []
+    medicine_hat3f_3_7 = []
+    medicine_hat4f_3_7 = []
+
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
       if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
@@ -393,55 +426,113 @@ class Accident < ApplicationRecord
         meal_hat3f_7_9 = meal_hat3f_7_9 if meal_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_7_9 = meal_hat4f_7_9 if meal_hat4f_7_9 << hat
-        #9~12時の転倒・転落ヒヤリ
+        #9~12時の飲食に関することヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_9_12 = meal_hat2f_9_12 if meal_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_9_12 = meal_hat3f_9_12 if meal_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_9_12 = meal_hat4f_9_12 if meal_hat4f_9_12 << hat
-        #12~14時の転倒・転落ヒヤリ
+        #12~14時の飲食に関することヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_12_14 = meal_hat2f_12_14 if meal_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_12_14 = meal_hat3f_12_14 if meal_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_12_14 = meal_hat4f_12_14 if meal_hat4f_12_14 << hat
-        #14~17時の転倒・転落ヒヤリ
+        #14~17時の飲食に関することヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_14_17 = meal_hat2f_14_17 if meal_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_14_17 = meal_hat3f_14_17 if meal_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_14_17 = meal_hat4f_14_17 if meal_hat4f_14_17 << hat
-        #17~19時の転倒・転落ヒヤリ
+        #17~19時の飲食に関することヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_17_19 = meal_hat2f_17_19 if meal_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_17_19 = meal_hat3f_17_19 if meal_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_17_19 = meal_hat4f_17_19 if meal_hat4f_17_19 << hat
-        #19~22時の転倒・転落ヒヤリ
+        #19~22時の飲食に関することヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_19_22 = meal_hat2f_19_22 if meal_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_19_22 = meal_hat3f_19_22 if meal_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_19_22 = meal_hat4f_19_22 if meal_hat4f_19_22 << hat
-        #22~3時の転倒・転落ヒヤリ
+        #22~3時の飲食に関することヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_22_3 = meal_hat2f_22_3 if meal_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_22_3 = meal_hat3f_22_3 if meal_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_22_3 = meal_hat4f_22_3 if meal_hat4f_22_3 << hat
-        #3~7時の転倒・転落ヒヤリ
+        #3~7時の飲食に関することヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_3_7 = meal_hat2f_3_7 if meal_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_3_7 = meal_hat3f_3_7 if meal_hat3f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_3_7 = meal_hat4f_3_7 if meal_hat4f_3_7 << hat
+      end
+
+      #7~9時の薬関係ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_7_9 = medicine_hat2f_7_9 if medicine_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_7_9 = medicine_hat3f_7_9 if medicine_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_7_9 = medicine_hat4f_7_9 if medicine_hat4f_7_9 << hat
+        #9~12時の薬関係ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_9_12 = medicine_hat2f_9_12 if medicine_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_9_12 = medicine_hat3f_9_12 if medicine_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_9_12 = medicine_hat4f_9_12 if medicine_hat4f_9_12 << hat
+        #12~14時の薬関係ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_12_14 = medicine_hat2f_12_14 if medicine_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_12_14 = medicine_hat3f_12_14 if medicine_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_12_14 = medicine_hat4f_12_14 if medicine_hat4f_12_14 << hat
+        #14~17時の薬関係ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_14_17 = medicine_hat2f_14_17 if medicine_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_14_17 = medicine_hat3f_14_17 if medicine_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_14_17 = medicine_hat4f_14_17 if medicine_hat4f_14_17 << hat
+        #17~19時の薬関係ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_17_19 = medicine_hat2f_17_19 if medicine_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_17_19 = medicine_hat3f_17_19 if medicine_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_17_19 = medicine_hat4f_17_19 if medicine_hat4f_17_19 << hat
+        #19~22時の薬関係ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_19_22 = medicine_hat2f_19_22 if medicine_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_19_22 = medicine_hat3f_19_22 if medicine_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_19_22 = medicine_hat4f_19_22 if medicine_hat4f_19_22 << hat
+        #22~3時の薬関係ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_22_3 = medicine_hat2f_22_3 if medicine_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_22_3 = medicine_hat3f_22_3 if medicine_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_22_3 = medicine_hat4f_22_3 if medicine_hat4f_22_3 << hat
+        #3~7時の薬関係ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.medicine
+        medicine_hat2f_3_7 = medicine_hat2f_3_7 if medicine_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.medicine
+        medicine_hat3f_3_7 = medicine_hat3f_3_7 if medicine_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.medicine
+        medicine_hat4f_3_7 = medicine_hat4f_3_7 if medicine_hat4f_3_7 << hat
       end
     end
 
@@ -482,20 +573,37 @@ class Accident < ApplicationRecord
 
     #返り値：7~9時の飲食に関することヒヤリ
     meal_hat2f_7_9, meal_hat3f_7_9, meal_hat4f_7_9,
-    #返り値：9~12時の転倒・転落ヒヤリ
+    #返り値：9~12時の飲食に関することヒヤリ
     meal_hat2f_9_12, meal_hat3f_9_12, meal_hat4f_9_12,
-    #返り値：12~14時の転倒・転落ヒヤリ
+    #返り値：12~14時の飲食に関することヒヤリ
     meal_hat2f_12_14, meal_hat3f_12_14, meal_hat4f_12_14,
-    #返り値：14~17時の転倒・転落ヒヤリ
+    #返り値：14~17時の飲食に関することヒヤリ
     meal_hat2f_14_17, meal_hat3f_14_17, meal_hat4f_14_17,
-    #返り値：17~19時の転倒・転落ヒヤリ
+    #返り値：17~19時の飲食に関することヒヤリ
     meal_hat2f_17_19, meal_hat3f_17_19, meal_hat4f_17_19,
-    #返り値：19~22時の転倒・転落ヒヤリ
+    #返り値：19~22時の飲食に関することヒヤリ
     meal_hat2f_19_22, meal_hat3f_19_22, meal_hat4f_19_22,
-    #返り値：22~3時の転倒・転落ヒヤリ
+    #返り値：22~3時の飲食に関することヒヤリ
     meal_hat2f_22_3, meal_hat3f_22_3, meal_hat4f_22_3,
-    #返り値：3~7時の転倒・転落ヒヤリ
+    #返り値：3~7時の飲食に関することヒヤリ
     meal_hat2f_3_7, meal_hat3f_3_7, meal_hat4f_3_7,
+
+    #返り値：7~9時の薬関係ヒヤリ
+    medicine_hat2f_7_9, medicine_hat3f_7_9, medicine_hat4f_7_9,
+    #返り値：9~12時の薬関係ヒヤリ
+    medicine_hat2f_9_12, medicine_hat3f_9_12, medicine_hat4f_9_12,
+    #返り値：12~14時の薬関係ヒヤリ
+    medicine_hat2f_12_14, medicine_hat3f_12_14, medicine_hat4f_12_14,
+    #返り値：14~17時の薬関係ヒヤリ
+    medicine_hat2f_14_17, medicine_hat3f_14_17, medicine_hat4f_14_17,
+    #返り値：17~19時の薬関係ヒヤリ
+    medicine_hat2f_17_19, medicine_hat3f_17_19, medicine_hat4f_17_19,
+    #返り値：19~22時の薬関係ヒヤリ
+    medicine_hat2f_19_22, medicine_hat3f_19_22, medicine_hat4f_19_22,
+    #返り値：22~3時の薬関係ヒヤリ
+    medicine_hat2f_22_3, medicine_hat3f_22_3, medicine_hat4f_22_3,
+    #返り値：3~7時の薬関係ヒヤリ
+    medicine_hat2f_3_7, medicine_hat3f_3_7, medicine_hat4f_3_7,
     ]
   end
 
