@@ -150,7 +150,16 @@ class AccidentsController < ApplicationController
     @environment_hat2f_17_19, @environment_hat3f_17_19, @environment_hat4f_17_19,
     @environment_hat2f_19_22, @environment_hat3f_19_22, @environment_hat4f_19_22,
     @environment_hat2f_22_3,  @environment_hat3f_22_3, @environment_hat4f_22_3,
-    @environment_hat2f_3_7, @environment_hat3f_3_7, @environment_hat4f_3_7 = Accident.time_division(accidents)
+    @environment_hat2f_3_7, @environment_hat3f_3_7, @environment_hat4f_3_7,
+    #情報・連絡・報告
+    @info_contact_hat2f_7_9, @info_contact_hat3f_7_9, @info_contact_hat4f_7_9,
+    @info_contact_hat2f_9_12, @info_contact_hat3f_9_12, @info_contact_hat4f_9_12,
+    @info_contact_hat2f_12_14, @info_contact_hat3f_12_14, @info_contact_hat4f_12_14,
+    @info_contact_hat2f_14_17, @info_contact_hat3f_14_17, @info_contact_hat4f_14_17,
+    @info_contact_hat2f_17_19, @info_contact_hat3f_17_19, @info_contact_hat4f_17_19,
+    @info_contact_hat2f_19_22, @info_contact_hat3f_19_22, @info_contact_hat4f_19_22,
+    @info_contact_hat2f_22_3,  @info_contact_hat3f_22_3, @info_contact_hat4f_22_3,
+    @info_contact_hat2f_3_7, @info_contact_hat3f_3_7, @info_contact_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -178,9 +187,9 @@ class AccidentsController < ApplicationController
     @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_environment
     @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_environment
     #情報・連絡・報告のヒヤリハット
-    @info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_info_contact
-    @info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_info_contact
-    @info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_info_contact
+    @info_contact_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_info_contact
+    @info_contact_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_info_contact
+    @info_contact_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_info_contact
     #個人情報・人権のヒヤリハット
     @personal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_personal_info
     @personal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_personal_info
