@@ -367,7 +367,39 @@ class Accident < ApplicationRecord
     environment_hat2f_3_7 = []
     environment_hat3f_3_7 = []
     environment_hat4f_3_7 = []
-    
+
+    #7~9時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_7_9 = []
+    info_contact_hat3f_7_9 = []
+    info_contact_hat4f_7_9 = []
+    #9~12時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_9_12 = []
+    info_contact_hat3f_9_12 = []
+    info_contact_hat4f_9_12 = []
+    #12~14時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_12_14 = []
+    info_contact_hat3f_12_14 = []
+    info_contact_hat4f_12_14 = []
+    #14~17時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_14_17 = []
+    info_contact_hat3f_14_17 = []
+    info_contact_hat4f_14_17 = []
+    #17~19時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_17_19 = []
+    info_contact_hat3f_17_19 = []
+    info_contact_hat4f_17_19 = []
+    #19~22時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_19_22 = []
+    info_contact_hat3f_19_22 = []
+    info_contact_hat4f_19_22 = []
+    #22~3時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_22_3 = []
+    info_contact_hat3f_22_3 = []
+    info_contact_hat4f_22_3 = []
+    #3~7時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_3_7 = []
+    info_contact_hat3f_3_7 = []
+    info_contact_hat4f_3_7 = []
 
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
@@ -717,6 +749,64 @@ class Accident < ApplicationRecord
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_3_7 << hat
       end
+
+      #7~9時の情報・連絡・報告ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_7_9 << hat
+        #9~12時の情報・連絡・報告ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_9_12 << hat
+        #12~14時の情報・連絡・報告ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_12_14 << hat
+        #14~17時の情報・連絡・報告ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_14_17 << hat
+        #17~19時の情報・連絡・報告ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_17_19 << hat
+        #19~22時の情報・連絡・報告ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_19_22 << hat
+        #22~3時の情報・連絡・報告ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_22_3 << hat
+        #3~7時の情報・連絡・報告ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.info_contact
+        info_contact_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.info_contact
+        info_contact_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.info_contact
+        info_contact_hat4f_3_7 << hat
+      end
     end
 
     [
@@ -821,6 +911,23 @@ class Accident < ApplicationRecord
     environment_hat2f_22_3, environment_hat3f_22_3, environment_hat4f_22_3,
     #返り値：3~7時の環境ヒヤリ
     environment_hat2f_3_7, environment_hat3f_3_7, environment_hat4f_3_7,
+
+    #返り値：7~9時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_7_9, info_contact_hat3f_7_9, info_contact_hat4f_7_9,
+    #返り値：9~12時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_9_12, info_contact_hat3f_9_12, info_contact_hat4f_9_12,
+    #返り値：12~14時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_12_14, info_contact_hat3f_12_14, info_contact_hat4f_12_14,
+    #返り値：14~17時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_14_17, info_contact_hat3f_14_17, info_contact_hat4f_14_17,
+    #返り値：17~19時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_17_19, info_contact_hat3f_17_19, info_contact_hat4f_17_19,
+    #返り値：19~22時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_19_22, info_contact_hat3f_19_22, info_contact_hat4f_19_22,
+    #返り値：22~3時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_22_3, info_contact_hat3f_22_3, info_contact_hat4f_22_3,
+    #返り値：3~7時の情報・連絡・報告ヒヤリ
+    info_contact_hat2f_3_7, info_contact_hat3f_3_7, info_contact_hat4f_3_7,
     ]
   end
 
