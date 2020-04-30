@@ -213,7 +213,16 @@ class AccidentsController < ApplicationController
     @infection_hat2f_17_19, @infection_hat3f_17_19, @infection_hat4f_17_19,
     @infection_hat2f_19_22, @infection_hat3f_19_22, @infection_hat4f_19_22,
     @infection_hat2f_22_3, @infection_hat3f_22_3, @infection_hat4f_22_3,
-    @infection_hat2f_3_7, @infection_hat3f_3_7, @infection_hat4f_3_7,= Accident.time_division(accidents)
+    @infection_hat2f_3_7, @infection_hat3f_3_7, @infection_hat4f_3_7,
+    #忘れ物・返却忘れ
+    @forget_hat2f_7_9, @forget_hat3f_7_9, @forget_hat4f_7_9,
+    @forget_hat2f_9_12, @forget_hat3f_9_12, @forget_hat4f_9_12,
+    @forget_hat2f_12_14, @forget_hat3f_12_14, @forget_hat4f_12_14,
+    @forget_hat2f_14_17, @forget_hat3f_14_17, @forget_hat4f_14_17,
+    @forget_hat2f_17_19, @forget_hat3f_17_19, @forget_hat4f_17_19,
+    @forget_hat2f_19_22, @forget_hat3f_19_22, @forget_hat4f_19_22,
+    @forget_hat2f_22_3, @forget_hat3f_22_3, @forget_hat4f_22_3,
+    @forget_hat2f_3_7, @forget_hat3f_3_7, @forget_hat4f_3_7, = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
