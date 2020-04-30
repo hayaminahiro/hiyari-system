@@ -467,6 +467,41 @@ class Accident < ApplicationRecord
     lost_hat3f_3_7 = []
     lost_hat4f_3_7 = []
 
+    #7~9時の器物破損ヒヤリ
+    damage_hat2f_7_9 = []
+    damage_hat3f_7_9 = []
+    damage_hat4f_7_9 = []
+    #9~12時の器物破損ヒヤリ
+    damage_hat2f_9_12 = []
+    damage_hat3f_9_12 = []
+    damage_hat4f_9_12 = []
+    #12~14時の器物破損ヒヤリ
+    damage_hat2f_12_14 = []
+    damage_hat3f_12_14 = []
+    damage_hat4f_12_14 = []
+    #14~17時の器物破損ヒヤリ
+    damage_hat2f_14_17 = []
+    damage_hat3f_14_17 = []
+    damage_hat4f_14_17 = []
+    #17~19時の器物破損ヒヤリ
+    damage_hat2f_17_19 = []
+    damage_hat3f_17_19 = []
+    damage_hat4f_17_19 = []
+    #19~22時の器物破損ヒヤリ
+    damage_hat2f_19_22 = []
+    damage_hat3f_19_22 = []
+    damage_hat4f_19_22 = []
+    #22~3時の器物破損ヒヤリ
+    damage_hat2f_22_3 = []
+    damage_hat3f_22_3 = []
+    damage_hat4f_22_3 = []
+    #3~7時の器物破損ヒヤリ
+    damage_hat2f_3_7 = []
+    damage_hat3f_3_7 = []
+    damage_hat4f_3_7 = []
+
+
+
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
       if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
@@ -533,49 +568,49 @@ class Accident < ApplicationRecord
         missing_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_7_9 << hat
-        #9~12時の行方不明・所在不明ヒヤリ
+      #9~12時の行方不明・所在不明ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_9_12 << hat
-        #12~14時の行方不明・所在不明ヒヤリ
+      #12~14時の行方不明・所在不明ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_12_14 << hat
-        #14~17時の行方不明・所在不明ヒヤリ
+      #14~17時の行方不明・所在不明ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_14_17 << hat
-        #17~19時の行方不明・所在不明ヒヤリ
+      #17~19時の行方不明・所在不明ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_17_19 << hat
-        #19~22時の行方不明・所在不明ヒヤリ
+      #19~22時の行方不明・所在不明ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_19_22 << hat
-        #22~3時の行方不明・所在不明ヒヤリ
+      #22~3時の行方不明・所在不明ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.missing
         missing_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.missing
         missing_hat4f_22_3 << hat
-        #3~7時の行方不明・所在不明ヒヤリ
+      #3~7時の行方不明・所在不明ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.missing
         missing_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.missing
@@ -591,49 +626,49 @@ class Accident < ApplicationRecord
         meal_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_7_9 << hat
-        #9~12時の飲食に関することヒヤリ
+      #9~12時の飲食に関することヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_9_12 << hat
-        #12~14時の飲食に関することヒヤリ
+      #12~14時の飲食に関することヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_12_14 << hat
-        #14~17時の飲食に関することヒヤリ
+      #14~17時の飲食に関することヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_14_17 << hat
-        #17~19時の飲食に関することヒヤリ
+      #17~19時の飲食に関することヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_17_19 << hat
-        #19~22時の飲食に関することヒヤリ
+      #19~22時の飲食に関することヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_19_22 << hat
-        #22~3時の飲食に関することヒヤリ
+      #22~3時の飲食に関することヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.meal
         meal_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.meal
         meal_hat4f_22_3 << hat
-        #3~7時の飲食に関することヒヤリ
+      #3~7時の飲食に関することヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.meal
         meal_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.meal
@@ -649,49 +684,49 @@ class Accident < ApplicationRecord
         medicine_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_7_9 << hat
-        #9~12時の薬関係ヒヤリ
+      #9~12時の薬関係ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_9_12 << hat
-        #12~14時の薬関係ヒヤリ
+      #12~14時の薬関係ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_12_14 << hat
-        #14~17時の薬関係ヒヤリ
+      #14~17時の薬関係ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_14_17 << hat
-        #17~19時の薬関係ヒヤリ
+      #17~19時の薬関係ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_17_19 << hat
-        #19~22時の薬関係ヒヤリ
+      #19~22時の薬関係ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_19_22 << hat
-        #22~3時の薬関係ヒヤリ
+      #22~3時の薬関係ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.medicine
         medicine_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.medicine
         medicine_hat4f_22_3 << hat
-        #3~7時の薬関係ヒヤリ
+      #3~7時の薬関係ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.medicine
         medicine_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.medicine
@@ -707,49 +742,49 @@ class Accident < ApplicationRecord
         scratch_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_7_9 << hat
-        #9~12時の他害・自傷行為ヒヤリ
+      #9~12時の他害・自傷行為ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_9_12 << hat
-        #12~14時の他害・自傷行為ヒヤリ
+      #12~14時の他害・自傷行為ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_12_14 << hat
-        #14~17時の他害・自傷行為ヒヤリ
+      #14~17時の他害・自傷行為ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_14_17 << hat
-        #17~19時の他害・自傷行為ヒヤリ
+      #17~19時の他害・自傷行為ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_17_19 << hat
-        #19~22時の他害・自傷行為ヒヤリ
+      #19~22時の他害・自傷行為ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_19_22 << hat
-        #22~3時の他害・自傷行為ヒヤリ
+      #22~3時の他害・自傷行為ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.scratch
         scratch_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.scratch
         scratch_hat4f_22_3 << hat
-        #3~7時の他害・自傷行為ヒヤリ
+      #3~7時の他害・自傷行為ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.scratch
         scratch_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.scratch
@@ -765,49 +800,49 @@ class Accident < ApplicationRecord
         environment_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_7_9 << hat
-        #9~12時の環境ヒヤリ
+      #9~12時の環境ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_9_12 << hat
-        #12~14時の環境ヒヤリ
+      #12~14時の環境ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_12_14 << hat
-        #14~17時の環境ヒヤリ
+      #14~17時の環境ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_14_17 << hat
-        #17~19時の環境ヒヤリ
+      #17~19時の環境ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_17_19 << hat
-        #19~22時の環境ヒヤリ
+      #19~22時の環境ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_19_22 << hat
-        #22~3時の環境ヒヤリ
+      #22~3時の環境ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.environment
         environment_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.environment
         environment_hat4f_22_3 << hat
-        #3~7時の環境ヒヤリ
+      #3~7時の環境ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.environment
         environment_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.environment
@@ -823,49 +858,49 @@ class Accident < ApplicationRecord
         info_contact_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_7_9 << hat
-        #9~12時の情報・連絡・報告ヒヤリ
+      #9~12時の情報・連絡・報告ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_9_12 << hat
-        #12~14時の情報・連絡・報告ヒヤリ
+      #12~14時の情報・連絡・報告ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_12_14 << hat
-        #14~17時の情報・連絡・報告ヒヤリ
+      #14~17時の情報・連絡・報告ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_14_17 << hat
-        #17~19時の情報・連絡・報告ヒヤリ
+      #17~19時の情報・連絡・報告ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_17_19 << hat
-        #19~22時の情報・連絡・報告ヒヤリ
+      #19~22時の情報・連絡・報告ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_19_22 << hat
-        #22~3時の情報・連絡・報告ヒヤリ
+      #22~3時の情報・連絡・報告ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.info_contact
         info_contact_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.info_contact
         info_contact_hat4f_22_3 << hat
-        #3~7時の情報・連絡・報告ヒヤリ
+      #3~7時の情報・連絡・報告ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.info_contact
         info_contact_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.info_contact
@@ -881,49 +916,49 @@ class Accident < ApplicationRecord
         personal_info_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_7_9 << hat
-        #9~12時の個人情報・人権ヒヤリ
+      #9~12時の個人情報・人権ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_9_12 << hat
-        #12~14時の個人情報・人権ヒヤリ
+      #12~14時の個人情報・人権ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_12_14 << hat
-        #14~17時の個人情報・人権ヒヤリ
+      #14~17時の個人情報・人権ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_14_17 << hat
-        #17~19時の個人情報・人権ヒヤリ
+      #17~19時の個人情報・人権ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_17_19 << hat
-        #19~22時の個人情報・人権ヒヤリ
+      #19~22時の個人情報・人権ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_19_22 << hat
-        #22~3時の個人情報・人権ヒヤリ
+      #22~3時の個人情報・人権ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.personal_info
         personal_info_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.personal_info
         personal_info_hat4f_22_3 << hat
-        #3~7時の個人情報・人権ヒヤリ
+      #3~7時の個人情報・人権ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.personal_info
         personal_info_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.personal_info
@@ -939,55 +974,113 @@ class Accident < ApplicationRecord
         lost_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_7_9 << hat
-        #9~12時の紛失ヒヤリ
+      #9~12時の紛失ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_9_12 << hat
-        #12~14時の紛失ヒヤリ
+      #12~14時の紛失ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_12_14 << hat
-        #14~17時の紛失ヒヤリ
+      #14~17時の紛失ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_14_17 << hat
-        #17~19時の紛失ヒヤリ
+      #17~19時の紛失ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_17_19 << hat
-        #19~22時の紛失ヒヤリ
+      #19~22時の紛失ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_19_22 << hat
-        #22~3時の紛失ヒヤリ
+      #22~3時の紛失ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_22_3 << hat
-        #3~7時の紛失ヒヤリ
+      #3~7時の紛失ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.lost
         lost_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.lost
         lost_hat3f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.lost
         lost_hat4f_3_7 << hat
+      end
+
+      #7~9時の器物破損ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_7_9 << hat
+      #9~12時の器物破損ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_9_12 << hat
+      #12~14時の器物破損ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_12_14 << hat
+      #14~17時の器物破損ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_14_17 << hat
+      #17~19時の器物破損ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_17_19 << hat
+      #19~22時の器物破損ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_19_22 << hat
+      #22~3時の器物破損ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_22_3 << hat
+      #3~7時の器物破損ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.damage
+        damage_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.damage
+        damage_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.damage
+        damage_hat4f_3_7 << hat
       end
     end
 
@@ -1144,6 +1237,23 @@ class Accident < ApplicationRecord
     lost_hat2f_22_3, lost_hat3f_22_3, lost_hat4f_22_3,
     #返り値：3~7時の紛失ヒヤリ
     lost_hat2f_3_7, lost_hat3f_3_7, lost_hat4f_3_7,
+
+    #返り値：7~9時の器物破損ヒヤリ
+    damage_hat2f_7_9, damage_hat3f_7_9, damage_hat4f_7_9,
+    #返り値：9~12時の器物破損ヒヤリ
+    damage_hat2f_9_12, damage_hat3f_9_12, damage_hat4f_9_12,
+    #返り値：12~14時の器物破損ヒヤリ
+    damage_hat2f_12_14, damage_hat3f_12_14, damage_hat4f_12_14,
+    #返り値：14~17時の器物破損ヒヤリ
+    damage_hat2f_14_17, damage_hat3f_14_17, damage_hat4f_14_17,
+    #返り値：17~19時の器物破損ヒヤリ
+    damage_hat2f_17_19, damage_hat3f_17_19, damage_hat4f_17_19,
+    #返り値：19~22時の器物破損ヒヤリ
+    damage_hat2f_19_22, damage_hat3f_19_22, damage_hat4f_19_22,
+    #返り値：22~3時の器物破損ヒヤリ
+    damage_hat2f_22_3, damage_hat3f_22_3, damage_hat4f_22_3,
+    #返り値：3~7時の器物破損ヒヤリ
+    damage_hat2f_3_7, damage_hat3f_3_7, damage_hat4f_3_7,
     ]
   end
 
