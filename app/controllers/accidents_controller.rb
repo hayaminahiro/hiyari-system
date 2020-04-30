@@ -177,7 +177,16 @@ class AccidentsController < ApplicationController
     @lost_hat2f_17_19, @lost_hat3f_17_19, @lost_hat4f_17_19,
     @lost_hat2f_19_22, @lost_hat3f_19_22, @lost_hat4f_19_22,
     @lost_hat2f_22_3,  @lost_hat3f_22_3, @lost_hat4f_22_3,
-    @lost_hat2f_3_7, @lost_hat3f_3_7, @lost_hat4f_3_7, = Accident.time_division(accidents)
+    @lost_hat2f_3_7, @lost_hat3f_3_7, @lost_hat4f_3_7,
+    #器物破損
+    @damage_hat2f_7_9, @damage_hat3f_7_9, @damage_hat4f_7_9,
+    @damage_hat2f_9_12, @damage_hat3f_9_12, @damage_hat4f_9_12,
+    @damage_hat2f_12_14, @damage_hat3f_12_14, @damage_hat4f_12_14,
+    @damage_hat2f_14_17, @damage_hat3f_14_17, @damage_hat4f_14_17,
+    @damage_hat2f_17_19, @damage_hat3f_17_19, @damage_hat4f_17_19,
+    @damage_hat2f_19_22, @damage_hat3f_19_22, @damage_hat4f_19_22,
+    @damage_hat2f_22_3,  @damage_hat3f_22_3, @damage_hat4f_22_3,
+    @damage_hat2f_3_7, @damage_hat3f_3_7, @damage_hat4f_3_7, = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
