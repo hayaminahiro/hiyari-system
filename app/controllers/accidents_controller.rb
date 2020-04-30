@@ -204,7 +204,16 @@ class AccidentsController < ApplicationController
     @medical_care_hat2f_17_19, @medical_care_hat3f_17_19, @medical_care_hat4f_17_19,
     @medical_care_hat2f_19_22, @medical_care_hat3f_19_22, @medical_care_hat4f_19_22,
     @medical_care_hat2f_22_3, @medical_care_hat3f_22_3, @medical_care_hat4f_22_3,
-    @medical_care_hat2f_3_7, @medical_care_hat3f_3_7, @medical_care_hat4f_3_7, = Accident.time_division(accidents)
+    @medical_care_hat2f_3_7, @medical_care_hat3f_3_7, @medical_care_hat4f_3_7,
+    #感染症
+    @infection_hat2f_7_9, @infection_hat3f_7_9, @infection_hat4f_7_9,
+    @infection_hat2f_9_12, @infection_hat3f_9_12, @infection_hat4f_9_12,
+    @infection_hat2f_12_14, @infection_hat3f_12_14, @infection_hat4f_12_14,
+    @infection_hat2f_14_17, @infection_hat3f_14_17, @infection_hat4f_14_17,
+    @infection_hat2f_17_19, @infection_hat3f_17_19, @infection_hat4f_17_19,
+    @infection_hat2f_19_22, @infection_hat3f_19_22, @infection_hat4f_19_22,
+    @infection_hat2f_22_3, @infection_hat3f_22_3, @infection_hat4f_22_3,
+    @infection_hat2f_3_7, @infection_hat3f_3_7, @infection_hat4f_3_7,= Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
