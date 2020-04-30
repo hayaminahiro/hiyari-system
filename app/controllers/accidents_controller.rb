@@ -168,7 +168,16 @@ class AccidentsController < ApplicationController
     @personal_info_hat2f_17_19, @personal_info_hat3f_17_19, @personal_info_hat4f_17_19,
     @personal_info_hat2f_19_22, @personal_info_hat3f_19_22, @personal_info_hat4f_19_22,
     @personal_info_hat2f_22_3,  @personal_info_hat3f_22_3, @personal_info_hat4f_22_3,
-    @personal_info_hat2f_3_7, @personal_info_hat3f_3_7, @personal_info_hat4f_3_7, = Accident.time_division(accidents)
+    @personal_info_hat2f_3_7, @personal_info_hat3f_3_7, @personal_info_hat4f_3_7,
+    #紛失
+    @lost_hat2f_7_9, @lost_hat3f_7_9, @lost_hat4f_7_9,
+    @lost_hat2f_9_12, @lost_hat3f_9_12, @lost_hat4f_9_12,
+    @lost_hat2f_12_14, @lost_hat3f_12_14, @lost_hat4f_12_14,
+    @lost_hat2f_14_17, @lost_hat3f_14_17, @lost_hat4f_14_17,
+    @lost_hat2f_17_19, @lost_hat3f_17_19, @lost_hat4f_17_19,
+    @lost_hat2f_19_22, @lost_hat3f_19_22, @lost_hat4f_19_22,
+    @lost_hat2f_22_3,  @lost_hat3f_22_3, @lost_hat4f_22_3,
+    @lost_hat2f_3_7, @lost_hat3f_3_7, @lost_hat4f_3_7, = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
