@@ -632,6 +632,39 @@ class Accident < ApplicationRecord
     forget_hat3f_3_7 = []
     forget_hat4f_3_7 = []
 
+    #7~9時のその他ヒヤリ
+    other_hat2f_7_9 = []
+    other_hat3f_7_9 = []
+    other_hat4f_7_9 = []
+    #9~12時のその他ヒヤリ
+    other_hat2f_9_12 = []
+    other_hat3f_9_12 = []
+    other_hat4f_9_12 = []
+    #12~14時のその他ヒヤリ
+    other_hat2f_12_14 = []
+    other_hat3f_12_14 = []
+    other_hat4f_12_14 = []
+    #14~17時のその他ヒヤリ
+    other_hat2f_14_17 = []
+    other_hat3f_14_17 = []
+    other_hat4f_14_17 = []
+    #17~19時のその他ヒヤリ
+    other_hat2f_17_19 = []
+    other_hat3f_17_19 = []
+    other_hat4f_17_19 = []
+    #19~22時のその他ヒヤリ
+    other_hat2f_19_22 = []
+    other_hat3f_19_22 = []
+    other_hat4f_19_22 = []
+    #22~3時のその他ヒヤリ
+    other_hat2f_22_3 = []
+    other_hat3f_22_3 = []
+    other_hat4f_22_3 = []
+    #3~7時のその他ヒヤリ
+    other_hat2f_3_7 = []
+    other_hat3f_3_7 = []
+    other_hat4f_3_7 = []
+
 
 
     accidents.each do |hat|
@@ -1280,49 +1313,49 @@ class Accident < ApplicationRecord
         medical_care_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_7_9 << hat
-        #9~12時の医療的ケアのヒヤリ
+      #9~12時の医療的ケアのヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_9_12 << hat
-        #12~14時の医療的ケアのヒヤリ
+      #12~14時の医療的ケアのヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_12_14 << hat
-        #14~17時の医療的ケアのヒヤリ
+      #14~17時の医療的ケアのヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_14_17 << hat
-        #17~19時の医療的ケアのヒヤリ
+      #17~19時の医療的ケアのヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_17_19 << hat
-        #19~22時の医療的ケアのヒヤリ
+      #19~22時の医療的ケアのヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_19_22 << hat
-        #22~3時の医療的ケアのヒヤリ
+      #22~3時の医療的ケアのヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.medical_care
         medical_care_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.medical_care
         medical_care_hat4f_22_3 << hat
-        #3~7時の医療的ケアのヒヤリ
+      #3~7時の医療的ケアのヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.medical_care
         medical_care_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.medical_care
@@ -1338,49 +1371,49 @@ class Accident < ApplicationRecord
         infection_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_7_9 << hat
-        #9~12時の感染症ヒヤリ
+      #9~12時の感染症ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_9_12 << hat
-        #12~14時の感染症ヒヤリ
+      #12~14時の感染症ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_12_14 << hat
-        #14~17時の感染症ヒヤリ
+      #14~17時の感染症ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_14_17 << hat
-        #17~19時の感染症ヒヤリ
+      #17~19時の感染症ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_17_19 << hat
-        #19~22時の感染症ヒヤリ
+      #19~22時の感染症ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_19_22 << hat
-        #22~3時の感染症ヒヤリ
+      #22~3時の感染症ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.infection
         infection_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.infection
         infection_hat4f_22_3 << hat
-        #3~7時の感染症ヒヤリ
+      #3~7時の感染症ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.infection
         infection_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.infection
@@ -1396,55 +1429,113 @@ class Accident < ApplicationRecord
         forget_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_7_9 << hat
-        #9~12時の忘れ物・返却忘れヒヤリ
+      #9~12時の忘れ物・返却忘れヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_9_12 << hat
-        #12~14時の忘れ物・返却忘れヒヤリ
+      #12~14時の忘れ物・返却忘れヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_12_14 << hat
-        #14~17時の忘れ物・返却忘れヒヤリ
+      #14~17時の忘れ物・返却忘れヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_14_17 << hat
-        #17~19時の忘れ物・返却忘れヒヤリ
+      #17~19時の忘れ物・返却忘れヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_17_19 << hat
-        #19~22時の忘れ物・返却忘れヒヤリ
+      #19~22時の忘れ物・返却忘れヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_19_22 << hat
-        #22~3時の忘れ物・返却忘れヒヤリ
+      #22~3時の忘れ物・返却忘れヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_22_3 << hat
-        #3~7時の忘れ物・返却忘れヒヤリ
+      #3~7時の忘れ物・返却忘れヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.forget
         forget_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.forget
         forget_hat3f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.forget
         forget_hat4f_3_7 << hat
+      end
+
+      #7~9時のその他ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_7_9 << hat
+      #9~12時のその他ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_9_12 << hat
+      #12~14時のその他ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_12_14 << hat
+      #14~17時のその他ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_14_17 << hat
+      #17~19時のその他ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_17_19 << hat
+      #19~22時のその他ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_19_22 << hat
+      #22~3時のその他ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_22_3 << hat
+      #3~7時のその他ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.other
+        other_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.other
+        other_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.other
+        other_hat4f_3_7 << hat
       end
     end
 
@@ -1686,6 +1777,23 @@ class Accident < ApplicationRecord
     forget_hat2f_22_3, forget_hat3f_22_3, forget_hat4f_22_3,
     #返り値：3~7時の忘れ物・返却忘れヒヤリ
     forget_hat2f_3_7, forget_hat3f_3_7, forget_hat4f_3_7,
+
+    #返り値：7~9時のその他ヒヤリ
+    other_hat2f_7_9, other_hat3f_7_9, other_hat4f_7_9,
+    #返り値：9~12時のその他ヒヤリ
+    other_hat2f_9_12, other_hat3f_9_12, other_hat4f_9_12,
+    #返り値：12~14時のその他ヒヤリ
+    other_hat2f_12_14, other_hat3f_12_14, other_hat4f_12_14,
+    #返り値：14~17時のその他ヒヤリ
+    other_hat2f_14_17, other_hat3f_14_17, other_hat4f_14_17,
+    #返り値：17~19時のその他ヒヤリ
+    other_hat2f_17_19, other_hat3f_17_19, other_hat4f_17_19,
+    #返り値：19~22時のその他ヒヤリ
+    other_hat2f_19_22, other_hat3f_19_22, other_hat4f_19_22,
+    #返り値：22~3時のその他ヒヤリ
+    other_hat2f_22_3, other_hat3f_22_3, other_hat4f_22_3,
+    #返り値：3~7時のその他ヒヤリ
+    other_hat2f_3_7, other_hat3f_3_7, other_hat4f_3_7,
     ]
   end
 
