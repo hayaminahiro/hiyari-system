@@ -195,7 +195,16 @@ class AccidentsController < ApplicationController
     @money_hat2f_17_19, @money_hat3f_17_19, @money_hat4f_17_19,
     @money_hat2f_19_22, @money_hat3f_19_22, @money_hat4f_19_22,
     @money_hat2f_22_3, @money_hat3f_22_3, @money_hat4f_22_3,
-    @money_hat2f_3_7, @money_hat3f_3_7, @money_hat4f_3_7, = Accident.time_division(accidents)
+    @money_hat2f_3_7, @money_hat3f_3_7, @money_hat4f_3_7,
+    #医療的ケア
+    @medical_care_hat2f_7_9, @medical_care_hat3f_7_9, @medical_care_hat4f_7_9,
+    @medical_care_hat2f_9_12, @medical_care_hat3f_9_12, @medical_care_hat4f_9_12,
+    @medical_care_hat2f_12_14, @medical_care_hat3f_12_14, @medical_care_hat4f_12_14,
+    @medical_care_hat2f_14_17, @medical_care_hat3f_14_17, @medical_care_hat4f_14_17,
+    @medical_care_hat2f_17_19, @medical_care_hat3f_17_19, @medical_care_hat4f_17_19,
+    @medical_care_hat2f_19_22, @medical_care_hat3f_19_22, @medical_care_hat4f_19_22,
+    @medical_care_hat2f_22_3, @medical_care_hat3f_22_3, @medical_care_hat4f_22_3,
+    @medical_care_hat2f_3_7, @medical_care_hat3f_3_7, @medical_care_hat4f_3_7, = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -243,9 +252,9 @@ class AccidentsController < ApplicationController
     @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_money
     @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_money
     #医療的ケアのヒヤリハット
-    @medical_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medical_care
-    @medical_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medical_care
-    @medical_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medical_care
+    @medical_care_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medical_care
+    @medical_care_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medical_care
+    @medical_care_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medical_care
     #感染症のヒヤリハット
     @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_infection
     @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_infection
