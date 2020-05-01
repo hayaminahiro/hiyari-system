@@ -868,6 +868,39 @@ class Accident < ApplicationRecord
     toilet_hat3f_3_7 = []
     toilet_hat4f_3_7 = []
 
+    #7~9時の入浴ヒヤリ
+    bathing_hat2f_7_9 = []
+    bathing_hat3f_7_9 = []
+    bathing_hat4f_7_9 = []
+    #9~12時の入浴ヒヤリ
+    bathing_hat2f_9_12 = []
+    bathing_hat3f_9_12 = []
+    bathing_hat4f_9_12 = []
+    #12~14時の入浴ヒヤリ
+    bathing_hat2f_12_14 = []
+    bathing_hat3f_12_14 = []
+    bathing_hat4f_12_14 = []
+    #14~17時の入浴ヒヤリ
+    bathing_hat2f_14_17 = []
+    bathing_hat3f_14_17 = []
+    bathing_hat4f_14_17 = []
+    #17~19時の入浴ヒヤリ
+    bathing_hat2f_17_19 = []
+    bathing_hat3f_17_19 = []
+    bathing_hat4f_17_19 = []
+    #19~22時の入浴ヒヤリ
+    bathing_hat2f_19_22 = []
+    bathing_hat3f_19_22 = []
+    bathing_hat4f_19_22 = []
+    #22~3時の入浴ヒヤリ
+    bathing_hat2f_22_3 = []
+    bathing_hat3f_22_3 = []
+    bathing_hat4f_22_3 = []
+    #3~7時の入浴ヒヤリ
+    bathing_hat2f_3_7 = []
+    bathing_hat3f_3_7 = []
+    bathing_hat4f_3_7 = []
+
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
       if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
@@ -1804,49 +1837,49 @@ class Accident < ApplicationRecord
         service_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_7_9 << hat
-        #9~12時の通所・送迎ヒヤリ
+      #9~12時の通所・送迎ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_9_12 << hat
-        #12~14時の通所・送迎ヒヤリ
+      #12~14時の通所・送迎ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_12_14 << hat
-        #14~17時の通所・送迎ヒヤリ
+      #14~17時の通所・送迎ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_14_17 << hat
-        #17~19時の通所・送迎ヒヤリ
+      #17~19時の通所・送迎ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_17_19 << hat
-        #19~22時の通所・送迎ヒヤリ
+      #19~22時の通所・送迎ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_19_22 << hat
-        #22~3時の通所・送迎ヒヤリ
+      #22~3時の通所・送迎ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.service
         service_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.service
         service_hat4f_22_3 << hat
-        #3~7時の通所・送迎ヒヤリ
+      #3~7時の通所・送迎ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.service
         service_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.service
@@ -1862,49 +1895,49 @@ class Accident < ApplicationRecord
         support_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_7_9 << hat
-        #9~12時の活動・支援ヒヤリ
+      #9~12時の活動・支援ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_9_12 << hat
-        #12~14時の活動・支援ヒヤリ
+      #12~14時の活動・支援ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_12_14 << hat
-        #14~17時の活動・支援ヒヤリ
+      #14~17時の活動・支援ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_14_17 << hat
-        #17~19時の活動・支援ヒヤリ
+      #17~19時の活動・支援ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_17_19 << hat
-        #19~22時の活動・支援ヒヤリ
+      #19~22時の活動・支援ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_19_22 << hat
-        #22~3時の活動・支援ヒヤリ
+      #22~3時の活動・支援ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.support
         support_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.support
         support_hat4f_22_3 << hat
-        #3~7時の活動・支援ヒヤリ
+      #3~7時の活動・支援ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.support
         support_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.support
@@ -1920,49 +1953,49 @@ class Accident < ApplicationRecord
         lunch_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_7_9 << hat
-        #9~12時の給食・配膳ヒヤリ
+      #9~12時の給食・配膳ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_9_12 << hat
-        #12~14時の給食・配膳ヒヤリ
+      #12~14時の給食・配膳ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_12_14 << hat
-        #14~17時の給食・配膳ヒヤリ
+      #14~17時の給食・配膳ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_14_17 << hat
-        #17~19時の給食・配膳ヒヤリ
+      #17~19時の給食・配膳ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_17_19 << hat
-        #19~22時の給食・配膳ヒヤリ
+      #19~22時の給食・配膳ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_19_22 << hat
-        #22~3時の給食・配膳ヒヤリ
+      #22~3時の給食・配膳ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.lunch
         lunch_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.lunch
         lunch_hat4f_22_3 << hat
-        #3~7時の給食・配膳ヒヤリ
+      #3~7時の給食・配膳ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.lunch
         lunch_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.lunch
@@ -1978,55 +2011,113 @@ class Accident < ApplicationRecord
         toilet_hat3f_7_9 << hat
       elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_7_9 << hat
-        #9~12時のトイレ・排泄ヒヤリ
+      #9~12時のトイレ・排泄ヒヤリ
       elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_9_12 << hat
       elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_9_12 << hat
-        #12~14時のトイレ・排泄ヒヤリ
+      #12~14時のトイレ・排泄ヒヤリ
       elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_12_14 << hat
       elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_12_14 << hat
-        #14~17時のトイレ・排泄ヒヤリ
+      #14~17時のトイレ・排泄ヒヤリ
       elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_14_17 << hat
       elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_14_17 << hat
-        #17~19時のトイレ・排泄ヒヤリ
+      #17~19時のトイレ・排泄ヒヤリ
       elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_17_19 << hat
       elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_17_19 << hat
-        #19~22時のトイレ・排泄ヒヤリ
+      #19~22時のトイレ・排泄ヒヤリ
       elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_19_22 << hat
       elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_19_22 << hat
-        #22~3時のトイレ・排泄ヒヤリ
+      #22~3時のトイレ・排泄ヒヤリ
       elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_22_3 << hat
       elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_22_3 << hat
-        #3~7時のトイレ・排泄ヒヤリ
+      #3~7時のトイレ・排泄ヒヤリ
       elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.toilet
         toilet_hat2f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.toilet
         toilet_hat3f_3_7 << hat
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.toilet
         toilet_hat4f_3_7 << hat
+      end
+
+      #7~9時の入浴ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_7_9 << hat
+        #9~12時の入浴ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_9_12 << hat
+        #12~14時の入浴ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_12_14 << hat
+        #14~17時の入浴ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_14_17 << hat
+        #17~19時の入浴ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_17_19 << hat
+        #19~22時の入浴ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_19_22 << hat
+        #22~3時の入浴ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_22_3 << hat
+        #3~7時の入浴ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.bathing
+        bathing_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.bathing
+        bathing_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.bathing
+        bathing_hat4f_3_7 << hat
       end
     end
 
@@ -2370,6 +2461,23 @@ class Accident < ApplicationRecord
     toilet_hat2f_22_3, toilet_hat3f_22_3, toilet_hat4f_22_3,
     #返り値：3~7時のトイレ・排泄ヒヤリ
     toilet_hat2f_3_7, toilet_hat3f_3_7, toilet_hat4f_3_7,
+
+    #返り値：7~9時の入浴ヒヤリ
+    bathing_hat2f_7_9, bathing_hat3f_7_9, bathing_hat4f_7_9,
+    #返り値：9~12時の入浴ヒヤリ
+    bathing_hat2f_9_12, bathing_hat3f_9_12, bathing_hat4f_9_12,
+    #返り値：12~14時の入浴ヒヤリ
+    bathing_hat2f_12_14, bathing_hat3f_12_14, bathing_hat4f_12_14,
+    #返り値：14~17時の入浴ヒヤリ
+    bathing_hat2f_14_17, bathing_hat3f_14_17, bathing_hat4f_14_17,
+    #返り値：17~19時の入浴ヒヤリ
+    bathing_hat2f_17_19, bathing_hat3f_17_19, bathing_hat4f_17_19,
+    #返り値：19~22時の入浴ヒヤリ
+    bathing_hat2f_19_22, bathing_hat3f_19_22, bathing_hat4f_19_22,
+    #返り値：22~3時の入浴ヒヤリ
+    bathing_hat2f_22_3, bathing_hat3f_22_3, bathing_hat4f_22_3,
+    #返り値：3~7時の入浴ヒヤリ
+    bathing_hat2f_3_7, bathing_hat3f_3_7, bathing_hat4f_3_7,
     ]
   end
 
