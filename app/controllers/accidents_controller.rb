@@ -258,7 +258,16 @@ class AccidentsController < ApplicationController
     @support_hat2f_17_19, @support_hat3f_17_19, @support_hat4f_17_19,
     @support_hat2f_19_22, @support_hat3f_19_22, @support_hat4f_19_22,
     @support_hat2f_22_3, @support_hat3f_22_3, @support_hat4f_22_3,
-    @support_hat2f_3_7, @support_hat3f_3_7, @support_hat4f_3_7, = Accident.time_division(accidents)
+    @support_hat2f_3_7, @support_hat3f_3_7, @support_hat4f_3_7,
+    #給食・配膳
+    @lunch_hat2f_7_9, @lunch_hat3f_7_9, @lunch_hat4f_7_9,
+    @lunch_hat2f_9_12, @lunch_hat3f_9_12, @lunch_hat4f_9_12,
+    @lunch_hat2f_12_14, @lunch_hat3f_12_14, @lunch_hat4f_12_14,
+    @lunch_hat2f_14_17, @lunch_hat3f_14_17, @lunch_hat4f_14_17,
+    @lunch_hat2f_17_19, @lunch_hat3f_17_19, @lunch_hat4f_17_19,
+    @lunch_hat2f_19_22, @lunch_hat3f_19_22, @lunch_hat4f_19_22,
+    @lunch_hat2f_22_3, @lunch_hat3f_22_3, @lunch_hat4f_22_3,
+    @lunch_hat2f_3_7, @lunch_hat3f_3_7, @lunch_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -334,6 +343,10 @@ class AccidentsController < ApplicationController
     @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_support
     @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_support
     @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_support
+    #給食・配膳のヒヤリハット
+    @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_lunch
+    @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_lunch
+    @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_lunch
 
   end
 
