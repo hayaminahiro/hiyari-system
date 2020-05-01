@@ -267,7 +267,16 @@ class AccidentsController < ApplicationController
     @lunch_hat2f_17_19, @lunch_hat3f_17_19, @lunch_hat4f_17_19,
     @lunch_hat2f_19_22, @lunch_hat3f_19_22, @lunch_hat4f_19_22,
     @lunch_hat2f_22_3, @lunch_hat3f_22_3, @lunch_hat4f_22_3,
-    @lunch_hat2f_3_7, @lunch_hat3f_3_7, @lunch_hat4f_3_7 = Accident.time_division(accidents)
+    @lunch_hat2f_3_7, @lunch_hat3f_3_7, @lunch_hat4f_3_7,
+    #トイレ・排泄
+    @toilet_hat2f_7_9, @toilet_hat3f_7_9, @toilet_hat4f_7_9,
+    @toilet_hat2f_9_12, @toilet_hat3f_9_12, @toilet_hat4f_9_12,
+    @toilet_hat2f_12_14, @toilet_hat3f_12_14, @toilet_hat4f_12_14,
+    @toilet_hat2f_14_17, @toilet_hat3f_14_17, @toilet_hat4f_14_17,
+    @toilet_hat2f_17_19, @toilet_hat3f_17_19, @toilet_hat4f_17_19,
+    @toilet_hat2f_19_22, @toilet_hat3f_19_22, @toilet_hat4f_19_22,
+    @toilet_hat2f_22_3, @toilet_hat3f_22_3, @toilet_hat4f_22_3,
+    @toilet_hat2f_3_7, @toilet_hat3f_3_7, @toilet_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -347,6 +356,10 @@ class AccidentsController < ApplicationController
     @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_lunch
     @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_lunch
     @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_lunch
+    #トイレ・排泄のヒヤリハット
+    @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_toilet
+    @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_toilet
+    @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_toilet
 
   end
 
