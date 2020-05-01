@@ -294,7 +294,16 @@ class AccidentsController < ApplicationController
     @other_scene_hat2f_17_19, @other_scene_hat3f_17_19, @other_scene_hat4f_17_19,
     @other_scene_hat2f_19_22, @other_scene_hat3f_19_22, @other_scene_hat4f_19_22,
     @other_scene_hat2f_22_3, @other_scene_hat3f_22_3, @other_scene_hat4f_22_3,
-    @other_scene_hat2f_3_7, @other_scene_hat3f_3_7, @other_scene_hat4f_3_7 = Accident.time_division(accidents)
+    @other_scene_hat2f_3_7, @other_scene_hat3f_3_7, @other_scene_hat4f_3_7,
+    #場面総合計
+    @total_scene_hat2f_7_9, @total_scene_hat3f_7_9, @total_scene_hat4f_7_9,
+    @total_scene_hat2f_9_12, @total_scene_hat3f_9_12, @total_scene_hat4f_9_12,
+    @total_scene_hat2f_12_14, @total_scene_hat3f_12_14, @total_scene_hat4f_12_14,
+    @total_scene_hat2f_14_17, @total_scene_hat3f_14_17, @total_scene_hat4f_14_17,
+    @total_scene_hat2f_17_19, @total_scene_hat3f_17_19, @total_scene_hat4f_17_19,
+    @total_scene_hat2f_19_22, @total_scene_hat3f_19_22, @total_scene_hat4f_19_22,
+    @total_scene_hat2f_22_3, @total_scene_hat3f_22_3, @total_scene_hat4f_22_3,
+    @total_scene_hat2f_3_7, @total_scene_hat3f_3_7, @total_scene_hat4f_3_7 = Accident.time_division(accidents)
 
     #転倒・転落のヒヤリハット
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
@@ -385,7 +394,10 @@ class AccidentsController < ApplicationController
     @other_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_other_scene
     @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_other_scene
     @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_other_scene
-
+    #場面総合計のヒヤリハット
+    @total_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat
+    @total_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat
+    @total_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat
   end
 
   #ヒヤリ削除ボタン
