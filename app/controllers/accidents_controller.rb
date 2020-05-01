@@ -276,7 +276,16 @@ class AccidentsController < ApplicationController
     @toilet_hat2f_17_19, @toilet_hat3f_17_19, @toilet_hat4f_17_19,
     @toilet_hat2f_19_22, @toilet_hat3f_19_22, @toilet_hat4f_19_22,
     @toilet_hat2f_22_3, @toilet_hat3f_22_3, @toilet_hat4f_22_3,
-    @toilet_hat2f_3_7, @toilet_hat3f_3_7, @toilet_hat4f_3_7 = Accident.time_division(accidents)
+    @toilet_hat2f_3_7, @toilet_hat3f_3_7, @toilet_hat4f_3_7,
+    #入浴
+    @bathing_hat2f_7_9, @bathing_hat3f_7_9, @bathing_hat4f_7_9,
+    @bathing_hat2f_9_12, @bathing_hat3f_9_12, @bathing_hat4f_9_12,
+    @bathing_hat2f_12_14, @bathing_hat3f_12_14, @bathing_hat4f_12_14,
+    @bathing_hat2f_14_17, @bathing_hat3f_14_17, @bathing_hat4f_14_17,
+    @bathing_hat2f_17_19, @bathing_hat3f_17_19, @bathing_hat4f_17_19,
+    @bathing_hat2f_19_22, @bathing_hat3f_19_22, @bathing_hat4f_19_22,
+    @bathing_hat2f_22_3, @bathing_hat3f_22_3, @bathing_hat4f_22_3,
+    @bathing_hat2f_3_7, @bathing_hat3f_3_7, @bathing_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -360,6 +369,10 @@ class AccidentsController < ApplicationController
     @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_toilet
     @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_toilet
     @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_toilet
+    #入浴のヒヤリハット
+    @bathing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_bathing
+    @bathing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_bathing
+    @bathing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_bathing
 
   end
 
