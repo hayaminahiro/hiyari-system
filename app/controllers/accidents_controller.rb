@@ -231,7 +231,16 @@ class AccidentsController < ApplicationController
     @other_hat2f_17_19, @other_hat3f_17_19, @other_hat4f_17_19,
     @other_hat2f_19_22, @other_hat3f_19_22, @other_hat4f_19_22,
     @other_hat2f_22_3, @other_hat3f_22_3, @other_hat4f_22_3,
-    @other_hat2f_3_7, @other_hat3f_3_7, @other_hat4f_3_7,= Accident.time_division(accidents)
+    @other_hat2f_3_7, @other_hat3f_3_7, @other_hat4f_3_7,
+    #総合計
+    @total_hat2f_7_9, @total_hat3f_7_9, @total_hat4f_7_9,
+    @total_hat2f_9_12, @total_hat3f_9_12, @total_hat4f_9_12,
+    @total_hat2f_12_14, @total_hat3f_12_14, @total_hat4f_12_14,
+    @total_hat2f_14_17, @total_hat3f_14_17, @total_hat4f_14_17,
+    @total_hat2f_17_19, @total_hat3f_17_19, @total_hat4f_17_19,
+    @total_hat2f_19_22, @total_hat3f_19_22, @total_hat4f_19_22,
+    @total_hat2f_22_3, @total_hat3f_22_3, @total_hat4f_22_3,
+    @total_hat2f_3_7, @total_hat3f_3_7, @total_hat4f_3_7 = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -294,6 +303,10 @@ class AccidentsController < ApplicationController
     @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other
     @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other
     @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other
+    #総合計
+    @total_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat
+    @total_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat
+    @total_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat
   end
 
   #ヒヤリ削除ボタン
