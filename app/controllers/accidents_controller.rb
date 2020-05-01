@@ -249,7 +249,16 @@ class AccidentsController < ApplicationController
     @service_hat2f_17_19, @service_hat3f_17_19, @service_hat4f_17_19,
     @service_hat2f_19_22, @service_hat3f_19_22, @service_hat4f_19_22,
     @service_hat2f_22_3, @service_hat3f_22_3, @service_hat4f_22_3,
-    @service_hat2f_3_7, @service_hat3f_3_7, @service_hat4f_3_7 = Accident.time_division(accidents)
+    @service_hat2f_3_7, @service_hat3f_3_7, @service_hat4f_3_7,
+    #活動・支援
+    @support_hat2f_7_9, @support_hat3f_7_9, @support_hat4f_7_9,
+    @support_hat2f_9_12, @support_hat3f_9_12, @support_hat4f_9_12,
+    @support_hat2f_12_14, @support_hat3f_12_14, @support_hat4f_12_14,
+    @support_hat2f_14_17, @support_hat3f_14_17, @support_hat4f_14_17,
+    @support_hat2f_17_19, @support_hat3f_17_19, @support_hat4f_17_19,
+    @support_hat2f_19_22, @support_hat3f_19_22, @support_hat4f_19_22,
+    @support_hat2f_22_3, @support_hat3f_22_3, @support_hat4f_22_3,
+    @support_hat2f_3_7, @support_hat3f_3_7, @support_hat4f_3_7, = Accident.time_division(accidents)
 
 
     #転倒・転落のヒヤリハット
@@ -321,6 +330,11 @@ class AccidentsController < ApplicationController
     @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_service
     @service_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_service
     @service_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_service
+    #活動・支援のヒヤリハット
+    @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_support
+    @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_support
+    @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_support
+
   end
 
   #ヒヤリ削除ボタン
