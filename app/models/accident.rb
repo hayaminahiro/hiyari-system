@@ -45,6 +45,13 @@ class Accident < ApplicationRecord
   scope :event_infection, -> { where(event_classification: 12) }
   scope :event_forget, -> { where(event_classification: 13) }
   scope :event_other, -> { where(event_classification: 14) }
+  #場面・活動状況
+  scope :activity_service, -> { where(activity_scene: 0) }
+  scope :activity_support, -> { where(activity_scene: 1) }
+  scope :activity_lunch, -> { where(activity_scene: 2) }
+  scope :activity_toilet, -> { where(activity_scene: 3) }
+  scope :activity_bathing, -> { where(activity_scene: 4) }
+  scope :activity_other_scene, -> { where(activity_scene: 5) }
 
   #which_accident（ヒヤリor事故）の選択
   def hat
@@ -127,6 +134,37 @@ class Accident < ApplicationRecord
 
   def other
     "その他" if self.event_classification == "その他"
+  end
+
+  #activity_scene（出来事の領域的分類）の選択
+  #通所・送迎
+  def service
+    "通所・送迎" if self.activity_scene == "通所・送迎"
+  end
+
+  #活動・支援
+  def support
+    "活動・支援（施設内・外出）" if self.activity_scene == "活動・支援（施設内・外出）"
+  end
+
+  #給食・配膳
+  def lunch
+    "給食・配膳" if self.activity_scene == "給食・配膳"
+  end
+
+  #トイレ・排泄
+  def toilet
+    "トイレ・排泄" if self.activity_scene == "トイレ・排泄"
+  end
+
+  #入浴
+  def bathing
+    "入浴" if self.activity_scene == "入浴"
+  end
+
+  #その他
+  def other_scene
+    "その他" if self.activity_scene == "その他"
   end
 
   #7:00~9:00で時間範囲限定
@@ -697,6 +735,39 @@ class Accident < ApplicationRecord
     total_hat2f_3_7 = []
     total_hat3f_3_7 = []
     total_hat4f_3_7 = []
+
+    #7~9時の通所・送迎ヒヤリ
+    service_hat2f_7_9 = []
+    service_hat3f_7_9 = []
+    service_hat4f_7_9 = []
+    #9~12時の通所・送迎ヒヤリ
+    service_hat2f_9_12 = []
+    service_hat3f_9_12 = []
+    service_hat4f_9_12 = []
+    #12~14時の通所・送迎ヒヤリ
+    service_hat2f_12_14 = []
+    service_hat3f_12_14 = []
+    service_hat4f_12_14 = []
+    #14~17時の通所・送迎ヒヤリ
+    service_hat2f_14_17 = []
+    service_hat3f_14_17 = []
+    service_hat4f_14_17 = []
+    #17~19時の通所・送迎ヒヤリ
+    service_hat2f_17_19 = []
+    service_hat3f_17_19 = []
+    service_hat4f_17_19 = []
+    #19~22時の通所・送迎ヒヤリ
+    service_hat2f_19_22 = []
+    service_hat3f_19_22 = []
+    service_hat4f_19_22 = []
+    #22~3時の通所・送迎ヒヤリ
+    service_hat2f_22_3 = []
+    service_hat3f_22_3 = []
+    service_hat4f_22_3 = []
+    #3~7時の通所・送迎ヒヤリ
+    service_hat2f_3_7 = []
+    service_hat3f_3_7 = []
+    service_hat4f_3_7 = []
 
     accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
@@ -1626,6 +1697,64 @@ class Accident < ApplicationRecord
       elsif time_range_3_7(hat) && hat.floor4 && hat.hat
         total_hat4f_3_7 << hat
       end
+
+      #7~9時の通所・送迎ヒヤリ
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_7_9 << hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_7_9 << hat
+        #9~12時の通所・送迎ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_9_12 << hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_9_12 << hat
+        #12~14時の通所・送迎ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_12_14 << hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_12_14 << hat
+        #14~17時の通所・送迎ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_14_17 << hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_14_17 << hat
+        #17~19時の通所・送迎ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_17_19 << hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_17_19 << hat
+        #19~22時の通所・送迎ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_19_22 << hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_19_22 << hat
+        #22~3時の通所・送迎ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_22_3 << hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_22_3 << hat
+        #3~7時の通所・送迎ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.service
+        service_hat2f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.service
+        service_hat3f_3_7 << hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.service
+        service_hat4f_3_7 << hat
+      end
     end
 
     [
@@ -1900,6 +2029,23 @@ class Accident < ApplicationRecord
     total_hat2f_22_3, total_hat3f_22_3, total_hat4f_22_3,
     #返り値：3~7時の総合計ヒヤリ
     total_hat2f_3_7, total_hat3f_3_7, total_hat4f_3_7,
+
+    #返り値：7~9時の通所・送迎ヒヤリ
+    service_hat2f_7_9, service_hat3f_7_9, service_hat4f_7_9,
+    #返り値：9~12時の通所・送迎ヒヤリ
+    service_hat2f_9_12, service_hat3f_9_12, service_hat4f_9_12,
+    #返り値：12~14時の通所・送迎ヒヤリ
+    service_hat2f_12_14, service_hat3f_12_14, service_hat4f_12_14,
+    #返り値：14~17時の通所・送迎ヒヤリ
+    service_hat2f_14_17, service_hat3f_14_17, service_hat4f_14_17,
+    #返り値：17~19時の通所・送迎ヒヤリ
+    service_hat2f_17_19, service_hat3f_17_19, service_hat4f_17_19,
+    #返り値：19~22時の通所・送迎ヒヤリ
+    service_hat2f_19_22, service_hat3f_19_22, service_hat4f_19_22,
+    #返り値：22~3時の通所・送迎ヒヤリ
+    service_hat2f_22_3, service_hat3f_22_3, service_hat4f_22_3,
+    #返り値：3~7時の通所・送迎ヒヤリ
+    service_hat2f_3_7, service_hat3f_3_7, service_hat4f_3_7
     ]
   end
 
