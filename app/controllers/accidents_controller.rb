@@ -395,9 +395,12 @@ class AccidentsController < ApplicationController
     @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_other_scene
     @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_other_scene
     #場面総合計のヒヤリハット
-    @total_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat
-    @total_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat
-    @total_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat
+    @total_scene_hat_accidents2f = total_scene(@service_hat_accidents2f, @support_hat_accidents2f, @lunch_hat_accidents2f,
+                                               @toilet_hat_accidents2f, @bathing_hat_accidents2f, @other_scene_hat_accidents2f)
+    @total_scene_hat_accidents3f = total_scene(@service_hat_accidents3f, @support_hat_accidents3f, @lunch_hat_accidents3f,
+                                               @toilet_hat_accidents3f, @bathing_hat_accidents3f, @other_scene_hat_accidents3f)
+    @total_scene_hat_accidents4f = total_scene(@service_hat_accidents4f, @support_hat_accidents4f, @lunch_hat_accidents4f,
+                                               @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
   end
 
   #ヒヤリ削除ボタン
