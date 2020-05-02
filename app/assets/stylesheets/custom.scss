@@ -459,7 +459,6 @@ td .show-btn-position {
   padding: 0.3em 0.6em;
   text-decoration: none;
   background: #c7254e;/*ボタン色*/
-  //background: #009999;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px #730E15;
   border-radius: 5px;
@@ -489,6 +488,27 @@ td .show-btn-position {
 }
 
 .btn-square-shadow-green:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+//オシャレボタンピンク
+.btn-square-shadow-pink {
+  display: inline-block;
+  padding: 0.3em 0.6em;
+  text-decoration: none;
+  background: lightcoral;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px rgba(115, 14, 21, 0.88);
+  border-radius: 5px;
+  font-size: 10px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-square-shadow-red:active {
   /*ボタンを押したとき*/
   -webkit-transform: translateY(4px);
   transform: translateY(4px);/*下に動く*/
@@ -555,9 +575,6 @@ td .show-btn-position {
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   width: 22%;
-  a:visited {
-    color: white;
-  }
   a {
     text-decoration: none;
   }
@@ -779,3 +796,10 @@ p.left-space {
   color: #2E2F30;
 }
 
+//ヒヤリ集計ページ
+.spreadsheet-month {
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  width: 10px;
+}
