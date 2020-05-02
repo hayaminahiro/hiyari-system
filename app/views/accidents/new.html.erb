@@ -115,13 +115,9 @@
                     <%= ac.date_select :accident_datetime, {default: @accident.accident_datetime, use_month_numbers: true}, {class: "form-control bootstrap-date"} %>
                   </div>
                 </td>
-                <th class="report-index" style="padding-left: 40px; vertical-align: middle">時間</th>
+                <th class="report-index" style="vertical-align: middle">時間</th>
                 <td class="report-td">
                   <%= ac.time_select :accident_time, {default: @accident.accident_time, minute_step: 15},{class: "form-control bootstrap-date"} %>
-
-
-
-
                 </td>
               </tr>
               <tr>
