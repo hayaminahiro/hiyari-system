@@ -415,6 +415,14 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
   end
 
+  def spreadsheet_accidents
+    #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
+    day = params[:month].to_date
+    first_day = day.beginning_of_month
+    last_day = first_day.end_of_month
+    @month = first_day..last_day
+  end
+
   #ヒヤリ削除ボタン
   def destroy
     @senior = @facility.seniors.find(params[:senior_id])
