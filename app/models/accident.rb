@@ -2245,60 +2245,60 @@ class Accident < ApplicationRecord
       end
 
       #7~9時の場面総合計ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat
+      if time_range_7_9(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat
+      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat
+      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_7_9 << hat
-        #9~12時の場面総合計ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat
+      #9~12時の場面総合計ヒヤリ
+      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat
+      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat
+      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_9_12 << hat
-        #12~14時の場面総合計ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat
+      #12~14時の場面総合計ヒヤリ
+      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat
+      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat
+      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_12_14 << hat
-        #14~17時の場面総合計ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat
+      #14~17時の場面総合計ヒヤリ
+      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat
+      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat
+      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_14_17 << hat
-        #17~19時の場面総合計ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat
+      #17~19時の場面総合計ヒヤリ
+      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat
+      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat
+      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_17_19 << hat
-        #19~22時の場面総合計ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat
+      #19~22時の場面総合計ヒヤリ
+      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat
+      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat
+      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_19_22 << hat
-        #22~3時の場面総合計ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat
+      #22~3時の場面総合計ヒヤリ
+      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat
+      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat
+      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_22_3 << hat
-        #3~7時の場面総合計ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat
+      #3~7時の場面総合計ヒヤリ
+      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat
+      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat
+      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && (hat.service || hat.support || hat.lunch || hat.toilet || hat.bathing || hat.other_scene)
         total_scene_hat4f_3_7 << hat
       end
     end
