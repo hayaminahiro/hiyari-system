@@ -219,7 +219,8 @@ class Accident < ApplicationRecord
     time.accident_time.strftime("%k").gsub(" ", "").to_i >= 3 && time.accident_time.strftime("%k").gsub(" ", "").to_i < 7
   end
 
-  def self.time_division(accidents)
+
+  def self.time_division_hat(hat_accidents)
     #7~9時の転倒・転落ヒヤリ
     fall_hat2f_7_9 = []
     fall_hat3f_7_9 = []
@@ -979,1338 +980,1338 @@ class Accident < ApplicationRecord
     total_scene_hat3f_3_7 = []
     total_scene_hat4f_3_7 = []
 
-    accidents.each do |hat|
+    hat_accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.fall
+      if time_range_7_9(hat) && hat.floor2 && hat.fall
         fall_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_7_9(hat) && hat.floor3 && hat.fall
         fall_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_7_9(hat) && hat.floor4 && hat.fall
         fall_hat4f_7_9 << hat
       #9~12時の転倒・転落ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_9_12(hat) && hat.floor2 && hat.fall
         fall_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_9_12(hat) && hat.floor3 && hat.fall
         fall_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_9_12(hat) && hat.floor4 && hat.fall
         fall_hat4f_9_12 << hat
       #12~14時の転倒・転落ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_12_14(hat) && hat.floor2 && hat.fall
         fall_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_12_14(hat) && hat.floor3 && hat.fall
         fall_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_12_14(hat) && hat.floor4 && hat.fall
         fall_hat4f_12_14 << hat
       #14~17時の転倒・転落ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_14_17(hat) && hat.floor2 && hat.fall
         fall_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_14_17(hat) && hat.floor3 && hat.fall
         fall_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_14_17(hat) && hat.floor4 && hat.fall
         fall_hat4f_14_17 << hat
       #17~19時の転倒・転落ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_17_19(hat) && hat.floor2 && hat.fall
         fall_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_17_19(hat) && hat.floor3 && hat.fall
         fall_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_17_19(hat) && hat.floor4 && hat.fall
         fall_hat4f_17_19 << hat
       #19~22時の転倒・転落ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_19_22(hat) && hat.floor2 && hat.fall
         fall_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_19_22(hat) && hat.floor3 && hat.fall
         fall_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_19_22(hat) && hat.floor4 && hat.fall
         fall_hat4f_19_22 << hat
       #22~3時の転倒・転落ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_22_3(hat) && hat.floor2 && hat.fall
         fall_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_22_3(hat) && hat.floor3 && hat.fall
         fall_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_22_3(hat) && hat.floor4 && hat.fall
         fall_hat4f_22_3 << hat
       #3~7時の転倒・転落ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.fall
+      elsif time_range_3_7(hat) && hat.floor2 && hat.fall
         fall_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.fall
+      elsif time_range_3_7(hat) && hat.floor3 && hat.fall
         fall_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.fall
+      elsif time_range_3_7(hat) && hat.floor4 && hat.fall
         fall_hat4f_3_7 << hat
       end
 
       #7~9時の行方不明・所在不明ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.missing
+      if time_range_7_9(hat) && hat.floor2 && hat.missing
         missing_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_7_9(hat) && hat.floor3 && hat.missing
         missing_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_7_9(hat) && hat.floor4 && hat.missing
         missing_hat4f_7_9 << hat
       #9~12時の行方不明・所在不明ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_9_12(hat) && hat.floor2 && hat.missing
         missing_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_9_12(hat) && hat.floor3 && hat.missing
         missing_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_9_12(hat) && hat.floor4 && hat.missing
         missing_hat4f_9_12 << hat
       #12~14時の行方不明・所在不明ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_12_14(hat) && hat.floor2 && hat.missing
         missing_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_12_14(hat) && hat.floor3 && hat.missing
         missing_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_12_14(hat) && hat.floor4 && hat.missing
         missing_hat4f_12_14 << hat
       #14~17時の行方不明・所在不明ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_14_17(hat) && hat.floor2 && hat.missing
         missing_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_14_17(hat) && hat.floor3 && hat.missing
         missing_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_14_17(hat) && hat.floor4 && hat.missing
         missing_hat4f_14_17 << hat
       #17~19時の行方不明・所在不明ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_17_19(hat) && hat.floor2 && hat.missing
         missing_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_17_19(hat) && hat.floor3 && hat.missing
         missing_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_17_19(hat) && hat.floor4 && hat.missing
         missing_hat4f_17_19 << hat
       #19~22時の行方不明・所在不明ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_19_22(hat) && hat.floor2 && hat.missing
         missing_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_19_22(hat) && hat.floor3 && hat.missing
         missing_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_19_22(hat) && hat.floor4 && hat.missing
         missing_hat4f_19_22 << hat
       #22~3時の行方不明・所在不明ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_22_3(hat) && hat.floor2 && hat.missing
         missing_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_22_3(hat) && hat.floor3 && hat.missing
         missing_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_22_3(hat) && hat.floor4 && hat.missing
         missing_hat4f_22_3 << hat
       #3~7時の行方不明・所在不明ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.missing
+      elsif time_range_3_7(hat) && hat.floor2 && hat.missing
         missing_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.missing
+      elsif time_range_3_7(hat) && hat.floor3 && hat.missing
         missing_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.missing
+      elsif time_range_3_7(hat) && hat.floor4 && hat.missing
         missing_hat4f_3_7 << hat
       end
 
       #7~9時の飲食に関することヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.meal
+      if time_range_7_9(hat) && hat.floor2 && hat.meal
         meal_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_7_9(hat) && hat.floor3 && hat.meal
         meal_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_7_9(hat) && hat.floor4 && hat.meal
         meal_hat4f_7_9 << hat
       #9~12時の飲食に関することヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_9_12(hat) && hat.floor2 && hat.meal
         meal_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_9_12(hat) && hat.floor3 && hat.meal
         meal_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_9_12(hat) && hat.floor4 && hat.meal
         meal_hat4f_9_12 << hat
       #12~14時の飲食に関することヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_12_14(hat) && hat.floor2 && hat.meal
         meal_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_12_14(hat) && hat.floor3 && hat.meal
         meal_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_12_14(hat) && hat.floor4 && hat.meal
         meal_hat4f_12_14 << hat
       #14~17時の飲食に関することヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_14_17(hat) && hat.floor2 && hat.meal
         meal_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_14_17(hat) && hat.floor3 && hat.meal
         meal_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_14_17(hat) && hat.floor4 && hat.meal
         meal_hat4f_14_17 << hat
       #17~19時の飲食に関することヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_17_19(hat) && hat.floor2 && hat.meal
         meal_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_17_19(hat) && hat.floor3 && hat.meal
         meal_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_17_19(hat) && hat.floor4 && hat.meal
         meal_hat4f_17_19 << hat
       #19~22時の飲食に関することヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_19_22(hat) && hat.floor2 && hat.meal
         meal_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_19_22(hat) && hat.floor3 && hat.meal
         meal_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_19_22(hat) && hat.floor4 && hat.meal
         meal_hat4f_19_22 << hat
       #22~3時の飲食に関することヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_22_3(hat) && hat.floor2 && hat.meal
         meal_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_22_3(hat) && hat.floor3 && hat.meal
         meal_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_22_3(hat) && hat.floor4 && hat.meal
         meal_hat4f_22_3 << hat
       #3~7時の飲食に関することヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.meal
+      elsif time_range_3_7(hat) && hat.floor2 && hat.meal
         meal_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.meal
+      elsif time_range_3_7(hat) && hat.floor3 && hat.meal
         meal_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.meal
+      elsif time_range_3_7(hat) && hat.floor4 && hat.meal
         meal_hat4f_3_7 << hat
       end
 
       #7~9時の薬関係ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.medicine
+      if time_range_7_9(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_7_9(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_7_9(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_7_9 << hat
       #9~12時の薬関係ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_9_12(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_9_12(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_9_12(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_9_12 << hat
       #12~14時の薬関係ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_12_14(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_12_14(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_12_14(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_12_14 << hat
       #14~17時の薬関係ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_14_17(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_14_17(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_14_17(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_14_17 << hat
       #17~19時の薬関係ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_17_19(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_17_19(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_17_19(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_17_19 << hat
       #19~22時の薬関係ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_19_22(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_19_22(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_19_22(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_19_22 << hat
       #22~3時の薬関係ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_22_3(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_22_3(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_22_3(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_22_3 << hat
       #3~7時の薬関係ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.medicine
+      elsif time_range_3_7(hat) && hat.floor2 && hat.medicine
         medicine_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.medicine
+      elsif time_range_3_7(hat) && hat.floor3 && hat.medicine
         medicine_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.medicine
+      elsif time_range_3_7(hat) && hat.floor4 && hat.medicine
         medicine_hat4f_3_7 << hat
       end
 
       #7~9時の他害・自傷行為ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.scratch
+      if time_range_7_9(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_7_9(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_7_9(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_7_9 << hat
       #9~12時の他害・自傷行為ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_9_12(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_9_12(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_9_12(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_9_12 << hat
       #12~14時の他害・自傷行為ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_12_14(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_12_14(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_12_14(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_12_14 << hat
       #14~17時の他害・自傷行為ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_14_17(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_14_17(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_14_17(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_14_17 << hat
       #17~19時の他害・自傷行為ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_17_19(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_17_19(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_17_19(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_17_19 << hat
       #19~22時の他害・自傷行為ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_19_22(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_19_22(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_19_22(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_19_22 << hat
       #22~3時の他害・自傷行為ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_22_3(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_22_3(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_22_3(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_22_3 << hat
       #3~7時の他害・自傷行為ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.scratch
+      elsif time_range_3_7(hat) && hat.floor2 && hat.scratch
         scratch_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.scratch
+      elsif time_range_3_7(hat) && hat.floor3 && hat.scratch
         scratch_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.scratch
+      elsif time_range_3_7(hat) && hat.floor4 && hat.scratch
         scratch_hat4f_3_7 << hat
       end
 
       #7~9時の環境ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.environment
+      if time_range_7_9(hat) && hat.floor2 && hat.environment
         environment_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_7_9(hat) && hat.floor3 && hat.environment
         environment_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_7_9(hat) && hat.floor4 && hat.environment
         environment_hat4f_7_9 << hat
       #9~12時の環境ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_9_12(hat) && hat.floor2 && hat.environment
         environment_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_9_12(hat) && hat.floor3 && hat.environment
         environment_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_9_12(hat) && hat.floor4 && hat.environment
         environment_hat4f_9_12 << hat
       #12~14時の環境ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_12_14(hat) && hat.floor2 && hat.environment
         environment_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_12_14(hat) && hat.floor3 && hat.environment
         environment_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_12_14(hat) && hat.floor4 && hat.environment
         environment_hat4f_12_14 << hat
       #14~17時の環境ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_14_17(hat) && hat.floor2 && hat.environment
         environment_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_14_17(hat) && hat.floor3 && hat.environment
         environment_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_14_17(hat) && hat.floor4 && hat.environment
         environment_hat4f_14_17 << hat
       #17~19時の環境ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_17_19(hat) && hat.floor2 && hat.environment
         environment_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_17_19(hat) && hat.floor3 && hat.environment
         environment_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_17_19(hat) && hat.floor4 && hat.environment
         environment_hat4f_17_19 << hat
       #19~22時の環境ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_19_22(hat) && hat.floor2 && hat.environment
         environment_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_19_22(hat) && hat.floor3 && hat.environment
         environment_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_19_22(hat) && hat.floor4 && hat.environment
         environment_hat4f_19_22 << hat
       #22~3時の環境ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_22_3(hat) && hat.floor2 && hat.environment
         environment_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_22_3(hat) && hat.floor3 && hat.environment
         environment_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_22_3(hat) && hat.floor4 && hat.environment
         environment_hat4f_22_3 << hat
       #3~7時の環境ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.environment
+      elsif time_range_3_7(hat) && hat.floor2 && hat.environment
         environment_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.environment
+      elsif time_range_3_7(hat) && hat.floor3 && hat.environment
         environment_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.environment
+      elsif time_range_3_7(hat) && hat.floor4 && hat.environment
         environment_hat4f_3_7 << hat
       end
 
       #7~9時の情報・連絡・報告ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.info_contact
+      if time_range_7_9(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_7_9(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_7_9(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_7_9 << hat
       #9~12時の情報・連絡・報告ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_9_12(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_9_12(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_9_12(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_9_12 << hat
       #12~14時の情報・連絡・報告ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_12_14(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_12_14(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_12_14(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_12_14 << hat
       #14~17時の情報・連絡・報告ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_14_17(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_14_17(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_14_17(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_14_17 << hat
       #17~19時の情報・連絡・報告ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_17_19(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_17_19(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_17_19(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_17_19 << hat
       #19~22時の情報・連絡・報告ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_19_22(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_19_22(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_19_22(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_19_22 << hat
       #22~3時の情報・連絡・報告ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_22_3(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_22_3(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_22_3(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_22_3 << hat
       #3~7時の情報・連絡・報告ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.info_contact
+      elsif time_range_3_7(hat) && hat.floor2 && hat.info_contact
         info_contact_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.info_contact
+      elsif time_range_3_7(hat) && hat.floor3 && hat.info_contact
         info_contact_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.info_contact
+      elsif time_range_3_7(hat) && hat.floor4 && hat.info_contact
         info_contact_hat4f_3_7 << hat
       end
 
       #7~9時の個人情報・人権ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.personal_info
+      if time_range_7_9(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_7_9(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_7_9(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_7_9 << hat
       #9~12時の個人情報・人権ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_9_12(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_9_12(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_9_12(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_9_12 << hat
       #12~14時の個人情報・人権ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_12_14(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_12_14(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_12_14(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_12_14 << hat
       #14~17時の個人情報・人権ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_14_17(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_14_17(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_14_17(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_14_17 << hat
       #17~19時の個人情報・人権ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_17_19(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_17_19(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_17_19(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_17_19 << hat
       #19~22時の個人情報・人権ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_19_22(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_19_22(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_19_22(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_19_22 << hat
       #22~3時の個人情報・人権ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_22_3(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_22_3(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_22_3(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_22_3 << hat
       #3~7時の個人情報・人権ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.personal_info
+      elsif time_range_3_7(hat) && hat.floor2 && hat.personal_info
         personal_info_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.personal_info
+      elsif time_range_3_7(hat) && hat.floor3 && hat.personal_info
         personal_info_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.personal_info
+      elsif time_range_3_7(hat) && hat.floor4 && hat.personal_info
         personal_info_hat4f_3_7 << hat
       end
 
       #7~9時の紛失ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.lost
+      if time_range_7_9(hat) && hat.floor2 && hat.lost
         lost_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_7_9(hat) && hat.floor3 && hat.lost
         lost_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_7_9(hat) && hat.floor4 && hat.lost
         lost_hat4f_7_9 << hat
       #9~12時の紛失ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_9_12(hat) && hat.floor2 && hat.lost
         lost_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_9_12(hat) && hat.floor3 && hat.lost
         lost_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_9_12(hat) && hat.floor4 && hat.lost
         lost_hat4f_9_12 << hat
       #12~14時の紛失ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_12_14(hat) && hat.floor2 && hat.lost
         lost_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_12_14(hat) && hat.floor3 && hat.lost
         lost_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_12_14(hat) && hat.floor4 && hat.lost
         lost_hat4f_12_14 << hat
       #14~17時の紛失ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_14_17(hat) && hat.floor2 && hat.lost
         lost_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_14_17(hat) && hat.floor3 && hat.lost
         lost_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_14_17(hat) && hat.floor4 && hat.lost
         lost_hat4f_14_17 << hat
       #17~19時の紛失ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_17_19(hat) && hat.floor2 && hat.lost
         lost_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_17_19(hat) && hat.floor3 && hat.lost
         lost_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_17_19(hat) && hat.floor4 && hat.lost
         lost_hat4f_17_19 << hat
       #19~22時の紛失ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_19_22(hat) && hat.floor2 && hat.lost
         lost_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_19_22(hat) && hat.floor3 && hat.lost
         lost_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_19_22(hat) && hat.floor4 && hat.lost
         lost_hat4f_19_22 << hat
       #22~3時の紛失ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_22_3(hat) && hat.floor2 && hat.lost
         lost_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_22_3(hat) && hat.floor3 && hat.lost
         lost_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_22_3(hat) && hat.floor4 && hat.lost
         lost_hat4f_22_3 << hat
       #3~7時の紛失ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.lost
+      elsif time_range_3_7(hat) && hat.floor2 && hat.lost
         lost_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.lost
+      elsif time_range_3_7(hat) && hat.floor3 && hat.lost
         lost_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.lost
+      elsif time_range_3_7(hat) && hat.floor4 && hat.lost
         lost_hat4f_3_7 << hat
       end
 
       #7~9時の器物破損ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.damage
+      if time_range_7_9(hat) && hat.floor2 && hat.damage
         damage_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_7_9(hat) && hat.floor3 && hat.damage
         damage_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_7_9(hat) && hat.floor4 && hat.damage
         damage_hat4f_7_9 << hat
       #9~12時の器物破損ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_9_12(hat) && hat.floor2 && hat.damage
         damage_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_9_12(hat) && hat.floor3 && hat.damage
         damage_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_9_12(hat) && hat.floor4 && hat.damage
         damage_hat4f_9_12 << hat
       #12~14時の器物破損ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_12_14(hat) && hat.floor2 && hat.damage
         damage_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_12_14(hat) && hat.floor3 && hat.damage
         damage_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_12_14(hat) && hat.floor4 && hat.damage
         damage_hat4f_12_14 << hat
       #14~17時の器物破損ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_14_17(hat) && hat.floor2 && hat.damage
         damage_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_14_17(hat) && hat.floor3 && hat.damage
         damage_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_14_17(hat) && hat.floor4 && hat.damage
         damage_hat4f_14_17 << hat
       #17~19時の器物破損ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_17_19(hat) && hat.floor2 && hat.damage
         damage_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_17_19(hat) && hat.floor3 && hat.damage
         damage_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_17_19(hat) && hat.floor4 && hat.damage
         damage_hat4f_17_19 << hat
       #19~22時の器物破損ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_19_22(hat) && hat.floor2 && hat.damage
         damage_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_19_22(hat) && hat.floor3 && hat.damage
         damage_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_19_22(hat) && hat.floor4 && hat.damage
         damage_hat4f_19_22 << hat
       #22~3時の器物破損ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_22_3(hat) && hat.floor2 && hat.damage
         damage_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_22_3(hat) && hat.floor3 && hat.damage
         damage_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_22_3(hat) && hat.floor4 && hat.damage
         damage_hat4f_22_3 << hat
       #3~7時の器物破損ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.damage
+      elsif time_range_3_7(hat) && hat.floor2 && hat.damage
         damage_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.damage
+      elsif time_range_3_7(hat) && hat.floor3 && hat.damage
         damage_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.damage
+      elsif time_range_3_7(hat) && hat.floor4 && hat.damage
         damage_hat4f_3_7 << hat
       end
 
       #7~9時の金銭ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.money
+      if time_range_7_9(hat) && hat.floor2 && hat.money
         money_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_7_9(hat) && hat.floor3 && hat.money
         money_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_7_9(hat) && hat.floor4 && hat.money
         money_hat4f_7_9 << hat
       #9~12時の金銭ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_9_12(hat) && hat.floor2 && hat.money
         money_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_9_12(hat) && hat.floor3 && hat.money
         money_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_9_12(hat) && hat.floor4 && hat.money
         money_hat4f_9_12 << hat
       #12~14時の金銭ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_12_14(hat) && hat.floor2 && hat.money
         money_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_12_14(hat) && hat.floor3 && hat.money
         money_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_12_14(hat) && hat.floor4 && hat.money
         money_hat4f_12_14 << hat
       #14~17時の金銭ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_14_17(hat) && hat.floor2 && hat.money
         money_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_14_17(hat) && hat.floor3 && hat.money
         money_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_14_17(hat) && hat.floor4 && hat.money
         money_hat4f_14_17 << hat
       #17~19時の金銭ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_17_19(hat) && hat.floor2 && hat.money
         money_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_17_19(hat) && hat.floor3 && hat.money
         money_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_17_19(hat) && hat.floor4 && hat.money
         money_hat4f_17_19 << hat
       #19~22時の金銭ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_19_22(hat) && hat.floor2 && hat.money
         money_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_19_22(hat) && hat.floor3 && hat.money
         money_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_19_22(hat) && hat.floor4 && hat.money
         money_hat4f_19_22 << hat
       #22~3時の金銭ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_22_3(hat) && hat.floor2 && hat.money
         money_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_22_3(hat) && hat.floor3 && hat.money
         money_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_22_3(hat) && hat.floor4 && hat.money
         money_hat4f_22_3 << hat
       #3~7時の金銭ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.money
+      elsif time_range_3_7(hat) && hat.floor2 && hat.money
         money_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.money
+      elsif time_range_3_7(hat) && hat.floor3 && hat.money
         money_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.money
+      elsif time_range_3_7(hat) && hat.floor4 && hat.money
         money_hat4f_3_7 << hat
       end
 
       #7~9時の医療的ケアのヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.medical_care
+      if time_range_7_9(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_7_9(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_7_9(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_7_9 << hat
       #9~12時の医療的ケアのヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_9_12(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_9_12(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_9_12(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_9_12 << hat
       #12~14時の医療的ケアのヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_12_14(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_12_14(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_12_14(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_12_14 << hat
       #14~17時の医療的ケアのヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_14_17(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_14_17(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_14_17(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_14_17 << hat
       #17~19時の医療的ケアのヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_17_19(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_17_19(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_17_19(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_17_19 << hat
       #19~22時の医療的ケアのヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_19_22(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_19_22(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_19_22(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_19_22 << hat
       #22~3時の医療的ケアのヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_22_3(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_22_3(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_22_3(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_22_3 << hat
       #3~7時の医療的ケアのヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.medical_care
+      elsif time_range_3_7(hat) && hat.floor2 && hat.medical_care
         medical_care_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.medical_care
+      elsif time_range_3_7(hat) && hat.floor3 && hat.medical_care
         medical_care_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.medical_care
+      elsif time_range_3_7(hat) && hat.floor4 && hat.medical_care
         medical_care_hat4f_3_7 << hat
       end
 
       #7~9時の感染症ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.infection
+      if time_range_7_9(hat) && hat.floor2 && hat.infection
         infection_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_7_9(hat) && hat.floor3 && hat.infection
         infection_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_7_9(hat) && hat.floor4 && hat.infection
         infection_hat4f_7_9 << hat
       #9~12時の感染症ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_9_12(hat) && hat.floor2 && hat.infection
         infection_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_9_12(hat) && hat.floor3 && hat.infection
         infection_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_9_12(hat) && hat.floor4 && hat.infection
         infection_hat4f_9_12 << hat
       #12~14時の感染症ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_12_14(hat) && hat.floor2 && hat.infection
         infection_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_12_14(hat) && hat.floor3 && hat.infection
         infection_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_12_14(hat) && hat.floor4 && hat.infection
         infection_hat4f_12_14 << hat
       #14~17時の感染症ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_14_17(hat) && hat.floor2 && hat.infection
         infection_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_14_17(hat) && hat.floor3 && hat.infection
         infection_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_14_17(hat) && hat.floor4 && hat.infection
         infection_hat4f_14_17 << hat
       #17~19時の感染症ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_17_19(hat) && hat.floor2 && hat.infection
         infection_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_17_19(hat) && hat.floor3 && hat.infection
         infection_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_17_19(hat) && hat.floor4 && hat.infection
         infection_hat4f_17_19 << hat
       #19~22時の感染症ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_19_22(hat) && hat.floor2 && hat.infection
         infection_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_19_22(hat) && hat.floor3 && hat.infection
         infection_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_19_22(hat) && hat.floor4 && hat.infection
         infection_hat4f_19_22 << hat
       #22~3時の感染症ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_22_3(hat) && hat.floor2 && hat.infection
         infection_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_22_3(hat) && hat.floor3 && hat.infection
         infection_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_22_3(hat) && hat.floor4 && hat.infection
         infection_hat4f_22_3 << hat
       #3~7時の感染症ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.infection
+      elsif time_range_3_7(hat) && hat.floor2 && hat.infection
         infection_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.infection
+      elsif time_range_3_7(hat) && hat.floor3 && hat.infection
         infection_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.infection
+      elsif time_range_3_7(hat) && hat.floor4 && hat.infection
         infection_hat4f_3_7 << hat
       end
 
       #7~9時の忘れ物・返却忘れヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.forget
+      if time_range_7_9(hat) && hat.floor2 && hat.forget
         forget_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_7_9(hat) && hat.floor3 && hat.forget
         forget_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_7_9(hat) && hat.floor4 && hat.forget
         forget_hat4f_7_9 << hat
       #9~12時の忘れ物・返却忘れヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_9_12(hat) && hat.floor2 && hat.forget
         forget_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_9_12(hat) && hat.floor3 && hat.forget
         forget_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_9_12(hat) && hat.floor4 && hat.forget
         forget_hat4f_9_12 << hat
       #12~14時の忘れ物・返却忘れヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_12_14(hat) && hat.floor2 && hat.forget
         forget_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_12_14(hat) && hat.floor3 && hat.forget
         forget_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_12_14(hat) && hat.floor4 && hat.forget
         forget_hat4f_12_14 << hat
       #14~17時の忘れ物・返却忘れヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_14_17(hat) && hat.floor2 && hat.forget
         forget_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_14_17(hat) && hat.floor3 && hat.forget
         forget_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_14_17(hat) && hat.floor4 && hat.forget
         forget_hat4f_14_17 << hat
       #17~19時の忘れ物・返却忘れヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_17_19(hat) && hat.floor2 && hat.forget
         forget_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_17_19(hat) && hat.floor3 && hat.forget
         forget_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_17_19(hat) && hat.floor4 && hat.forget
         forget_hat4f_17_19 << hat
       #19~22時の忘れ物・返却忘れヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_19_22(hat) && hat.floor2 && hat.forget
         forget_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_19_22(hat) && hat.floor3 && hat.forget
         forget_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_19_22(hat) && hat.floor4 && hat.forget
         forget_hat4f_19_22 << hat
       #22~3時の忘れ物・返却忘れヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_22_3(hat) && hat.floor2 && hat.forget
         forget_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_22_3(hat) && hat.floor3 && hat.forget
         forget_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_22_3(hat) && hat.floor4 && hat.forget
         forget_hat4f_22_3 << hat
       #3~7時の忘れ物・返却忘れヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.forget
+      elsif time_range_3_7(hat) && hat.floor2 && hat.forget
         forget_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.forget
+      elsif time_range_3_7(hat) && hat.floor3 && hat.forget
         forget_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.forget
+      elsif time_range_3_7(hat) && hat.floor4 && hat.forget
         forget_hat4f_3_7 << hat
       end
 
       #7~9時のその他ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.other
+      if time_range_7_9(hat) && hat.floor2 && hat.other
         other_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_7_9(hat) && hat.floor3 && hat.other
         other_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_7_9(hat) && hat.floor4 && hat.other
         other_hat4f_7_9 << hat
       #9~12時のその他ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_9_12(hat) && hat.floor2 && hat.other
         other_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_9_12(hat) && hat.floor3 && hat.other
         other_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_9_12(hat) && hat.floor4 && hat.other
         other_hat4f_9_12 << hat
       #12~14時のその他ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_12_14(hat) && hat.floor2 && hat.other
         other_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_12_14(hat) && hat.floor3 && hat.other
         other_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_12_14(hat) && hat.floor4 && hat.other
         other_hat4f_12_14 << hat
       #14~17時のその他ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_14_17(hat) && hat.floor2 && hat.other
         other_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_14_17(hat) && hat.floor3 && hat.other
         other_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_14_17(hat) && hat.floor4 && hat.other
         other_hat4f_14_17 << hat
       #17~19時のその他ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_17_19(hat) && hat.floor2 && hat.other
         other_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_17_19(hat) && hat.floor3 && hat.other
         other_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_17_19(hat) && hat.floor4 && hat.other
         other_hat4f_17_19 << hat
       #19~22時のその他ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_19_22(hat) && hat.floor2 && hat.other
         other_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_19_22(hat) && hat.floor3 && hat.other
         other_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_19_22(hat) && hat.floor4 && hat.other
         other_hat4f_19_22 << hat
       #22~3時のその他ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_22_3(hat) && hat.floor2 && hat.other
         other_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_22_3(hat) && hat.floor3 && hat.other
         other_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_22_3(hat) && hat.floor4 && hat.other
         other_hat4f_22_3 << hat
       #3~7時のその他ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.other
+      elsif time_range_3_7(hat) && hat.floor2 && hat.other
         other_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.other
+      elsif time_range_3_7(hat) && hat.floor3 && hat.other
         other_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.other
+      elsif time_range_3_7(hat) && hat.floor4 && hat.other
         other_hat4f_3_7 << hat
       end
 
       #7~9時の総合計ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && all_event(hat)
+      if time_range_7_9(hat) && hat.floor2 && all_event(hat)
         total_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_7_9(hat) && hat.floor3 && all_event(hat)
         total_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_7_9(hat) && hat.floor4 && all_event(hat)
         total_hat4f_7_9 << hat
       #9~12時の総合計ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_9_12(hat) && hat.floor2 && all_event(hat)
         total_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_9_12(hat) && hat.floor3 && all_event(hat)
         total_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_9_12(hat) && hat.floor4 && all_event(hat)
         total_hat4f_9_12 << hat
       #12~14時の総合計ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_12_14(hat) && hat.floor2 && all_event(hat)
         total_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_12_14(hat) && hat.floor3 && all_event(hat)
         total_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_12_14(hat) && hat.floor4 && all_event(hat)
         total_hat4f_12_14 << hat
       #14~17時の総合計ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_14_17(hat) && hat.floor2 && all_event(hat)
         total_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_14_17(hat) && hat.floor3 && all_event(hat)
         total_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_14_17(hat) && hat.floor4 && all_event(hat)
         total_hat4f_14_17 << hat
       #17~19時の総合計ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_17_19(hat) && hat.floor2 && all_event(hat)
         total_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_17_19(hat) && hat.floor3 && all_event(hat)
         total_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_17_19(hat) && hat.floor4 && all_event(hat)
         total_hat4f_17_19 << hat
       #19~22時の総合計ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_19_22(hat) && hat.floor2 && all_event(hat)
         total_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_19_22(hat) && hat.floor3 && all_event(hat)
         total_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_19_22(hat) && hat.floor4 && all_event(hat)
         total_hat4f_19_22 << hat
       #22~3時の総合計ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_22_3(hat) && hat.floor2 && all_event(hat)
         total_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_22_3(hat) && hat.floor3 && all_event(hat)
         total_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_22_3(hat) && hat.floor4 && all_event(hat)
         total_hat4f_22_3 << hat
       #3~7時の総合計ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && all_event(hat)
+      elsif time_range_3_7(hat) && hat.floor2 && all_event(hat)
         total_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && all_event(hat)
+      elsif time_range_3_7(hat) && hat.floor3 && all_event(hat)
         total_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && all_event(hat)
+      elsif time_range_3_7(hat) && hat.floor4 && all_event(hat)
         total_hat4f_3_7 << hat
       end
 
       #7~9時の通所・送迎ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.service
+      if time_range_7_9(hat) && hat.floor2 && hat.service
         service_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_7_9(hat) && hat.floor3 && hat.service
         service_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_7_9(hat) && hat.floor4 && hat.service
         service_hat4f_7_9 << hat
       #9~12時の通所・送迎ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_9_12(hat) && hat.floor2 && hat.service
         service_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_9_12(hat) && hat.floor3 && hat.service
         service_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_9_12(hat) && hat.floor4 && hat.service
         service_hat4f_9_12 << hat
       #12~14時の通所・送迎ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_12_14(hat) && hat.floor2 && hat.service
         service_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_12_14(hat) && hat.floor3 && hat.service
         service_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_12_14(hat) && hat.floor4 && hat.service
         service_hat4f_12_14 << hat
       #14~17時の通所・送迎ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_14_17(hat) && hat.floor2 && hat.service
         service_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_14_17(hat) && hat.floor3 && hat.service
         service_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_14_17(hat) && hat.floor4 && hat.service
         service_hat4f_14_17 << hat
       #17~19時の通所・送迎ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_17_19(hat) && hat.floor2 && hat.service
         service_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_17_19(hat) && hat.floor3 && hat.service
         service_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_17_19(hat) && hat.floor4 && hat.service
         service_hat4f_17_19 << hat
       #19~22時の通所・送迎ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_19_22(hat) && hat.floor2 && hat.service
         service_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_19_22(hat) && hat.floor3 && hat.service
         service_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_19_22(hat) && hat.floor4 && hat.service
         service_hat4f_19_22 << hat
       #22~3時の通所・送迎ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_22_3(hat) && hat.floor2 && hat.service
         service_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_22_3(hat) && hat.floor3 && hat.service
         service_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_22_3(hat) && hat.floor4 && hat.service
         service_hat4f_22_3 << hat
       #3~7時の通所・送迎ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.service
+      elsif time_range_3_7(hat) && hat.floor2 && hat.service
         service_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.service
+      elsif time_range_3_7(hat) && hat.floor3 && hat.service
         service_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.service
+      elsif time_range_3_7(hat) && hat.floor4 && hat.service
         service_hat4f_3_7 << hat
       end
 
       #7~9時の活動・支援ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.support
+      if time_range_7_9(hat) && hat.floor2 && hat.support
         support_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_7_9(hat) && hat.floor3 && hat.support
         support_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_7_9(hat) && hat.floor4 && hat.support
         support_hat4f_7_9 << hat
       #9~12時の活動・支援ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_9_12(hat) && hat.floor2 && hat.support
         support_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_9_12(hat) && hat.floor3 && hat.support
         support_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_9_12(hat) && hat.floor4 && hat.support
         support_hat4f_9_12 << hat
       #12~14時の活動・支援ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_12_14(hat) && hat.floor2 && hat.support
         support_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_12_14(hat) && hat.floor3 && hat.support
         support_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_12_14(hat) && hat.floor4 && hat.support
         support_hat4f_12_14 << hat
       #14~17時の活動・支援ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_14_17(hat) && hat.floor2 && hat.support
         support_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_14_17(hat) && hat.floor3 && hat.support
         support_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_14_17(hat) && hat.floor4 && hat.support
         support_hat4f_14_17 << hat
       #17~19時の活動・支援ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_17_19(hat) && hat.floor2 && hat.support
         support_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_17_19(hat) && hat.floor3 && hat.support
         support_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_17_19(hat) && hat.floor4 && hat.support
         support_hat4f_17_19 << hat
       #19~22時の活動・支援ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_19_22(hat) && hat.floor2 && hat.support
         support_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_19_22(hat) && hat.floor3 && hat.support
         support_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_19_22(hat) && hat.floor4 && hat.support
         support_hat4f_19_22 << hat
       #22~3時の活動・支援ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_22_3(hat) && hat.floor2 && hat.support
         support_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_22_3(hat) && hat.floor3 && hat.support
         support_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_22_3(hat) && hat.floor4 && hat.support
         support_hat4f_22_3 << hat
       #3~7時の活動・支援ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.support
+      elsif time_range_3_7(hat) && hat.floor2 && hat.support
         support_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.support
+      elsif time_range_3_7(hat) && hat.floor3 && hat.support
         support_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.support
+      elsif time_range_3_7(hat) && hat.floor4 && hat.support
         support_hat4f_3_7 << hat
       end
 
       #7~9時の給食・配膳ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.lunch
+      if time_range_7_9(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_7_9(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_7_9(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_7_9 << hat
       #9~12時の給食・配膳ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_9_12(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_9_12(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_9_12(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_9_12 << hat
       #12~14時の給食・配膳ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_12_14(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_12_14(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_12_14(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_12_14 << hat
       #14~17時の給食・配膳ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_14_17(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_14_17(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_14_17(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_14_17 << hat
       #17~19時の給食・配膳ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_17_19(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_17_19(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_17_19(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_17_19 << hat
       #19~22時の給食・配膳ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_19_22(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_19_22(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_19_22(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_19_22 << hat
       #22~3時の給食・配膳ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_22_3(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_22_3(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_22_3(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_22_3 << hat
       #3~7時の給食・配膳ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.lunch
+      elsif time_range_3_7(hat) && hat.floor2 && hat.lunch
         lunch_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.lunch
+      elsif time_range_3_7(hat) && hat.floor3 && hat.lunch
         lunch_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.lunch
+      elsif time_range_3_7(hat) && hat.floor4 && hat.lunch
         lunch_hat4f_3_7 << hat
       end
 
       #7~9時のトイレ・排泄ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.toilet
+      if time_range_7_9(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_7_9(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_7_9(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_7_9 << hat
       #9~12時のトイレ・排泄ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_9_12(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_9_12(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_9_12(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_9_12 << hat
       #12~14時のトイレ・排泄ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_12_14(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_12_14(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_12_14(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_12_14 << hat
       #14~17時のトイレ・排泄ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_14_17(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_14_17(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_14_17(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_14_17 << hat
       #17~19時のトイレ・排泄ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_17_19(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_17_19(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_17_19(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_17_19 << hat
       #19~22時のトイレ・排泄ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_19_22(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_19_22(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_19_22(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_19_22 << hat
       #22~3時のトイレ・排泄ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_22_3(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_22_3(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_22_3(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_22_3 << hat
       #3~7時のトイレ・排泄ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.toilet
+      elsif time_range_3_7(hat) && hat.floor2 && hat.toilet
         toilet_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.toilet
+      elsif time_range_3_7(hat) && hat.floor3 && hat.toilet
         toilet_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.toilet
+      elsif time_range_3_7(hat) && hat.floor4 && hat.toilet
         toilet_hat4f_3_7 << hat
       end
 
       #7~9時の入浴ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.bathing
+      if time_range_7_9(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_7_9(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_7_9(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_7_9 << hat
       #9~12時の入浴ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_9_12(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_9_12(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_9_12(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_9_12 << hat
       #12~14時の入浴ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_12_14(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_12_14(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_12_14(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_12_14 << hat
       #14~17時の入浴ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_14_17(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_14_17(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_14_17(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_14_17 << hat
       #17~19時の入浴ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_17_19(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_17_19(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_17_19(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_17_19 << hat
       #19~22時の入浴ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_19_22(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_19_22(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_19_22(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_19_22 << hat
       #22~3時の入浴ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_22_3(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_22_3(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_22_3(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_22_3 << hat
       #3~7時の入浴ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.bathing
+      elsif time_range_3_7(hat) && hat.floor2 && hat.bathing
         bathing_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.bathing
+      elsif time_range_3_7(hat) && hat.floor3 && hat.bathing
         bathing_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.bathing
+      elsif time_range_3_7(hat) && hat.floor4 && hat.bathing
         bathing_hat4f_3_7 << hat
       end
 
       #7~9時のその他ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && hat.other_scene
+      if time_range_7_9(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_7_9(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_7_9(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_7_9 << hat
       #9~12時のその他ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_9_12(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_9_12(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_9_12(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_9_12 << hat
       #12~14時のその他ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_12_14(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_12_14(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_12_14(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_12_14 << hat
       #14~17時のその他ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_14_17(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_14_17(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_14_17(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_14_17 << hat
       #17~19時のその他ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_17_19(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_17_19(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_17_19(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_17_19 << hat
       #19~22時のその他ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_19_22(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_19_22(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_19_22(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_19_22 << hat
       #22~3時のその他ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_22_3(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_22_3(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_22_3(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_22_3 << hat
       #3~7時のその他ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && hat.other_scene
+      elsif time_range_3_7(hat) && hat.floor2 && hat.other_scene
         other_scene_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && hat.other_scene
+      elsif time_range_3_7(hat) && hat.floor3 && hat.other_scene
         other_scene_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && hat.other_scene
+      elsif time_range_3_7(hat) && hat.floor4 && hat.other_scene
         other_scene_hat4f_3_7 << hat
       end
 
       #7~9時の場面総合計ヒヤリ
-      if time_range_7_9(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      if time_range_7_9(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_7_9(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_7_9 << hat
-      elsif time_range_7_9(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_7_9(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_7_9 << hat
       #9~12時の場面総合計ヒヤリ
-      elsif time_range_9_12(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_9_12(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_9_12(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_9_12 << hat
-      elsif time_range_9_12(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_9_12(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_9_12 << hat
       #12~14時の場面総合計ヒヤリ
-      elsif time_range_12_14(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_12_14(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_12_14(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_12_14 << hat
-      elsif time_range_12_14(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_12_14(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_12_14 << hat
       #14~17時の場面総合計ヒヤリ
-      elsif time_range_14_17(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_14_17(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_14_17(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_14_17 << hat
-      elsif time_range_14_17(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_14_17(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_14_17 << hat
       #17~19時の場面総合計ヒヤリ
-      elsif time_range_17_19(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_17_19(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_17_19(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_17_19 << hat
-      elsif time_range_17_19(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_17_19(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_17_19 << hat
       #19~22時の場面総合計ヒヤリ
-      elsif time_range_19_22(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_19_22(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_19_22(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_19_22 << hat
-      elsif time_range_19_22(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_19_22(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_19_22 << hat
       #22~3時の場面総合計ヒヤリ
-      elsif time_range_22_3(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_22_3(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_22_3(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_22_3 << hat
-      elsif time_range_22_3(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_22_3(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_22_3 << hat
       #3~7時の場面総合計ヒヤリ
-      elsif time_range_3_7(hat) && hat.floor2 && hat.hat && all_scene(hat)
+      elsif time_range_3_7(hat) && hat.floor2 && all_scene(hat)
         total_scene_hat2f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor3 && hat.hat && all_scene(hat)
+      elsif time_range_3_7(hat) && hat.floor3 && all_scene(hat)
         total_scene_hat3f_3_7 << hat
-      elsif time_range_3_7(hat) && hat.floor4 && hat.hat && all_scene(hat)
+      elsif time_range_3_7(hat) && hat.floor4 && all_scene(hat)
         total_scene_hat4f_3_7 << hat
       end
     end

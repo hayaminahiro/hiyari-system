@@ -94,7 +94,7 @@ class AccidentsController < ApplicationController
     last_day = first_day.end_of_month
     @month = first_day..last_day
     #各月のヒヤリ・事故一覧
-    accidents = Accident.includes(:senior).date(@month)
+    hat_accidents = Accident.includes(:senior).date(@month).hat
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
     #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
     # 転倒・転落
@@ -303,7 +303,7 @@ class AccidentsController < ApplicationController
     @total_scene_hat2f_17_19, @total_scene_hat3f_17_19, @total_scene_hat4f_17_19,
     @total_scene_hat2f_19_22, @total_scene_hat3f_19_22, @total_scene_hat4f_19_22,
     @total_scene_hat2f_22_3, @total_scene_hat3f_22_3, @total_scene_hat4f_22_3,
-    @total_scene_hat2f_3_7, @total_scene_hat3f_3_7, @total_scene_hat4f_3_7 = Accident.time_division(accidents)
+    @total_scene_hat2f_3_7, @total_scene_hat3f_3_7, @total_scene_hat4f_3_7 = Accident.time_division_hat(hat_accidents)
 
     #転倒・転落のヒヤリハット
     @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
@@ -415,6 +415,7 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
   end
 
+  #各月別事故集計表
   def spreadsheet_accidents
     #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
     day = params[:month].to_date
