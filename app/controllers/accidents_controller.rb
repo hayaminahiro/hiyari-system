@@ -365,10 +365,22 @@ class AccidentsController < ApplicationController
     @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other
     @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other
     @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other
-    #総合計
-    @total_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat
-    @total_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat
-    @total_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat
+    #出来事総合計のヒヤリハット
+    @total_hat_accidents2f = total_event(@fall_hat_accidents2f, @missing_hat_accidents2f, @meal_hat_accidents2f,
+                                         @medicine_hat_accidents2f, @scratch_hat_accidents2f, @environment_hat_accidents2f,
+                                         @info_contact_hat_accidents2f, @personal_info_hat_accidents2f, @lost_hat_accidents2f,
+                                         @damage_hat_accidents2f, @money_hat_accidents2f, @medical_care_hat_accidents2f,
+                                         @infection_hat_accidents2f, @forget_hat_accidents2f, @other_hat_accidents2f)
+    @total_hat_accidents3f = total_event(@fall_hat_accidents3f, @missing_hat_accidents3f, @meal_hat_accidents3f,
+                                         @medicine_hat_accidents3f, @scratch_hat_accidents3f, @environment_hat_accidents3f,
+                                         @info_contact_hat_accidents3f, @personal_info_hat_accidents3f, @lost_hat_accidents3f,
+                                         @damage_hat_accidents3f, @money_hat_accidents3f, @medical_care_hat_accidents3f,
+                                         @infection_hat_accidents3f, @forget_hat_accidents3f, @other_hat_accidents3f)
+    @total_hat_accidents4f = total_event(@fall_hat_accidents4f, @missing_hat_accidents4f, @meal_hat_accidents4f,
+                                         @medicine_hat_accidents4f, @scratch_hat_accidents4f, @environment_hat_accidents4f,
+                                         @info_contact_hat_accidents4f, @personal_info_hat_accidents4f, @lost_hat_accidents4f,
+                                         @damage_hat_accidents4f, @money_hat_accidents4f, @medical_care_hat_accidents4f,
+                                         @infection_hat_accidents4f, @forget_hat_accidents4f, @other_hat_accidents4f)
 
     #通所・送迎のヒヤリハット
     @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_service
