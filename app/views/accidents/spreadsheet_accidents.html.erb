@@ -64,28 +64,27 @@
         </tr>
         </thead>
         <tbody>
-        <%#= render "fall_hat" %>
-        <%#= render "missing_hat" %>
-        <%#= render "meal_hat" %>
-        <%#= render "medicine_hat" %>
-        <%#= render "scratch_hat" %>
-        <%#= render "environment_hat" %>
-        <%#= render "info_hat" %>
-        <%#= render "personal_hat" %>
-        <%#= render "lost_hat" %>
-        <%#= render "damage_hat" %>
-        <%#= render "money_hat" %>
-        <%#= render "medical_hat" %>
-        <%#= render "infection_hat" %>
-        <%#= render "forget_hat" %>
-        <%#= render "other_hat" %>
-        <%#= render "total_hat" %>
+        <%= render "fall_hat" %>
+        <%= render "missing_hat" %>
+        <%= render "meal_hat" %>
+        <%= render "medicine_hat" %>
+        <%= render "scratch_hat" %>
+        <%= render "environment_hat" %>
+        <%= render "info_hat" %>
+        <%= render "personal_hat" %>
+        <%= render "lost_hat" %>
+        <%= render "damage_hat" %>
+        <%= render "money_hat" %>
+        <%= render "medical_hat" %>
+        <%= render "infection_hat" %>
+        <%= render "forget_hat" %>
+        <%= render "other_hat" %>
+        <%= render "total_hat" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="col-md-12 tab-table">
     <div class="vertical-scroll-table">
@@ -143,17 +142,14 @@
           <th class="floor-color">医務</th>
         </tr>
         </thead>
-        <% check = nil %>
-        <%# @accidents.each do |accident| %>
-        <%# if current_facility.id == accident.senior.facility_id %>
         <tbody>
-        <%#= render "service" %>
-        <%#= render "support" %>
-        <%#= render "lunch" %>
-        <%#= render "toilet" %>
-        <%#= render "bathing" %>
-        <%#= render "other_scene" %>
-        <%#= render "total_scene" %>
+          <%= render "service" %>
+          <%= render "support" %>
+          <%= render "lunch" %>
+          <%= render "toilet" %>
+          <%= render "bathing" %>
+          <%= render "other_scene" %>
+          <%= render "total_scene" %>
         </tbody>
       </table>
     </div>
