@@ -14,4 +14,13 @@ class Senior < ApplicationRecord
   validates :floor, presence: true
   #validates :charge_worker, presence: true
   #validates :worker_ids, presence: true
+
+  #利用者フロア
+  scope :floor, -> (num) { where(floor: num) }
+  #現在施設利用中
+  scope :using, -> { where(using_flg: true) }
+  #名前順で表示
+  scope :name_sorted, -> { order(senior_name_call: :asc) }
+  # N+1問題
+  scope :including_facility, -> { includes(:facility) }
 end

@@ -2,43 +2,33 @@ class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          :month_spreadsheet, :destroy]
-  #before_action :logged_in_facility, only: [:index, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
-  #before_action :correct_facility, only: [:edit, :update]
-  #before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
+  before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
+                                            :month_spreadsheet, :spreadsheet_accidents]
+  before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
+  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy]
+  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :destroy]
+  before_action :set_seniors, only: [:index, :new_accidents_index]
+  before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
+  before_action :set_hat_accident_count, only: [:spreadsheet]
+  before_action :set_month, only: [:month_spreadsheet, :spreadsheet_accidents]
 
   #利用者別ヒヤリ一覧
   def index
-    @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
-    @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
-    @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
   end
 
   #ヒヤリ印刷画面詳細
   def show
-    @senior = @facility.seniors.find(params[:senior_id])
-    @accident = @senior.accidents.find(params[:id])
   end
 
   #ヒヤリ新規作成
   def new_accidents_index
-    @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
-    @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
-    @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
   end
 
   def new
-    @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new
   end
 
   def create
-    @senior = @facility.seniors.find(params[:senior_id])
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
       flash[:success] = "「#{@senior.senior_name}」さん（#{@accident.accident_floor}階）の#{@accident.which_accident}報告書を新規作成しました。"
@@ -51,13 +41,9 @@ class AccidentsController < ApplicationController
   end
 
   def edit
-    @senior = @facility.seniors.find(params[:senior_id])
-    @accident = @senior.accidents.find(params[:id])
   end
 
   def update
-    @senior = @facility.seniors.find(params[:senior_id])
-    @accident = @senior.accidents.find(params[:id])
     if @accident.update_attributes(accident_params)
       flash[:success] = "ヒヤリ・事故報告書の内容を更新しました。"
       redirect_to facility_senior_accident_path
@@ -69,30 +55,14 @@ class AccidentsController < ApplicationController
 
   #ヒヤリ閲覧モーダル
   def browsing
-    @senior = @facility.seniors.find(params[:senior_id])
-    @accident = @senior.accidents.find(params[:id])
   end
 
   #月別ヒヤリ集計リンク
   def spreadsheet
-    @accidents2f = Accident.includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc")
-    @accidents3f = Accident.includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc")
-    @accidents4f = Accident.includes(:senior).where(accident_floor: 4).order(accident_datetime: "desc")
-    @hat_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "ヒヤリハット")
-    @accident_count2f = Accident.includes(:senior).where(accident_floor: 2).where(which_accident: "事故")
-    @hat_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "ヒヤリハット")
-    @accident_count3f = Accident.includes(:senior).where(accident_floor: 3).where(which_accident: "事故")
-    @hat_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "ヒヤリハット")
-    @accident_count4f = Accident.includes(:senior).where(accident_floor: 4).where(which_accident: "事故")
   end
 
   #各月別ヒヤリ集計表
   def month_spreadsheet
-    #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
-    day = params[:month].to_date
-    first_day = day.beginning_of_month
-    last_day = first_day.end_of_month
-    @month = first_day..last_day
     #各月のヒヤリ・事故一覧
     hat_accidents = Accident.includes(:senior).date(@month).hat
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
@@ -417,11 +387,6 @@ class AccidentsController < ApplicationController
 
   #各月別事故集計表
   def spreadsheet_accidents
-    #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
-    day = params[:month].to_date
-    first_day = day.beginning_of_month
-    last_day = first_day.end_of_month
-    @month = first_day..last_day
     #各月のヒヤリ・事故一覧
     accidents = Accident.includes(:senior).date(@month).accident
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
@@ -746,8 +711,6 @@ class AccidentsController < ApplicationController
 
   #ヒヤリ削除ボタン
   def destroy
-    @senior = @facility.seniors.find(params[:senior_id])
-    @accident = @senior.accidents.find(params[:id])
     if @accident.destroy
       flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
       redirect_to facility_accidents_url
