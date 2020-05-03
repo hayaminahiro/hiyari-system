@@ -220,7 +220,7 @@ class Accident < ApplicationRecord
   end
 
 
-  def self.time_division_hat(hat_accidents)
+  def self.time_division(accidents)
     #7~9時の転倒・転落ヒヤリ
     fall_hat2f_7_9 = []
     fall_hat3f_7_9 = []
@@ -980,7 +980,7 @@ class Accident < ApplicationRecord
     total_scene_hat3f_3_7 = []
     total_scene_hat4f_3_7 = []
 
-    hat_accidents.each do |hat|
+    accidents.each do |hat|
       #7~9時の転倒・転落ヒヤリ
       if time_range_7_9(hat) && hat.floor2 && hat.fall
         fall_hat2f_7_9 << hat
