@@ -24,11 +24,15 @@ class Accident < ApplicationRecord
 
   #日付
   scope :date, -> (date) { where(accident_datetime: date) }
-  #フロア
+  #事故発生フロア
   scope :floor, -> (num) { where(accident_floor: num) }
   #ヒヤリor事故
   scope :hat, -> { where(which_accident: "ヒヤリハット") }
   scope :accident, -> { where(which_accident: "事故") }
+  # N+1問題
+  scope :including_senior, -> { includes(:senior) }
+  #日付降順で表示
+  scope :accidents_sorted, -> { order(accident_datetime: :desc) }
   #出来事の領域別分類
   scope :event_fall, -> { where(event_classification: 0) }
   scope :event_missing, -> { where(event_classification: 1) }
