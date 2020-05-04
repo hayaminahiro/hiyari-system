@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   #各月ヒヤリ集計表
   get '/facilities/:facility_id/accidents/spreadsheet/:month',
       to: 'accidents#month_spreadsheet', as: :month_spreadsheet
+  #各月事故集計表
+  get '/facilities/:facility_id/accidents/spreadsheet_accidents/:month',
+      to: 'accidents#spreadsheet_accidents', as: :spreadsheet_accidents
 
   #施設関連: facilities
   resources :facilities do

@@ -17,6 +17,49 @@ class ApplicationController < ActionController::Base
     @facility = Facility.find(params[:facility_id])
   end
 
+  #senior_idを取得
+  def set_senior_id
+    @senior = @facility.seniors.find(params[:senior_id])
+  end
+
+  #accidentのidを取得
+  def set_accident_id
+    @accident = @senior.accidents.find(params[:id])
+  end
+
+  #利用者＆ヒヤリ・事故一覧取得
+  def set_seniors
+    @seniors2f = Senior.where(floor: 2).where(using_flg: true).name_sorted
+    @seniors3f = Senior.including_facility.floor(3).using.name_sorted
+    @seniors4f = Senior.including_facility.floor(4).using.name_sorted
+  end
+
+  #各階ヒヤリ・事故取得
+  def set_accidents
+    @accidents2f = Accident.including_senior.floor(2).accidents_sorted
+    @accidents3f = Accident.including_senior.floor(3).accidents_sorted
+    @accidents4f = Accident.including_senior.floor(4).accidents_sorted
+  end
+
+  #ヒヤリ & 事故カウント数取得
+  def set_hat_accident_count
+    @hat_count2f = Accident.including_senior.floor(2).hat
+    @hat_count3f = Accident.including_senior.floor(3).hat
+    @hat_count4f = Accident.including_senior.floor(4).hat
+    @accident_count2f = Accident.including_senior.floor(2).accident
+    @accident_count3f = Accident.including_senior.floor(3).accident
+    @accident_count4f = Accident.including_senior.floor(4).accident
+  end
+
+  #各月の@monthを取得
+  def set_month
+    #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
+    day = params[:month].to_date
+    first_day = day.beginning_of_month
+    last_day = first_day.end_of_month
+    @month = first_day..last_day
+  end
+
   # ログイン済みのユーザーか確認します。
   def logged_in_facility
     unless logged_in?
