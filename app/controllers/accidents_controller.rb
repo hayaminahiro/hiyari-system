@@ -1,12 +1,12 @@
 class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
-                                         :month_spreadsheet, :destroy]
+                                         :charge_sign, :reset_charge_sign, :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
-  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy]
-  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :destroy]
+  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :destroy]
+  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -57,30 +57,21 @@ class AccidentsController < ApplicationController
   def browsing
   end
 
+  #担当印押下
   def charge_sign
-      @facility = Facility.find(params[:facility_id])
-      @senior = @facility.seniors.find(params[:senior_id])
-      @accident = @senior.accidents.find(params[:id])
-      #@accidents2f = Accident.including_senior.floor(2).accidents_sorted
-      #@accidents3f = Accident.including_senior.floor(3).accidents_sorted
-      #@accidents4f = Accident.including_senior.floor(4).accidents_sorted
       if @accident.update_attributes(charge_sign: true)
-        flash[:success] = "利用者「#{@senior.senior_name}」の担当印を押下しました。"
-        #raise
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
       end
       redirect_to facility_senior_accident_path
-      #redirect_to @facility
   end
 
-  #施設利用者退所ボタン
-  #def leaving
-  #  @facility = Facility.find(params[:facility_id])
-  #  @senior = @facility.seniors.find(params[:id])
-  #  if @senior.update_attributes(using_flg: false)
-  #    flash[:warning] = "利用者「#{@senior.senior_name}」さんを退所へ変更しました。"
-  #  end
-  #  redirect_to facility_seniors_url
-  #end
+  #担当印キャンセル
+  def reset_charge_sign
+    if @accident.update_attributes(charge_sign: false)
+      flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
+    end
+    redirect_to facility_senior_accident_path
+  end
 
   #月別ヒヤリ集計リンク
   def spreadsheet

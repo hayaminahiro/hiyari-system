@@ -820,6 +820,22 @@ p.left-space {
   color: white;
 }
 
+.btn-flat-danger {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: lightcoral;
+  border: solid 2px lightpink;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-danger:hover {
+  background: lightpink;
+  color: white;
+}
+
+
 .confirm_sign {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 20px;

@@ -44,6 +44,8 @@ Rails.application.routes.draw do
           get 'browsing'
           #担当印押下
           patch 'charge_sign'
+          #担当印キャンセル
+          patch 'reset_charge_sign'
         end
       end
     end
