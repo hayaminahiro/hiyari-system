@@ -57,6 +57,31 @@ class AccidentsController < ApplicationController
   def browsing
   end
 
+  def charge_sign
+      @facility = Facility.find(params[:facility_id])
+      @senior = @facility.seniors.find(params[:senior_id])
+      @accident = @senior.accidents.find(params[:id])
+      #@accidents2f = Accident.including_senior.floor(2).accidents_sorted
+      #@accidents3f = Accident.including_senior.floor(3).accidents_sorted
+      #@accidents4f = Accident.including_senior.floor(4).accidents_sorted
+      if @accident.update_attributes(charge_sign: true)
+        flash[:success] = "利用者「#{@senior.senior_name}」の担当印を押下しました。"
+        #raise
+      end
+      redirect_to facility_senior_accident_path
+      #redirect_to @facility
+  end
+
+  #施設利用者退所ボタン
+  #def leaving
+  #  @facility = Facility.find(params[:facility_id])
+  #  @senior = @facility.seniors.find(params[:id])
+  #  if @senior.update_attributes(using_flg: false)
+  #    flash[:warning] = "利用者「#{@senior.senior_name}」さんを退所へ変更しました。"
+  #  end
+  #  redirect_to facility_seniors_url
+  #end
+
   #月別ヒヤリ集計リンク
   def spreadsheet
   end

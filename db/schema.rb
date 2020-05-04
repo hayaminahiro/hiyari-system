@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_210259) do
     t.string "superior_b"
     t.string "superior_c"
     t.string "superior_d"
-    t.string "charge_sign"
+    t.boolean "charge_sign"
     t.string "family_comment"
     t.string "superior_a_last"
     t.string "superior_b_last"

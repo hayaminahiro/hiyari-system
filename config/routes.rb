@@ -42,6 +42,8 @@ Rails.application.routes.draw do
         member do
           #ヒヤリ閲覧モーダル
           get 'browsing'
+          #担当印押下
+          patch 'charge_sign'
         end
       end
     end
