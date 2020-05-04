@@ -27,20 +27,15 @@
             <td></td>
             <td></td>
             <td class="confirm_sign">
-
-
-
               <% @senior.workers.each do |se| %>
-                <% if @accident.charge_sign == true %>
+                <% if @accident.charge_sign? %>
                   <div class="stamp stamp-approve">
                     <span><%= l(@accident.updated_at, format: :sign) %></span>
                     <span><%= se.sign_name %></span>
+                    <% break %><!--担当職員２名の場合、印鑑２つ防止-->
                   </div>
                 <% end %>
               <% end %>
-
-
-
             </td>
             <td></td>
           </tr>
