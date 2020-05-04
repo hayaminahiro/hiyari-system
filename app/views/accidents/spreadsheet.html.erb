@@ -4,7 +4,7 @@
   <h3><%= current_facility.name %></h3>
 </div>
 
-<h1 class="title-position-center">ヒヤリ・事故集計</h1>
+<h1 class="title-position-center">ヒヤリ・事故報告書 集計</h1>
 
 <div class="container">
   <div class="tab-content">
@@ -13,11 +13,12 @@
         <table id="table-scroll" class="table table-bordered table-condensed table-hover">
           <thead>
           <tr class="active-color">
-            <th class="spreadsheet-thead" style="width: 20%">年月</th>
+            <th class="spreadsheet-thead" style="width: 12%;">年月</th>
             <th class="spreadsheet-thead">2F/ ヒヤリ・事故件数</th>
             <th class="spreadsheet-thead">3F/ ヒヤリ・事故件数</th>
             <th class="spreadsheet-thead">4F/ ヒヤリ・事故件数</th>
-            <th class="spreadsheet-thead">閲覧</th>
+            <th class="spreadsheet-thead">ヒヤリ集計</th>
+            <th class="spreadsheet-thead">事故集計</th>
           </tr>
           </thead>
           <% check = nil %>
@@ -42,11 +43,13 @@
                     【ヒヤリ <%= @hat_count4f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
                     【事故 <%= @accident_count4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
                   </td>
-                  <td class="index-btn-position" style="width: 18%;">
-                    <%#= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
-                                month_spreadsheet_path(current_facility, l(accident.accident_datetime, format: :integer)), local: true, class: "btn-square-shadow-mini" %>
-                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故集計表",
-                                month_spreadsheet_path(current_facility, accident.accident_datetime), local: true, class: "btn-square-shadow-mini" %>
+                  <td class="index-btn-position" style="width: 14%;">
+                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ集計表",
+                                month_spreadsheet_path(current_facility, accident.accident_datetime), local: true, class: "btn-square-shadow-pink" %>
+                  </td>
+                  <td class="index-btn-position" style="width: 13%;">
+                    <%= link_to "#{l(accident.accident_datetime, format: :middle)} 事故集計表",
+                                spreadsheet_accidents_path(current_facility, accident.accident_datetime), local: true, class: "btn-square-shadow-mini" %>
                   </td>
                 </tr>
                 <% check = l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) %>
