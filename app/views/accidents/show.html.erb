@@ -26,7 +26,22 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td class="confirm_sign">
+
+
+
+              <% @senior.workers.each do |se| %>
+                <% if @accident.charge_sign == true %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= se.sign_name %></span>
+                  </div>
+                <% end %>
+              <% end %>
+
+
+
+            </td>
             <td></td>
           </tr>
         </tbody>

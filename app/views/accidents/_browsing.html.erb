@@ -23,19 +23,17 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="sign-box">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <%= link_to "確認","#", method: :patch,
-                                  data: { confirm: "退所へ変更してよろしいですか？" }, class: "btn-flat-border"%>
-                      <%#= link_to "退所",leaving_facility_senior_path(@facility, senior), method: :patch,
-                                  data: { confirm: "「#{senior.senior_name}」さんを退所へ変更してよろしいですか？" }, class: "btn btn-warning"%>
-                    </td>
-                    <td></td>
-                  </tr>
+                    <tr class="sign-box">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <%= link_to "確認", charge_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                    data: { confirm: "#{@accident.which_accident}報告書の内容は確認しましたか？"}, class: "btn-flat-border"%>
+                      </td>
+                      <td></td>
+                    </tr>
                   </tbody>
                   <tbody>
                   <tr>

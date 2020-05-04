@@ -211,4 +211,5 @@ ja:
       ja_time: "%H時 %M分 頃"
       ja_time_index: "%H時 %M分"
       integer: "%Y%m"
+      sign: "%Y/%m/%d"
     pm: 午後
