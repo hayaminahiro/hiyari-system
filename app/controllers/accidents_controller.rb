@@ -59,16 +59,23 @@ class AccidentsController < ApplicationController
 
   #担当印押下
   def charge_sign
-      if @accident.update_attributes(charge_sign: true)
-        flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
+    if @senior.workers.present?
+      @senior.workers.each do |worker|
+        if @accident.update_attributes(charge_sign: worker.sign_name)
+          flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
+        end
       end
       redirect_to facility_senior_accident_path
+    else
+      flash[:danger] = "担当職員が登録されていません。利用者一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
   end
 
   #担当印キャンセル
   def reset_charge_sign
-    if @accident.update_attributes(charge_sign: false)
-      flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
+    if @accident.update_attributes(charge_sign: nil)
+      flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
     end
     redirect_to facility_senior_accident_path
   end

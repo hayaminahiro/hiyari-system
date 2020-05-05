@@ -3,12 +3,12 @@
 <% if @accident.which_accident == "ヒヤリハット" %>
   <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
 <% else %>
-  <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;事故報告書</h3>
+  <h3 class="title-position-print" style="padding-top: 30px;"><%= @senior.senior_name %>&emsp;事故報告書</h3>
 <% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-6">
+    <div class="col-md-6 col-md-offset-6" style="padding-top: 30px;">
       <table class="table table-bordered table-condensed sign-table">
         <thead>
           <tr>
@@ -27,14 +27,16 @@
             <td></td>
             <td></td>
             <td class="confirm_sign">
-              <% @senior.workers.each do |se| %>
-                <% if @accident.charge_sign? %>
-                  <div class="stamp stamp-approve">
-                    <span><%= l(@accident.updated_at, format: :sign) %></span>
-                    <span><%= se.sign_name %></span>
-                    <% break %><!--担当職員２名の場合、印鑑２つ防止-->
-                  </div>
-                <% end %>
+              <% if @accident.charge_sign? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.charge_sign %></span>
+                </div>
+              <% elsif @accident.charge_sign == "" %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span>確認済</span>
+                </div>
               <% end %>
             </td>
             <td></td>
