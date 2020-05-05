@@ -80,6 +80,8 @@ class AccidentsController < ApplicationController
     redirect_to facility_senior_accident_path
   end
 
+
+
   #月別ヒヤリ集計リンク
   def spreadsheet
   end
