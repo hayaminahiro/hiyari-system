@@ -25,6 +25,7 @@ ja:
         sign_name: サイン名
         working_floor: 所属フロア
         charge_senior: 担当利用者
+        position: 役職
       accident:
         which_accident: ヒヤリ・事故の選択
         reporter: 報告者
