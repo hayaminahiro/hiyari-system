@@ -73,9 +73,10 @@
         <table class="table table-bordered table-condensed table-hover">
           <thead>
             <tr class="active-color-green">
-              <th class="active-position" colspan="3">現在在職中</th>
+              <th class="active-position" colspan="4">現在在職中</th>
             </tr>
             <tr class="th-index">
+              <th style="text-align: center">役職</th>
               <th style="text-align: center">職員名</th>
               <th style="text-align: center">担当利用者</th>
               <th style="text-align: center"></th>
@@ -85,6 +86,11 @@
             <% if current_facility.id == worker.facility_id %>
               <tbody>
                 <tr>
+                  <td>
+                    <div id="position-color">
+                      <%= worker.position if worker.position != "なし" %>
+                    </div>
+                  </td>
                   <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
                     <%= worker.worker_name %>
                     <% if worker.worker_name_call.present? %>
@@ -118,9 +124,10 @@
         <table class="table table-bordered table-condensed table-hover">
           <thead>
             <tr class="active-color-green">
-              <th class="active-position" colspan="3">現在在職中</th>
+              <th class="active-position" colspan="4">現在在職中</th>
             </tr>
             <tr class="th-index">
+              <th style="text-align: center">役職</th>
               <th style="text-align: center">職員名</th>
               <th style="text-align: center">担当利用者</th>
               <th style="text-align: center"></th>
@@ -130,6 +137,11 @@
             <% if current_facility.id == worker.facility_id %>
               <tbody>
                 <tr>
+                  <td>
+                    <div id="position-color">
+                      <%= worker.position if worker.position != "なし" %>
+                    </div>
+                  </td>
                   <td class="senior_name_space" rowspan="3" style="padding-top: 9px">
                     <%= worker.worker_name %>
                     <% if worker.worker_name_call.present? %>
@@ -167,7 +179,7 @@
             </tr>
             <tr class="th-index-red">
               <th style="text-align: center">職員名</th>
-              <th style="text-align: center">担当利用者</th>
+              <th style="text-align: center">旧 担当利用者</th>
               <th style="text-align: center"></th>
             </tr>
           </thead>

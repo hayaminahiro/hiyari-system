@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_145627) do
+ActiveRecord::Schema.define(version: 2020_05_06_040942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,10 @@ ActiveRecord::Schema.define(version: 2020_05_05_145627) do
     t.boolean "worker_education"
     t.boolean "environmental_improvement"
     t.boolean "other"
+    t.string "superior_e"
+    t.string "superior_f"
+    t.string "superior_e_last"
+    t.string "superior_f_last"
     t.index ["senior_id"], name: "index_accidents_on_senior_id"
   end
 
