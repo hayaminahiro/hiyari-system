@@ -25,7 +25,13 @@
                   <tbody>
                     <tr class="sign-box">
                       <td><!--施設長印-->
-
+                        <% if @accident.superior_a? %>
+                          <%= link_to "確認済", reset_facility_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                      data: { confirm: "#{@accident.which_accident}報告書の捺印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                        <% else %>
+                          <%= link_to "捺印", facility_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                      data: { confirm: "#{@accident.which_accident}報告書の内容は確認しましたか？"}, class: "btn-flat-border"%>
+                        <% end %>
                       </td>
                       <td><!--次長印-->
                         <% if @accident.superior_b? %>
