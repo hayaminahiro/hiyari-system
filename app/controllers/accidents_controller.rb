@@ -3,16 +3,16 @@ class AccidentsController < ApplicationController
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
                                          :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
-                                         :month_spreadsheet, :destroy]
+                                         :facility_manager_sign, :reset_facility_manager_sign, :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
   before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign,
-                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
-                                       :director_sign, :reset_director_sign, :destroy]
+                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :director_sign,
+                                       :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign, :destroy]
   before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :chief_sign,
                                          :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :director_sign,
-                                         :reset_director_sign, :destroy]
+                                         :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -180,6 +180,31 @@ class AccidentsController < ApplicationController
     if @accident.superior_b.present?
       if @accident.update_attributes(superior_b: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんの次長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #施設長印押下
+  def facility_manager_sign
+    manager = Worker.where(position: "施設長")[0]
+    if manager.present?
+      manager = manager.sign_name
+      if @accident.update_attributes(superior_a: manager)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの施設長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "施設長が登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #施設長印キャンセル
+  def reset_facility_manager_sign
+    if @accident.superior_a.present?
+      if @accident.update_attributes(superior_a: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの施設長印をキャンセルしました。"
         redirect_to facility_senior_accident_path
       end
     end
