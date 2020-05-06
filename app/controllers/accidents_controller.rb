@@ -1,14 +1,15 @@
 class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
-                                         :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :month_spreadsheet, :destroy]
+                                         :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
+                                         :risk_manager_sign, :reset_risk_manager_sign, :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
   before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign,
-                                       :chief_sign, :reset_chief_sign, :destroy]
+                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :destroy]
   before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :chief_sign,
-                                         :reset_chief_sign, :destroy]
+                                         :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -69,7 +70,7 @@ class AccidentsController < ApplicationController
       end
       redirect_to facility_senior_accident_path
     else
-      flash[:danger] = "担当職員が登録されていません。利用者一覧ページから登録して下さい。"
+      flash[:danger] = "担当職員が登録されていません。職員一覧ページまたは利用者一覧ページから登録して下さい。"
       redirect_to facility_senior_accident_path
     end
   end
@@ -84,29 +85,29 @@ class AccidentsController < ApplicationController
 
   #担当係長印押下
   def chief_sign
-    @chief_2f = Worker.where(position: "２階係長")[0]
-    @chief_3f = Worker.where(position: "３階係長")[0]
-    @chief_4f = Worker.where(position: "４階係長")[0]
-    if @accident.accident_floor == 2 && @chief_2f.present?
-      @chief_2f = @chief_2f.sign_name
-      if @accident.update_attributes(superior_d: @chief_2f)
+    chief_2f = Worker.where(position: "２階係長")[0]
+    chief_3f = Worker.where(position: "３階係長")[0]
+    chief_4f = Worker.where(position: "４階係長")[0]
+    if @accident.accident_floor == 2 && chief_2f.present?
+      chief_2f = chief_2f.sign_name
+      if @accident.update_attributes(superior_d: chief_2f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの２階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 3 && @chief_3f.present?
-      @chief_3f = @chief_3f.sign_name
-      if @accident.update_attributes(superior_e: @chief_3f)
+    elsif @accident.accident_floor == 3 && chief_3f.present?
+      chief_3f = chief_3f.sign_name
+      if @accident.update_attributes(superior_e: chief_3f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの３階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 4 && @chief_4f.present?
-      @chief_4f = @chief_4f.sign_name
-      if @accident.update_attributes(superior_f: @chief_4f)
+    elsif @accident.accident_floor == 4 && chief_4f.present?
+      chief_4f = chief_4f.sign_name
+      if @accident.update_attributes(superior_f: chief_4f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの４階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
     else
-      flash[:danger] = "担当係長が登録されていません。利用者一覧ページから登録して下さい。"
+      flash[:danger] = "担当係長が登録されていません。職員一覧ページから登録して下さい。"
       redirect_to facility_senior_accident_path
     end
   end
@@ -126,6 +127,31 @@ class AccidentsController < ApplicationController
     elsif @accident.accident_floor == 4 && @accident.superior_f.present?
       if @accident.update_attributes(superior_f: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #リスマネ印押下
+  def risk_manager_sign
+    risk_manager = Worker.where(position: "リスクマネジャー")[0]
+    if risk_manager.present?
+      risk_manager = risk_manager.sign_name
+      if @accident.update_attributes(superior_c: risk_manager)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "リスクマネジャーが登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #リスマネ印キャンセル
+  def reset_risk_manager_sign
+    if @accident.superior_c.present?
+      if @accident.update_attributes(superior_c: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印をキャンセルしました。"
         redirect_to facility_senior_accident_path
       end
     end
