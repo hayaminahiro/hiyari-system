@@ -1,12 +1,14 @@
 class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
-                                         :charge_sign, :reset_charge_sign, :month_spreadsheet, :destroy]
+                                         :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
-  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :destroy]
-  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :destroy]
+  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign,
+                                       :chief_sign, :reset_chief_sign, :destroy]
+  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :chief_sign,
+                                         :reset_chief_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -80,7 +82,31 @@ class AccidentsController < ApplicationController
     redirect_to facility_senior_accident_path
   end
 
+  #担当係長印押下
+  def chief_sign
+    if Worker.where(position: "２階係長").present?
+      @chief_2f = Worker.where(position: "２階係長")[0].sign_name
+      if @accident.accident_floor == 2 && @chief_2f.present?
+        if @accident.update_attributes(superior_d: @chief_2f)
+          flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
+          redirect_to facility_senior_accident_path
+        end
+      end
+    else
+      flash[:danger] = "担当係長が登録されていません。利用者一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
 
+    #redirect_to facility_senior_accident_path
+  end
+
+  #担当係長印キャンセル
+  def reset_chief_sign
+    if @accident.update_attributes(superior_d: nil)
+      flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
+    end
+    redirect_to facility_senior_accident_path
+  end
 
   #月別ヒヤリ集計リンク
   def spreadsheet

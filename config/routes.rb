@@ -46,6 +46,10 @@ Rails.application.routes.draw do
           patch 'charge_sign'
           #担当印キャンセル
           patch 'reset_charge_sign'
+          #担当係長印押下
+          patch 'chief_sign'
+          #担当係長印キャンセル
+          patch 'reset_chief_sign'
         end
       end
     end
