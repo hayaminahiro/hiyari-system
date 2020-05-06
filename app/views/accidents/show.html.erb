@@ -25,7 +25,19 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td class="confirm_sign">
+              <% if @accident.superior_d? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_d %></span>
+                </div>
+              <% elsif @accident.superior_d == "" %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span>確認済</span>
+                </div>
+              <% end %>
+            </td>
             <td class="confirm_sign">
               <% if @accident.charge_sign? %>
                 <div class="stamp stamp-approve">
