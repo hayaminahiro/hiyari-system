@@ -1,9 +1,9 @@
 <% provide(:title, @senior.senior_name + "-印刷画面") %>
 
 <% if @accident.which_accident == "ヒヤリハット" %>
-  <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
+  <h3 class="title-position-print" style="padding-top: 10px;"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
 <% else %>
-  <h3 class="title-position-print" style="padding-top: 30px;"><%= @senior.senior_name %>&emsp;事故報告書</h3>
+  <h3 class="title-position-print" style="padding-top: 10px;"><%= @senior.senior_name %>&emsp;事故報告書</h3>
 <% end %>
 
 <div class="container">
@@ -25,20 +25,20 @@
             <td></td>
             <td></td>
             <td></td>
-            <td class="confirm_sign">
-              <% if @accident.superior_d? %>
+            <td class="confirm_sign"> <!--係長印-->
+              <% if @accident.superior_d? || @accident.superior_e? || @accident.superior_f? %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
-                  <span><%= @accident.superior_d %></span>
+                  <span><%= @accident.superior_d || @accident.superior_e || @accident.superior_f %></span>
                 </div>
-              <% elsif @accident.superior_d == "" %>
+              <% elsif @accident.superior_d == "" || @accident.superior_e == "" || @accident.superior_f == "" %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
-                  <span>確認済</span>
+<!--                  <span>承認</span>-->
                 </div>
               <% end %>
             </td>
-            <td class="confirm_sign">
+            <td class="confirm_sign"> <!--担当員-->
               <% if @accident.charge_sign? %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
@@ -47,7 +47,7 @@
               <% elsif @accident.charge_sign == "" %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
-                  <span>確認済</span>
+<!--                  <span>確認済</span>-->
                 </div>
               <% end %>
             </td>
