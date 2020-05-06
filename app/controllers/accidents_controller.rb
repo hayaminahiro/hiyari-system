@@ -2,14 +2,17 @@ class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
-                                         :risk_manager_sign, :reset_risk_manager_sign, :month_spreadsheet, :destroy]
+                                         :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
+                                         :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
   before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign,
-                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :destroy]
+                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
+                                       :director_sign, :reset_director_sign, :destroy]
   before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :chief_sign,
-                                         :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :destroy]
+                                         :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :director_sign,
+                                         :reset_director_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -152,6 +155,31 @@ class AccidentsController < ApplicationController
     if @accident.superior_c.present?
       if @accident.update_attributes(superior_c: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #次長印押下
+  def director_sign
+    director = Worker.where(position: "次長")[0]
+    if director.present?
+      director = director.sign_name
+      if @accident.update_attributes(superior_b: director)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの次長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "次長が登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #次長印キャンセル
+  def reset_director_sign
+    if @accident.superior_b.present?
+      if @accident.update_attributes(superior_b: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの次長印をキャンセルしました。"
         redirect_to facility_senior_accident_path
       end
     end
