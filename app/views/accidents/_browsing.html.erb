@@ -26,7 +26,15 @@
                     <tr class="sign-box">
                       <td></td>
                       <td></td>
-                      <td></td>
+                      <td><!--リスマネ印-->
+                        <% if @accident.superior_c? %>
+                          <%= link_to "確認済", reset_risk_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                      data: { confirm: "#{@accident.which_accident}報告書の捺印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                        <% else %>
+                          <%= link_to "捺印", risk_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                      data: { confirm: "#{@accident.which_accident}報告書の内容は確認しましたか？"}, class: "btn-flat-border"%>
+                        <% end %>
+                      </td>
                       <td><!--担当係長印-->
                         <% if @accident.superior_d? || @accident.superior_e? || @accident.superior_f? %>
                           <%= link_to "確認済", reset_chief_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,

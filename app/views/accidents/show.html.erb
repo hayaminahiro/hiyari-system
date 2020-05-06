@@ -24,30 +24,27 @@
           <tr class="sign-box">
             <td></td>
             <td></td>
-            <td></td>
+            <td class="confirm_sign"> <!--リスマネ印-->
+              <% if @accident.superior_c.present? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_c %></span>
+                </div>
+              <% end %>
+            </td>
             <td class="confirm_sign"> <!--係長印-->
-              <% if @accident.superior_d? || @accident.superior_e? || @accident.superior_f? %>
+              <% if @accident.superior_d.present? || @accident.superior_e.present? || @accident.superior_f.present? %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
                   <span><%= @accident.superior_d || @accident.superior_e || @accident.superior_f %></span>
                 </div>
-              <% elsif @accident.superior_d == "" || @accident.superior_e == "" || @accident.superior_f == "" %>
-                <div class="stamp stamp-approve">
-                  <span><%= l(@accident.updated_at, format: :sign) %></span>
-<!--                  <span>承認</span>-->
-                </div>
               <% end %>
             </td>
-            <td class="confirm_sign"> <!--担当員-->
+            <td class="confirm_sign"> <!--担当印-->
               <% if @accident.charge_sign? %>
                 <div class="stamp stamp-approve">
                   <span><%= l(@accident.updated_at, format: :sign) %></span>
                   <span><%= @accident.charge_sign %></span>
-                </div>
-              <% elsif @accident.charge_sign == "" %>
-                <div class="stamp stamp-approve">
-                  <span><%= l(@accident.updated_at, format: :sign) %></span>
-<!--                  <span>確認済</span>-->
                 </div>
               <% end %>
             </td>
