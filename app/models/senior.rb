@@ -17,8 +17,9 @@ class Senior < ApplicationRecord
 
   #利用者フロア
   scope :floor, -> (num) { where(floor: num) }
-  #現在施設利用中
+  #現在施設利用中or退所中
   scope :using, -> { where(using_flg: true) }
+  scope :leaving, -> { where(using_flg: false) }
   #名前順で表示
   scope :name_sorted, -> { order(senior_name_call: :asc) }
   # N+1問題
