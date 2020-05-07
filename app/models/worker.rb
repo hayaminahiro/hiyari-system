@@ -26,6 +26,10 @@ class Worker < ApplicationRecord
   scope :workers_sorted, -> { order(worker_name_call: :asc) }
   # N+1問題
   scope :including_facility, -> { includes(:facility) }
+  #各階係長
+  scope :chief_2f, -> { where(position: "２階係長") }
+  scope :chief_3f, -> { where(position: "３階係長") }
+  scope :chief_4f, -> { where(position: "４階係長") }
 
 end
 

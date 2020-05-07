@@ -88,22 +88,22 @@ class AccidentsController < ApplicationController
 
   #担当係長印押下
   def chief_sign
-    chief_2f = Worker.where(position: "２階係長")[0]
-    chief_3f = Worker.where(position: "３階係長")[0]
-    chief_4f = Worker.where(position: "４階係長")[0]
-    if @accident.accident_floor == 2 && chief_2f.present?
+    chief_2f = Worker.chief_2f[0]
+    chief_3f = Worker.chief_3f[0]
+    chief_4f = Worker.chief_4f[0]
+    if @accident.floor2 && chief_2f.present?
       chief_2f = chief_2f.sign_name
       if @accident.update_attributes(superior_d: chief_2f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの２階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 3 && chief_3f.present?
+    elsif @accident.floor3 && chief_3f.present?
       chief_3f = chief_3f.sign_name
       if @accident.update_attributes(superior_e: chief_3f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの３階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 4 && chief_4f.present?
+    elsif @accident.floor4 && chief_4f.present?
       chief_4f = chief_4f.sign_name
       if @accident.update_attributes(superior_f: chief_4f)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの４階係長印を押下しました。"
