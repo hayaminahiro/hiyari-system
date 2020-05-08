@@ -30,4 +30,13 @@ module AccidentsHelper
     judgment
   end
 
+  #最終確認サイン表出のタイミング
+  def last_sign(a, b, c, charge_sign, chief)
+    last_sign = false
+    if a.present? && b.present? && c.present? && charge_sign.present? && chief.present?
+      last_sign = true
+    end
+    last_sign
+  end
+
 end
