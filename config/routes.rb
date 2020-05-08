@@ -42,6 +42,26 @@ Rails.application.routes.draw do
         member do
           #ヒヤリ閲覧モーダル
           get 'browsing'
+          #担当印押下
+          patch 'charge_sign'
+          #担当印キャンセル
+          patch 'reset_charge_sign'
+          #担当係長印押下
+          patch 'chief_sign'
+          #担当係長印キャンセル
+          patch 'reset_chief_sign'
+          #リスマネ印押下
+          patch 'risk_manager_sign'
+          #リスマネ印キャンセル
+          patch 'reset_risk_manager_sign'
+          #次長印押下
+          patch 'director_sign'
+          #次長印キャンセル
+          patch 'reset_director_sign'
+          #施設長印押下
+          patch 'facility_manager_sign'
+          #施設長印キャンセル
+          patch 'reset_facility_manager_sign'
         end
       end
     end

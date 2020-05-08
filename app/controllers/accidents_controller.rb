@@ -1,12 +1,18 @@
 class AccidentsController < ApplicationController
 
   before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
-                                         :month_spreadsheet, :destroy]
+                                         :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
+                                         :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
+                                         :facility_manager_sign, :reset_facility_manager_sign, :month_spreadsheet, :destroy]
   before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
                                             :month_spreadsheet, :spreadsheet_accidents]
   before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
-  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy]
-  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :destroy]
+  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :charge_sign, :reset_charge_sign,
+                                       :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :director_sign,
+                                       :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign, :destroy]
+  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :charge_sign, :reset_charge_sign, :chief_sign,
+                                         :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign, :director_sign,
+                                         :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign, :destroy]
   before_action :set_seniors, only: [:index, :new_accidents_index]
   before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
@@ -55,6 +61,147 @@ class AccidentsController < ApplicationController
 
   #ヒヤリ閲覧モーダル
   def browsing
+  end
+
+  #担当印押下
+  def charge_sign
+    if @senior.workers.present?
+      @senior.workers.each do |worker|
+        if @accident.update_attributes(charge_sign: worker.sign_name)
+          flash[:success] = "利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
+        end
+      end
+      redirect_to facility_senior_accident_path
+    else
+      flash[:danger] = "担当職員が登録されていません。職員一覧ページまたは利用者一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #担当印キャンセル
+  def reset_charge_sign
+    if @accident.update_attributes(charge_sign: nil)
+      flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
+    end
+    redirect_to facility_senior_accident_path
+  end
+
+  #担当係長印押下
+  def chief_sign
+    chief_2f = Worker.chief_2f[0]
+    chief_3f = Worker.chief_3f[0]
+    chief_4f = Worker.chief_4f[0]
+    if chief_judgment(@accident.floor2, chief_2f)
+      if @accident.update_attributes(superior_d: chief_2f.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの２階係長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    elsif chief_judgment(@accident.floor3, chief_3f)
+      if @accident.update_attributes(superior_e: chief_3f.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの３階係長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    elsif chief_judgment(@accident.floor4, chief_4f)
+      if @accident.update_attributes(superior_f: chief_4f.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの４階係長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "担当係長が登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #担当係長印キャンセル
+  def reset_chief_sign
+    if chief_judgment(@accident.floor2, @accident.superior_d)
+      if @accident.update_attributes(superior_d: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    elsif chief_judgment(@accident.floor3, @accident.superior_e)
+      if @accident.update_attributes(superior_e: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    elsif chief_judgment(@accident.floor4, @accident.superior_f)
+      if @accident.update_attributes(superior_f: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #リスマネ印押下
+  def risk_manager_sign
+    risk_manager = Worker.where(position: "リスクマネジャー")[0]
+    if risk_manager.present?
+      if @accident.update_attributes(superior_c: risk_manager.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "リスクマネジャーが登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #リスマネ印キャンセル
+  def reset_risk_manager_sign
+    if @accident.superior_c.present?
+      if @accident.update_attributes(superior_c: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #次長印押下
+  def director_sign
+    director = Worker.where(position: "次長")[0]
+    if director.present?
+      if @accident.update_attributes(superior_b: director.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの次長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "次長が登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #次長印キャンセル
+  def reset_director_sign
+    if @accident.superior_b.present?
+      if @accident.update_attributes(superior_b: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの次長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
+  end
+
+  #施設長印押下
+  def facility_manager_sign
+    manager = Worker.where(position: "施設長")[0]
+    if manager.present?
+      if @accident.update_attributes(superior_a: manager.sign_name)
+        flash[:success] = "利用者「#{@senior.senior_name}」さんの施設長印を押下しました。"
+        redirect_to facility_senior_accident_path
+      end
+    else
+      flash[:danger] = "施設長が登録されていません。職員一覧ページから登録して下さい。"
+      redirect_to facility_senior_accident_path
+    end
+  end
+
+  #施設長印キャンセル
+  def reset_facility_manager_sign
+    if @accident.superior_a.present?
+      if @accident.update_attributes(superior_a: nil)
+        flash[:warning] = "利用者「#{@senior.senior_name}」さんの施設長印をキャンセルしました。"
+        redirect_to facility_senior_accident_path
+      end
+    end
   end
 
   #月別ヒヤリ集計リンク

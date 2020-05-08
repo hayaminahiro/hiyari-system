@@ -12,5 +12,23 @@ class Worker < ApplicationRecord
   validates :worker_name_call, length: { in: 1..25 }, format: { with: VALID_WORKER_NAME_CALL_REGEX }, allow_blank: true
   validates :sign_name, presence: true, length: { in: 1..6 }
 
+  #役職選択
+  enum position: {
+      なし: 0, ２階主任: 1, ３階主任: 2, ４階主任: 3, ２階係長: 4, ３階係長: 5, ４階係長: 6, リスクマネジャー: 7, 次長: 8, 施設長: 9
+  }
+
+  #勤務フロア
+  scope :floor, -> (num) { where(working_floor: num) }
+  #勤務中or退職
+  scope :working, -> { where(working_flg: true) }
+  scope :retirement, -> { where(working_flg: false) }
+  #ふりがな：あいうえお順で表示
+  scope :workers_sorted, -> { order(worker_name_call: :asc) }
+  # N+1問題
+  scope :including_facility, -> { includes(:facility) }
+  #各階係長
+  scope :chief_2f, -> { where(position: "２階係長") }
+  scope :chief_3f, -> { where(position: "３階係長") }
+  scope :chief_4f, -> { where(position: "４階係長") }
 end
 

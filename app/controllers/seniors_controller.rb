@@ -1,28 +1,27 @@
 class SeniorsController < ApplicationController
-  #before_action :set_facility, only: [:show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
-  #before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+
   before_action :url_confirmation, only: :index
+  before_action :set_facility_id, only: [:index, :new_senior, :create_senior, :edit_senior, :update_senior, :leaving,
+                                         :re_entry, :destroy]
+  before_action :set_senior, only: [:edit_senior, :update_senior, :leaving, :re_entry, :destroy]
 
   #施設利用者一覧ページ
   def index
-    @facility = Facility.find(params[:facility_id])
-    @seniors2f = Senior.where(floor: 2).where(using_flg: true).order(:senior_name_call)
-    @seniors3f = Senior.where(floor: 3).where(using_flg: true).order(:senior_name_call)
-    @seniors4f = Senior.where(floor: 4).where(using_flg: true).order(:senior_name_call)
-    @seniors_off = Senior.where(using_flg: false).order(:senior_name_call)
+    @seniors2f = Senior.floor(2).using.name_sorted
+    @seniors3f = Senior.floor(3).using.name_sorted
+    @seniors4f = Senior.floor(4).using.name_sorted
+    @seniors_off = Senior.leaving.name_sorted
     @senior_workers = SeniorWorker.all
   end
 
   #施設利用者新規作成モーダル
   def new_senior
-    @facility = Facility.find(params[:facility_id])
     @senior = Senior.new
-    @workers = Worker.where(working_flg: true).includes(:facility)
+    @workers = Worker.working.including_facility
   end
 
   #施設利用者新規作成
   def create_senior
-    @facility  = Facility.find(params[:facility_id])
     @senior = @facility.seniors.new(senior_params)
     if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
       @senior.save
@@ -35,15 +34,11 @@ class SeniorsController < ApplicationController
 
   #施設利用者編集モーダル
   def edit_senior
-    @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find(params[:id])
-    @workers = @facility.workers.where(working_flg: true).includes(:facility)
+    @workers = @facility.workers.working.including_facility
   end
 
   #施設利用者情報編集
   def update_senior
-    @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find(params[:id])
     if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
       @senior.update_attributes(senior_params)
       flash[:success] = "利用者「#{@senior.senior_name}」さんの情報を更新しました。"
@@ -55,8 +50,6 @@ class SeniorsController < ApplicationController
 
   #施設利用者退所ボタン
   def leaving
-    @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find(params[:id])
     if @senior.update_attributes(using_flg: false)
       flash[:warning] = "利用者「#{@senior.senior_name}」さんを退所へ変更しました。"
     end
@@ -65,8 +58,6 @@ class SeniorsController < ApplicationController
 
   #施設利用者再入所ボタン
   def re_entry
-    @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find(params[:id])
     if @senior.update_attributes(using_flg: true)
       flash[:success] = "利用者「#{@senior.senior_name}」さん（#{@senior.floor}階）を再入所へ変更しました。"
     end
@@ -75,30 +66,28 @@ class SeniorsController < ApplicationController
 
   #施設利用者削除ボタン
   def destroy
-    @facility = Facility.find(params[:facility_id])
-    @senior = @facility.seniors.find(params[:id])
     if @senior.destroy
       flash[:warning] = "利用者「#{@senior.senior_name}」さんを削除しました。"
       redirect_to facility_seniors_url
     end
   end
 
-  private
+    private
 
-    #施設利用者情報
-    def senior_params
-      params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, worker_ids: [])
-    end
-
-    # beforeアクション
-
-    # 他のユーザーのページをURL上で入力しても拒否
-    def url_confirmation
-      @facility = Facility.find(params[:facility_id])
-      unless @facility.id == current_facility.id
-        flash[:danger] = "情報の閲覧・編集はできません。"
-        redirect_to root_url
+      #施設利用者情報
+      def senior_params
+        params.require(:senior).permit(:senior_name, :senior_name_call, :floor, :charge_worker, worker_ids: [])
       end
-    end
+
+      # beforeアクション
+
+      # 他のユーザーのページをURL上で入力しても拒否
+      def url_confirmation
+        @facility = Facility.find(params[:facility_id])
+        unless @facility.id == current_facility.id
+          flash[:danger] = "情報の閲覧・編集はできません。"
+          redirect_to root_url
+        end
+      end
 
 end

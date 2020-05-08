@@ -68,8 +68,10 @@
 
 .alert-warning {
   @include alert-variant($alert-warning-bg, $alert-warning-border, $alert-warning-text);
+  margin-bottom: 0;
 }
 
 .alert-danger {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+  margin-bottom: 0;
 }

@@ -803,3 +803,50 @@ p.left-space {
   font-size: 16px;
   width: 10px;
 }
+
+//サインボタン
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
+
+.btn-flat-danger {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: lightcoral;
+  border: solid 2px lightpink;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-danger:hover {
+  background: lightpink;
+  color: white;
+}
+
+.confirm_sign {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 20px;
+  color: #c7254e;
+}
+
+.stamp { font-size:10px; border:3px double #f00; border-radius:50%; color:#f00; width:64px; height:64px; position:relative; margin:auto; }
+.stamp span { display:inline-block; width:100%; text-align:center; }
+.stamp span:first-child::before { position:absolute; top:5px; left:0; right:0; margin:auto; width:80%; border-bottom:1px solid #f00; line-height:1; padding-bottom:3px; }
+.stamp span:first-child { line-height:56px; }
+.stamp span:last-child { position:absolute; top:38px; left:0; right:0; margin:auto; width:80%; border-top:1px solid #f00; padding-top:2px; line-height:1; }
+.stamp-approve span:first-child::before {
+  content:"確認済";
+}
+
