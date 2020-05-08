@@ -1,14 +1,14 @@
 <% provide(:title, @senior.senior_name + "-印刷画面") %>
 
 <% if @accident.which_accident == "ヒヤリハット" %>
-  <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
+  <h3 class="title-position-print" style="padding-top: 10px;"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h3>
 <% else %>
-  <h3 class="title-position-print"><%= @senior.senior_name %>&emsp;事故報告書</h3>
+  <h3 class="title-position-print" style="padding-top: 10px;"><%= @senior.senior_name %>&emsp;事故報告書</h3>
 <% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-6">
+    <div class="col-md-6 col-md-offset-6" style="padding-top: 30px;">
       <table class="table table-bordered table-condensed sign-table">
         <thead>
           <tr>
@@ -22,12 +22,49 @@
         </thead>
         <tbody>
           <tr class="sign-box">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><!--施設長印-->
+              <% if @accident.superior_a.present? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_a %></span>
+                </div>
+              <% end %>
+            </td>
+            <td><!--次長印-->
+              <% if @accident.superior_b.present? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_b %></span>
+                </div>
+              <% end %>
+            </td>
+            <td class="confirm_sign"><!--リスマネ印-->
+              <% if @accident.superior_c.present? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_c %></span>
+                </div>
+              <% end %>
+            </td>
+            <td class="confirm_sign"><!--係長印-->
+              <% if @accident.superior_d.present? || @accident.superior_e.present? || @accident.superior_f.present? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.superior_d || @accident.superior_e || @accident.superior_f %></span>
+                </div>
+              <% end %>
+            </td>
+            <td class="confirm_sign"><!--担当印-->
+              <% if @accident.charge_sign? %>
+                <div class="stamp stamp-approve">
+                  <span><%= l(@accident.updated_at, format: :sign) %></span>
+                  <span><%= @accident.charge_sign %></span>
+                </div>
+              <% end %>
+            </td>
+            <td class="family-report"><!--家族連絡欄-->
+              <%= @accident.family_comment %>
+            </td>
           </tr>
         </tbody>
         <tbody>

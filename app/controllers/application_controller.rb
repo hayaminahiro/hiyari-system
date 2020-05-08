@@ -22,6 +22,16 @@ class ApplicationController < ActionController::Base
     @senior = @facility.seniors.find(params[:senior_id])
   end
 
+  #seniorのidを取得
+  def set_senior
+    @senior = @facility.seniors.find(params[:id])
+  end
+
+  #workerのidを取得
+  def set_worker_id
+    @worker = @facility.workers.find(params[:id])
+  end
+
   #accidentのidを取得
   def set_accident_id
     @accident = @senior.accidents.find(params[:id])
@@ -29,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   #利用者＆ヒヤリ・事故一覧取得
   def set_seniors
-    @seniors2f = Senior.where(floor: 2).where(using_flg: true).name_sorted
+    @seniors2f = Senior.including_facility.floor(2).using.name_sorted
     @seniors3f = Senior.including_facility.floor(3).using.name_sorted
     @seniors4f = Senior.including_facility.floor(4).using.name_sorted
   end

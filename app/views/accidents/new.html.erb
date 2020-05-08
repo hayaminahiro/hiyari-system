@@ -26,14 +26,15 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                  <%= ac.text_area :family_comment, value: @accident.family_comment, rows: 2, placeholder: "連絡日時など記載", class: "form-control" %>
+                </td>
               </tr>
             </tbody>
             <tbody>
               <tr>
                 <td colspan="3">
                   <div class="label-inline-flex-new">
-                    <div></div>
                     <%= ac.label "報告日" %>&emsp;
                     <% if @accident.reporting_date.present? %>
                       <%= ac.date_select :reporting_date, {default: @accident.reporting_date, use_month_numbers: true}, {class: "form-control bootstrap-date input-sm"} %>
