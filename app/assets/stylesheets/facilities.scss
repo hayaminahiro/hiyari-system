@@ -56,6 +56,7 @@
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.18);
   transition: .2s;
 }
+
 .btn-social-circle .fa {
   line-height: 5px;
 }
@@ -88,3 +89,57 @@
   border: solid 3px #FF6600;
 }
 
+//最終確認捺印お知らせアイコン：四角
+.btn-social-square {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #FFF;
+  width: 25px;
+  height: 25px;
+  line-height: 20px;
+  font-size: 5px;
+  border-radius: 10%;
+  text-align: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0px rgba(0, 0, 0, 0.18);
+  transition: .2s;
+}
+
+.btn-social-square .fa {
+  line-height: 5px;
+}
+.btn-social-square:hover {
+  box-shadow: none;
+}
+
+.btn-social-square--twitter {
+  background: #1da1f3;
+  border: solid 3px #1da1f3;
+}
+
+.btn-social-square--facebook {
+  background: #3b75d4;
+  border: solid 3px #3b75d4;
+}
+
+.btn-social-square--pocket {
+  background: #ef4d4d;
+  border: solid 3px #ef4d4d;
+}
+
+.btn-social-square--green {
+  background: #7ece46;
+  border: solid 3px #7ece46;
+}
+
+.btn-social-square--yellow {
+  background: #FF6633;
+  border: solid 3px #FF6600;
+}
+
+#last-info {
+  color: royalblue;
+  display: inline;
+  padding-right: 5px;
+}
