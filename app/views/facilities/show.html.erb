@@ -49,8 +49,8 @@
                     <%= l(accident.accident_datetime, format: :middle) %>
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count2f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count2f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count2f.accident_count(accident) %>件】
+                    【事故 <%= @accident_count2f.accident_count(accident) %>件】
                   </td>
                   <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
@@ -91,7 +91,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_d.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -143,7 +143,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_d.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -199,8 +199,8 @@
                     <%= l(accident.accident_datetime, format: :middle) %>
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count3f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count3f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count3f.accident_count(accident) %>件】
+                    【事故 <%= @accident_count3f.accident_count(accident) %>件】
                   </td>
                   <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
@@ -240,7 +240,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_e.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -292,7 +292,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_e.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -348,8 +348,8 @@
                     <%= l(accident.accident_datetime, format: :middle) %>
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count4f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count4f.accident_count(accident) %>件】
+                    【事故 <%= @accident_count4f.accident_count(accident) %>件】
                   </td>
                   <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>
@@ -389,7 +389,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_f.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -441,7 +441,7 @@
                         <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                       <% end %>
                       <!--最終確認サイン-->
-                      <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_f.present? && accident.charge_sign.present? %>
+                      <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
                         <div id="last-info">最終確認</div>
                         <% if accident.superior_a_last.blank? %>
                           <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>

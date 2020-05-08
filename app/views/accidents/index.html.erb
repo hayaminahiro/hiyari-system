@@ -93,7 +93,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_d.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -146,7 +146,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_d.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -246,7 +246,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_e.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -299,7 +299,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_e.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -399,7 +399,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_f.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -452,7 +452,7 @@
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if accident.superior_a.present? && accident.superior_b.present? && accident.superior_c.present? && accident.superior_f.present? && accident.charge_sign.present? %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
