@@ -223,7 +223,6 @@ class Accident < ApplicationRecord
     time.accident_time.strftime("%k").gsub(" ", "").to_i >= 3 && time.accident_time.strftime("%k").gsub(" ", "").to_i < 7
   end
 
-
   def self.time_division(accidents)
     #7~9時の転倒・転落ヒヤリ
     fall_hat2f_7_9 = []

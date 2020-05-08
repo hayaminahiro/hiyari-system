@@ -91,21 +91,18 @@ class AccidentsController < ApplicationController
     chief_2f = Worker.chief_2f[0]
     chief_3f = Worker.chief_3f[0]
     chief_4f = Worker.chief_4f[0]
-    if @accident.floor2 && chief_2f.present?
-      chief_2f = chief_2f.sign_name
-      if @accident.update_attributes(superior_d: chief_2f)
+    if chief_judgment(@accident.floor2, chief_2f)
+      if @accident.update_attributes(superior_d: chief_2f.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの２階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.floor3 && chief_3f.present?
-      chief_3f = chief_3f.sign_name
-      if @accident.update_attributes(superior_e: chief_3f)
+    elsif chief_judgment(@accident.floor3, chief_3f)
+      if @accident.update_attributes(superior_e: chief_3f.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの３階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.floor4 && chief_4f.present?
-      chief_4f = chief_4f.sign_name
-      if @accident.update_attributes(superior_f: chief_4f)
+    elsif chief_judgment(@accident.floor4, chief_4f)
+      if @accident.update_attributes(superior_f: chief_4f.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの４階係長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
@@ -117,17 +114,17 @@ class AccidentsController < ApplicationController
 
   #担当係長印キャンセル
   def reset_chief_sign
-    if @accident.accident_floor == 2 && @accident.superior_d.present?
+    if chief_judgment(@accident.floor2, @accident.superior_d)
       if @accident.update_attributes(superior_d: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 3 && @accident.superior_e.present?
+    elsif chief_judgment(@accident.floor3, @accident.superior_e)
       if @accident.update_attributes(superior_e: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
         redirect_to facility_senior_accident_path
       end
-    elsif @accident.accident_floor == 4 && @accident.superior_f.present?
+    elsif chief_judgment(@accident.floor4, @accident.superior_f)
       if @accident.update_attributes(superior_f: nil)
         flash[:warning] = "利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
         redirect_to facility_senior_accident_path
@@ -139,8 +136,7 @@ class AccidentsController < ApplicationController
   def risk_manager_sign
     risk_manager = Worker.where(position: "リスクマネジャー")[0]
     if risk_manager.present?
-      risk_manager = risk_manager.sign_name
-      if @accident.update_attributes(superior_c: risk_manager)
+      if @accident.update_attributes(superior_c: risk_manager.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんのリスクマネジャー印を押下しました。"
         redirect_to facility_senior_accident_path
       end
@@ -164,8 +160,7 @@ class AccidentsController < ApplicationController
   def director_sign
     director = Worker.where(position: "次長")[0]
     if director.present?
-      director = director.sign_name
-      if @accident.update_attributes(superior_b: director)
+      if @accident.update_attributes(superior_b: director.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの次長印を押下しました。"
         redirect_to facility_senior_accident_path
       end
@@ -189,8 +184,7 @@ class AccidentsController < ApplicationController
   def facility_manager_sign
     manager = Worker.where(position: "施設長")[0]
     if manager.present?
-      manager = manager.sign_name
-      if @accident.update_attributes(superior_a: manager)
+      if @accident.update_attributes(superior_a: manager.sign_name)
         flash[:success] = "利用者「#{@senior.senior_name}」さんの施設長印を押下しました。"
         redirect_to facility_senior_accident_path
       end

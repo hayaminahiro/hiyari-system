@@ -17,4 +17,17 @@ module AccidentsHelper
     (service + support + lunch + toilet + bathing + other_scene).count
   end
 
+  #各階係長判定
+  def chief_judgment(floor, chief)
+    judgment = false
+    if floor == 2 && chief.present?
+      judgment = true
+    elsif floor == 3 && chief.present?
+      judgment = true
+    elsif floor == 4 && chief.present?
+      judgment = true
+    end
+    judgment
+  end
+
 end
