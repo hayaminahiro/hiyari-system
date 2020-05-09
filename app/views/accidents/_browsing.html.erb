@@ -280,12 +280,49 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr class="sign-box">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                    <tr class="sign-box">
+                      <!--最終確認サイン-->
+                      <% if last_sign2(@accident.superior_a, @accident.superior_b, @accident.superior_c, @accident.charge_sign, @accident.superior_d, @accident.superior_e, @accident.superior_f) %>
+                        <td><!--最終施設長印-->
+                          <% if @accident.superior_a_last? %>
+                            <%= link_to "確認済", last_reset_facility_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終施設長印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                          <% else %>
+                            <%= link_to "捺印", last_facility_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終施設長印を押下しますか？"}, class: "btn-flat-border"%>
+                          <% end %>
+                        </td>
+                        <td><!--最終次長印-->
+                          <% if @accident.superior_b_last? %>
+                            <%= link_to "確認済", last_reset_director_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終次長印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                          <% else %>
+                            <%= link_to "捺印", last_director_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終次長印を押下しますか？"}, class: "btn-flat-border"%>
+                          <% end %>
+                        </td>
+                        <td><!--最終リスマネ印-->
+                          <% if @accident.superior_c_last? %>
+                            <%= link_to "確認済", last_reset_risk_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終リスマネ印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                          <% else %>
+                            <%= link_to "捺印", last_risk_manager_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終リスマネ印を押下しますか？"}, class: "btn-flat-border"%>
+                          <% end %>
+                        </td>
+                        <td><!--最終担当係長印-->
+                          <% if @accident.superior_d_last? || @accident.superior_e_last? || @accident.superior_f_last? %>
+                            <%= link_to "確認済", last_reset_chief_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終担当係長印をキャンセルしますか？"}, class: "btn-flat-danger"%>
+                          <% else %>
+                            <%= link_to "捺印", last_chief_sign_facility_senior_accident_path(@facility, @senior, @accident), method: :patch,
+                                        data: { confirm: "#{@accident.which_accident}報告書の最終担当係長印を押下しますか？"}, class: "btn-flat-border"%>
+                          <% end %>
+                        </td>
+                      <% else %>
+                        <td></td><td></td><td></td><td></td>
+                      <% end %>
+                    </tr>
                   </tbody>
                 </table>
               </div>
