@@ -24,4 +24,17 @@ class Senior < ApplicationRecord
   scope :name_sorted, -> { order(senior_name_call: :asc) }
   # N+1問題
   scope :including_facility, -> { includes(:facility) }
+
+  #利用階
+  def floor2
+    2 if self.floor == 2
+  end
+
+  def floor3
+    3 if self.floor == 3
+  end
+
+  def floor4
+    4 if self.floor == 4
+  end
 end

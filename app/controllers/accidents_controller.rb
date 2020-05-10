@@ -87,10 +87,22 @@ class AccidentsController < ApplicationController
           flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
         end
       end
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     else
       flash[:danger] = "担当職員が登録されていません。職員一覧ページまたは利用者一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -99,7 +111,13 @@ class AccidentsController < ApplicationController
     if @accident.update_attributes(charge_sign: nil)
       flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
     end
-    redirect_to @facility
+    if @senior.floor2
+      redirect_to @facility
+    elsif @senior.floor3
+      redirect_to show_3f_facility_url(current_facility)
+    elsif @senior.floor4
+      redirect_to show_4f_facility_url(current_facility)
+    end
   end
 
   #担当係長印押下
