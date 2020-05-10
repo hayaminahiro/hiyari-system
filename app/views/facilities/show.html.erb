@@ -92,18 +92,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_d_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_d_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
@@ -144,18 +146,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_d_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_d_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
@@ -241,18 +245,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_e_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_e_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
@@ -293,18 +299,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_e_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_e_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
@@ -390,18 +398,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_f_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_f_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
@@ -442,18 +452,20 @@
                       <% end %>
                       <!--最終確認サイン-->
                       <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_f) %>
-                        <div id="last-info">最終確認</div>
+                        <% if last_confirm(accident.superior_a_last, accident.superior_b_last, accident.superior_c_last, accident.superior_f_last) %>
+                          <div id="last-info">最終確認</div>
+                        <% end %>
                         <% if accident.superior_a_last.blank? %>
-                          <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
+                          <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--twitter" %>
                         <% end %>
                         <% if accident.superior_b_last.blank? %>
-                          <%= link_to "次", "#", remote: true, class: "btn-social-square btn-social-square--facebook" %>
+                          <%= link_to "次", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--facebook" %>
                         <% end %>
                         <% if accident.superior_c_last.blank? %>
-                          <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
+                          <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--pocket" %>
                         <% end %>
                         <% if accident.superior_f_last.blank? %>
-                          <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
+                          <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-square btn-social-square--green" %>
                         <% end %>
                       <% end %>
                     </div>
