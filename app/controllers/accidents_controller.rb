@@ -54,7 +54,7 @@ class AccidentsController < ApplicationController
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
       flash[:success] = "「#{@senior.senior_name}」さん（#{@accident.accident_floor}階）の#{@accident.which_accident}報告書を新規作成しました。"
-      redirect_to facility_accidents_path
+      redirect_to facility_senior_accident_path(id: @accident)
     else
       flash.now[:danger] = "未入力項目があります。再度確認して下さい。"
       @accident = @senior.accidents.new(accident_params)
@@ -472,6 +472,20 @@ class AccidentsController < ApplicationController
         elsif @senior.floor4
           redirect_to show_4f_facility_url(current_facility)
         end
+      end
+    end
+  end
+
+  #ヒヤリ削除ボタン
+  def destroy
+    if @accident.destroy
+      flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
       end
     end
   end
@@ -1126,14 +1140,6 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents3f, @bathing_hat_accidents3f, @other_scene_hat_accidents3f)
     @total_scene_hat_accidents4f = total_scene(@service_hat_accidents4f, @support_hat_accidents4f, @lunch_hat_accidents4f,
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
-  end
-
-  #ヒヤリ削除ボタン
-  def destroy
-    if @accident.destroy
-      flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
-      redirect_to facility_accidents_url
-    end
   end
 
     private
