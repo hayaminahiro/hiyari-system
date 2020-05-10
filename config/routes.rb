@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
+      #3階4階月別ヒヤリ(2階：show)
+      get 'show_3f'
+      get 'show_4f'
     end
     #施設利用者関連: seniors
     resources :seniors do
