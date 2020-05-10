@@ -81,7 +81,7 @@ Rails.application.routes.draw do
           #最終施設長印押下
           patch 'last_facility_manager_sign'
           #最終施設長印キャンセル
-          patch 'last_reset_facility_manager_sign'
+          patch 'last_reset_facility_manager'
         end
       end
     end
