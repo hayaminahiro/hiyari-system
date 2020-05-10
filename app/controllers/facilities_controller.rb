@@ -1,10 +1,10 @@
 class FacilitiesController < ApplicationController
-  before_action :set_facility, only: [:show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
-  before_action :logged_in_facility, only: [:index, :show, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :set_facility, only: [:show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
+  before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info]
   before_action :correct_facility, only: [:edit, :update]
   before_action :admin_facility, only: [:destroy, :edit_facility_info, :update_facility_info]
-  before_action :set_hat_accident_count, only: [:show]
-  before_action :set_accidents, only: :show
+  before_action :set_hat_accident_count, only: [:show, :show_3f, :show_4f]
+  before_action :set_accidents, only: [:show, :show_3f, :show_4f]
 
   def index
     @facilities = Facility.all.order(id: "ASC")
@@ -12,6 +12,12 @@ class FacilitiesController < ApplicationController
 
   #月別ヒヤリ・事故一覧ページ・・・ログイン/サインアップ後遷移
   def show
+  end
+
+  def show_3f
+  end
+
+  def show_4f
   end
 
   def new
