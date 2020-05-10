@@ -20,13 +20,13 @@
 
 <div class="container">
   <ul class="nav nav-tabs font-M">
-    <li class="active"><a href="#2f" data-toggle="tab">2階フロア</a></li>
-    <li><%= link_to "3階フロア", index_3f_facility_accidents_path(current_facility) %></li>
+    <li><%= link_to "2階フロア", facility_accidents_path(current_facility) %></li>
+    <li class="active"><a href="#3f" data-toggle="tab">3階フロア</a></li>
     <li><%= link_to "4階フロア", index_4f_facility_accidents_path(current_facility) %></li>
   </ul>
   <div class="tab-content">
-    <!--2F-利用者一覧-->
-    <div class="tab-pane active" id="2f">
+    <!--3F-利用者一覧-->
+    <div class="tab-pane active" id="3f">
       <div class="col-md-12 tab-table">
         <table id="table_detail" class="table table-bordered table-condensed table-hover">
           <thead>
@@ -37,21 +37,21 @@
           </tr>
           </thead>
           <% check = nil %>
-          <% @seniors2f.each_with_index do |senior, i| %>
+          <% @seniors3f.each_with_index do |senior, i| %>
             <% if current_facility.id == senior.facility_id %>
-              <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 2).order(accident_datetime: "desc") %>
+              <% accidents = Accident.where(senior_id: senior.id).includes(:senior).where(accident_floor: 3).order(accident_datetime: "desc") %>
               <% accidents.each_with_index do |accident, a| %>
                 <% senior_id = i.to_s + accident.accident_floor.to_s %>
                 <tbody>
                 <!--最初一行だけを取り出す為のcheck-->
                 <% if senior.senior_name != check %>
                   <tr>
-                    <td class="month">
+                    <td class="accident-index">
                       <%= senior.senior_name %>
                     </td>
-                    <td class="month-count">
-                      【ヒヤリ <%= @accidents2f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
-                      【事故 <%= @accidents2f.where(which_accident: "事故").where(senior_id: senior).count %>件】
+                    <td class="accident-index-count">
+                      【ヒヤリ <%= @accidents3f.where(which_accident: "ヒヤリハット").where(senior_id: senior).count %>件】
+                      【事故 <%= @accidents3f.where(which_accident: "事故").where(senior_id: senior).count %>件】
                     </td>
                     <td class="show-btn-position" onclick="show_hide_row('hidden_row<%= senior_id %>');">
                       <%= link_to "ヒヤリ・事故一覧", "#", remote: true, class: "btn-square-shadow-mini" %>
@@ -76,7 +76,6 @@
                       </div>
                       <div class="accident-scene-position">
                         <%= accident.accident_scene %>&emsp;
-                        <!--前期確認サイン-->
                         <% if accident.superior_a.blank? %>
                           <%= link_to "施", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--twitter" %>
                         <% end %>
@@ -86,14 +85,14 @@
                         <% if accident.superior_c.blank? %>
                           <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--pocket" %>
                         <% end %>
-                        <% if accident.superior_d.blank? %>
+                        <% if accident.superior_e.blank? %>
                           <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--green" %>
                         <% end %>
                         <% if accident.charge_sign.blank? %>
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -104,7 +103,7 @@
                           <% if accident.superior_c_last.blank? %>
                             <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
                           <% end %>
-                          <% if accident.superior_d_last.blank? %>
+                          <% if accident.superior_e_last.blank? %>
                             <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
                           <% end %>
                         <% end %>
@@ -139,14 +138,14 @@
                         <% if accident.superior_c.blank? %>
                           <%= link_to "リ", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--pocket" %>
                         <% end %>
-                        <% if accident.superior_d.blank? %>
+                        <% if accident.superior_e.blank? %>
                           <%= link_to "係", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--green" %>
                         <% end %>
                         <% if accident.charge_sign.blank? %>
                           <%= link_to "担", browsing_facility_senior_accident_path(@facility, accident.senior, accident), remote: true, class: "btn-social-circle btn-social-circle--yellow" %>
                         <% end %>
                         <!--最終確認サイン-->
-                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_d) %>
+                        <% if last_sign(accident.superior_a, accident.superior_b, accident.superior_c, accident.charge_sign, accident.superior_e) %>
                           <div id="last-info">最終確認</div>
                           <% if accident.superior_a_last.blank? %>
                             <%= link_to "施", "#", remote: true, class: "btn-social-square btn-social-square--twitter" %>
@@ -157,7 +156,7 @@
                           <% if accident.superior_c_last.blank? %>
                             <%= link_to "リ", "#", remote: true, class: "btn-social-square btn-social-square--pocket" %>
                           <% end %>
-                          <% if accident.superior_d_last.blank? %>
+                          <% if accident.superior_e_last.blank? %>
                             <%= link_to "係", "#", remote: true, class: "btn-social-square btn-social-square--green" %>
                           <% end %>
                         <% end %>

@@ -91,6 +91,9 @@ Rails.application.routes.draw do
         get 'new_accidents_index'
         #ヒヤリ集計表
         get 'spreadsheet'
+        #3階4階月別ヒヤリ(2階：index)
+        get 'index_3f'
+        get 'index_4f'
       end
     end
 
