@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
+  before_action :set_facility_id, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          #初回捺印
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
                                          :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
@@ -10,9 +10,10 @@ class AccidentsController < ApplicationController
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
                                          :last_facility_manager_sign, :last_reset_facility_manager,
                                          :month_spreadsheet, :destroy]
-  before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
-                                            :month_spreadsheet, :spreadsheet_accidents]
-  before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
+  before_action :logged_in_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+                                            :spreadsheet, :month_spreadsheet, :spreadsheet_accidents]
+  before_action :correct_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+                                          :month_spreadsheet, :edit, :update]
   before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy,
                                        #初回捺印
                                        :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
@@ -29,13 +30,19 @@ class AccidentsController < ApplicationController
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
                                          :last_facility_manager_sign, :last_reset_facility_manager]
 
-  before_action :set_seniors, only: [:index, :new_accidents_index]
-  before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
+  before_action :set_seniors, only: [:index, :index_3f, :index_4f, :new_accidents_index]
+  before_action :set_accidents, only: [:index, :index_3f, :index_4f, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
   before_action :set_month, only: [:month_spreadsheet, :spreadsheet_accidents]
 
-  #利用者別ヒヤリ一覧
+  #各階利用者別ヒヤリ一覧
   def index
+  end
+
+  def index_3f
+  end
+
+  def index_4f
   end
 
   #ヒヤリ印刷画面詳細
