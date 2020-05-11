@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
+  before_action :set_facility_id, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          #初回捺印
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
                                          :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
@@ -8,18 +8,19 @@ class AccidentsController < ApplicationController
                                          #最終捺印
                                          :last_chief_sign, :last_reset_chief_sign,
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
-                                         :last_facility_manager_sign, :last_reset_facility_manager_sign,
+                                         :last_facility_manager_sign, :last_reset_facility_manager,
                                          :month_spreadsheet, :destroy]
-  before_action :logged_in_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :spreadsheet,
-                                            :month_spreadsheet, :spreadsheet_accidents]
-  before_action :correct_facility, only: [:index, :show, :new_accidents_index, :new, :edit, :month_spreadsheet, :edit, :update]
+  before_action :logged_in_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+                                            :spreadsheet, :month_spreadsheet, :spreadsheet_accidents]
+  before_action :correct_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+                                          :month_spreadsheet, :edit, :update]
   before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy,
                                        #初回捺印
                                        :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
                                        :director_sign, :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign,
                                        #最終捺印
                                        :last_chief_sign, :last_reset_chief_sign, :last_risk_manager_sign, :last_reset_risk_manager_sign,
-                                       :last_director_sign, :last_reset_director_sign, :last_facility_manager_sign, :last_reset_facility_manager_sign]
+                                       :last_director_sign, :last_reset_director_sign, :last_facility_manager_sign, :last_reset_facility_manager]
   before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :destroy,
                                          #初回捺印
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
@@ -27,15 +28,21 @@ class AccidentsController < ApplicationController
                                          #最終捺印
                                          :last_chief_sign, :last_reset_chief_sign,
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
-                                         :last_facility_manager_sign, :last_reset_facility_manager_sign]
+                                         :last_facility_manager_sign, :last_reset_facility_manager]
 
-  before_action :set_seniors, only: [:index, :new_accidents_index]
-  before_action :set_accidents, only: [:index, :new_accidents_index, :spreadsheet]
+  before_action :set_seniors, only: [:index, :index_3f, :index_4f, :new_accidents_index]
+  before_action :set_accidents, only: [:index, :index_3f, :index_4f, :new_accidents_index, :spreadsheet]
   before_action :set_hat_accident_count, only: [:spreadsheet]
   before_action :set_month, only: [:month_spreadsheet, :spreadsheet_accidents]
 
-  #利用者別ヒヤリ一覧
+  #各階利用者別ヒヤリ一覧
   def index
+  end
+
+  def index_3f
+  end
+
+  def index_4f
   end
 
   #ヒヤリ印刷画面詳細
@@ -54,7 +61,7 @@ class AccidentsController < ApplicationController
     @accident = @senior.accidents.new(accident_params)
     if @accident.save
       flash[:success] = "「#{@senior.senior_name}」さん（#{@accident.accident_floor}階）の#{@accident.which_accident}報告書を新規作成しました。"
-      redirect_to facility_accidents_path
+      redirect_to facility_senior_accident_path(id: @accident)
     else
       flash.now[:danger] = "未入力項目があります。再度確認して下さい。"
       @accident = @senior.accidents.new(accident_params)
@@ -87,10 +94,22 @@ class AccidentsController < ApplicationController
           flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当印を押下しました。"
         end
       end
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     else
       flash[:danger] = "担当職員が登録されていません。職員一覧ページまたは利用者一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -99,7 +118,13 @@ class AccidentsController < ApplicationController
     if @accident.update_attributes(charge_sign: nil)
       flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当印をキャンセルしました。"
     end
-    redirect_to @facility
+    if @senior.floor2
+      redirect_to @facility
+    elsif @senior.floor3
+      redirect_to show_3f_facility_url(current_facility)
+    elsif @senior.floor4
+      redirect_to show_4f_facility_url(current_facility)
+    end
   end
 
   #担当係長印押下
@@ -115,16 +140,22 @@ class AccidentsController < ApplicationController
     elsif chief_judgment(@accident.floor3, chief_3f)
       if @accident.update_attributes(superior_e: chief_3f.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの３階係長印を押下しました。"
-        redirect_to @facility
+        redirect_to show_3f_facility_url(current_facility)
       end
     elsif chief_judgment(@accident.floor4, chief_4f)
       if @accident.update_attributes(superior_f: chief_4f.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの４階係長印を押下しました。"
-        redirect_to @facility
+        redirect_to show_4f_facility_url(current_facility)
       end
     else
       flash[:danger] = "担当係長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -138,12 +169,12 @@ class AccidentsController < ApplicationController
     elsif chief_judgment(@accident.floor3, @accident.superior_e)
       if @accident.update_attributes(superior_e: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
-        redirect_to @facility
+        redirect_to show_3f_facility_url(current_facility)
       end
     elsif chief_judgment(@accident.floor4, @accident.superior_f)
       if @accident.update_attributes(superior_f: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの担当係長印をキャンセルしました。"
-        redirect_to @facility
+        redirect_to show_4f_facility_url(current_facility)
       end
     end
   end
@@ -154,11 +185,23 @@ class AccidentsController < ApplicationController
     if risk_manager.present?
       if @accident.update_attributes(superior_c: risk_manager.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんのリスクマネジャー印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "リスクマネジャーが登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -167,7 +210,13 @@ class AccidentsController < ApplicationController
     if @accident.superior_c.present?
       if @accident.update_attributes(superior_c: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんのリスクマネジャー印をキャンセルしました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     end
   end
@@ -178,11 +227,23 @@ class AccidentsController < ApplicationController
     if director.present?
       if @accident.update_attributes(superior_b: director.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの次長印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "次長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -191,7 +252,13 @@ class AccidentsController < ApplicationController
     if @accident.superior_b.present?
       if @accident.update_attributes(superior_b: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの次長印をキャンセルしました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     end
   end
@@ -202,11 +269,23 @@ class AccidentsController < ApplicationController
     if manager.present?
       if @accident.update_attributes(superior_a: manager.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの施設長印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "施設長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -215,7 +294,13 @@ class AccidentsController < ApplicationController
     if @accident.superior_a.present?
       if @accident.update_attributes(superior_a: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの施設長印をキャンセルしました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     end
   end
@@ -233,16 +318,22 @@ class AccidentsController < ApplicationController
     elsif chief_judgment(@accident.floor3, chief_3f)
       if @accident.update_attributes(superior_e_last: chief_3f.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終３階係長印を押下しました。"
-        redirect_to @facility
+        redirect_to show_3f_facility_url(current_facility)
       end
     elsif chief_judgment(@accident.floor4, chief_4f)
       if @accident.update_attributes(superior_f_last: chief_4f.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終４階係長印を押下しました。"
-        redirect_to @facility
+        redirect_to show_4f_facility_url(current_facility)
       end
     else
       flash[:danger] = "担当係長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -256,12 +347,12 @@ class AccidentsController < ApplicationController
     elsif chief_judgment(@accident.floor3, @accident.superior_e_last)
       if @accident.update_attributes(superior_e_last: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終担当係長印をキャンセルしました。"
-        redirect_to @facility
+        redirect_to show_3f_facility_url(current_facility)
       end
     elsif chief_judgment(@accident.floor4, @accident.superior_f_last)
       if @accident.update_attributes(superior_f_last: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終担当係長印をキャンセルしました。"
-        redirect_to @facility
+        redirect_to show_4f_facility_url(current_facility)
       end
     end
   end
@@ -272,11 +363,23 @@ class AccidentsController < ApplicationController
     if risk_manager.present?
       if @accident.update_attributes(superior_c_last: risk_manager.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終リスクマネジャー印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "リスクマネジャーが登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -285,7 +388,13 @@ class AccidentsController < ApplicationController
     if @accident.superior_c_last.present?
       if @accident.update_attributes(superior_c_last: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終リスクマネジャー印をキャンセルしました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     end
   end
@@ -296,11 +405,23 @@ class AccidentsController < ApplicationController
     if director.present?
       if @accident.update_attributes(superior_b_last: director.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終次長印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "次長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
@@ -309,7 +430,13 @@ class AccidentsController < ApplicationController
     if @accident.superior_b_last.present?
       if @accident.update_attributes(superior_b_last: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終次長印をキャンセルしました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     end
   end
@@ -320,20 +447,52 @@ class AccidentsController < ApplicationController
     if manager.present?
       if @accident.update_attributes(superior_a_last: manager.sign_name)
         flash[:success] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終施設長印を押下しました。"
-        redirect_to @facility
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
       end
     else
       flash[:danger] = "施設長が登録されていません。職員一覧ページから登録して下さい。"
-      redirect_to @facility
+      if @senior.floor2
+        redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
+      end
     end
   end
 
   #最終施設長印キャンセル
-  def last_reset_facility_manager_sign
+  def last_reset_facility_manager
     if @accident.superior_a_last.present?
       if @accident.update_attributes(superior_a_last: nil)
         flash[:warning] = "#{@accident.accident_datetime.strftime("%Y年%m月%d日")} &emsp; #{@senior.floor}階利用者「#{@senior.senior_name}」さんの最終施設長印をキャンセルしました。"
+        if @senior.floor2
+          redirect_to @facility
+        elsif @senior.floor3
+          redirect_to show_3f_facility_url(current_facility)
+        elsif @senior.floor4
+          redirect_to show_4f_facility_url(current_facility)
+        end
+      end
+    end
+  end
+
+  #ヒヤリ削除ボタン
+  def destroy
+    if @accident.destroy
+      flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
+      if @senior.floor2
         redirect_to @facility
+      elsif @senior.floor3
+        redirect_to show_3f_facility_url(current_facility)
+      elsif @senior.floor4
+        redirect_to show_4f_facility_url(current_facility)
       end
     end
   end
@@ -988,14 +1147,6 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents3f, @bathing_hat_accidents3f, @other_scene_hat_accidents3f)
     @total_scene_hat_accidents4f = total_scene(@service_hat_accidents4f, @support_hat_accidents4f, @lunch_hat_accidents4f,
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
-  end
-
-  #ヒヤリ削除ボタン
-  def destroy
-    if @accident.destroy
-      flash[:warning] = "「#{@senior.senior_name}」さんの#{@accident.which_accident}報告書を削除しました。"
-      redirect_to facility_accidents_url
-    end
   end
 
     private
