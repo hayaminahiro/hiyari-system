@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
+      #3階4階月別ヒヤリ(2階：show)
+      get 'show_3f'
+      get 'show_4f'
     end
     #施設利用者関連: seniors
     resources :seniors do
@@ -78,7 +81,7 @@ Rails.application.routes.draw do
           #最終施設長印押下
           patch 'last_facility_manager_sign'
           #最終施設長印キャンセル
-          patch 'last_reset_facility_manager_sign'
+          patch 'last_reset_facility_manager'
         end
       end
     end
@@ -88,6 +91,9 @@ Rails.application.routes.draw do
         get 'new_accidents_index'
         #ヒヤリ集計表
         get 'spreadsheet'
+        #3階4階月別ヒヤリ(2階：index)
+        get 'index_3f'
+        get 'index_4f'
       end
     end
 
