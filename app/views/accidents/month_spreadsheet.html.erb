@@ -158,80 +158,48 @@
 </div>
 
 <!--Load the AJAX API-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
-    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
     function drawChart() {
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
+        var data = google.visualization.arrayToDataTable([
+            ['2階ヒヤリハット', '件数'],
             ['転倒・転落', <%= @fall_hat_accidents2f.count %>],
-            ['行方不明・所在確認', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-        ]);
+            ['行方不明・所在不明', <%= @missing_hat_accidents2f.count %>],
+            ['飲食に関すること', <%= @meal_hat_accidents2f.count %>],
+            ['薬に関すること', <%= @medicine_hat_accidents2f.count %>],
+            ['他害・自傷行為', <%= @scratch_hat_accidents2f.count %>],
+            ['環境', <%= @environment_hat_accidents2f.count %>],
+            ['情報・連絡・報告', <%= @info_contact_hat_accidents2f.count %>],
+            ['個人情報・人権', <%= @personal_info_hat_accidents2f.count %>],
+            ['紛失', <%= @lost_hat_accidents2f.count %>],
+            ['器物破損', <%= @damage_hat_accidents2f.count %>],
+            ['金銭', <%= @money_hat_accidents2f.count %>],
+            ['医療的ケア', <%= @medical_care_hat_accidents2f.count %>],
+            ['感染症', <%= @infection_hat_accidents2f.count %>],
+            ['忘れ物・返却忘れ', <%= @forget_hat_accidents2f.count %>],
+            ['その他', <%= @other_hat_accidents2f.count %>],
+        ]
 
-        // Set chart options
-        var options = {'title':'<%= params[:month].to_date.strftime("%Y年 %m月 ") %>ヒヤリハット集計',
-            'width': 570,
-            'height':600};
+        );
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    }
-</script>
+        var options = {
+            title: '2階ヒヤリハット件数',
+            is3D: true,
+            backgroundColor: '#FFFFEE',
+            // colors: ['red', 'blue', 'green']
+            slices: [0, {offset: 0.5}]
 
-<!--Load the AJAX API-->
-<script type="text/javascript">
+        };
 
-    // Load the Visualization API and the corechart package.
-    google.charts.load('current', {'packages':['corechart']});
-
-    // Set a callback to run when the Google Visualization API is loaded.
-    google.charts.setOnLoadCallback(drawChart);
-
-    // Callback that creates and populates a data table,
-    // instantiates the pie chart, passes in the data and
-    // draws it.
-    function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-            ['転倒・転落', <%= @fall_hat_accidents2f.count %>],
-            ['行方不明・所在確認', 1],
-            ['Olives', 1],
-            ['Zucchini', 1],
-            ['Pepperoni', 2]
-        ]);
-
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-            'width':570,
-            'height':600};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
         chart.draw(data, options);
     }
 </script>
 
 <body>
 <!--Div that will hold the pie chart-->
-<div id="chart_div" style="float: left"></div>
-<div id="chart_div2" style="float: right"></div>
+<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 </body>
 
 
