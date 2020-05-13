@@ -823,6 +823,12 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents3f, @bathing_hat_accidents3f, @other_scene_hat_accidents3f)
     @total_scene_hat_accidents4f = total_scene(@service_hat_accidents4f, @support_hat_accidents4f, @lunch_hat_accidents4f,
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
+    @hats_box = [
+        ['転倒・転落', @fall_hat_accidents2f.count], ['行方不明・所在不明', @fall_hat_accidents2f.count],
+        ['飲食に関すること', @support_hat_accidents2f.count], ['薬に関すること', @lunch_hat_accidents2f.count]
+    ]
+
+
   end
 
   #各月別事故集計表
