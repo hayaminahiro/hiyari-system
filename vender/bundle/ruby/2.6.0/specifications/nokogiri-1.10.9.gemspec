@@ -21,32 +21,49 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT".freeze]
   s.rdoc_options = ["--main".freeze, "README.md".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.3.0".freeze)
-  s.rubygems_version = "3.1.2".freeze
+  s.rubygems_version = "3.0.3".freeze
   s.summary = "Nokogiri (\u92F8) is an HTML, XML, SAX, and Reader parser".freeze
 
-  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
-  end
 
-  if s.respond_to? :add_runtime_dependency then
-    s.add_runtime_dependency(%q<mini_portile2>.freeze, ["~> 2.4.0"])
-    s.add_development_dependency(%q<concourse>.freeze, ["~> 0.24"])
-    s.add_development_dependency(%q<hoe-bundler>.freeze, ["~> 1.2"])
-    s.add_development_dependency(%q<hoe-debugging>.freeze, ["~> 2.0"])
-    s.add_development_dependency(%q<hoe-gemspec>.freeze, ["~> 1.0"])
-    s.add_development_dependency(%q<hoe-git>.freeze, ["~> 1.6"])
-    s.add_development_dependency(%q<minitest>.freeze, ["~> 5.8"])
-    s.add_development_dependency(%q<racc>.freeze, ["~> 1.4.14"])
-    s.add_development_dependency(%q<rake>.freeze, ["~> 12.0"])
-    s.add_development_dependency(%q<rake-compiler>.freeze, ["~> 1.1.0"])
-    s.add_development_dependency(%q<rake-compiler-dock>.freeze, ["~> 0.7.0"])
-    s.add_development_dependency(%q<rexical>.freeze, ["~> 1.0.5"])
-    s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.73"])
-    s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16"])
-    s.add_development_dependency(%q<rdoc>.freeze, [">= 4.0", "< 7"])
-    s.add_development_dependency(%q<hoe>.freeze, ["~> 3.22"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<mini_portile2>.freeze, ["~> 2.4.0"])
+      s.add_development_dependency(%q<concourse>.freeze, ["~> 0.24"])
+      s.add_development_dependency(%q<hoe-bundler>.freeze, ["~> 1.2"])
+      s.add_development_dependency(%q<hoe-debugging>.freeze, ["~> 2.0"])
+      s.add_development_dependency(%q<hoe-gemspec>.freeze, ["~> 1.0"])
+      s.add_development_dependency(%q<hoe-git>.freeze, ["~> 1.6"])
+      s.add_development_dependency(%q<minitest>.freeze, ["~> 5.8"])
+      s.add_development_dependency(%q<racc>.freeze, ["~> 1.4.14"])
+      s.add_development_dependency(%q<rake>.freeze, ["~> 12.0"])
+      s.add_development_dependency(%q<rake-compiler>.freeze, ["~> 1.1.0"])
+      s.add_development_dependency(%q<rake-compiler-dock>.freeze, ["~> 0.7.0"])
+      s.add_development_dependency(%q<rexical>.freeze, ["~> 1.0.5"])
+      s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.73"])
+      s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16"])
+      s.add_development_dependency(%q<rdoc>.freeze, [">= 4.0", "< 7"])
+      s.add_development_dependency(%q<hoe>.freeze, ["~> 3.22"])
+    else
+      s.add_dependency(%q<mini_portile2>.freeze, ["~> 2.4.0"])
+      s.add_dependency(%q<concourse>.freeze, ["~> 0.24"])
+      s.add_dependency(%q<hoe-bundler>.freeze, ["~> 1.2"])
+      s.add_dependency(%q<hoe-debugging>.freeze, ["~> 2.0"])
+      s.add_dependency(%q<hoe-gemspec>.freeze, ["~> 1.0"])
+      s.add_dependency(%q<hoe-git>.freeze, ["~> 1.6"])
+      s.add_dependency(%q<minitest>.freeze, ["~> 5.8"])
+      s.add_dependency(%q<racc>.freeze, ["~> 1.4.14"])
+      s.add_dependency(%q<rake>.freeze, ["~> 12.0"])
+      s.add_dependency(%q<rake-compiler>.freeze, ["~> 1.1.0"])
+      s.add_dependency(%q<rake-compiler-dock>.freeze, ["~> 0.7.0"])
+      s.add_dependency(%q<rexical>.freeze, ["~> 1.0.5"])
+      s.add_dependency(%q<rubocop>.freeze, ["~> 0.73"])
+      s.add_dependency(%q<simplecov>.freeze, ["~> 0.16"])
+      s.add_dependency(%q<rdoc>.freeze, [">= 4.0", "< 7"])
+      s.add_dependency(%q<hoe>.freeze, ["~> 3.22"])
+    end
   else
     s.add_dependency(%q<mini_portile2>.freeze, ["~> 2.4.0"])
     s.add_dependency(%q<concourse>.freeze, ["~> 0.24"])

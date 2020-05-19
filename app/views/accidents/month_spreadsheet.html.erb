@@ -157,7 +157,6 @@
   </div>
 </div>
 
-<!--Load the AJAX API-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
@@ -178,18 +177,13 @@
             ['医療的ケア', <%= @medical_care_hat_accidents2f.count %>],
             ['感染症', <%= @infection_hat_accidents2f.count %>],
             ['忘れ物・返却忘れ', <%= @forget_hat_accidents2f.count %>],
-            ['その他', <%= @other_hat_accidents2f.count %>],
-        ]
+            ['その他', <%= @other_hat_accidents2f.count %>]
 
-        );
+        ]);
 
         var options = {
             title: '2階ヒヤリハット件数',
             is3D: true,
-            backgroundColor: '#FFFFEE',
-            // colors: ['red', 'blue', 'green']
-            slices: [0, {offset: 0.5}]
-
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -198,8 +192,23 @@
 </script>
 
 <body>
-<!--Div that will hold the pie chart-->
-<div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+  <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
 </body>
 
 
+<!--['2階ヒヤリハット', '件数'],-->
+<!--['転倒・転落', <%#= @fall_hat_accidents2f.count %>],-->
+<!--['行方不明・所在不明', <%#= @missing_hat_accidents2f.count %>],-->
+<!--['飲食に関すること', <%#= @meal_hat_accidents2f.count %>],-->
+<!--['薬に関すること', <%#= @medicine_hat_accidents2f.count %>],-->
+<!--['他害・自傷行為', <%#= @scratch_hat_accidents2f.count %>],-->
+<!--['環境', <%#= @environment_hat_accidents2f.count %>],-->
+<!--['情報・連絡・報告', <%#= @info_contact_hat_accidents2f.count %>],-->
+<!--['個人情報・人権', <%#= @personal_info_hat_accidents2f.count %>],-->
+<!--['紛失', <%#= @lost_hat_accidents2f.count %>],-->
+<!--['器物破損', <%#= @damage_hat_accidents2f.count %>],-->
+<!--['金銭', <%#= @money_hat_accidents2f.count %>],-->
+<!--['医療的ケア', <%#= @medical_care_hat_accidents2f.count %>],-->
+<!--['感染症', <%#= @infection_hat_accidents2f.count %>],-->
+<!--['忘れ物・返却忘れ', <%#= @forget_hat_accidents2f.count %>],-->
+<!--['その他', <%#= @other_hat_accidents2f.count %>]-->

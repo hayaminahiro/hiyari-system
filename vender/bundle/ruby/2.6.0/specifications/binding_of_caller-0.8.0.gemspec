@@ -15,19 +15,23 @@ Gem::Specification.new do |s|
   s.extensions = ["ext/binding_of_caller/extconf.rb".freeze]
   s.files = ["ext/binding_of_caller/extconf.rb".freeze]
   s.homepage = "http://github.com/banister/binding_of_caller".freeze
-  s.rubygems_version = "3.1.2".freeze
+  s.rubygems_version = "3.0.3".freeze
   s.summary = "Retrieve the binding of a method's caller. Can also retrieve bindings even further up the stack.".freeze
 
-  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
-  end
 
-  if s.respond_to? :add_runtime_dependency then
-    s.add_runtime_dependency(%q<debug_inspector>.freeze, [">= 0.0.1"])
-    s.add_development_dependency(%q<bacon>.freeze, [">= 0"])
-    s.add_development_dependency(%q<rake>.freeze, [">= 0"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<debug_inspector>.freeze, [">= 0.0.1"])
+      s.add_development_dependency(%q<bacon>.freeze, [">= 0"])
+      s.add_development_dependency(%q<rake>.freeze, [">= 0"])
+    else
+      s.add_dependency(%q<debug_inspector>.freeze, [">= 0.0.1"])
+      s.add_dependency(%q<bacon>.freeze, [">= 0"])
+      s.add_dependency(%q<rake>.freeze, [">= 0"])
+    end
   else
     s.add_dependency(%q<debug_inspector>.freeze, [">= 0.0.1"])
     s.add_dependency(%q<bacon>.freeze, [">= 0"])
