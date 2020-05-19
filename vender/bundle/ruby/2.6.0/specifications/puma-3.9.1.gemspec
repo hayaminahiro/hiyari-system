@@ -20,18 +20,21 @@ Gem::Specification.new do |s|
   s.licenses = ["BSD-3-Clause".freeze]
   s.rdoc_options = ["--main".freeze, "README.md".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.3".freeze)
-  s.rubygems_version = "3.1.2".freeze
+  s.rubygems_version = "3.0.3".freeze
   s.summary = "Puma is a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack applications".freeze
 
-  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
-  end
 
-  if s.respond_to? :add_runtime_dependency then
-    s.add_development_dependency(%q<rdoc>.freeze, ["~> 4.0"])
-    s.add_development_dependency(%q<hoe>.freeze, ["~> 3.15"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<rdoc>.freeze, ["~> 4.0"])
+      s.add_development_dependency(%q<hoe>.freeze, ["~> 3.15"])
+    else
+      s.add_dependency(%q<rdoc>.freeze, ["~> 4.0"])
+      s.add_dependency(%q<hoe>.freeze, ["~> 3.15"])
+    end
   else
     s.add_dependency(%q<rdoc>.freeze, ["~> 4.0"])
     s.add_dependency(%q<hoe>.freeze, ["~> 3.15"])

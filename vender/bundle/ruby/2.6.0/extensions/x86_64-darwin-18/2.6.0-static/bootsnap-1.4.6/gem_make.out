@@ -1,0 +1,15 @@
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+/Users/saitouhayato/.rbenv/versions/2.6.3/bin/ruby -I /Users/saitouhayato/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20200519-17400-1o0cflb.rb extconf.rb
+creating Makefile
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/saitouhayato/celeb_task/hiyari-system/vender/bundle/ruby/2.6.0/gems/bootsnap-1.4.6/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20200519-17400-11e05y1/bootsnap
