@@ -161,9 +161,10 @@
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
+        var fall = Number(document.getElementById("test").value);
         var data = google.visualization.arrayToDataTable([
             ['2階ヒヤリハット', '件数'],
-            ['転倒・転落', <%= @fall_hat_accidents2f.count %>],
+            ['転倒・転落', fall],
             ['行方不明・所在不明', <%= @missing_hat_accidents2f.count %>],
             ['飲食に関すること', <%= @meal_hat_accidents2f.count %>],
             ['薬に関すること', <%= @medicine_hat_accidents2f.count %>],
@@ -193,6 +194,7 @@
 
 <body>
   <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+  <input id="test" type="hidden" value=<%= @fall_hat_accidents2f.count %>>
 </body>
 
 
