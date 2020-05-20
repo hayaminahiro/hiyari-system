@@ -1,0 +1,138 @@
+<!--２階ヒヤリハット-->
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        <!--railsからjsへ値を渡す場合（未使用）-->
+        // var fall_hats_2f = Number(document.getElementById("fall_hats_2f").value);
+        var data = google.visualization.arrayToDataTable([
+            ['２階ヒヤリハット', '件数'],
+            ['転倒・転落', <%= @fall_hat_accidents2f.count %>],
+            ['行方不明・所在不明', <%= @missing_hat_accidents2f.count %>],
+            ['飲食に関すること', <%= @meal_hat_accidents2f.count %>],
+            ['薬に関すること', <%= @medicine_hat_accidents2f.count %>],
+            ['他害・自傷行為', <%= @scratch_hat_accidents2f.count %>],
+            ['環境', <%= @environment_hat_accidents2f.count %>],
+            ['情報・連絡・報告', <%= @info_contact_hat_accidents2f.count %>],
+            ['個人情報・人権', <%= @personal_info_hat_accidents2f.count %>],
+            ['紛失', <%= @lost_hat_accidents2f.count %>],
+            ['器物破損', <%= @damage_hat_accidents2f.count %>],
+            ['金銭', <%= @money_hat_accidents2f.count %>],
+            ['医療的ケア', <%= @medical_care_hat_accidents2f.count %>],
+            ['感染症', <%= @infection_hat_accidents2f.count %>],
+            ['忘れ物・返却忘れ', <%= @forget_hat_accidents2f.count %>],
+            ['その他', <%= @other_hat_accidents2f.count %>]
+        ]);
+        var options = {
+            title: '2階ヒヤリハット件数',
+            is3D: true
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('hat_chart_2f'));
+        chart.draw(data, options);
+    }
+</script>
+
+<!--３階ヒヤリハット-->
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['３階ヒヤリハット', '件数'],
+            ['転倒・転落', <%= @fall_hat_accidents3f.count %>],
+            ['行方不明・所在不明', <%= @missing_hat_accidents3f.count %>],
+            ['飲食に関すること', <%= @meal_hat_accidents3f.count %>],
+            ['薬に関すること', <%= @medicine_hat_accidents3f.count %>],
+            ['他害・自傷行為', <%= @scratch_hat_accidents3f.count %>],
+            ['環境', <%= @environment_hat_accidents3f.count %>],
+            ['情報・連絡・報告', <%= @info_contact_hat_accidents3f.count %>],
+            ['個人情報・人権', <%= @personal_info_hat_accidents3f.count %>],
+            ['紛失', <%= @lost_hat_accidents3f.count %>],
+            ['器物破損', <%= @damage_hat_accidents3f.count %>],
+            ['金銭', <%= @money_hat_accidents3f.count %>],
+            ['医療的ケア', <%= @medical_care_hat_accidents3f.count %>],
+            ['感染症', <%= @infection_hat_accidents3f.count %>],
+            ['忘れ物・返却忘れ', <%= @forget_hat_accidents3f.count %>],
+            ['その他', <%= @other_hat_accidents3f.count %>]
+        ]);
+        var options = {
+            title: '３階ヒヤリハット件数',
+            is3D: true
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('hat_chart_3f'));
+        chart.draw(data, options);
+    }
+</script>
+
+<!--４階ヒヤリハット-->
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['４階ヒヤリハット', '件数'],
+            ['転倒・転落', <%= @fall_hat_accidents4f.count %>],
+            ['行方不明・所在不明', <%= @missing_hat_accidents4f.count %>],
+            ['飲食に関すること', <%= @meal_hat_accidents4f.count %>],
+            ['薬に関すること', <%= @medicine_hat_accidents4f.count %>],
+            ['他害・自傷行為', <%= @scratch_hat_accidents4f.count %>],
+            ['環境', <%= @environment_hat_accidents4f.count %>],
+            ['情報・連絡・報告', <%= @info_contact_hat_accidents4f.count %>],
+            ['個人情報・人権', <%= @personal_info_hat_accidents4f.count %>],
+            ['紛失', <%= @lost_hat_accidents4f.count %>],
+            ['器物破損', <%= @damage_hat_accidents4f.count %>],
+            ['金銭', <%= @money_hat_accidents4f.count %>],
+            ['医療的ケア', <%= @medical_care_hat_accidents4f.count %>],
+            ['感染症', <%= @infection_hat_accidents4f.count %>],
+            ['忘れ物・返却忘れ', <%= @forget_hat_accidents4f.count %>],
+            ['その他', <%= @other_hat_accidents4f.count %>]
+        ]);
+        var options = {
+            title: '４階ヒヤリハット件数',
+            is3D: true
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('hat_chart_4f'));
+        chart.draw(data, options);
+    }
+</script>
+
+<!--総合ヒヤリハット-->
+<script type="text/javascript">
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['全フロアヒヤリハット', '合計件数'],
+            ['転倒・転落', <%= @fall_hat_all %>],
+            ['行方不明・所在不明', <%= @missing_hat_all %>],
+            ['飲食に関すること', <%= @meal_hat_all %>],
+            ['薬に関すること', <%= @medicine_hat_all %>],
+            ['他害・自傷行為', <%= @scratch_hat_all %>],
+            ['環境', <%= @environment_hat_all %>],
+            ['情報・連絡・報告', <%= @info_contact_hat_all %>],
+            ['個人情報・人権', <%= @personal_info_hat_all %>],
+            ['紛失', <%= @lost_hat_all %>],
+            ['器物破損', <%= @damage_hat_all %>],
+            ['金銭', <%= @money_hat_all %>],
+            ['医療的ケア', <%= @medical_care_hat_all %>],
+            ['感染症', <%= @infection_hat_all %>],
+            ['忘れ物・返却忘れ', <%= @forget_hat_all %>],
+            ['その他', <%= @other_hat_all %>]
+        ]);
+        var options = {
+            title: '全フロアのヒヤリハット合計件数',
+            is3D: true
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('hat_chart_total'));
+        chart.draw(data, options);
+    }
+</script>
+
+<div id="hat_chart_2f" style="width: 900px; height: 500px;"></div>
+<div id="hat_chart_3f" style="width: 900px; height: 500px;"></div>
+<div id="hat_chart_4f" style="width: 900px; height: 500px;"></div>
+<div id="hat_chart_total" style="width: 900px; height: 500px;"></div>
+
+
+<!--railsからjsへ値を渡す場合（未使用）-->
+<!--<input id="fall_hats_2f" type="hidden" value=<%#= @fall_hat_accidents2f.count %>>-->

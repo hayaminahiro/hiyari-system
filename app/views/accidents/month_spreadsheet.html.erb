@@ -157,60 +157,6 @@
   </div>
 </div>
 
-<script type="text/javascript">
-    google.charts.load("current", {packages:["corechart"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-        var fall = Number(document.getElementById("test").value);
-        var data = google.visualization.arrayToDataTable([
-            ['2階ヒヤリハット', '件数'],
-            ['転倒・転落', fall],
-            ['行方不明・所在不明', <%= @missing_hat_accidents2f.count %>],
-            ['飲食に関すること', <%= @meal_hat_accidents2f.count %>],
-            ['薬に関すること', <%= @medicine_hat_accidents2f.count %>],
-            ['他害・自傷行為', <%= @scratch_hat_accidents2f.count %>],
-            ['環境', <%= @environment_hat_accidents2f.count %>],
-            ['情報・連絡・報告', <%= @info_contact_hat_accidents2f.count %>],
-            ['個人情報・人権', <%= @personal_info_hat_accidents2f.count %>],
-            ['紛失', <%= @lost_hat_accidents2f.count %>],
-            ['器物破損', <%= @damage_hat_accidents2f.count %>],
-            ['金銭', <%= @money_hat_accidents2f.count %>],
-            ['医療的ケア', <%= @medical_care_hat_accidents2f.count %>],
-            ['感染症', <%= @infection_hat_accidents2f.count %>],
-            ['忘れ物・返却忘れ', <%= @forget_hat_accidents2f.count %>],
-            ['その他', <%= @other_hat_accidents2f.count %>]
+<!--Google_Chart_API ヒヤリハット呼び出し-->
+<%= render "google_chart_hat" %>
 
-        ]);
-
-        var options = {
-            title: '2階ヒヤリハット件数',
-            is3D: true,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-        chart.draw(data, options);
-    }
-</script>
-
-<body>
-  <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
-  <input id="test" type="hidden" value=<%= @fall_hat_accidents2f.count %>>
-</body>
-
-
-<!--['2階ヒヤリハット', '件数'],-->
-<!--['転倒・転落', <%#= @fall_hat_accidents2f.count %>],-->
-<!--['行方不明・所在不明', <%#= @missing_hat_accidents2f.count %>],-->
-<!--['飲食に関すること', <%#= @meal_hat_accidents2f.count %>],-->
-<!--['薬に関すること', <%#= @medicine_hat_accidents2f.count %>],-->
-<!--['他害・自傷行為', <%#= @scratch_hat_accidents2f.count %>],-->
-<!--['環境', <%#= @environment_hat_accidents2f.count %>],-->
-<!--['情報・連絡・報告', <%#= @info_contact_hat_accidents2f.count %>],-->
-<!--['個人情報・人権', <%#= @personal_info_hat_accidents2f.count %>],-->
-<!--['紛失', <%#= @lost_hat_accidents2f.count %>],-->
-<!--['器物破損', <%#= @damage_hat_accidents2f.count %>],-->
-<!--['金銭', <%#= @money_hat_accidents2f.count %>],-->
-<!--['医療的ケア', <%#= @medical_care_hat_accidents2f.count %>],-->
-<!--['感染症', <%#= @infection_hat_accidents2f.count %>],-->
-<!--['忘れ物・返却忘れ', <%#= @forget_hat_accidents2f.count %>],-->
-<!--['その他', <%#= @other_hat_accidents2f.count %>]-->

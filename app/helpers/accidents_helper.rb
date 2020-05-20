@@ -12,6 +12,11 @@ module AccidentsHelper
         personal_info + lost + damage + money + medical_care + infection + forget + other).count
   end
 
+  # 出来事の全フロア総合計
+  def total_floor(floor2, floor3, floor4)
+    (floor2 + floor3 + floor4).count
+  end
+
   #場面の総合計計算
   def total_scene(service, support, lunch, toilet, bathing, other_scene)
     (service + support + lunch + toilet + bathing + other_scene).count
