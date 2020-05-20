@@ -791,6 +791,22 @@ class AccidentsController < ApplicationController
                                          @info_contact_hat_accidents4f, @personal_info_hat_accidents4f, @lost_hat_accidents4f,
                                          @damage_hat_accidents4f, @money_hat_accidents4f, @medical_care_hat_accidents4f,
                                          @infection_hat_accidents4f, @forget_hat_accidents4f, @other_hat_accidents4f)
+    #各階の総合計
+    @fall_hat_all = total_floor(@fall_hat_accidents2f, @fall_hat_accidents3f, @fall_hat_accidents4f)
+    @missing_hat_all = total_floor(@missing_hat_accidents2f, @missing_hat_accidents3f, @missing_hat_accidents4f)
+    @meal_hat_all = total_floor(@meal_hat_accidents2f, @meal_hat_accidents3f, @meal_hat_accidents4f)
+    @medicine_hat_all = total_floor(@medicine_hat_accidents2f, @medicine_hat_accidents3f, @medicine_hat_accidents4f)
+    @scratch_hat_all = total_floor(@scratch_hat_accidents2f, @scratch_hat_accidents3f, @scratch_hat_accidents4f)
+    @environment_hat_all = total_floor(@environment_hat_accidents2f, @environment_hat_accidents3f, @environment_hat_accidents4f)
+    @info_contact_hat_all = total_floor(@info_contact_hat_accidents2f, @info_contact_hat_accidents3f, @info_contact_hat_accidents4f)
+    @personal_info_hat_all = total_floor(@personal_info_hat_accidents2f, @personal_info_hat_accidents3f, @personal_info_hat_accidents4f)
+    @lost_hat_all = total_floor(@lost_hat_accidents2f, @lost_hat_accidents3f, @lost_hat_accidents4f)
+    @damage_hat_all = total_floor(@damage_hat_accidents2f, @damage_hat_accidents3f, @damage_hat_accidents4f)
+    @money_hat_all = total_floor(@money_hat_accidents2f, @money_hat_accidents3f, @money_hat_accidents4f)
+    @medical_care_hat_all = total_floor(@medical_care_hat_accidents2f, @medical_care_hat_accidents3f, @medical_care_hat_accidents4f)
+    @infection_hat_all = total_floor(@infection_hat_accidents2f, @infection_hat_accidents3f, @infection_hat_accidents4f)
+    @forget_hat_all = total_floor(@forget_hat_accidents2f, @forget_hat_accidents3f, @forget_hat_accidents4f)
+    @other_hat_all = total_floor(@other_hat_accidents2f, @other_hat_accidents3f, @other_hat_accidents4f)
 
     #通所・送迎のヒヤリハット
     @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_service
@@ -823,12 +839,6 @@ class AccidentsController < ApplicationController
                                                @toilet_hat_accidents3f, @bathing_hat_accidents3f, @other_scene_hat_accidents3f)
     @total_scene_hat_accidents4f = total_scene(@service_hat_accidents4f, @support_hat_accidents4f, @lunch_hat_accidents4f,
                                                @toilet_hat_accidents4f, @bathing_hat_accidents4f, @other_scene_hat_accidents4f)
-    @hats_box = [
-        ['転倒・転落', @fall_hat_accidents2f.count], ['行方不明・所在不明', @fall_hat_accidents2f.count],
-        ['飲食に関すること', @support_hat_accidents2f.count], ['薬に関すること', @lunch_hat_accidents2f.count]
-    ]
-
-
   end
 
   #各月別事故集計表
