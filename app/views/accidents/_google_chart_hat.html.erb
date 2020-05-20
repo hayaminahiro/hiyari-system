@@ -6,7 +6,7 @@
         <!--railsからjsへ値を渡す場合（未使用）-->
         // var fall_hats_2f = Number(document.getElementById("fall_hats_2f").value);
         var data = google.visualization.arrayToDataTable([
-            ['２階ヒヤリハット', '件数'],
+            ['２F出来事ヒヤリハット', '件数'],
             ['転倒・転落', <%= @fall_hat_accidents2f.count %>],
             ['行方不明・所在不明', <%= @missing_hat_accidents2f.count %>],
             ['飲食に関すること', <%= @meal_hat_accidents2f.count %>],
@@ -24,8 +24,9 @@
             ['その他', <%= @other_hat_accidents2f.count %>]
         ]);
         var options = {
-            title: '2階ヒヤリハット件数',
-            is3D: true
+            title: '2F出来事ヒヤリハット件数',
+            is3D: true,
+            backgroundColor: '#FAFAD2'
         };
         var chart = new google.visualization.PieChart(document.getElementById('hat_chart_2f'));
         chart.draw(data, options);
@@ -38,7 +39,7 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['３階ヒヤリハット', '件数'],
+            ['３F出来事ヒヤリハット', '件数'],
             ['転倒・転落', <%= @fall_hat_accidents3f.count %>],
             ['行方不明・所在不明', <%= @missing_hat_accidents3f.count %>],
             ['飲食に関すること', <%= @meal_hat_accidents3f.count %>],
@@ -56,8 +57,9 @@
             ['その他', <%= @other_hat_accidents3f.count %>]
         ]);
         var options = {
-            title: '３階ヒヤリハット件数',
-            is3D: true
+            title: '３F出来事ヒヤリハット件数',
+            is3D: true,
+            backgroundColor: '#FAFAD2'
         };
         var chart = new google.visualization.PieChart(document.getElementById('hat_chart_3f'));
         chart.draw(data, options);
@@ -70,7 +72,7 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['４階ヒヤリハット', '件数'],
+            ['４F出来事ヒヤリハット', '件数'],
             ['転倒・転落', <%= @fall_hat_accidents4f.count %>],
             ['行方不明・所在不明', <%= @missing_hat_accidents4f.count %>],
             ['飲食に関すること', <%= @meal_hat_accidents4f.count %>],
@@ -88,8 +90,9 @@
             ['その他', <%= @other_hat_accidents4f.count %>]
         ]);
         var options = {
-            title: '４階ヒヤリハット件数',
-            is3D: true
+            title: '４F出来事ヒヤリハット件数',
+            is3D: true,
+            backgroundColor: '#FAFAD2'
         };
         var chart = new google.visualization.PieChart(document.getElementById('hat_chart_4f'));
         chart.draw(data, options);
@@ -102,7 +105,7 @@
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['全フロアヒヤリハット', '合計件数'],
+            ['全フロア出来事ヒヤリハット', '合計件数'],
             ['転倒・転落', <%= @fall_hat_all %>],
             ['行方不明・所在不明', <%= @missing_hat_all %>],
             ['飲食に関すること', <%= @meal_hat_all %>],
@@ -120,19 +123,20 @@
             ['その他', <%= @other_hat_all %>]
         ]);
         var options = {
-            title: '全フロアのヒヤリハット合計件数',
-            is3D: true
+            title: '全フロア出来事ヒヤリハット合計件数',
+            is3D: true,
+            backgroundColor: '#FAFAD2'
         };
         var chart = new google.visualization.PieChart(document.getElementById('hat_chart_total'));
         chart.draw(data, options);
     }
 </script>
-
-<div id="hat_chart_2f" style="width: 900px; height: 500px;"></div>
-<div id="hat_chart_3f" style="width: 900px; height: 500px;"></div>
-<div id="hat_chart_4f" style="width: 900px; height: 500px;"></div>
-<div id="hat_chart_total" style="width: 900px; height: 500px;"></div>
-
+<div style="padding-left: 80px;">
+  <div id="hat_chart_2f" style="width: 500px; height: 300px; float: left;"></div>
+  <div id="hat_chart_3f" style="width: 500px; height: 300px; float: left;"></div>
+  <div id="hat_chart_4f" style="width: 500px; height: 300px; float: left;"></div>
+  <div id="hat_chart_total" style="width: 500px; height: 300px; float: left;"></div>
+</div>
 
 <!--railsからjsへ値を渡す場合（未使用）-->
 <!--<input id="fall_hats_2f" type="hidden" value=<%#= @fall_hat_accidents2f.count %>>-->
