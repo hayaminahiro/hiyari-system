@@ -1,10 +1,10 @@
-<!--２階場面の事故-->
+<!--２階場面のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['２F場面の事故', '件数'],
+            ['２F場面のヒヤリ・事故', '件数'],
             ['通所・送迎(<%= @service_hat_accidents2f.count %>件)', <%= @service_hat_accidents2f.count %>],
             ['活動・支援（施設内/外出）(<%= @support_hat_accidents2f.count %>件)', <%= @support_hat_accidents2f.count %>],
             ['給食・配膳(<%= @lunch_hat_accidents2f.count %>件)', <%= @lunch_hat_accidents2f.count %>],
@@ -13,7 +13,7 @@
             ['その他 ※(<%= @other_scene_hat_accidents2f.count %>件)', <%= @other_scene_hat_accidents2f.count %>]
         ]);
         var options = {
-            title: '2F場面の事故件数',
+            title: '2F場面の件数',
             is3D: true,
             backgroundColor: '#FDF5E6'
         };
@@ -22,13 +22,13 @@
     }
 </script>
 
-<!--３階場面の事故-->
+<!--３階場面のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['３F場面の事故', '件数'],
+            ['３F場面のヒヤリ・事故', '件数'],
             ['通所・送迎(<%= @service_hat_accidents3f.count %>件)', <%= @service_hat_accidents3f.count %>],
             ['活動・支援（施設内/外出）(<%= @support_hat_accidents3f.count %>件)', <%= @support_hat_accidents3f.count %>],
             ['給食・配膳(<%= @lunch_hat_accidents3f.count %>件)', <%= @lunch_hat_accidents3f.count %>],
@@ -37,7 +37,7 @@
             ['その他 ※(<%= @other_scene_hat_accidents3f.count %>件)', <%= @other_scene_hat_accidents3f.count %>]
         ]);
         var options = {
-            title: '３F場面の事故件数',
+            title: '３F場面の件数',
             is3D: true,
             backgroundColor: '#FDF5E6'
         };
@@ -46,13 +46,13 @@
     }
 </script>
 
-<!--４階場面の事故-->
+<!--４階場面のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['４F場面の事故', '件数'],
+            ['４F場面のヒヤリ・事故', '件数'],
             ['通所・送迎(<%= @service_hat_accidents4f.count %>件)', <%= @service_hat_accidents4f.count %>],
             ['活動・支援（施設内/外出）(<%= @support_hat_accidents4f.count %>件)', <%= @support_hat_accidents4f.count %>],
             ['給食・配膳(<%= @lunch_hat_accidents4f.count %>件)', <%= @lunch_hat_accidents4f.count %>],
@@ -61,7 +61,7 @@
             ['その他 ※(<%= @other_scene_hat_accidents4f.count %>件)', <%= @other_scene_hat_accidents4f.count %>]
         ]);
         var options = {
-            title: '４F場面の事故件数',
+            title: '４F場面の件数',
             is3D: true,
             backgroundColor: '#FDF5E6'
         };
@@ -70,13 +70,13 @@
     }
 </script>
 
-<!--総合場面の事故-->
+<!--総合場面のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['全フロア場面の事故', '合計件数'],
+            ['全フロア場面のヒヤリ・事故', '合計件数'],
             ['通所・送迎(<%= @service_hat_all %>件)', <%= @service_hat_all %>],
             ['活動・支援（施設内/外出）(<%= @support_hat_all %>件)', <%= @support_hat_all %>],
             ['給食・配膳(<%= @lunch_hat_all %>件)', <%= @lunch_hat_all %>],
@@ -85,7 +85,7 @@
             ['その他 ※(<%= @other_scene_hat_all %>件)', <%= @other_scene_hat_all %>]
         ]);
         var options = {
-            title: '全フロア場面の事故合計件数',
+            title: '全フロア場面の合計件数',
             is3D: true,
             backgroundColor: '#FDF5E6'
         };
