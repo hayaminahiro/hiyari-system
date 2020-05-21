@@ -1,10 +1,10 @@
-<!--２階出来事の事故-->
+<!--２階出来事のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['２F出来事の事故', '件数'],
+            ['２F出来事のヒヤリ・事故', '件数'],
             ['転倒・転落(<%= @fall_hat_accidents2f.count %>件)', <%= @fall_hat_accidents2f.count %>],
             ['行方不明・所在不明(<%= @missing_hat_accidents2f.count %>件)', <%= @missing_hat_accidents2f.count %>],
             ['飲食に関すること(<%= @meal_hat_accidents2f.count %>件)', <%= @meal_hat_accidents2f.count %>],
@@ -22,7 +22,7 @@
             ['その他(<%= @other_hat_accidents2f.count %>件)', <%= @other_hat_accidents2f.count %>]
         ]);
         var options = {
-            title: '2F出来事の事故件数',
+            title: '2F出来事の件数',
             is3D: true,
             backgroundColor: '#FFFFF0'
         };
@@ -31,13 +31,13 @@
     }
 </script>
 
-<!--３階出来事の事故-->
+<!--３階出来事のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['３F出来事の事故', '件数'],
+            ['３F出来事のヒヤリ・事故', '件数'],
             ['転倒・転落(<%= @fall_hat_accidents3f.count %>件)', <%= @fall_hat_accidents3f.count %>],
             ['行方不明・所在不明(<%= @missing_hat_accidents3f.count %>件)', <%= @missing_hat_accidents3f.count %>],
             ['飲食に関すること(<%= @meal_hat_accidents3f.count %>件)', <%= @meal_hat_accidents3f.count %>],
@@ -55,7 +55,7 @@
             ['その他(<%= @other_hat_accidents3f.count %>件)', <%= @other_hat_accidents3f.count %>]
         ]);
         var options = {
-            title: '３F出来事の事故件数',
+            title: '３F出来事の件数',
             is3D: true,
             backgroundColor: '#FFFFF0'
         };
@@ -64,13 +64,13 @@
     }
 </script>
 
-<!--４階出来事の事故-->
+<!--４階出来事のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['４F出来事の事故', '件数'],
+            ['４F出来事のヒヤリ・事故', '件数'],
             ['転倒・転落(<%= @fall_hat_accidents4f.count %>件)', <%= @fall_hat_accidents4f.count %>],
             ['行方不明・所在不明(<%= @missing_hat_accidents4f.count %>件)', <%= @missing_hat_accidents4f.count %>],
             ['飲食に関すること(<%= @meal_hat_accidents4f.count %>件)', <%= @meal_hat_accidents4f.count %>],
@@ -88,7 +88,7 @@
             ['その他(<%= @other_hat_accidents4f.count %>件)', <%= @other_hat_accidents4f.count %>]
         ]);
         var options = {
-            title: '４F出来事の事故件数',
+            title: '４F出来事の件数',
             is3D: true,
             backgroundColor: '#FFFFF0'
         };
@@ -97,13 +97,13 @@
     }
 </script>
 
-<!--総合出来事の事故-->
+<!--総合出来事のヒヤリ・事故-->
 <script type="text/javascript">
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['全フロア出来事の事故', '合計件数'],
+            ['全フロア出来事のヒヤリ・事故', '合計件数'],
             ['転倒・転落(<%= @fall_hat_all %>件)', <%= @fall_hat_all %>],
             ['行方不明・所在不明(<%= @missing_hat_all %>件)', <%= @missing_hat_all %>],
             ['飲食に関すること(<%= @meal_hat_all %>件)', <%= @meal_hat_all %>],
@@ -121,7 +121,7 @@
             ['その他(<%= @other_hat_all %>件)', <%= @other_hat_all %>]
         ]);
         var options = {
-            title: '全フロア出来事の事故合計件数',
+            title: '全フロア出来事の合計件数',
             is3D: true,
             backgroundColor: '#FFFFF0'
         };
