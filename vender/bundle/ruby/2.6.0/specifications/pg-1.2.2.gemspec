@@ -21,25 +21,35 @@ Gem::Specification.new do |s|
   s.licenses = ["BSD-2-Clause".freeze]
   s.rdoc_options = ["--main".freeze, "README.rdoc".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.2".freeze)
-  s.rubygems_version = "3.1.2".freeze
+  s.rubygems_version = "3.0.3".freeze
   s.summary = "Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]".freeze
 
-  s.installed_by_version = "3.1.2" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
-  end
 
-  if s.respond_to? :add_runtime_dependency then
-    s.add_development_dependency(%q<hoe-mercurial>.freeze, ["~> 1.4"])
-    s.add_development_dependency(%q<hoe-deveiate>.freeze, ["~> 0.9"])
-    s.add_development_dependency(%q<hoe-highline>.freeze, ["~> 0.2"])
-    s.add_development_dependency(%q<rake-compiler>.freeze, ["~> 1.0"])
-    s.add_development_dependency(%q<rake-compiler-dock>.freeze, ["~> 1.0"])
-    s.add_development_dependency(%q<hoe-bundler>.freeze, ["~> 1.0"])
-    s.add_development_dependency(%q<rspec>.freeze, ["~> 3.5"])
-    s.add_development_dependency(%q<rdoc>.freeze, ["~> 5.1"])
-    s.add_development_dependency(%q<hoe>.freeze, ["~> 3.20"])
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<hoe-mercurial>.freeze, ["~> 1.4"])
+      s.add_development_dependency(%q<hoe-deveiate>.freeze, ["~> 0.9"])
+      s.add_development_dependency(%q<hoe-highline>.freeze, ["~> 0.2"])
+      s.add_development_dependency(%q<rake-compiler>.freeze, ["~> 1.0"])
+      s.add_development_dependency(%q<rake-compiler-dock>.freeze, ["~> 1.0"])
+      s.add_development_dependency(%q<hoe-bundler>.freeze, ["~> 1.0"])
+      s.add_development_dependency(%q<rspec>.freeze, ["~> 3.5"])
+      s.add_development_dependency(%q<rdoc>.freeze, ["~> 5.1"])
+      s.add_development_dependency(%q<hoe>.freeze, ["~> 3.20"])
+    else
+      s.add_dependency(%q<hoe-mercurial>.freeze, ["~> 1.4"])
+      s.add_dependency(%q<hoe-deveiate>.freeze, ["~> 0.9"])
+      s.add_dependency(%q<hoe-highline>.freeze, ["~> 0.2"])
+      s.add_dependency(%q<rake-compiler>.freeze, ["~> 1.0"])
+      s.add_dependency(%q<rake-compiler-dock>.freeze, ["~> 1.0"])
+      s.add_dependency(%q<hoe-bundler>.freeze, ["~> 1.0"])
+      s.add_dependency(%q<rspec>.freeze, ["~> 3.5"])
+      s.add_dependency(%q<rdoc>.freeze, ["~> 5.1"])
+      s.add_dependency(%q<hoe>.freeze, ["~> 3.20"])
+    end
   else
     s.add_dependency(%q<hoe-mercurial>.freeze, ["~> 1.4"])
     s.add_dependency(%q<hoe-deveiate>.freeze, ["~> 0.9"])

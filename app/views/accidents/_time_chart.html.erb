@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['出来事', '転倒・転落', '行方不明・所在不明', '飲食に関すること', '薬に関すること',
+                '他害・自傷行為', '環境', '情報・連絡・報告', '個人情報・人権', '紛失', '器物破損',
+                '金銭', '医療的ケア', '感染症', '忘れ物・返却忘れ', 'その他', { role: 'annotation' } ],
+            ['7:00~', <%= @total_fall_7_9 %>, <%= @total_missing_7_9 %>, <%= @total_meal_7_9 %>, <%= @total_medicine_7_9 %>, <%= @total_scratch_7_9 %>, <%= @total_environment_7_9 %>, <%= @total_info_contact_7_9 %>, <%= @total_personal_info_7_9 %>, <%= @total_lost_7_9 %>, <%= @total_damage_7_9 %>, <%= @total_money_7_9 %>, <%= @total_medical_care_7_9 %>, <%= @total_infection_7_9 %>, <%= @total_forget_7_9 %>, <%= @total_other_7_9 %>, ''],
+            ['9:00~', <%= @total_fall_9_12 %>, <%= @total_missing_9_12 %>, <%= @total_meal_9_12 %>, <%= @total_medicine_9_12 %>, <%= @total_scratch_9_12 %>, <%= @total_environment_9_12 %>, <%= @total_info_contact_9_12 %>, <%= @total_personal_info_9_12 %>, <%= @total_lost_9_12 %>, <%= @total_damage_9_12 %>, <%= @total_money_9_12 %>, <%= @total_medical_care_9_12 %>, <%= @total_infection_9_12 %>, <%= @total_forget_9_12 %>, <%= @total_other_9_12 %>, ''],
+            ['12:00~', <%= @total_fall_12_14 %>, <%= @total_missing_12_14 %>, <%= @total_meal_12_14 %>, <%= @total_medicine_12_14 %>, <%= @total_scratch_12_14 %>, <%= @total_environment_12_14 %>, <%= @total_info_contact_12_14 %>, <%= @total_personal_info_12_14 %>, <%= @total_lost_12_14 %>, <%= @total_damage_12_14 %>, <%= @total_money_12_14 %>, <%= @total_medical_care_12_14 %>, <%= @total_infection_12_14 %>, <%= @total_forget_12_14 %>, <%= @total_other_12_14 %>, ''],
+            ['14:00~', <%= @total_fall_14_17 %>, <%= @total_missing_14_17 %>, <%= @total_meal_14_17 %>, <%= @total_medicine_14_17 %>, <%= @total_scratch_14_17 %>, <%= @total_environment_14_17 %>, <%= @total_info_contact_14_17 %>, <%= @total_personal_info_14_17 %>, <%= @total_lost_14_17 %>, <%= @total_damage_14_17 %>, <%= @total_money_14_17 %>, <%= @total_medical_care_14_17 %>, <%= @total_infection_14_17 %>, <%= @total_forget_14_17 %>, <%= @total_other_14_17 %>, ''],
+            ['17:00~', <%= @total_fall_17_19 %>, <%= @total_missing_17_19 %>, <%= @total_meal_17_19 %>, <%= @total_medicine_17_19 %>, <%= @total_scratch_17_19 %>, <%= @total_environment_17_19 %>, <%= @total_info_contact_17_19 %>, <%= @total_personal_info_17_19 %>, <%= @total_lost_17_19 %>, <%= @total_damage_17_19 %>, <%= @total_money_17_19 %>, <%= @total_medical_care_17_19 %>, <%= @total_infection_17_19 %>, <%= @total_forget_17_19 %>, <%= @total_other_17_19 %>, ''],
+            ['19:00~', <%= @total_fall_19_22 %>, <%= @total_missing_19_22 %>, <%= @total_meal_19_22 %>, <%= @total_medicine_19_22 %>, <%= @total_scratch_19_22 %>, <%= @total_environment_19_22 %>, <%= @total_info_contact_19_22 %>, <%= @total_personal_info_19_22 %>, <%= @total_lost_19_22 %>, <%= @total_damage_19_22 %>, <%= @total_money_19_22 %>, <%= @total_medical_care_19_22 %>, <%= @total_infection_19_22 %>, <%= @total_forget_19_22 %>, <%= @total_other_19_22 %>, ''],
+            ['22:00~', <%= @total_fall_22_3 %>, <%= @total_missing_22_3 %>, <%= @total_meal_22_3 %>, <%= @total_medicine_22_3 %>, <%= @total_scratch_22_3 %>, <%= @total_environment_22_3 %>, <%= @total_info_contact_22_3 %>, <%= @total_personal_info_22_3 %>, <%= @total_lost_22_3 %>, <%= @total_damage_22_3 %>, <%= @total_money_22_3 %>, <%= @total_medical_care_22_3 %>, <%= @total_infection_22_3 %>, <%= @total_forget_22_3 %>, <%= @total_other_22_3 %>, ''],
+            ['3:00~', <%= @total_fall_3_7 %>, <%= @total_missing_3_7 %>, <%= @total_meal_3_7 %>, <%= @total_medicine_3_7 %>, <%= @total_scratch_3_7 %>, <%= @total_environment_3_7 %>, <%= @total_info_contact_3_7 %>, <%= @total_personal_info_3_7 %>, <%= @total_lost_3_7 %>, <%= @total_damage_3_7 %>, <%= @total_money_3_7 %>, <%= @total_medical_care_3_7 %>, <%= @total_infection_3_7 %>, <%= @total_forget_3_7 %>, <%= @total_other_3_7 %>, '']
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+
+        var options = {
+            width: 1000,
+            height: 490,
+            legend: { position: 'top', maxLines: 1 },
+            bar: { groupWidth: '75%' },
+            isStacked: true,
+            backgroundColor: '#F0F8FF'
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+</script>
+
+<div class="api_position_all">
+  <div id="columnchart_values" class="api_position"></div>
+</div>

@@ -142,11 +142,8 @@
             <th class="floor-color">4F</th>
             <th class="floor-color">医務</th>
           </tr>
-          </thead>
-          <% check = nil %>
-          <%# @accidents.each do |accident| %>
-          <%# if current_facility.id == accident.senior.facility_id %>
-          <tbody>
+        </thead>
+        <tbody>
           <%= render "service" %>
           <%= render "support" %>
           <%= render "lunch" %>
@@ -159,3 +156,13 @@
     </div>
   </div>
 </div>
+
+<!--Google_Chart_API 事故呼び出し-->
+<h3 class="api_title">出来事のヒヤリ集計</h3>
+<%= render "chart_accidents_event" %>
+<h3 class="api_title">場面のヒヤリ集計</h3>
+<%= render "chart_accidents_scene" %>
+<h3 class="api_title">時間別のヒヤリ集計</h3>
+<%= render "time_chart" %>
+
+

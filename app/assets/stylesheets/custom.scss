@@ -110,6 +110,10 @@ p {
   box-sizing:         border-box;
 }
 
+pre.debug_dump {
+  margin-top: 200px;
+}
+
 /* error_messages */
 #error_explanation {
   color: red;
