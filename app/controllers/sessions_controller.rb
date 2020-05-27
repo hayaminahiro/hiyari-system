@@ -21,4 +21,24 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  def sns_login
+    facility = Facility.from_omniauth(request.env["omniauth.auth"])
+    # raise
+    if facility.save!
+      session[:facility_id] = facility.id
+      flash[:success] = "#{facility.name}さんでログインしました。"
+      redirect_to root_path
+    else
+      flash[:danger] = '認証に失敗しました。'
+      redirect_to auth_failure_path
+    end
+  end
+
+  def auth_failure
+    flash[:danger] = '認証に失敗しました。'
+    redirect_to root_url
+  end
+
+
+
 end
