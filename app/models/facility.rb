@@ -11,7 +11,8 @@ class Facility < ApplicationRecord
   validates :email, presence: true, length: { maximum: 100 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: true
-  has_secure_password
+  has_secure_password validations: false
+
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   # 渡された文字列のハッシュ値を返します。
@@ -47,4 +48,17 @@ class Facility < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    email = auth[:info][:email]
+
+    self.find_or_create_by(provider: provider, uid: uid, email: email) do |facility|
+      facility.name = name
+      facility.email = email
+    end
+  end
+
 end

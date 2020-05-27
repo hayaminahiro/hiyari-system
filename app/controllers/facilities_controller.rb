@@ -26,11 +26,17 @@ class FacilitiesController < ApplicationController
 
   def create
     @facility = Facility.new(facility_params)
-    if @facility.save
-      log_in @facility
-      flash[:success] = '新規作成に成功しました。'
-      redirect_to @facility
+    if password_valid?
+      if @facility.save
+        log_in @facility
+        flash[:success] = '新規作成に成功しました。'
+        redirect_to @facility
+      else
+        flash.now[:danger] = 'このメールアドレスは使用できません。'
+        render :new
+      end
     else
+      flash.now[:danger] = '不正な値があります。確認して下さい。'
       render :new
     end
   end
@@ -39,10 +45,16 @@ class FacilitiesController < ApplicationController
   end
 
   def update
-    if @facility.update_attributes(facility_params)
-      flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
-      redirect_to @facility
+    if password_valid?
+      if @facility.update_attributes(facility_params)
+        flash[:success] = "「#{@facility.name}」の施設情報を更新しました。"
+        redirect_to @facility
+      else
+        flash.now[:danger] = 'このメールアドレスは使用できません。'
+        render :edit
+      end
     else
+      flash.now[:danger] = '不正な値があります。確認して下さい。'
       render :edit
     end
   end
@@ -70,6 +82,10 @@ class FacilitiesController < ApplicationController
 
       def facility_params
         params.require(:facility).permit(:name, :email, :password, :password_confirmation)
+      end
+
+      def password_valid?
+        @facility.name.present? && @facility.email.present? && (facility_params[:password] == facility_params[:password_confirmation])
       end
 
 end
