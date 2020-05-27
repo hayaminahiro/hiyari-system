@@ -18,6 +18,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.6.4'
 gem 'bootsnap', require: false
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri
