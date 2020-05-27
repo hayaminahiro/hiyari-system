@@ -1,14 +1,14 @@
 <%= form_with(model: @facility, local: true) do |f| %>
-  <%= render 'shared/error_messages', model: f.object %>
+  <%#= render 'shared/error_messages', model: f.object %>
 
   <%= f.label :name, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :name, class: "form-control" %>
+  <%= f.text_field :name, class: "form-control", value: @facility.name %>
 
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
-  <%= f.email_field :email, class: "form-control" %>
+  <%= f.email_field :email, class: "form-control", value: @facility.email %>
 
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
-  <%= f.password_field :password, class: "form-control" %>
+  <%= f.password_field :password, class: "form-control", value: @facility.password %>
 
   <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
