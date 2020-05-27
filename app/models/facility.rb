@@ -12,17 +12,17 @@ class Facility < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: true
   # has_secure_password
-  # has_secure_password validations: false, unless: :uid?
-  # validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-
   has_secure_password validations: false
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  validate(on: :update) do |record|
-    record.errors.add(:password, :blank) unless record.password_digest.present?
-  end
+  # has_secure_password validations: false, on: :sns_login
 
-  validates_length_of :password, maximum: ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED, on: :update
-  validates_confirmation_of :password, allow_blank: true, on: :update
+  # validate(on: :update) do |record|
+  #   record.errors.add(:password, :blank) unless record.password_digest.present?
+  # end
+  #
+  # validates_length_of :password, maximum: ActiveModel::SecurePassword::MAX_PASSWORD_LENGTH_ALLOWED, on: :update
+  # validates_confirmation_of :password, allow_blank: true, on: :update
 
   # 渡された文字列のハッシュ値を返します。
   def Facility.digest(string)
@@ -58,29 +58,31 @@ class Facility < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  def self.from_omniauth(auth)
-    where(id: auth.id, provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |facility|
-      # facility.id = auth.id
-      facility.provider = auth.provider
-      facility.uid = auth.uid
-      facility.name = auth.info.name
-      facility.email = auth.info.email
-      return facility
-    end
-  end
-
-  # def self.find_or_create_from_auth(auth)
-  #   provider = auth[:provider]
-  #   uid = auth[:uid]
-  #   name = auth[:info][:name]
-  #   email = auth[:info][:email]
-  #   # image = auth[:info][:image]
-  #
-  #   self.find_or_create_by(provider: provider, uid: uid, email: email) do |facility|
-  #     facility.name = name
-  #     facility.email = email
-  #     # user.image_url = image
+  # def self.from_omniauth(auth)
+  #   where(id: auth.id, provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |facility|
+  #     facility.provider = auth.provider
+  #     facility.uid = auth.uid
+  #     facility.name = auth.info.name
+  #     facility.email = auth.info.email
+  #     facility.image = auth.info.image
+  #     facility.oauth_token = auth.credentials.token
+  #     facility.oauth_expires_at = Time.at(auth.credentials.expires_at)
+  #     return facility
   #   end
   # end
+
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    email = auth[:info][:email]
+    image = auth[:info][:image]
+
+    self.find_or_create_by(provider: provider, uid: uid, email: email) do |facility|
+      facility.name = name
+      facility.email = email
+      facility.image = image
+    end
+  end
 
 end
