@@ -9,13 +9,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   # Google_API
-  # get 'auth/:provider/callback', to: 'sessions#sns_login', as: :auth_callback
-  # get 'auth/failure', to: 'sessions#auth_failure', as: :auth_failure
-  # get 'auth/:provider/callback', to: 'sessions#sns_create', as: :auth_callback
-  # get 'auth/failure', to: 'sessions#auth_failure', as: :auth_failure
-  get 'auth/:provider/callback', to: 'sessions#sns_login',    as: :auth_callback
-  get '/auth/failure',         to: 'sessions#auth_failure',        as: :auth_failure
-
+  get 'auth/:provider/callback', to: 'sessions#sns_login', as: :auth_callback
+  get '/auth/failure', to: 'sessions#auth_failure', as: :auth_failure
 
   #各月ヒヤリ集計表
   get '/facilities/:facility_id/accidents/spreadsheet/:month',
