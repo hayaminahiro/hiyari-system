@@ -21,12 +21,13 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  # GoogleAPI
   def sns_login
     facility = Facility.find_or_create_from_auth(request.env['omniauth.auth'])
     if facility.save
       session[:facility_id] = facility.id
       flash[:success] = "#{facility.name}さんでログインしました。"
-      redirect_to root_path
+      redirect_to facility_url(current_facility)
     else
       flash[:danger] = '認証に失敗しました。'
       redirect_to root_url
