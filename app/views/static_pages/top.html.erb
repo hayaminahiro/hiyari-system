@@ -18,7 +18,6 @@
         <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signup-Modal">
           施設新規登録
         </button>
-        <%= link_to "Googleログイン", "/auth/google_oauth2", id: "sign_in" %>
       <% end %>
       <!-- ログインモーダル -->
       <div class="modal-position">
@@ -50,6 +49,9 @@
                       <div class="login-btn">
                         <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
                       </div>
+                      <a class="google">
+                        <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
+                      </a>
                     <% end %>
                   </div>
                 </div>
@@ -95,6 +97,9 @@
                       <div class="btn-position">
                         <%= f.submit "登録", class: "btn btn-success btn-block btn-signup" %>
                       </div>
+                      <a class="google">
+                        <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
+                      </a>
                     <% end %>
                   </div>
                 </div>

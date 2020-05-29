@@ -172,7 +172,6 @@ pre.debug_dump {
 }
 
 .login-btn {
-  padding-top: 20px;
   padding-bottom: 30px;
 }
 
@@ -855,3 +854,15 @@ p.left-space {
   content:"確認済";
 }
 
+.google {
+  width: 100%;
+}
+
+.google:hover {
+  background-color: powderblue;
+}
+
+img.google {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
