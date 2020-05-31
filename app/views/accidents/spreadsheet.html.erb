@@ -22,11 +22,11 @@
           </tr>
           </thead>
           <% check = nil %>
-          <% @accidents2f.each do |accident| %>
+          <% @accidents.each do |accident| %>
             <% if current_facility.id == accident.senior.facility_id %>
               <tbody>
               <!--月の最初一行だけを取り出す為のcheck-->
-              <% if l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) != check %>
+              <% if l(accident.accident_datetime, format: :integer) != check %>
                 <tr>
                   <td class="month">
                     <%= l(accident.accident_datetime, format: :middle) %>
@@ -52,7 +52,7 @@
                                 spreadsheet_accidents_path(current_facility, accident.accident_datetime), local: true, class: "btn-square-shadow-mini" %>
                   </td>
                 </tr>
-                <% check = l(accident.accident_datetime, format: :integer) + (accident.accident_floor.to_s) %>
+                <% check = l(accident.accident_datetime, format: :integer) %>
               <% end %>
               </tbody>
             <% end %>
