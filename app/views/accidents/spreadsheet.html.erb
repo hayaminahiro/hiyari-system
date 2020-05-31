@@ -32,16 +32,16 @@
                     <%= l(accident.accident_datetime, format: :middle) %>
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count2f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count2f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count2f.current_facility(current_facility).accident_count(accident) %>件】
+                    【事故 <%= @accident_count2f.current_facility(current_facility).accident_count(accident) %>件】
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count3f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count3f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count3f.current_facility(current_facility).accident_count(accident) %>件】
+                    【事故 <%= @accident_count3f.current_facility(current_facility).accident_count(accident) %>件】
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count4f.where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
-                    【事故 <%= @accident_count4f.where(which_accident: "事故").where(accident_datetime: accident.accident_datetime.in_time_zone.all_month).count %>件】
+                    【ヒヤリ <%= @hat_count4f.current_facility(current_facility).accident_count(accident) %>件】
+                    【事故 <%= @accident_count4f.current_facility(current_facility).accident_count(accident) %>件】
                   </td>
                   <td class="index-btn-position" style="width: 14%;">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ集計表",
