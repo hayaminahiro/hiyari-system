@@ -31,7 +31,7 @@ class AccidentsController < ApplicationController
                                          :last_facility_manager_sign, :last_reset_facility_manager]
 
   before_action :set_seniors, only: [:index, :index_3f, :index_4f, :new_accidents_index]
-  before_action :set_accidents, only: [:index, :index_3f, :index_4f, :new_accidents_index, :spreadsheet]
+  before_action :set_accidents, only: [:index, :index_3f, :index_4f, :new_accidents_index]
   before_action :set_hat_accident_count, only: [:spreadsheet]
   before_action :set_month, only: [:month_spreadsheet, :spreadsheet_accidents]
 
@@ -499,6 +499,7 @@ class AccidentsController < ApplicationController
 
   #月別ヒヤリ集計リンク
   def spreadsheet
+    @accidents = Accident.including_senior.accidents_sorted
   end
 
   #各月別ヒヤリ集計表
