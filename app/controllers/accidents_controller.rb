@@ -504,7 +504,7 @@ class AccidentsController < ApplicationController
   #各月別ヒヤリ集計表
   def month_spreadsheet
     #各月のヒヤリ・事故一覧
-    hat_accidents = Accident.includes(:senior).date(@month).hat.where(facility_judge: current_facility.id)
+    hat_accidents = Accident.includes(:senior).date(@month).hat.current_facility(current_facility)
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
     #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
     # 転倒・転落
@@ -716,65 +716,65 @@ class AccidentsController < ApplicationController
     @total_scene_hat2f_3_7, @total_scene_hat3f_3_7, @total_scene_hat4f_3_7 = Accident.time_division(hat_accidents)
 
     #転倒・転落のヒヤリハット
-    @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall
-    @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_fall
-    @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_fall
+    @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_fall.current_facility(current_facility)
+    @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_fall.current_facility(current_facility)
+    @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_fall.current_facility(current_facility)
     #行方不明・所在不明のヒヤリハット
-    @missing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_missing
-    @missing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_missing
-    @missing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_missing
+    @missing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_missing.current_facility(current_facility)
+    @missing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_missing.current_facility(current_facility)
+    @missing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_missing.current_facility(current_facility)
     #飲食に関することのヒヤリハット
-    @meal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_meal
-    @meal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_meal
-    @meal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_meal
+    @meal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_meal.current_facility(current_facility)
+    @meal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_meal.current_facility(current_facility)
+    @meal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_meal.current_facility(current_facility)
     #薬に関することのヒヤリハット
-    @medicine_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medicine
-    @medicine_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medicine
-    @medicine_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medicine
+    @medicine_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medicine.current_facility(current_facility)
+    @medicine_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medicine.current_facility(current_facility)
+    @medicine_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medicine.current_facility(current_facility)
     #他害・自傷行為のヒヤリハット
-    @scratch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_scratch
-    @scratch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_scratch
-    @scratch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_scratch
+    @scratch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_scratch.current_facility(current_facility)
+    @scratch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_scratch.current_facility(current_facility)
+    @scratch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_scratch.current_facility(current_facility)
     #環境のヒヤリハット
-    @environment_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_environment
-    @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_environment
-    @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_environment
+    @environment_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_environment.current_facility(current_facility)
+    @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_environment.current_facility(current_facility)
+    @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_environment.current_facility(current_facility)
     #情報・連絡・報告のヒヤリハット
-    @info_contact_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_info_contact
-    @info_contact_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_info_contact
-    @info_contact_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_info_contact
+    @info_contact_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_info_contact.current_facility(current_facility)
+    @info_contact_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_info_contact.current_facility(current_facility)
+    @info_contact_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_info_contact.current_facility(current_facility)
     #個人情報・人権のヒヤリハット
-    @personal_info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_personal_info
-    @personal_info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_personal_info
-    @personal_info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_personal_info
+    @personal_info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_personal_info.current_facility(current_facility)
+    @personal_info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_personal_info.current_facility(current_facility)
+    @personal_info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_personal_info.current_facility(current_facility)
     #紛失のヒヤリハット
-    @lost_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_lost
-    @lost_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_lost
-    @lost_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_lost
+    @lost_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_lost.current_facility(current_facility)
+    @lost_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_lost.current_facility(current_facility)
+    @lost_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_lost.current_facility(current_facility)
     #器物破損のヒヤリハット
-    @damage_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_damage
-    @damage_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_damage
-    @damage_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_damage
+    @damage_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_damage.current_facility(current_facility)
+    @damage_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_damage.current_facility(current_facility)
+    @damage_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_damage.current_facility(current_facility)
     #金銭のヒヤリハット
-    @money_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_money
-    @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_money
-    @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_money
+    @money_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_money.current_facility(current_facility)
+    @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_money.current_facility(current_facility)
+    @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_money.current_facility(current_facility)
     #医療的ケアのヒヤリハット
-    @medical_care_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medical_care
-    @medical_care_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medical_care
-    @medical_care_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medical_care
+    @medical_care_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_medical_care.current_facility(current_facility)
+    @medical_care_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_medical_care.current_facility(current_facility)
+    @medical_care_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_medical_care.current_facility(current_facility)
     #感染症のヒヤリハット
-    @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_infection
-    @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_infection
-    @infection_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_infection
+    @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_infection.current_facility(current_facility)
+    @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_infection.current_facility(current_facility)
+    @infection_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_infection.current_facility(current_facility)
     #忘れ物・返却忘れのヒヤリハット
-    @forget_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_forget
-    @forget_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_forget
-    @forget_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_forget
+    @forget_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_forget.current_facility(current_facility)
+    @forget_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_forget.current_facility(current_facility)
+    @forget_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_forget.current_facility(current_facility)
     #その他のヒヤリハット
-    @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other
-    @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other
-    @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other
+    @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.event_other.current_facility(current_facility)
+    @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.event_other.current_facility(current_facility)
+    @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.event_other.current_facility(current_facility)
     #出来事総合計のヒヤリハット
     @total_hat_accidents2f = total_event(@fall_hat_accidents2f, @missing_hat_accidents2f, @meal_hat_accidents2f,
                                          @medicine_hat_accidents2f, @scratch_hat_accidents2f, @environment_hat_accidents2f,
@@ -946,29 +946,29 @@ class AccidentsController < ApplicationController
     @total_other_3_7 = total_floor(@other_hat2f_3_7, @other_hat3f_3_7, @other_hat4f_3_7)
 
     #通所・送迎のヒヤリハット
-    @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_service
-    @service_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_service
-    @service_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_service
+    @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_service.current_facility(current_facility)
+    @service_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_service.current_facility(current_facility)
+    @service_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_service.current_facility(current_facility)
     #活動・支援のヒヤリハット
-    @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_support
-    @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_support
-    @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_support
+    @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_support.current_facility(current_facility)
+    @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_support.current_facility(current_facility)
+    @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_support.current_facility(current_facility)
     #給食・配膳のヒヤリハット
-    @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_lunch
-    @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_lunch
-    @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_lunch
+    @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_lunch.current_facility(current_facility)
+    @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_lunch.current_facility(current_facility)
+    @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_lunch.current_facility(current_facility)
     #トイレ・排泄のヒヤリハット
-    @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_toilet
-    @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_toilet
-    @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_toilet
+    @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_toilet.current_facility(current_facility)
+    @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_toilet.current_facility(current_facility)
+    @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_toilet.current_facility(current_facility)
     #入浴のヒヤリハット
-    @bathing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_bathing
-    @bathing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_bathing
-    @bathing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_bathing
+    @bathing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_bathing.current_facility(current_facility)
+    @bathing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_bathing.current_facility(current_facility)
+    @bathing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_bathing.current_facility(current_facility)
     #その他のヒヤリハット
-    @other_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_other_scene
-    @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_other_scene
-    @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_other_scene
+    @other_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).hat.activity_other_scene.current_facility(current_facility)
+    @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).hat.activity_other_scene.current_facility(current_facility)
+    @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).hat.activity_other_scene.current_facility(current_facility)
     #場面総合計のヒヤリハット
     @total_scene_hat_accidents2f = total_scene(@service_hat_accidents2f, @support_hat_accidents2f, @lunch_hat_accidents2f,
                                                @toilet_hat_accidents2f, @bathing_hat_accidents2f, @other_scene_hat_accidents2f)
@@ -988,7 +988,7 @@ class AccidentsController < ApplicationController
   #各月別事故集計表
   def spreadsheet_accidents
     #各月のヒヤリ・事故一覧
-    accidents = Accident.includes(:senior).date(@month).accident.where(facility_judge: current_facility.id)
+    accidents = Accident.includes(:senior).date(@month).accident.current_facility(current_facility)
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
     #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
     # 転倒・転落
@@ -1200,65 +1200,65 @@ class AccidentsController < ApplicationController
     @total_scene_hat2f_3_7, @total_scene_hat3f_3_7, @total_scene_hat4f_3_7 = Accident.time_division(accidents)
 
     #転倒・転落の事故
-    @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_fall
-    @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_fall
-    @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_fall
+    @fall_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_fall.current_facility(current_facility)
+    @fall_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_fall.current_facility(current_facility)
+    @fall_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_fall.current_facility(current_facility)
     #行方不明・所在不明の事故
-    @missing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_missing
-    @missing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_missing
-    @missing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_missing
+    @missing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_missing.current_facility(current_facility)
+    @missing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_missing.current_facility(current_facility)
+    @missing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_missing.current_facility(current_facility)
     #飲食に関することの事故
-    @meal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_meal
-    @meal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_meal
-    @meal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_meal
+    @meal_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_meal.current_facility(current_facility)
+    @meal_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_meal.current_facility(current_facility)
+    @meal_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_meal.current_facility(current_facility)
     #薬に関することの事故
-    @medicine_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_medicine
-    @medicine_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_medicine
-    @medicine_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_medicine
+    @medicine_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_medicine.current_facility(current_facility)
+    @medicine_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_medicine.current_facility(current_facility)
+    @medicine_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_medicine.current_facility(current_facility)
     #他害・自傷行為の事故
-    @scratch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_scratch
-    @scratch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_scratch
-    @scratch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_scratch
+    @scratch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_scratch.current_facility(current_facility)
+    @scratch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_scratch.current_facility(current_facility)
+    @scratch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_scratch.current_facility(current_facility)
     #環境の事故
-    @environment_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_environment
-    @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_environment
-    @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_environment
+    @environment_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_environment.current_facility(current_facility)
+    @environment_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_environment.current_facility(current_facility)
+    @environment_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_environment.current_facility(current_facility)
     #情報・連絡・報告の事故
-    @info_contact_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_info_contact
-    @info_contact_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_info_contact
-    @info_contact_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_info_contact
+    @info_contact_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_info_contact.current_facility(current_facility)
+    @info_contact_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_info_contact.current_facility(current_facility)
+    @info_contact_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_info_contact.current_facility(current_facility)
     #個人情報・人権の事故
-    @personal_info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_personal_info
-    @personal_info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_personal_info
-    @personal_info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_personal_info
+    @personal_info_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_personal_info.current_facility(current_facility)
+    @personal_info_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_personal_info.current_facility(current_facility)
+    @personal_info_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_personal_info.current_facility(current_facility)
     #紛失の事故
-    @lost_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_lost
-    @lost_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_lost
-    @lost_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_lost
+    @lost_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_lost.current_facility(current_facility)
+    @lost_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_lost.current_facility(current_facility)
+    @lost_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_lost.current_facility(current_facility)
     #器物破損の事故
-    @damage_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_damage
-    @damage_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_damage
-    @damage_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_damage
+    @damage_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_damage.current_facility(current_facility)
+    @damage_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_damage.current_facility(current_facility)
+    @damage_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_damage.current_facility(current_facility)
     #金銭の事故
-    @money_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_money
-    @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_money
-    @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_money
+    @money_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_money.current_facility(current_facility)
+    @money_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_money.current_facility(current_facility)
+    @money_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_money.current_facility(current_facility)
     #医療的ケアの事故
-    @medical_care_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_medical_care
-    @medical_care_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_medical_care
-    @medical_care_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_medical_care
+    @medical_care_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_medical_care.current_facility(current_facility)
+    @medical_care_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_medical_care.current_facility(current_facility)
+    @medical_care_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_medical_care.current_facility(current_facility)
     #感染症の事故
-    @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_infection
-    @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_infection
-    @infection_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_infection
+    @infection_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_infection.current_facility(current_facility)
+    @infection_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_infection.current_facility(current_facility)
+    @infection_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_infection.current_facility(current_facility)
     #忘れ物・返却忘れの事故
-    @forget_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_forget
-    @forget_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_forget
-    @forget_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_forget
+    @forget_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_forget.current_facility(current_facility)
+    @forget_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_forget.current_facility(current_facility)
+    @forget_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_forget.current_facility(current_facility)
     #その他の事故
-    @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_other
-    @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_other
-    @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_other
+    @other_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.event_other.current_facility(current_facility)
+    @other_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.event_other.current_facility(current_facility)
+    @other_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.event_other.current_facility(current_facility)
     #出来事総合計の事故
     @total_hat_accidents2f = total_event(@fall_hat_accidents2f, @missing_hat_accidents2f, @meal_hat_accidents2f,
                                          @medicine_hat_accidents2f, @scratch_hat_accidents2f, @environment_hat_accidents2f,
@@ -1429,29 +1429,29 @@ class AccidentsController < ApplicationController
     @total_other_3_7 = total_floor(@other_hat2f_3_7, @other_hat3f_3_7, @other_hat4f_3_7)
 
     #通所・送迎の事故
-    @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_service
-    @service_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_service
-    @service_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_service
+    @service_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_service.current_facility(current_facility)
+    @service_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_service.current_facility(current_facility)
+    @service_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_service.current_facility(current_facility)
     #活動・支援の事故
-    @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_support
-    @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_support
-    @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_support
+    @support_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_support.current_facility(current_facility)
+    @support_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_support.current_facility(current_facility)
+    @support_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_support.current_facility(current_facility)
     #給食・配膳の事故
-    @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_lunch
-    @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_lunch
-    @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_lunch
+    @lunch_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_lunch.current_facility(current_facility)
+    @lunch_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_lunch.current_facility(current_facility)
+    @lunch_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_lunch.current_facility(current_facility)
     #トイレ・排泄の事故
-    @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_toilet
-    @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_toilet
-    @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_toilet
+    @toilet_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_toilet.current_facility(current_facility)
+    @toilet_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_toilet.current_facility(current_facility)
+    @toilet_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_toilet.current_facility(current_facility)
     #入浴の事故
-    @bathing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_bathing
-    @bathing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_bathing
-    @bathing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_bathing
+    @bathing_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_bathing.current_facility(current_facility)
+    @bathing_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_bathing.current_facility(current_facility)
+    @bathing_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_bathing.current_facility(current_facility)
     #その他の事故
-    @other_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_other_scene
-    @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_other_scene
-    @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_other_scene
+    @other_scene_hat_accidents2f = Accident.includes(:senior).floor(2).date(@month).accident.activity_other_scene.current_facility(current_facility)
+    @other_scene_hat_accidents3f = Accident.includes(:senior).floor(3).date(@month).accident.activity_other_scene.current_facility(current_facility)
+    @other_scene_hat_accidents4f = Accident.includes(:senior).floor(4).date(@month).accident.activity_other_scene.current_facility(current_facility)
     #場面総合計の事故
     @total_scene_hat_accidents2f = total_scene(@service_hat_accidents2f, @support_hat_accidents2f, @lunch_hat_accidents2f,
                                                @toilet_hat_accidents2f, @bathing_hat_accidents2f, @other_scene_hat_accidents2f)

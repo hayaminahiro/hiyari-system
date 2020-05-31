@@ -193,21 +193,23 @@
                 <% if @accident.activity_scene.present? %>
                   <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {selected: @accident.activity_scene}, { class: "form-control" } %>
                 <% else %>
-                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリの場面を選択"}, { class: "form-control" } %>
+                  <%= ac.select :activity_scene, Accident.activity_scenes.keys.to_a, {prompt: "ヒヤリ場面を選択"}, { class: "form-control" } %>
                 <% end %>
+                <span class="select-choice">※ 必須</span>
               </td>
               <td class="report-td">
-                <%= ac.text_field :other_activity_scene, value: @accident.other_activity_scene, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+                <%= ac.text_area :other_activity_scene, value: @accident.other_activity_scene, rows: 2, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
               <td class="report-td" style="width: 15%;">
                 <% if @accident.event_classification.present? %>
                   <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {selected: @accident.event_classification}, { class: "form-control" } %>
                 <% else %>
-                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事の領域を選択"}, { class: "form-control" } %>
+                  <%= ac.select :event_classification, Accident.event_classifications.keys.to_a, {prompt: "出来事領域を選択"}, { class: "form-control" } %>
                 <% end %>
+                <span class="select-choice">※ 必須</span>
               </td>
               <td class="report-td">
-                <%= ac.text_field :other_event, value: @accident.other_event, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
+                <%= ac.text_area :other_event, value: @accident.other_event, rows: 2, placeholder: "※「その他」は具体的に記載", class: "form-control" %>
               </td>
             </tr>
             </tbody>

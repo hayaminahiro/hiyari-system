@@ -5,6 +5,9 @@ class Accident < ApplicationRecord
   validates :department, presence: true
   validates :reporter, presence: true
   validates :accident_scene, presence: true
+  validates :activity_scene, presence: true
+  validates :event_classification, presence: true
+
 
   enum accident_result: {ヒヤリのみ:1, 軽事故等:2}
 

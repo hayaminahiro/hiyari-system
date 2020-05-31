@@ -159,7 +159,9 @@ Accident.create!(senior_id: 1,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "井上権左衛門",
                  accident_floor: 2,
-                 accident_scene: "ベッドから車椅子移乗時、頭から転落"
+                 accident_scene: "ベッドから車椅子移乗時、頭から転落",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 2,
@@ -171,7 +173,9 @@ Accident.create!(senior_id: 2,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "加藤恵美子",
                  accident_floor: 2,
-                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折"
+                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
@@ -184,7 +188,9 @@ Accident.create!(senior_id: 3,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "佐藤金太郎",
                  accident_floor: 2,
-                 accident_scene: "飾り物の柿を口の中に入れてしまう"
+                 accident_scene: "飾り物の柿を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 7,
@@ -196,7 +202,9 @@ Accident.create!(senior_id: 7,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "佐藤金太郎",
                  accident_floor: 2,
-                 accident_scene: "利用者Cの食事を横から食べてしまう"
+                 accident_scene: "利用者Cの食事を横から食べてしまう",
+                 event_classification: 2,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 7,
@@ -208,7 +216,9 @@ Accident.create!(senior_id: 7,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "飯島寒子",
                  accident_floor: 2,
-                 accident_scene: "利用者Bの眼鏡を取り上げ破壊してしまう"
+                 accident_scene: "利用者Bの眼鏡を取り上げ破壊してしまう",
+                 event_classification: 4,
+                 activity_scene: 1
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
@@ -221,7 +231,9 @@ Accident.create!(senior_id: 7,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "佐藤金太郎",
                  accident_floor: 2,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 7,
@@ -233,7 +245,9 @@ Accident.create!(senior_id: 7,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "佐野律子",
                  accident_floor: 2,
-                 accident_scene: "食事中突然立ち上がり転倒"
+                 accident_scene: "食事中突然立ち上がり転倒",
+                 event_classification: 0,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 2,
@@ -245,7 +259,9 @@ Accident.create!(senior_id: 2,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "鮫島正",
                  accident_floor: 2,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 3
 )
 
 #=================================
@@ -260,7 +276,9 @@ Accident.create!(senior_id: 21,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイケル",
                  accident_floor: 3,
-                 accident_scene: "ベッドから車椅子移乗時、頭から転落"
+                 accident_scene: "ベッドから車椅子移乗時、頭から転落",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 21,
@@ -272,7 +290,9 @@ Accident.create!(senior_id: 21,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジェニファー",
                  accident_floor: 3,
-                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折"
+                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 22,
@@ -284,7 +304,9 @@ Accident.create!(senior_id: 22,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイケル",
                  accident_floor: 3,
-                 accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目"
+                 accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 23,
@@ -296,7 +318,9 @@ Accident.create!(senior_id: 23,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジェニファー",
                  accident_floor: 3,
-                 accident_scene: "廊下で歩行中に転倒、右大腿部骨折ー2回目"
+                 accident_scene: "廊下で歩行中に転倒、右大腿部骨折ー2回目",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
@@ -309,7 +333,9 @@ Accident.create!(senior_id: 22,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ケン",
                  accident_floor: 3,
-                 accident_scene: "偽物の柿を口の中に入れてしまう"
+                 accident_scene: "偽物の柿を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 24,
@@ -321,7 +347,9 @@ Accident.create!(senior_id: 24,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイク",
                  accident_floor: 3,
-                 accident_scene: "利用者Cの髪の毛を食べてしまう"
+                 accident_scene: "利用者Cの髪の毛を食べてしまう",
+                 event_classification: 4,
+                 activity_scene: 5
 )
 
 Accident.create!(senior_id: 24,
@@ -333,7 +361,9 @@ Accident.create!(senior_id: 24,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイケル",
                  accident_floor: 3,
-                 accident_scene: "利用者Bのお金を取り上げてしまう"
+                 accident_scene: "利用者Bのお金を取り上げてしまう",
+                 event_classification: 4,
+                 activity_scene: 1
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
@@ -346,7 +376,9 @@ Accident.create!(senior_id: 25,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジョー",
                  accident_floor: 3,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 0
 )
 
 Accident.create!(senior_id: 25,
@@ -358,7 +390,9 @@ Accident.create!(senior_id: 25,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ステファニー",
                  accident_floor: 3,
-                 accident_scene: "食事中突然立ち上がり転倒"
+                 accident_scene: "食事中突然立ち上がり転倒",
+                 event_classification: 0,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 25,
@@ -370,7 +404,9 @@ Accident.create!(senior_id: 25,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ファントム",
                  accident_floor: 3,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 4
 )
 
 Accident.create!(senior_id: 26,
@@ -382,7 +418,9 @@ Accident.create!(senior_id: 26,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジョー",
                  accident_floor: 3,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 5
 )
 
 Accident.create!(senior_id: 26,
@@ -394,7 +432,9 @@ Accident.create!(senior_id: 26,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ステファニー",
                  accident_floor: 3,
-                 accident_scene: "食事中突然立ち上がり転倒"
+                 accident_scene: "食事中突然立ち上がり転倒",
+                 event_classification: 0,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 28,
@@ -406,7 +446,9 @@ Accident.create!(senior_id: 28,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ファントム",
                  accident_floor: 3,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 0
 )
 
 #=================================
@@ -421,7 +463,9 @@ Accident.create!(senior_id: 41,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイケル",
                  accident_floor: 4,
-                 accident_scene: "ベッドから車椅子移乗時、頭から転落"
+                 accident_scene: "ベッドから車椅子移乗時、頭から転落",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 42,
@@ -433,7 +477,9 @@ Accident.create!(senior_id: 42,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジェニファー",
                  accident_floor: 4,
-                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折"
+                 accident_scene: "廊下で歩行中に転倒、左大腿部骨折",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 44,
@@ -445,7 +491,9 @@ Accident.create!(senior_id: 44,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "マイケル",
                  accident_floor: 4,
-                 accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目"
+                 accident_scene: "ベッドから車椅子移乗時、頭から転落ー2回目",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 44,
@@ -457,7 +505,9 @@ Accident.create!(senior_id: 44,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ジェニファー",
                  accident_floor: 4,
-                 accident_scene: "廊下で歩行中に転倒、右大腿部骨折ー2回目"
+                 accident_scene: "廊下で歩行中に転倒、右大腿部骨折ー2回目",
+                 event_classification: 0,
+                 activity_scene: 1
 )
 
 #ヒヤリ・事故報告書サンプル 4月分
@@ -470,7 +520,9 @@ Accident.create!(senior_id: 49,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "ken",
                  accident_floor: 4,
-                 accident_scene: "偽物の柿を口の中に入れてしまう"
+                 accident_scene: "偽物の柿を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 49,
@@ -482,7 +534,9 @@ Accident.create!(senior_id: 49,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "mike",
                  accident_floor: 4,
-                 accident_scene: "利用者Cの髪の毛を食べてしまう"
+                 accident_scene: "利用者Cの髪の毛を食べてしまう",
+                 event_classification: 4,
+                 activity_scene: 3
 )
 
 Accident.create!(senior_id: 49,
@@ -494,7 +548,9 @@ Accident.create!(senior_id: 49,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "mikel",
                  accident_floor: 4,
-                 accident_scene: "利用者Bのお金を取り上げてしまう"
+                 accident_scene: "利用者Bのお金を取り上げてしまう",
+                 event_classification: 4,
+                 activity_scene: 5
 )
 
 #ヒヤリ・事故報告書サンプル 5月分
@@ -507,7 +563,9 @@ Accident.create!(senior_id: 47,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "jho",
                  accident_floor: 4,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 1
 )
 
 Accident.create!(senior_id: 44,
@@ -519,7 +577,9 @@ Accident.create!(senior_id: 44,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "stave",
                  accident_floor: 4,
-                 accident_scene: "食事中突然立ち上がり転倒"
+                 accident_scene: "食事中突然立ち上がり転倒",
+                 event_classification: 0,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 41,
@@ -531,7 +591,9 @@ Accident.create!(senior_id: 41,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "fun",
                  accident_floor: 4,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 4
 )
 
 Accident.create!(senior_id: 46,
@@ -543,7 +605,9 @@ Accident.create!(senior_id: 46,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "jon",
                  accident_floor: 4,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 41,
@@ -555,7 +619,9 @@ Accident.create!(senior_id: 41,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "step-boy",
                  accident_floor: 4,
-                 accident_scene: "食事中突然立ち上がり転倒"
+                 accident_scene: "食事中突然立ち上がり転倒",
+                 event_classification: 0,
+                 activity_scene: 2
 )
 
 Accident.create!(senior_id: 48,
@@ -567,7 +633,9 @@ Accident.create!(senior_id: 48,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "fancy",
                  accident_floor: 4,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 5
 )
 
 Accident.create!(senior_id: 45,
@@ -579,7 +647,9 @@ Accident.create!(senior_id: 45,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "mike",
                  accident_floor: 4,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 0
 )
 
 #ヒヤリ・事故報告書サンプル 6月分
@@ -592,7 +662,9 @@ Accident.create!(senior_id: 46,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "jo",
                  accident_floor: 4,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 5
 )
 
 Accident.create!(senior_id: 50,
@@ -604,7 +676,9 @@ Accident.create!(senior_id: 50,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "fun",
                  accident_floor: 4,
-                 accident_scene: "薬が落ちているのを発見"
+                 accident_scene: "薬が落ちているのを発見",
+                 event_classification: 3,
+                 activity_scene: 4
 )
 
 Accident.create!(senior_id: 50,
@@ -616,5 +690,7 @@ Accident.create!(senior_id: 50,
                  accident_time: "2020-03-31 22:30:00",
                  accident_senior: "jon",
                  accident_floor: 4,
-                 accident_scene: "折り紙を口の中に入れてしまう"
+                 accident_scene: "折り紙を口の中に入れてしまう",
+                 event_classification: 2,
+                 activity_scene: 0
 )
