@@ -49,8 +49,8 @@
                     <%= l(accident.accident_datetime, format: :middle) %>
                   </td>
                   <td class="month-count">
-                    【ヒヤリ <%= @hat_count3f.where(facility_judge: current_facility.id).accident_count(accident) %>件】
-                    【事故 <%= @accident_count3f.where(facility_judge: current_facility.id).accident_count(accident) %>件】
+                    【ヒヤリ <%= @hat_count3f.current_facility(current_facility).accident_count(accident) %>件】
+                    【事故 <%= @accident_count3f.current_facility(current_facility).accident_count(accident) %>件】
                   </td>
                   <td class="index-btn-position" onclick="show_hide_row('hidden_row<%= month %>');">
                     <%= link_to "#{l(accident.accident_datetime, format: :middle)} ヒヤリ・事故閲覧", "#", remote: true, class: "btn-square-shadow-mini" %>

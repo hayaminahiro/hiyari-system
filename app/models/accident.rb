@@ -58,6 +58,7 @@ class Accident < ApplicationRecord
   scope :activity_other_scene, -> { where(activity_scene: 5) }
   #ヒヤリ・事故カウント
   scope :accident_count, -> (date) { where(accident_datetime: date.accident_datetime.in_time_zone.all_month).count }
+  scope :current_facility, -> (id) { where(facility_judge: id) }
 
   #which_accident（ヒヤリor事故）の選択
   def hat
