@@ -125,7 +125,6 @@
                 <th class="report-index" style="vertical-align: middle">対象者</th>
                 <td class="report-td" style="color: red; vertical-align: middle;">
                   <%= @senior.senior_name %>
-                  <%= ac.hidden_field :accident_floor, value: @senior.floor %>
                 </td>
                 <th class="report-index" style="vertical-align: middle">関与者</th>
                 <td>
@@ -298,6 +297,8 @@
                   <%= ac.text_area :superior_comment, value: @accident.superior_comment, rows: 2, class: "form-control" %>
                 </td>
               </tr>
+              <%= ac.hidden_field :accident_floor, value: @senior.floor %>
+              <%= ac.hidden_field :facility_judge, value: current_facility.id %>
             </tbody>
           </table>
         </div>
