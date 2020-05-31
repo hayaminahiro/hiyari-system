@@ -504,7 +504,7 @@ class AccidentsController < ApplicationController
   #各月別ヒヤリ集計表
   def month_spreadsheet
     #各月のヒヤリ・事故一覧
-    hat_accidents = Accident.includes(:senior).date(@month).hat
+    hat_accidents = Accident.includes(:senior).date(@month).hat.where(facility_judge: current_facility.id)
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
     #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
     # 転倒・転落
@@ -988,7 +988,7 @@ class AccidentsController < ApplicationController
   #各月別事故集計表
   def spreadsheet_accidents
     #各月のヒヤリ・事故一覧
-    accidents = Accident.includes(:senior).date(@month).accident
+    accidents = Accident.includes(:senior).date(@month).accident.where(facility_judge: current_facility.id)
     #Accident.time_division(accidents)からの返り値を、一つ一つViewで使用する為にインスタンス変数に代入
     #time_division(accidents)はAccidentクラスに対して使用するクラスメソッド
     # 転倒・転落
@@ -1474,7 +1474,7 @@ class AccidentsController < ApplicationController
       def accident_params
         params.require(:senior).permit(accidents: [
             #table外
-            :which_accident, :reporting_date, :last_reporting_date, :department, :reporter,
+            :which_accident, :reporting_date, :last_reporting_date, :department, :reporter, :facility_judge,
             #具体的内容
             :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
             :accident_scene, :accident_result, :accident_result_comment,
