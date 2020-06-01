@@ -17,7 +17,7 @@ class SeniorsController < ApplicationController
   #施設利用者新規作成モーダル
   def new_senior
     @senior = Senior.new
-    @workers = Worker.working.including_facility
+    @workers = Worker.working.including_facility.current_facility(current_facility)
   end
 
   #施設利用者新規作成
@@ -25,7 +25,11 @@ class SeniorsController < ApplicationController
     @senior = @facility.seniors.new(senior_params)
     if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
       @senior.save
-      flash[:success] = "利用者「#{@senior.senior_name}」さんを新規登録しました。"
+      if @senior.floor == nil
+        flash[:danger] = "利用階が選択されていません。"
+      else
+        flash[:success] = "#{@senior.floor}階利用者「#{@senior.senior_name}」さんを新規登録しました。ふりがなに全角空白と半角英数字を使用している場合は登録されません。"
+      end
     else
       flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
@@ -41,7 +45,7 @@ class SeniorsController < ApplicationController
   def update_senior
     if senior_valid?((senior_params)[:senior_name], (senior_params)[:worker_ids])
       @senior.update_attributes(senior_params)
-      flash[:success] = "利用者「#{@senior.senior_name}」さんの情報を更新しました。"
+      flash[:success] = "#{@senior.floor}階利用者「#{@senior.senior_name}」さんの情報を更新しました。ふりがなに全角空白と半角英数字を使用している場合は更新されません。"
     else
       flash[:danger] = "入力項目に誤りがあります。ふりがなに全角空白と半角英数字は使用できません。担当職員は最大２名までです。"
     end
@@ -51,7 +55,7 @@ class SeniorsController < ApplicationController
   #施設利用者退所ボタン
   def leaving
     if @senior.update_attributes(using_flg: false)
-      flash[:warning] = "利用者「#{@senior.senior_name}」さんを退所へ変更しました。"
+      flash[:warning] = "#{@senior.floor}階利用者「#{@senior.senior_name}」さんを退所へ変更しました。退職者一覧を確認して下さい。"
     end
     redirect_to facility_seniors_url
   end
@@ -59,7 +63,7 @@ class SeniorsController < ApplicationController
   #施設利用者再入所ボタン
   def re_entry
     if @senior.update_attributes(using_flg: true)
-      flash[:success] = "利用者「#{@senior.senior_name}」さん（#{@senior.floor}階）を再入所へ変更しました。"
+      flash[:success] = "利用者「#{@senior.senior_name}」さんを再入所へ変更しました。#{@senior.floor}階を確認して下さい。"
     end
     redirect_to facility_seniors_url
   end
@@ -67,7 +71,7 @@ class SeniorsController < ApplicationController
   #施設利用者削除ボタン
   def destroy
     if @senior.destroy
-      flash[:warning] = "利用者「#{@senior.senior_name}」さんを削除しました。"
+      flash[:warning] = "#{@senior.floor}階利用者「#{@senior.senior_name}」さんを削除しました。"
       redirect_to facility_seniors_url
     end
   end

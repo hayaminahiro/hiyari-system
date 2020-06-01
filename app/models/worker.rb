@@ -30,5 +30,7 @@ class Worker < ApplicationRecord
   scope :chief_2f, -> { where(position: "２階係長") }
   scope :chief_3f, -> { where(position: "３階係長") }
   scope :chief_4f, -> { where(position: "４階係長") }
+  # 施設ユーザー指定
+  scope :current_facility, -> (id) { where(facility_id: id) }
 end
 

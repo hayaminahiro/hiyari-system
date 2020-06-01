@@ -12,8 +12,6 @@ class Senior < ApplicationRecord
   VALID_WORKER_NAME_CALL_REGEX = /\A[ぁ-んー－]+\z/
   validates :senior_name_call, length: { in: 1..20 }, format: { with: VALID_WORKER_NAME_CALL_REGEX }, allow_blank: true
   validates :floor, presence: true
-  #validates :charge_worker, presence: true
-  #validates :worker_ids, presence: true
 
   #利用者フロア
   scope :floor, -> (num) { where(floor: num) }
