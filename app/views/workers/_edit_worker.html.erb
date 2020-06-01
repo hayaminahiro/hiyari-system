@@ -14,13 +14,13 @@
         <div class="col-md-6 col-md-offset-3">
           <%= form_with(model: @worker, url: update_worker_facility_worker_path(current_facility, @worker), local: true, method: :patch) do |f| %>
 
-            <%= f.label :worker_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :worker_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.text_field :worker_name, placeholder: "田中 幸子", class: "form-control" %>
 
             <%= f.label :worker_name_call, class: "label-#{yield(:class_text)}" %>
             <%= f.text_field :worker_name_call, placeholder: "たなかさちこ（ひらがな）", class: "form-control" %>
 
-            <%= f.label :sign_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :sign_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.text_field :sign_name, placeholder: "田中", class: "form-control" %>
 
             <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %>

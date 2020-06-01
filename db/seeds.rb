@@ -1,6 +1,6 @@
 #システム利用施設作成
 
-Facility.create!(name:  "社会福祉法人くろねこ協会（本部）",
+Facility.create!(name:  "社会福祉法人くろねこ協会",
                  email: "admin_cat@email.com",
                  password:              "password",
                  password_confirmation: "password",
@@ -8,13 +8,13 @@ Facility.create!(name:  "社会福祉法人くろねこ協会（本部）",
 )
 
 # Sampleで多数のデータ投入
-Facility.create!(name:  "社会福祉法人うみの風（一般施設）",
+Facility.create!(name:  "社会福祉法人うみの風",
                  email: "center@email.com",
                  password:              "password",
                  password_confirmation: "password",
 )
 
-Facility.create!(name:  "特別養護老人ホーム ねこの街（一般施設）",
+Facility.create!(name:  "特別養護老人ホーム ねこの街",
                  email: "cat@email.com",
                  password:              "password",
                  password_confirmation: "password")

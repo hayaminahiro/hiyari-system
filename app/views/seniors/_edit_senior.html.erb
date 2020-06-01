@@ -14,7 +14,7 @@
         <div class="col-md-6 col-md-offset-3">
           <%= form_with(model: @senior, url: update_senior_facility_senior_path(current_facility, @senior), local: true, method: :patch) do |f| %>
 
-            <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.text_field :senior_name, placeholder: "山田 信", class: "form-control" %>
 
             <%= f.label :senior_name_call, "ひらがな（全角空白と半角英数字不可）", class: "label-#{yield(:class_text)}" %>

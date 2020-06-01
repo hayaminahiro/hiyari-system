@@ -22,6 +22,8 @@ class Senior < ApplicationRecord
   scope :name_sorted, -> { order(senior_name_call: :asc) }
   # N+1問題
   scope :including_facility, -> { includes(:facility) }
+  # 施設ユーザー指定
+  scope :current_facility, -> (id) { where(facility_id: id) }
 
   #利用階
   def floor2

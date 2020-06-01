@@ -203,7 +203,7 @@
                   </td>
                   <td class="index-btn-position" rowspan="3">
                     <%= link_to "再就職", re_employment_facility_worker_path(@facility, worker), method: :patch,
-                                data: { confirm: "職員#{worker.worker_name}さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
+                                data: { confirm: "職員「#{worker.worker_name}」さん（#{worker.working_floor}階）を再入所へ変更してよろしいですか？" }, class: "btn btn-info"%>
                     <%= link_to "削除", facility_worker_path(@facility, worker), method: :delete,
                                 data: { confirm: "職員「#{worker.worker_name}」さんを削除してよろしいですか？" }, class: "btn btn-danger"  %>
                   </td>
