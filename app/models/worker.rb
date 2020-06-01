@@ -11,6 +11,7 @@ class Worker < ApplicationRecord
   VALID_WORKER_NAME_CALL_REGEX = /\A[ぁ-んー－]+\z/
   validates :worker_name_call, length: { in: 1..25 }, format: { with: VALID_WORKER_NAME_CALL_REGEX }, allow_blank: true
   validates :sign_name, presence: true, length: { in: 1..6 }
+  validates :working_floor, presence: true
 
   #役職選択
   enum position: {
@@ -30,5 +31,7 @@ class Worker < ApplicationRecord
   scope :chief_2f, -> { where(position: "２階係長") }
   scope :chief_3f, -> { where(position: "３階係長") }
   scope :chief_4f, -> { where(position: "４階係長") }
+  # 施設ユーザー指定
+  scope :current_facility, -> (id) { where(facility_id: id) }
 end
 

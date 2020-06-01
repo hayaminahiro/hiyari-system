@@ -88,4 +88,21 @@ class ApplicationController < ActionController::Base
   def admin_facility
     redirect_to root_url unless current_facility.admin?
   end
+
+  # 自分以外のページへのアクセス拒否
+  def url_page_reject
+    unless @facility.id == current_facility.id
+      redirect_to root_url
+    end
+  end
+
+  # 管理者自身のページへのアクセス拒否
+  def url_self_admin_reject
+    if current_facility.admin?
+      if @facility.id == 1
+        redirect_to root_url
+      end
+    end
+  end
+
 end

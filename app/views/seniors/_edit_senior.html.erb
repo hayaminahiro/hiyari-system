@@ -14,11 +14,11 @@
         <div class="col-md-6 col-md-offset-3">
           <%= form_with(model: @senior, url: update_senior_facility_senior_path(current_facility, @senior), local: true, method: :patch) do |f| %>
 
-            <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %>
-            <%= f.text_field :senior_name, class: "form-control" %>
+            <%= f.label :senior_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
+            <%= f.text_field :senior_name, placeholder: "山田 信", class: "form-control" %>
 
-            <%= f.label :senior_name_call, class: "label-#{yield(:class_text)}" %>
-            <%= f.text_field :senior_name_call, placeholder: "やまだたろう", class: "form-control" %>
+            <%= f.label :senior_name_call, "ひらがな（全角空白と半角英数字不可）", class: "label-#{yield(:class_text)}" %>
+            <%= f.text_field :senior_name_call, placeholder: "やまだじん (ひらがな)", class: "form-control" %>
 
             <%= f.label :floor, class: "label-#{yield(:class_text)}" %>
             <%= f.select :floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "利用階を選択"}, class: "form-control" %>
