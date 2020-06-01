@@ -1,22 +1,30 @@
 #システム利用施設作成
-Facility.create!(name:  "社会福祉法人うみの風 本部",
-             email: "center@email.com",
-             password:              "password",
-             password_confirmation: "password",
-             admin: true
-              )
 
-Facility.create!(name:  "特別養護老人ホーム ねこの街",
-             email: "cat@email.com",
-             password:              "password",
-             password_confirmation: "password")
+Facility.create!(name:  "社会福祉法人くろねこ協会（本部）",
+                 email: "admin_cat@email.com",
+                 password:              "password",
+                 password_confirmation: "password",
+                 admin: true
+)
+
+# Sampleで多数のデータ投入
+Facility.create!(name:  "社会福祉法人うみの風（一般施設）",
+                 email: "center@email.com",
+                 password:              "password",
+                 password_confirmation: "password",
+)
+
+Facility.create!(name:  "特別養護老人ホーム ねこの街（一般施設）",
+                 email: "cat@email.com",
+                 password:              "password",
+                 password_confirmation: "password")
 
 #=================================
 
 #2F施設利用者
 a = 0
 20.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "2F-利用者-#{a += 1}",
                  floor: 2,
                  using_flg: true
@@ -26,7 +34,7 @@ end
 #3F施設利用者
 a = 0
 20.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "3F-利用者-#{a += 1}",
                  floor:3,
                  using_flg: true
@@ -36,7 +44,7 @@ end
 #4F施設利用者
 a = 0
 10.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "4F-利用者-#{a += 1}",
                  floor: 4,
                  using_flg: true
@@ -46,7 +54,7 @@ end
 #2F退所利用者
 a = 0
 10.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "2F-退所利用者-#{a += 1}",
                  floor: 2,
                  using_flg: false
@@ -56,7 +64,7 @@ end
 #3F退所利用者
 a = 0
 10.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "3F-退所利用者-#{a += 1}",
                  floor: 3,
                  using_flg: false
@@ -66,7 +74,7 @@ end
 #4F退所利用者
 a = 0
 5.times do
-  Senior.create!(facility_id: 1,
+  Senior.create!(facility_id: 2,
                  senior_name: "4F-退所利用者-#{a += 1}",
                  floor: 4,
                  using_flg: false
@@ -79,7 +87,7 @@ end
 a = 0
 b = 0
 10.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "2F-介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 2,
@@ -91,7 +99,7 @@ end
 a = 0
 b = 0
 10.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "3F-介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 3,
@@ -103,7 +111,7 @@ end
 a = 0
 b = 0
 5.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "4F-介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 4,
@@ -115,7 +123,7 @@ end
 a = 0
 b = 0
 5.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "2F-退職介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 2,
@@ -127,7 +135,7 @@ end
 a = 0
 b = 0
 5.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "3F-退職介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 3,
@@ -139,7 +147,7 @@ end
 a = 0
 b = 0
 5.times do
-  Worker.create!(facility_id: 1,
+  Worker.create!(facility_id: 2,
                  worker_name: "4F-退職介護職員-#{a += 1}",
                  sign_name: "サイン-#{b += 1}",
                  working_floor: 4,
@@ -151,7 +159,7 @@ end
 
 #2Fヒヤリ・事故報告書サンプル 3月分
 Accident.create!(senior_id: 1,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -165,7 +173,7 @@ Accident.create!(senior_id: 1,
 )
 
 Accident.create!(senior_id: 2,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "井上良子",
@@ -180,7 +188,7 @@ Accident.create!(senior_id: 2,
 
 #ヒヤリ・事故報告書サンプル 4月分
 Accident.create!(senior_id: 3,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -194,7 +202,7 @@ Accident.create!(senior_id: 3,
 )
 
 Accident.create!(senior_id: 7,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -208,7 +216,7 @@ Accident.create!(senior_id: 7,
 )
 
 Accident.create!(senior_id: 7,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -223,7 +231,7 @@ Accident.create!(senior_id: 7,
 
 #ヒヤリ・事故報告書サンプル 5月分
 Accident.create!(senior_id: 7,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -237,7 +245,7 @@ Accident.create!(senior_id: 7,
 )
 
 Accident.create!(senior_id: 7,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -251,7 +259,7 @@ Accident.create!(senior_id: 7,
 )
 
 Accident.create!(senior_id: 2,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -268,7 +276,7 @@ Accident.create!(senior_id: 2,
 
 #3Fヒヤリ・事故報告書サンプル 3月分
 Accident.create!(senior_id: 21,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -282,7 +290,7 @@ Accident.create!(senior_id: 21,
 )
 
 Accident.create!(senior_id: 21,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "井上良子",
@@ -296,7 +304,7 @@ Accident.create!(senior_id: 21,
 )
 
 Accident.create!(senior_id: 22,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -310,7 +318,7 @@ Accident.create!(senior_id: 22,
 )
 
 Accident.create!(senior_id: 23,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "井上良子",
@@ -325,7 +333,7 @@ Accident.create!(senior_id: 23,
 
 #ヒヤリ・事故報告書サンプル 4月分
 Accident.create!(senior_id: 22,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -339,7 +347,7 @@ Accident.create!(senior_id: 22,
 )
 
 Accident.create!(senior_id: 24,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -353,7 +361,7 @@ Accident.create!(senior_id: 24,
 )
 
 Accident.create!(senior_id: 24,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -368,7 +376,7 @@ Accident.create!(senior_id: 24,
 
 #ヒヤリ・事故報告書サンプル 5月分
 Accident.create!(senior_id: 25,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -382,7 +390,7 @@ Accident.create!(senior_id: 25,
 )
 
 Accident.create!(senior_id: 25,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -396,7 +404,7 @@ Accident.create!(senior_id: 25,
 )
 
 Accident.create!(senior_id: 25,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -410,7 +418,7 @@ Accident.create!(senior_id: 25,
 )
 
 Accident.create!(senior_id: 26,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -424,7 +432,7 @@ Accident.create!(senior_id: 26,
 )
 
 Accident.create!(senior_id: 26,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -438,7 +446,7 @@ Accident.create!(senior_id: 26,
 )
 
 Accident.create!(senior_id: 28,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -455,7 +463,7 @@ Accident.create!(senior_id: 28,
 
 #4Fヒヤリ・事故報告書サンプル 3月分
 Accident.create!(senior_id: 41,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -469,7 +477,7 @@ Accident.create!(senior_id: 41,
 )
 
 Accident.create!(senior_id: 42,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "井上良子",
@@ -483,7 +491,7 @@ Accident.create!(senior_id: 42,
 )
 
 Accident.create!(senior_id: 44,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -497,7 +505,7 @@ Accident.create!(senior_id: 44,
 )
 
 Accident.create!(senior_id: 44,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "井上良子",
@@ -512,7 +520,7 @@ Accident.create!(senior_id: 44,
 
 #ヒヤリ・事故報告書サンプル 4月分
 Accident.create!(senior_id: 49,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -526,7 +534,7 @@ Accident.create!(senior_id: 49,
 )
 
 Accident.create!(senior_id: 49,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -540,7 +548,7 @@ Accident.create!(senior_id: 49,
 )
 
 Accident.create!(senior_id: 49,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -555,7 +563,7 @@ Accident.create!(senior_id: 49,
 
 #ヒヤリ・事故報告書サンプル 5月分
 Accident.create!(senior_id: 47,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -569,7 +577,7 @@ Accident.create!(senior_id: 47,
 )
 
 Accident.create!(senior_id: 44,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -583,7 +591,7 @@ Accident.create!(senior_id: 44,
 )
 
 Accident.create!(senior_id: 41,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -597,7 +605,7 @@ Accident.create!(senior_id: 41,
 )
 
 Accident.create!(senior_id: 46,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -611,7 +619,7 @@ Accident.create!(senior_id: 46,
 )
 
 Accident.create!(senior_id: 41,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "齋藤隼人",
@@ -625,7 +633,7 @@ Accident.create!(senior_id: 41,
 )
 
 Accident.create!(senior_id: 48,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -639,7 +647,7 @@ Accident.create!(senior_id: 48,
 )
 
 Accident.create!(senior_id: 45,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -654,7 +662,7 @@ Accident.create!(senior_id: 45,
 
 #ヒヤリ・事故報告書サンプル 6月分
 Accident.create!(senior_id: 46,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
@@ -668,7 +676,7 @@ Accident.create!(senior_id: 46,
 )
 
 Accident.create!(senior_id: 50,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "事故",
                  department: "特養",
                  reporter: "高橋敦子",
@@ -682,7 +690,7 @@ Accident.create!(senior_id: 50,
 )
 
 Accident.create!(senior_id: 50,
-                 facility_judge: 1,
+                 facility_judge: 2,
                  which_accident: "ヒヤリハット",
                  department: "特養",
                  reporter: "大野元治",
