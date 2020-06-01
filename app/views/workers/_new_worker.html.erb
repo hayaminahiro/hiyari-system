@@ -14,16 +14,16 @@
         <div class="col-md-6 col-md-offset-3">
           <%= form_with(model: @worker, url: create_worker_facility_workers_path(@facility), local: true, method: :post) do |f| %>
 
-            <%= f.label :worker_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :worker_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.text_field :worker_name, placeholder: "田中 幸子", class: "form-control" %>
 
-            <%= f.label :worker_name_call, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :worker_name_call, "ひらがな（全角空白と半角英数字不可）", class: "label-#{yield(:class_text)}" %>
             <%= f.text_field :worker_name_call, placeholder: "たなかさちこ（ひらがな）", class: "form-control" %>
 
-            <%= f.label :sign_name, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :sign_name, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.text_field :sign_name, placeholder: "田中", class: "form-control" %>
 
-            <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %>
+            <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
             <%= f.select :working_floor, [['2階', 2], ['3階', 3], ['4階', 4]], {prompt: "所属階を選択"}, class: "form-control" %>
 
             <%= f.label :position, class: "label-#{yield(:class_text)}" %>

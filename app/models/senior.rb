@@ -12,8 +12,6 @@ class Senior < ApplicationRecord
   VALID_WORKER_NAME_CALL_REGEX = /\A[ぁ-んー－]+\z/
   validates :senior_name_call, length: { in: 1..20 }, format: { with: VALID_WORKER_NAME_CALL_REGEX }, allow_blank: true
   validates :floor, presence: true
-  #validates :charge_worker, presence: true
-  #validates :worker_ids, presence: true
 
   #利用者フロア
   scope :floor, -> (num) { where(floor: num) }
@@ -24,6 +22,8 @@ class Senior < ApplicationRecord
   scope :name_sorted, -> { order(senior_name_call: :asc) }
   # N+1問題
   scope :including_facility, -> { includes(:facility) }
+  # 施設ユーザー指定
+  scope :current_facility, -> (id) { where(facility_id: id) }
 
   #利用階
   def floor2

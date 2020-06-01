@@ -15,8 +15,10 @@
         <td><%= facility.name %></td>
         <td>
           <% if current_facility.admin? && !current_facility?(facility) %>
+            <div style="float: right">
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
             <%= link_to "削除", facility, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+            </div>
           <% end %>
         </td>
       </tr>

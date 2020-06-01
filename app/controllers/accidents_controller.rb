@@ -1475,7 +1475,7 @@ class AccidentsController < ApplicationController
       def accident_params
         params.require(:senior).permit(accidents: [
             #table外
-            :which_accident, :reporting_date, :last_reporting_date, :department, :reporter, :facility_judge,
+            :which_accident, :reporting_date, :last_reporting_date, :department, :reporter, :family_comment, :facility_judge,
             #具体的内容
             :accident_datetime, :accident_time, :accident_floor, :accident_worker, :accident_place, :active,
             :accident_scene, :accident_result, :accident_result_comment,
@@ -1485,10 +1485,6 @@ class AccidentsController < ApplicationController
             :result_comment, :measures_comment, :change_measures,
             #評価・結果
             :evaluation_date, :evaluation_comment, :measures_result, :superior_comment,
-            #発生直後サイン
-            :superior_a, :superior_b, :superior_c, :superior_d, :charge_sign, :family_comment,
-            #周知後サイン
-            :superior_a_last, :superior_b_last, :superior_c_last, :superior_d_last,
             #複数チェックボックス・・・原因・要因（職員側）
             support_mistake: [], not_enough_skills: [], work_attitude: [], information_sharing_worker: [], not_enough_assessment: [], environment: [],
             #複数チェックボックス・・・原因・要因（利用者側）
