@@ -3,10 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //役職color
-#position-color {
+.position-color {
   width: 150px;
   font-size: 18px;
   text-align: center;
   padding-top: 5px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.position-color-manager {
+  width: 150px;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 5px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+div.position-color-manager {
+  width: 100%;
 }
