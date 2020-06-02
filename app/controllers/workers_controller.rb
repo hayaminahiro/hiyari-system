@@ -9,7 +9,8 @@ class WorkersController < ApplicationController
     @workers2f = Worker.floor(2).working.workers_sorted
     @workers3f = Worker.floor(3).working.workers_sorted
     @workers4f = Worker.floor(4).working.workers_sorted
-    @managers = Worker.floor(5).working.workers_sorted
+    @nurses = Worker.floor(5).working.workers_sorted
+    @managers = Worker.floor(6).working.workers_sorted
     @workers_off = Worker.retirement.workers_sorted
   end
 
@@ -27,8 +28,10 @@ class WorkersController < ApplicationController
       if @worker.working_floor == nil || @worker.sign_name == ""
         flash[:danger] = "未入力項目があります。"
       else
-        if @worker.working_floor == 5
+        if @worker.working_floor == 6
           flash[:success] = "管理の「#{@worker.worker_name}」さんを新規登録しました。ふりがなに全角空白と半角英数字は使用している場合は登録されません。"
+        elsif @worker.working_floor == 5
+          flash[:success] = "医務の「#{@worker.worker_name}」さんを新規登録しました。ふりがなに全角空白と半角英数字は使用している場合は登録されません。"
         else
           flash[:success] = "#{@worker.working_floor}階職員「#{@worker.worker_name}」さんを新規登録しました。ふりがなに全角空白と半角英数字は使用している場合は登録されません。"
         end
@@ -51,8 +54,10 @@ class WorkersController < ApplicationController
       if @worker.sign_name == ""
         flash[:danger] = "サイン名が未入力です。"
       else
-        if @worker.working_floor == 5
+        if @worker.working_floor == 6
           flash[:success] = "管理の「#{@worker.worker_name}」さんの情報を更新しました。ふりがなに全角空白と半角英数字は使用している場合は更新されません。"
+        elsif @worker.working_floor == 5
+          flash[:success] = "医務の「#{@worker.worker_name}」さんの情報を更新しました。ふりがなに全角空白と半角英数字は使用している場合は更新されません。"
         else
           flash[:success] = "#{@worker.working_floor}階職員「#{@worker.worker_name}」さんの情報を更新しました。ふりがなに全角空白と半角英数字は使用している場合は更新されません。"
         end
@@ -66,8 +71,10 @@ class WorkersController < ApplicationController
   #職員退職ボタン
   def retirement
     if @worker.update_attributes(working_flg: false)
-      if @worker.working_floor == 5
+      if @worker.working_floor == 6
         flash[:warning] = "管理の「#{@worker.worker_name}」さんを退職へ変更しました。退職者一覧を確認して下さい。"
+      elsif @worker.working_floor == 5
+        flash[:warning] = "医務の「#{@worker.worker_name}」さんを退職へ変更しました。退職者一覧を確認して下さい。"
       else
         flash[:warning] = "#{@worker.working_floor}階職員「#{@worker.worker_name}」さんを退職へ変更しました。退職者一覧を確認して下さい。"
       end
@@ -78,10 +85,12 @@ class WorkersController < ApplicationController
   #職員再就業ボタン
   def re_employment
     if @worker.update_attributes(working_flg: true)
-      if @worker.working_floor == 5
-        flash[:warning] = "職員「#{@worker.worker_name}」さんを再就業へ変更しました。管理を確認して下さい。"
+      if @worker.working_floor == 6
+        flash[:info] = "職員「#{@worker.worker_name}」さんを再就業へ変更しました。管理を確認して下さい。"
+      elsif @worker.working_floor == 5
+        flash[:info] = "職員「#{@worker.worker_name}」さんを再就業へ変更しました。医務を確認して下さい。"
       else
-        flash[:success] = "職員「#{@worker.worker_name}」さんを再就業へ変更しました。#{@worker.working_floor}階を確認して下さい。"
+        flash[:info] = "職員「#{@worker.worker_name}」さんを再就業へ変更しました。#{@worker.working_floor}階を確認して下さい。"
       end
     end
     redirect_to facility_workers_url
