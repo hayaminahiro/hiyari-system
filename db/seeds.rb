@@ -21,6 +21,87 @@ Facility.create!(name:  "特別養護老人ホーム ねこの街",
 
 #=================================
 
+# 施設長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風施設長",
+               sign_name: "田村",
+               working_floor: 5,
+               working_flg: true,
+               position: 9
+)
+
+# 次長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風次長",
+               sign_name: "小西",
+               working_floor: 5,
+               working_flg: true,
+               position: 8
+)
+
+# リスクマネジャー
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風リスクマネジャー",
+               sign_name: "大木",
+               working_floor: 4,
+               working_flg: true,
+               position: 7
+)
+
+# ２階係長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風２階係長",
+               sign_name: "今井",
+               working_floor: 2,
+               working_flg: true,
+               position: 4
+)
+
+# ３階係長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風３階係長",
+               sign_name: "鎌田",
+               working_floor: 3,
+               working_flg: true,
+               position: 5
+)
+
+# ４階係長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風４階係長",
+               sign_name: "飯田",
+               working_floor: 4,
+               working_flg: true,
+               position: 6
+)
+
+# ２階主任
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風2階主任",
+               sign_name: "立野",
+               working_floor: 2,
+               working_flg: true,
+               position: 1
+)
+
+# ３階主任
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風３階主任",
+               sign_name: "高橋",
+               working_floor: 3,
+               working_flg: true,
+               position: 2
+)
+
+# ４階主任
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風４階主任",
+               sign_name: "後醍醐",
+               working_floor: 4,
+               working_flg: true,
+               position: 3
+)
+
 #2F施設利用者
 a = 0
 20.times do
