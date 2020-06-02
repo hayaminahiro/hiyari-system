@@ -25,7 +25,7 @@ Facility.create!(name:  "特別養護老人ホーム ねこの街",
 Worker.create!(facility_id: 2,
                worker_name: "うみの風施設長",
                sign_name: "田村",
-               working_floor: 5,
+               working_floor: 6,
                working_flg: true,
                position: 9
 )
@@ -34,7 +34,7 @@ Worker.create!(facility_id: 2,
 Worker.create!(facility_id: 2,
                worker_name: "うみの風次長",
                sign_name: "小西",
-               working_floor: 5,
+               working_floor: 6,
                working_flg: true,
                position: 8
 )
@@ -75,6 +75,15 @@ Worker.create!(facility_id: 2,
                position: 6
 )
 
+# 看護係長
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風看護係長",
+               sign_name: "太田",
+               working_floor: 5,
+               working_flg: true,
+               position: 11
+)
+
 # ２階主任
 Worker.create!(facility_id: 2,
                worker_name: "うみの風2階主任",
@@ -100,6 +109,15 @@ Worker.create!(facility_id: 2,
                working_floor: 4,
                working_flg: true,
                position: 3
+)
+
+# 看護主任
+Worker.create!(facility_id: 2,
+               worker_name: "うみの風看護主任",
+               sign_name: "谷",
+               working_floor: 5,
+               working_flg: true,
+               position: 10
 )
 
 #2F施設利用者

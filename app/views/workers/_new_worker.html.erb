@@ -24,7 +24,7 @@
             <%= f.text_field :sign_name, placeholder: "田中", class: "form-control" %>
 
             <%= f.label :working_floor, class: "label-#{yield(:class_text)}" %><span class="select-choice">※ 必須</span>
-            <%= f.select :working_floor, [['2階', 2], ['3階', 3], ['4階', 4], ['管理', 5]], {prompt: "所属階を選択"}, class: "form-control" %>
+            <%= f.select :working_floor, [['2階', 2], ['3階', 3], ['4階', 4], ['医務', 5], ['管理', 6]], {prompt: "所属階を選択"}, class: "form-control" %>
 
             <%= f.label :position, class: "label-#{yield(:class_text)}" %>
             <%= f.select :position, Worker.positions.keys.to_a, {}, class: "form-control" %>
