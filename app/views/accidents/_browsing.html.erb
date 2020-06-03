@@ -1,10 +1,10 @@
 <div class="modal-dialog modal-lg modal-dialog-center" style="padding-top: 0;">
   <div class="modal-content" style="width: 1250px; margin-left: -380px;">
-    <div class="modal-body" style="padding: 10px 0;">
+    <div class="modal-body" style="padding: 25px 0 5px 0;">
       <div class="row">
         <div class="col-md-12">
           <% if @accident.which_accident == "ヒヤリハット" %>
-            <h1 class="title-position-print" style="margin-left: 80px;"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h1>
+            <h1 class="title-position-print" style="padding-left: 30px;"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h1>
           <% else %>
             <h1 class="title-position-print" style="margin-left: 80px;"><%= @senior.senior_name %>&emsp;事故報告書</h1>
           <% end %>
@@ -244,7 +244,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <th class="report-index" style="vertical-align: middle">効果<br>（翌月評価）</th>
+                    <th class="report-index" style="vertical-align: middle">効果（翌月評価）</th>
                     <td class="report-td-left" colspan="2">
                       <p class="left-space">
                         【評価日】
@@ -253,11 +253,11 @@
                       </p>
                     </td>
                     <td class="report-td-left">
-                      <p class="left-space">【解決状況】<br><%= @accident.measures_result %></p>
+                      <p class="left-space">【解決状況】<%= @accident.measures_result %></p>
                     </td>
                   </tr>
                   <tr>
-                    <th class="report-index">責任者等<br>コメント</th>
+                    <th class="report-index">責任者等コメント</th>
                     <td class="report-td-left" colspan="3">
                       <p class="left-space"><%= @accident.superior_comment %></p>
                     </td>
