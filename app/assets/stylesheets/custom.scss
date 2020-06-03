@@ -584,10 +584,6 @@ td .show-btn-position {
 }
 
 //ヒヤリ報告書
-.sign-table {
-  margin-top: 30px;
-}
-
 .title-position-print {
   position: absolute;
   font-size: 30px;
@@ -596,20 +592,20 @@ td .show-btn-position {
 
 th.sign-th {
   text-align: center;
-  height: 20px;
+  height: 18px;
   width: 13%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: #f0ad4e;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 th.report-th {
   text-align: center;
-  height: 20px;
+  height: 14px;
   width:10px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: blanchedalmond;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .sign-box {
@@ -624,17 +620,17 @@ th.report-th {
 }
 
 .report-index {
-  width: 150px;
-  font-size: 16px;
+  width: 22%;
+  font-size: 14px;
   text-align: center;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background-color: #fcf8e3;
 }
 
 .report-td {
-  width: 36%;
+  width: 28%;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
@@ -693,7 +689,7 @@ input#senior_accidents_accident_result_comment.form-control {
 
 .label-inline-flex {
   display: inline-flex;
-  font-size: 14px;
+  font-size: 13px;
   margin-left: 8px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -709,7 +705,7 @@ input#senior_accidents_accident_result_comment.form-control {
 
 .left-space {
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #evaluation-top {
