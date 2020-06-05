@@ -1,20 +1,20 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "ヒヤリ・事故報告書管理システム", root_path, id: "logo" %>
-    <nav>
+  <%= link_to "ヒヤリ・事故報告書管理システム", root_path, id: "logo" %>
+<!--  <div class="container">-->
+    <nav id="fix-header">
       <ul class="nav navbar-nav navbar-right" >
         <% if logged_in? %>
           <% unless current_facility.admin? %> <!--管理者閲覧不可-->
-            <li><%= link_to "月別ヒヤリ一覧", facility_path(current_facility) %></li>
-            <li><%= link_to "利用者別ヒヤリ一覧", facility_accidents_path(current_facility) %></li>
-            <li><%= link_to "ヒヤリ新規作成", new_accidents_index_facility_accidents_path(current_facility) %></li>
-            <li><%= link_to "ヒヤリ事故集計", spreadsheet_facility_accidents_path(current_facility) %></li>
+            <li class="list"><%= link_to_unless_current "月別ヒヤリ一覧", facility_path(current_facility) %></li>
+            <li class="list"><%= link_to_unless_current "利用者別ヒヤリ一覧", facility_accidents_path(current_facility) %></li>
+            <li class="list"><%= link_to_unless_current "ヒヤリ新規作成", new_accidents_index_facility_accidents_path(current_facility) %></li>
+            <li class="list"><%= link_to_unless_current "ヒヤリ事故集計", spreadsheet_facility_accidents_path(current_facility) %></li>
           <% end %>
           <% if current_facility.admin? %> <!--管理者限定閲覧可能-->
             <li><%= link_to "システム利用施設一覧", facilities_path %></li>
           <% end %>
-          <li><%= link_to "説明", '#' %></li>
-          <li class="dropdown">
+          <li class="list"><%= link_to "説明", '#' %></li>
+          <li class="dropdown list">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               設定・詳細 <b class="caret"></b>
             </a>
@@ -33,5 +33,5 @@
         <% end %>
       </ul>
     </nav>
-  </div>
+<!--  </div>-->
 </header>

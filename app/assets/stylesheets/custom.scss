@@ -10,23 +10,59 @@ body {
 
 .navbar-inverse .navbar-nav > li > a {
   color: #CCCCCC;
+  font-size: 15px;
+  bottom: 15px;
 }
 
-//背景画像の設定
-.main-img {
-  /* 画像ファイルの指定 */
-  background-image: url(/assets/kaigo.jpg);
-  /* 画像を常に天地左右の中央に配置 */
-  background-position: center center;
-  /* 画像をタイル状に繰り返し表示しない */
-  background-repeat: no-repeat;
-  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+.navbar-inverse .navbar-nav > li > a:hover {
+  background: #2E2F30;
+}
+
+.navbar-inverse .navbar-nav > li > a:active {
+  background: #5e5e5e;
+}
+
+.list {
+  color: white;
+  font-size: 15px;
+  top: 15px;
+}
+
+li.list {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.contents-frame {
   background-attachment: fixed;
-  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-image: url(/assets/kaigo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
   background-size: cover;
-  //background-size: contain;
-  /* 背景画像が読み込まれる前に表示される背景のカラー */
-  background-color: #464646;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.contents-frame::before {
+  background: inherit;
+  content: '';
+  filter: blur(3px);
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  //最背面に指定
+  z-index: -1
+}
+
+#top-title {
+  font-size: 52px;
+}
+
+#fix-header {
+  margin-right: 100px;
 }
 
 section {
@@ -79,12 +115,12 @@ p {
 /* header */
 #logo {
   float: left;
-  margin-right: 10px;
+  margin-left: 50px;
   font-size: 1.7em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding: 9px;
   font-weight: bold;
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
@@ -92,6 +128,7 @@ p {
 #logo:hover {
   color: #fff;
   text-decoration: none;
+  background: #2E2F30;
 }
 
 #facility-name {
@@ -134,24 +171,13 @@ pre.debug_dump {
   }
 }
 
-//ジャンボトロンのタイトル
-#jumbo-position {
-  margin-top: 200px;
-  margin-bottom: 100px;
-  padding-top: 100px;
-  padding-bottom: 150px;
-  background-color: rgba( 254, 255, 255, 0.55 );
-  height: 220px;
-  background-size: cover;
-}
-
 #hiyari-title {
   position: absolute;
   text-align: center;
   bottom: 500px;
   left: 300px;
   right: 300px;
-  top: 270px;
+  top: 360px;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 1.2vmax;
 }
