@@ -1,3 +1,32 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.4em 1.5em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-right: 20px;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-flat-border2 {
+  display: inline-block;
+  padding: 0.4em 1.5em;
+  text-decoration: none;
+  color: #3b75d4;
+  border: solid 2px royalblue;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border2:hover {
+  background: #3b75d4;
+  color: white;
+  text-decoration: none;
+}

@@ -35,7 +35,8 @@ li.list {
 
 .contents-frame {
   background-attachment: fixed;
-  background-image: url(/assets/kaigo.jpg);
+  //background-image: url(/assets/kaigo.jpg);
+  background-image: url(/assets/679353_s.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,6 +49,7 @@ li.list {
   background: inherit;
   content: '';
   filter: blur(3px);
+  //ぼかし効果決めて
   position: absolute;
   top: -5px;
   right: -5px;
@@ -888,3 +890,4 @@ img.google {
   margin-top: 15px;
   margin-bottom: 10px;
 }
+
