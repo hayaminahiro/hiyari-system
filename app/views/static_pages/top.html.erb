@@ -55,11 +55,16 @@
                     <% end %>
 
                     <div class="login-btn">
-                      <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+                      <%= f.submit "ログイン", class: "btn-flat-border-login" %>
                     </div>
+                    googleログイン
                     <a class="google">
                       <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
                     </a>
+                    <div class="login-btn">
+                      <div class="test-btn">testログイン</div>
+                      <%= f.submit "ログイン", class: "btn-flat-border-test" %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -105,6 +110,7 @@
                     <div class="btn-position">
                       <%= f.submit "登録", class: "btn btn-success btn-block btn-signup" %>
                     </div>
+                    googleログイン
                     <a class="google">
                       <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
                     </a>
