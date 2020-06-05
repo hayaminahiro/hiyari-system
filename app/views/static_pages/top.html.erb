@@ -1,119 +1,116 @@
 <% provide(:title, "ホーム") %>
 
-<div class="center jumbotron" id="jumbo-position">
-
-  <body class="main-img">
-    <div id="hiyari-title">
-      <h1>ヒヤリ・事故報告書管理システム</h1>
-      <p>ヒヤリハット・事故報告書の作成 / 管理 / 集計ができます。</p>
-      <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
-      <% if logged_in? %>
-        <% if current_facility.admin? %>
-          <div id="facility-title-name">
-            <%= current_facility.name %> （管理ユーザー）
-          </div>
-        <% else %>
-          <div id="facility-title-name">
-            <%= current_facility.name %> （一般ユーザー）
-          </div>
-        <% end %>
+<body class="contents-frame">
+  <div id="hiyari-title">
+    <h1 id=top-title>ヒヤリ・事故報告書管理システム</h1>
+    <h2>ヒヤリハット・事故報告書の作成 / 管理 / 集計ができます。</h2>
+    <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
+    <% if logged_in? %>
+      <% if current_facility.admin? %>
+        <div id="facility-title-name">
+          <%= current_facility.name %> （管理ユーザー）
+        </div>
       <% else %>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
-          ログイン
-        </button>
-        <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signup-Modal">
-          施設新規登録
-        </button>
+        <div id="facility-title-name">
+          <%= current_facility.name %> （一般ユーザー）
+        </div>
       <% end %>
-      <!-- ログインモーダル -->
-      <div class="modal-position">
-        <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-          <div class="modal-dialog modal-lg modal-dialog-center" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">ログイン</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6 col-md-offset-3">
-                    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+    <% else %>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">
+        ログイン
+      </button>
+      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signup-Modal">
+        施設新規登録
+      </button>
+    <% end %>
+    <!-- ログインモーダル -->
+    <div class="modal-position">
+      <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg modal-dialog-center" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">ログイン</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
 
-                      <%= f.label :email, "メールアドレス", class: "label-login" %>
-                      <%= f.email_field :email, class: 'form-control' %>
+                    <%= f.label :email, "メールアドレス", class: "label-login" %>
+                    <%= f.email_field :email, class: 'form-control' %>
 
-                      <%= f.label :password, "パスワード", class: "label-login" %>
-                      <%= f.password_field :password, class: 'form-control' %>
+                    <%= f.label :password, "パスワード", class: "label-login" %>
+                    <%= f.password_field :password, class: 'form-control' %>
 
-                      <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
-                        <%= f.check_box :remember_me, id: "remember-me" %>
-                        <span>ログイン情報を記憶</span>
-                      <% end %>
-
-                      <div class="login-btn">
-                        <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
-                      </div>
-                      <a class="google">
-                        <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
-                      </a>
+                    <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
+                      <%= f.check_box :remember_me, id: "remember-me" %>
+                      <span>ログイン情報を記憶</span>
                     <% end %>
-                  </div>
+
+                    <div class="login-btn">
+                      <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-login" %>
+                    </div>
+                    <a class="google">
+                      <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
+                    </a>
+                  <% end %>
                 </div>
               </div>
-              <div class="modal-footer">
-                <p class="signup-font">ユーザー登録がまだの場合は<%= link_to "こちら", signup_path %></p>
-              </div><!-- /.modal-footer -->
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-      </div>
-
-      <!-- サインアップモーダル -->
-      <div class="modal-position">
-        <div class="modal fade" id="signup-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-          <div class="modal-dialog modal-lg modal-dialog-center" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">施設新規登録</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6 col-md-offset-3">
-                    <%= form_with(model: @facility, local: true) do |f| %>
-
-                      <%= render 'shared/error_messages', model: f.object %>
-
-                      <%= f.label :name, class: "label-signup" %>
-                      <%= f.text_field :name, class: "form-control" %>
-
-                      <%= f.label :email, class: "label-signup" %>
-                      <%= f.email_field :email, class: "form-control" %>
-
-                      <%= f.label :password, class: "label-signup" %>
-                      <%= f.password_field :password, class: "form-control" %>
-
-                      <%= f.label :password_confirmation, class: "label-signup" %>
-                      <%= f.password_field :password_confirmation, class: "form-control" %>
-
-                      <div class="btn-position">
-                        <%= f.submit "登録", class: "btn btn-success btn-block btn-signup" %>
-                      </div>
-                      <a class="google">
-                        <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
-                      </a>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-      </div>
+            </div>
+            <div class="modal-footer">
+              <p class="signup-font">ユーザー登録がまだの場合は<%= link_to "こちら", signup_path %></p>
+            </div><!-- /.modal-footer -->
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
     </div>
-  </body>
-</div>
+
+    <!-- サインアップモーダル -->
+    <div class="modal-position">
+      <div class="modal fade" id="signup-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg modal-dialog-center" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">施設新規登録</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <%= form_with(model: @facility, local: true) do |f| %>
+
+                    <%= render 'shared/error_messages', model: f.object %>
+
+                    <%= f.label :name, class: "label-signup" %>
+                    <%= f.text_field :name, class: "form-control" %>
+
+                    <%= f.label :email, class: "label-signup" %>
+                    <%= f.email_field :email, class: "form-control" %>
+
+                    <%= f.label :password, class: "label-signup" %>
+                    <%= f.password_field :password, class: "form-control" %>
+
+                    <%= f.label :password_confirmation, class: "label-signup" %>
+                    <%= f.password_field :password_confirmation, class: "form-control" %>
+
+                    <div class="btn-position">
+                      <%= f.submit "登録", class: "btn btn-success btn-block btn-signup" %>
+                    </div>
+                    <a class="google">
+                      <%= link_to image_tag("btn_google_signin_dark_pressed_web.png", class: "google"), "/auth/google_oauth2" %>
+                    </a>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    </div>
+  </div>
+</body>
