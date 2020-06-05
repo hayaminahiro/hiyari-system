@@ -16,16 +16,10 @@
         </div>
       <% end %>
     <% else %>
-<!--      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-Modal">-->
-<!--        ログイン-->
-<!--      </button>-->
       <button type="button" class="btn-flat-border2" data-toggle="modal" data-target="#login-Modal">Login
       </button>
       <button type="button" class="btn-flat-border" data-toggle="modal" data-target="#signup-Modal">SignUp
       </button>
-<!--      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#signup-Modal">-->
-<!--        施設新規登録-->
-<!--      </button>-->
     <% end %>
     <!-- ログインモーダル -->
     <div class="modal-position">
@@ -53,7 +47,6 @@
                       <%= f.check_box :remember_me, id: "remember-me" %>
                       <span>ログイン情報を記憶</span>
                     <% end %>
-
                     <div class="login-btn">
                       <%= f.submit "ログイン", class: "btn-flat-border-login" %>
                     </div>
@@ -63,7 +56,7 @@
                     </a>
                     <div class="login-btn">
                       <div class="test-btn">testログイン</div>
-                      <%= f.submit "ログイン", class: "btn-flat-border-test" %>
+                      <%= f.submit "試してみる", class: "btn-flat-border-test" %>
                     </div>
                   <% end %>
                 </div>
@@ -76,7 +69,6 @@
         </div><!-- /.modal-dialog -->
       </div><!-- /.modal -->
     </div>
-
     <!-- サインアップモーダル -->
     <div class="modal-position">
       <div class="modal fade" id="signup-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -106,9 +98,10 @@
 
                     <%= f.label :password_confirmation, class: "label-signup" %>
                     <%= f.password_field :password_confirmation, class: "form-control" %>
-
                     <div class="btn-position">
-                      <%= f.submit "登録", class: "btn btn-success btn-block btn-signup" %>
+                      <div class="login-btn">
+                        <%= f.submit "登録", class: "btn-flat-border-signup" %>
+                      </div>
                     </div>
                     googleログイン
                     <a class="google">
