@@ -30,3 +30,44 @@
   color: white;
   text-decoration: none;
 }
+
+.btn-flat-border-login {
+  display: inline-block;
+  padding: 0.2em 3.4em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  margin-right: 20px;
+  background: lightcyan;
+}
+
+.btn-flat-border-login:hover {
+  background: #67c5ff;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-flat-border-test {
+  display: inline-block;
+  padding: 0.2em 3.4em;
+  text-decoration: none;
+  color: #c3325f;
+  border: solid 2px #c7254e;
+  //color: #c7254e;
+  border-radius: 3px;
+  transition: .4s;
+  margin-right: 20px;
+  background: #FFCCCC;
+}
+
+.btn-flat-border-test:hover {
+  background: #c3325f;
+  color: white;
+  text-decoration: none;
+}
+
+.test-btn {
+  padding-bottom: 12px;
+}
