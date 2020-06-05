@@ -11,7 +11,7 @@
             <li class="list"><%= link_to_unless_current "ヒヤリ事故集計", spreadsheet_facility_accidents_path(current_facility) %></li>
           <% end %>
           <% if current_facility.admin? %> <!--管理者限定閲覧可能-->
-            <li><%= link_to "システム利用施設一覧", facilities_path %></li>
+            <li class="list"><%= link_to "システム利用施設一覧", facilities_path %></li>
           <% end %>
           <li class="list"><%= link_to "説明", '#' %></li>
           <li class="dropdown list">
