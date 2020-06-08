@@ -1,0 +1,12 @@
+<% if flash[:error] %>
+  <%= flash[:error] %>
+  <br />
+<% end %>
+<img src="<%= @facility.google_qr_uri %>">
+<br />
+<%= form_tag facility_mfa_session_path, method: :post do %>
+  <div class="actions">
+    <%= text_field :auth, :mfa_code %>
+    <%= submit_tag 'authenticate' %>
+  </div>
+<% end %>

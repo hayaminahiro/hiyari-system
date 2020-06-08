@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
 
+  get 'logout' => 'static_pages#logout'
+  resource :facility_mfa_session, only: %i(new create)
+
   get '/signup', to: 'facilities#new'
 
   # ログイン機能

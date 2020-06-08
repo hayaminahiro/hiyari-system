@@ -20,6 +20,7 @@ gem 'jbuilder',     '2.6.4'
 gem 'bootsnap', require: false
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'google-authenticator-rails'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri

@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   include WorkersHelper
   include AccidentsHelper
 
+  # AuthenticatorをOFFにしたいなら下記をコメントアウト
+  before_action :check_mfa
+
   # beforeフィルター
 
   # paramsハッシュから施設ユーザーを取得します。
@@ -104,5 +107,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+    private
+      def check_mfa
+        if !(facility_mfa_session = FacilityMfaSession.find) && (facility_mfa_session ? facility_mfa_session.record == current_facility : !facility_mfa_session)
+          redirect_to new_facility_mfa_session_url
+        end
+      end
 
 end
