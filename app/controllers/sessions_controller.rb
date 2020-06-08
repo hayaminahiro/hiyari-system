@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
+    FacilityMfaSession.destroy
     flash[:info] = 'ログアウトしました。'
     redirect_to root_url
   end
