@@ -12,7 +12,7 @@ class FacilityMfaSessionsController < ApplicationController
       FacilityMfaSession.create(@facility)
       redirect_to root_url
     else
-      flash[:error] = "Wrong code"
+      flash.now[:error] = "Wrong code"
       render :new
     end
   end
