@@ -7,4 +7,5 @@ class StaticPagesController < ApplicationController
     FacilityMfaSession.destroy
     redirect_to :root
   end
+
 end
