@@ -1,26 +1,45 @@
 <% provide(:title, "認証コード入力") %>
 <% provide(:class_text, 'f-edit') %>
-<% provide(:button_text, '認証') %>
-
-<%# if flash[:error] %>
-  <%#= flash[:error] %>
-<!--  <br />-->
-<%# end %>
+<% provide(:qr_button, 'QRコード表示') %>
+<% provide(:no_qr_button, 'QRコード非表示') %>
+<% provide(:authenticate_button, '認証') %>
 
 <h1 class="title-position">認証コード入力</h1>
 
-
 <div class="col-md-6 col-md-offset-3">
 
-  <img src="<%= @facility.google_qr_uri %>">
+  <!--認証コード入力後にログインできる-->
+  <%= form_tag facility_mfa_session_path, method: :post do %>
+    <div class="actions" style="padding-bottom: 30px;">
+      <p>6桁の認証コードを入力するとログインできます。</p>
+      <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+      <%= submit_tag yield(:authenticate_button), class: "btn-flat-vertical-border" %>
+    </div>
+  <% end %>
 
+  <!--認証コード入力してQRコード表示切り替え-->
+  <%= form_tag facility_mfa_session_path, method: :patch do %>
+    <div class="actions">
+      <% if @facility.display? %> <!--現在QRコード表示中-->
+        <p>認証コードを入力するとQRコードが非表示になります。<br>
+        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+        <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+        <%= submit_tag yield(:no_qr_button), class: "btn-flat-vertical-danger" %>
+      <% else %> <!--現在QRコード非表示-->
+        <p>認証コードを入力するとQRコードが表示されます。<br>
+        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+        <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+        <%= submit_tag yield(:qr_button), class: "btn-flat-vertical-border" %>
+      <% end %>
+    </div>
+  <% end %>
 
-<%= form_tag facility_mfa_session_path, method: :post do %>
-  <div class="actions">
-    <%= text_field :auth, :mfa_code %>
-    <%= submit_tag yield(:button_text), class: "btn-flat-vertical-border" %>
-  </div>
-<% end %>
+  <!--QRコード表示-->
+  <% if @facility.display? %>
+    <div id=qr_img>
+      <img src="<%= @facility.google_qr_uri %>">
+    </div>
+  <% end %>
 
 </div>
 
