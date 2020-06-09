@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
 
   # beforeフィルター
 
+  # current_facilityを取得
+  def set_current_facility
+    @facility = current_facility
+  end
+
   # paramsハッシュから施設ユーザーを取得します。
   def set_facility
     @facility = Facility.find(params[:id])

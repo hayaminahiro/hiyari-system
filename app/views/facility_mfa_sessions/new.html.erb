@@ -1,5 +1,4 @@
 <% provide(:title, "認証コード入力") %>
-<% provide(:class_text, 'f-edit') %>
 <% provide(:qr_button, 'QRコード表示') %>
 <% provide(:no_qr_button, 'QRコード非表示') %>
 <% provide(:authenticate_button, '認証') %>
@@ -40,6 +39,10 @@
       <img src="<%= @facility.google_qr_uri %>">
     </div>
   <% end %>
+
+
+  <%= link_to "ログインキャンセル", facility_mfa_session_path, method: :delete, class: "btn-cancel" %>
+
 
 </div>
 
