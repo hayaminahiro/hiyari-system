@@ -1,3 +1,12 @@
+.actions {
+  float: left;
+  margin-left: 100px;
+}
+
+#qr_img {
+  padding-left: 80px;
+}
+
 //認証ボタン
 .btn-flat-vertical-border {
   position: relative;
@@ -37,11 +46,22 @@
   color: #FFEEFF;
 }
 
-.actions {
-  float: left;
-  margin-left: 100px;
+//ログインキャンセルボタン
+.btn-cancel {
+  text-decoration: none !important;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.3em 2em;
+  border: solid 2px #c3325f;
+  color: #c3325f;
+  background: #FFCCCC;
+  transition: .4s;
+  border-radius: 5px;
+  margin: 50px 0 0 98px;
 }
 
-#qr_img {
-  padding-left: 80px;
+.btn-cancel:hover {
+  background: #c3325f;
+  color: #FFF;
 }

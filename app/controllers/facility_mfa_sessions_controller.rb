@@ -1,12 +1,11 @@
 class FacilityMfaSessionsController < ApplicationController
   skip_before_action :check_mfa
+  before_action :set_current_facility, only: [:new, :create, :update, :destroy]
 
   def new
-    @facility = current_facility
   end
 
   def create
-    @facility = current_facility
     if @facility.google_authentic?(params[:auth][:mfa_code])
       FacilityMfaSession.create(@facility)
       if @facility.email == "center@email.com"
@@ -22,7 +21,6 @@ class FacilityMfaSessionsController < ApplicationController
   end
 
   def update
-    @facility = current_facility
     if @facility.google_authentic?(params[:auth][:mfa_code])
       if @facility.display == true
         if @facility.update_attributes(display: false)
@@ -40,4 +38,15 @@ class FacilityMfaSessionsController < ApplicationController
       redirect_to new_facility_mfa_session_url
     end
   end
+
+  def destroy
+    if FacilityMfaSession.present?
+      log_out if logged_in?
+      # Authenticator二段階認証削除
+      FacilityMfaSession.destroy
+      flash[:success] = "ログインをキャンセルしました。"
+      redirect_to root_path
+    end
+  end
+
 end
