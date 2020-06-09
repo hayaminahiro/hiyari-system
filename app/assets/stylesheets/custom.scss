@@ -918,3 +918,21 @@ img.google {
   margin-bottom: 10px;
 }
 
+//認証ボタン
+.btn-flat-vertical-border {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.2em 1em;
+  text-decoration: none;
+  border-left: solid 2px #668ad8;
+  border-right: solid 2px #668ad8;
+  color: #668ad8;
+  background: #e1f3ff;
+  transition: .4s;
+}
+
+.btn-flat-vertical-border:hover {
+  background: #668ad8;
+  color: #FFF;
+}
