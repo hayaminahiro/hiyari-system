@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_002229) do
+ActiveRecord::Schema.define(version: 2020_06_09_070639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_06_06_002229) do
     t.datetime "oauth_expires_at"
     t.string "salt"
     t.string "google_secret"
+    t.boolean "display", default: true
     t.index ["email"], name: "index_facilities_on_email", unique: true
   end
 

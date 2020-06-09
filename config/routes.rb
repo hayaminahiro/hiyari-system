@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
 
   # Authenticator2段階認証
-  resource :facility_mfa_session, only: %i(new create)
+  resource :facility_mfa_session, only: %i(new create update)
 
   get '/signup', to: 'facilities#new'
 
