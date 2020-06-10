@@ -1,10 +1,6 @@
 .actions {
   float: left;
-  margin-left: 100px;
-}
-
-#qr_img {
-  padding-left: 80px;
+  margin-left: 20px;
 }
 
 //認証ボタン
@@ -58,10 +54,56 @@
   background: #FFCCCC;
   transition: .4s;
   border-radius: 5px;
-  margin: 50px 0 0 98px;
+  margin: 10px 0 0 50px;
 }
 
 .btn-cancel:hover {
   background: #c3325f;
   color: #FFF;
+}
+
+#title-authenticator {
+  font-size: 30px;
+  width: 140%;
+  padding-right: 100px;
+}
+
+.step {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0055aa;
+}
+
+.step2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0055aa;
+  padding-top: 30px;
+}
+
+.step0 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c3325f;
+  padding-top: 10px;
+}
+
+.explanation {
+  width: 160%;
+}
+
+#qr-phone {
+  font-weight: bold;
+}
+
+p#qr-phone {
+  float: left;
+  margin-left: 35px;
+}
+
+.reference {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3399aa;
+  padding-top: 20px;
 }
