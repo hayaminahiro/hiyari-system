@@ -81,6 +81,13 @@
   padding-top: 30px;
 }
 
+.step3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0055aa;
+  padding-top: 10px;
+}
+
 .step0 {
   font-size: 20px;
   font-weight: bold;
@@ -89,7 +96,7 @@
 }
 
 .explanation {
-  width: 160%;
+  width: 150%;
 }
 
 #qr-phone {
@@ -105,5 +112,30 @@ p#qr-phone {
   font-size: 20px;
   font-weight: bold;
   color: #3399aa;
-  padding-top: 20px;
+  padding-top: 10px;
+}
+
+#google-using {
+  text-align: center;
+  padding-left: 100px;
+}
+
+//二段階認証の説明ボタン
+.btn-using {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.2em 1em;
+  text-decoration: none;
+  border-left: solid 2px #668ad8;
+  border-right: solid 2px #668ad8;
+  color: #668ad8;
+  background: #e1f3ff;
+  transition: .4s;
+  border-radius: 5px;
+}
+
+.btn-using:hover {
+  background: #668ad8;
+  color: #FFF;
 }
