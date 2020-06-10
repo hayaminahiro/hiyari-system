@@ -117,7 +117,6 @@ class ApplicationController < ActionController::Base
       def check_mfa
         # もし認証済みでなければ・・・（ログイン前＆ログイン後）
         if !(facility_mfa_session = FacilityMfaSession.find) && (facility_mfa_session ? facility_mfa_session.record == current_facility : !facility_mfa_session) && logged_in?
-          # raise
           # 認証画面へ遷移
           redirect_to new_facility_mfa_session_url
         end

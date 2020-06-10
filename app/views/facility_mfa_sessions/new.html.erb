@@ -4,8 +4,9 @@
 <% provide(:authenticate_button, '認証') %>
 
 <h1 class="title-position">認証コード入力</h1>
+<%= link_to "ログインキャンセル", facility_mfa_session_path, method: :delete, class: "btn-cancel" %>
 
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-6 col-md-offset-2">
 
   <!--認証コード入力後にログインできる-->
   <%= form_tag facility_mfa_session_path, method: :post do %>
@@ -40,8 +41,53 @@
     </div>
   <% end %>
 
+  <h2 id="title-authenticator">二段階認証「Google Authenticator」の設定方法</h2>
 
-  <%= link_to "ログインキャンセル", facility_mfa_session_path, method: :delete, class: "btn-cancel" %>
+
+
+  <a href="https://yattokoo.com/google-authenticator-setting">
+    <img src="/assets/Authenticator.jpg" alt="二段階認証" width="380" height="800" border="0" style="float: left; margin-right: 50px;"/>
+  </a>
+
+
+  <div class="explanation">
+    <p class="step">-STEP1-</p>
+    <p>
+      GoogleAuthenticatorを<span style="color: #2C7CFF">iPhoneの「AppStore」</span>、
+      <br>または<span style="color: #2C7CFF">Androidの「GooglePlay」</span>からダウンロード
+    </p>
+    <img src="/assets/QR_i-phone.png" alt="i-phone" width="150" height="150" border="0"/>
+    <img src="/assets/QR_Android.png" alt="Android" width="150" height="150" border="0"/>
+    <p id="qr-phone">i-phone&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Android</p><br><br>
+
+    <p class="step2">-STEP2-</p>
+    <p>
+      アプリを開いたら<span style="color: #2C7CFF">設定を開始</span>を選択して画面に表示されているバーコードをスキャン。
+      アプリに<span style="color: #2C7CFF">6桁の認証コード</span>が表示されるようになります。
+    </p>
+
+    <p class="step2">-STEP3-</p>
+    <p>
+      60秒毎に認証コードが変わります。制限時間内に6桁の認証コードを入力しログインして下さい。
+    </p>
+    <p class="step0">-STEP0-</p>
+    <p>
+      画面右上の<span style="color:#FF1A6F">ログインキャンセル</span>でTOP画面に戻ることができます。
+    </p>
+    <p class="reference">-ReferenceURL-</p>
+    <a href= "https://yattokoo.com/google-authenticator-setting" target="_blank" style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 16px;">
+      　二段階認証「Google Authenticator」の設定方法
+    </a>
+
+
+
+
+
+  </div>
+
+
+
+
 
 
 </div>
