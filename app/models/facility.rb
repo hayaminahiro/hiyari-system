@@ -2,6 +2,10 @@ class Facility < ApplicationRecord
   has_many :seniors, dependent: :destroy
   has_many :workers, dependent: :destroy
 
+  acts_as_google_authenticated lookup_token: :salt, drift: 60, issuer: 'ヒヤリ管理システム'
+  before_save {|record| record.salt = SecureRandom.hex unless record.salt }
+  after_create {|record| record.set_google_secret }
+
   # 「remember_token」という仮想の属性を作成します。
   attr_accessor :remember_token
   before_save { self.email = email.downcase }

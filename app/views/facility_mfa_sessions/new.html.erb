@@ -1,0 +1,92 @@
+<% provide(:title, "認証コード入力") %>
+<% provide(:qr_button, 'QRコード表示') %>
+<% provide(:no_qr_button, 'QRコード非表示') %>
+<% provide(:authenticate_button, '認証') %>
+
+<h1 class="title-position">認証コード入力</h1>
+<%= link_to "ログインキャンセル", facility_mfa_session_path, method: :delete, class: "btn-cancel" %>
+
+<div class="col-md-6 col-md-offset-2">
+
+  <!--認証コード入力後にログインできる-->
+  <%= form_tag facility_mfa_session_path, method: :post do %>
+    <div class="actions" style="padding-bottom: 30px;">
+      <p>6桁の認証コードを入力するとログインできます。</p>
+      <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+      <%= submit_tag yield(:authenticate_button), class: "btn-flat-vertical-border" %>
+    </div>
+  <% end %>
+
+  <!--認証コード入力してQRコード表示切り替え-->
+  <%= form_tag facility_mfa_session_path, method: :patch do %>
+    <div class="actions">
+      <% if @facility.display? %> <!--現在QRコード表示中-->
+        <p>認証コードを入力するとQRコードが非表示になります。<br>
+        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+        <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+        <%= submit_tag yield(:no_qr_button), class: "btn-flat-vertical-danger" %>
+      <% else %> <!--現在QRコード非表示-->
+        <p>認証コードを入力するとQRコードが表示されます。<br>
+        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+        <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
+        <%= submit_tag yield(:qr_button), class: "btn-flat-vertical-border" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!--QRコード表示-->
+  <% if @facility.display? %>
+    <img src="<%= @facility.google_qr_uri %>">
+  <% else %>
+    <div id=qr_img>
+      &emsp;
+    </div>
+  <% end %>
+
+  <h2 id="title-authenticator">二段階認証「Google Authenticator」の設定方法</h2>
+  <p id="google-using">
+    <button type="button" class="btn-using" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
+      Google Authenticatorの使用方法を確認
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <a href="https://yattokoo.com/google-authenticator-setting">
+        <img src="/assets/Authenticator.png" alt="二段階認証" width="380" height="800" border="0" style="float: left; margin-right: 50px;"/>
+      </a>
+      <div class="explanation">
+        <p class="step">-STEP1-</p>
+        <p>
+          GoogleAuthenticatorを<span style="color: #2C7CFF">iPhoneの「AppStore」</span>、
+          <br>または<span style="color: #2C7CFF">Androidの「GooglePlay」</span>からダウンロード
+        </p>
+        <img src="/assets/QR_i-phone.png" alt="i-phone" width="150" height="150" border="0"/>
+        <img src="/assets/QR_Android.png" alt="Android" width="150" height="150" border="0"/>
+        <p id="qr-phone">i-phone&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Android</p><br><br>
+        <p class="step2">-STEP2-</p>
+        <p>
+          アプリを開いたら<span style="color: #2C7CFF">設定を開始</span>を選択して画面に表示されているバーコードをスキャン。
+          アプリに<span style="color: #2C7CFF">6桁の認証コード</span>が表示されるようになります。
+        </p>
+        <p class="step3">-STEP3-</p>
+        <p>
+          60秒毎に認証コードが変わります。制限時間内に6桁の認証コードを入力しログインして下さい。
+        </p>
+        <p class="step0">-STEP0-</p>
+        <p>
+          画面右上の<span style="color:#FF1A6F">ログインキャンセル</span>でTOP画面に戻ることができます。
+        </p>
+        <p class="reference">-ReferenceURL-</p>
+        <a href= "https://yattokoo.com/google-authenticator-setting" target="_blank" style="font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 16px;">
+          　二段階認証「Google Authenticator」の設定方法
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

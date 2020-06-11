@@ -14,12 +14,15 @@
       <tr class="font-M">
         <td><%= facility.name %></td>
         <td>
-          <% if current_facility.admin? && !current_facility?(facility) %>
-            <div style="float: right">
+          <div style="float: right">
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
-            <%= link_to "削除", facility, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
-            </div>
-          <% end %>
+            <%= link_to "二段階認証QRコード", authenticator_facility_path(facility), remote: true, class: "btn btn-info" %>
+            <% if current_facility.admin? && !current_facility?(facility) %>
+              <%= link_to "削除", facility, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+            <% else %>
+              <%= link_to "ーー", "#", class: "btn btn-danger" %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>
@@ -27,4 +30,5 @@
 </div>
 
 <!--モーダルウインドウ表示-->
+<div id="authenticator" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <div id="edit_facility_info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
