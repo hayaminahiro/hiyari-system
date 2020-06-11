@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       if facility.email == "center@email.com"
         flash[:info] = "テストユーザー「社会福祉法人うみの風」さん、認証コードを入力して下さい。"
       else
-        flash[:success] = "「#{facility.name}」さん、認証コードを入力して下さい。"
+        flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
       end
       redirect_back_or facility
     else

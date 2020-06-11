@@ -36,8 +36,10 @@
 
   <!--QRコード表示-->
   <% if @facility.display? %>
+    <img src="<%= @facility.google_qr_uri %>">
+  <% else %>
     <div id=qr_img>
-      <img src="<%= @facility.google_qr_uri %>">
+      &emsp;
     </div>
   <% end %>
 
@@ -50,7 +52,7 @@
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       <a href="https://yattokoo.com/google-authenticator-setting">
-        <img src="/assets/Authenticator.jpg" alt="二段階認証" width="380" height="800" border="0" style="float: left; margin-right: 50px;"/>
+        <img src="/assets/Authenticator.png" alt="二段階認証" width="380" height="800" border="0" style="float: left; margin-right: 50px;"/>
       </a>
       <div class="explanation">
         <p class="step">-STEP1-</p>
