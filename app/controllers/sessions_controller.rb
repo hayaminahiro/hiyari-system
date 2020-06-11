@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
       log_in facility
       params[:session][:remember_me] == '1' ? remember(facility) : forget(facility)
       if facility.email == "center@email.com"
-        flash[:success] = "テストユーザー「社会福祉法人うみの風」さんでログインしました。"
+        flash[:info] = "テストユーザー「社会福祉法人うみの風」さん、認証コードを入力して下さい。"
       else
-        flash[:success] = "「#{facility.name}」さんでログインしました。"
+        flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
       end
       redirect_back_or facility
     else
@@ -22,6 +22,8 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
+    # Authenticator二段階認証削除
+    FacilityMfaSession.destroy
     flash[:info] = 'ログアウトしました。'
     redirect_to root_url
   end
@@ -31,7 +33,7 @@ class SessionsController < ApplicationController
     facility = Facility.find_or_create_from_auth(request.env['omniauth.auth'])
     if facility.save
       session[:facility_id] = facility.id
-      flash[:success] = "#{facility.name}さんでログインしました。"
+      flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
       redirect_to facility_url(current_facility)
     else
       flash[:danger] = '認証に失敗しました。'

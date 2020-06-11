@@ -1,0 +1,2 @@
+module FacilityMfaSessionsHelper
+end
