@@ -1,6 +1,5 @@
-<% provide(:class_text, 'basic-info') %>
-<% provide(:button_text, '更新') %>
-<% provide(:qr_button, 'QRコード表示切替') %>
+<% provide(:qr_hidden, 'QRコードを非表示にする') %>
+<% provide(:qr_display, 'QRコードを表示する') %>
 
 <div class="modal-dialog modal-lg modal-dialog-center">
   <div class="modal-content">
@@ -8,7 +7,7 @@
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h1 class="modal-title">施設情報編集</h1>
+      <h1 class="modal-title">二段階認証QRコード</h1>
     </div>
     <div class="modal-body">
       <div class="row">
@@ -16,13 +15,19 @@
           <% if @facility.display? %>
             <div style="color: #c3325f; font-size: 16px; text-align: center; font-family: 'M PLUS Rounded 1c', sans-serif;">【現在】表示中（スキャン後、非表示にすることをお勧めします。）</div>
           <% else %>
-            <div style="color: #0055aa; font-size: 16px; text-align: center; font-family: 'M PLUS Rounded 1c', sans-serif;">【現在】非表示</div>
+            <div style="color: #0055aa; font-size: 20px; text-align: center; font-family: 'M PLUS Rounded 1c', sans-serif;">【現在】非表示</div>
           <% end %>
           <div class="center">
             <img src="<%= @facility.google_qr_uri %>" width="120" height="120" style="margin-bottom: -15px;" >
-            <h2>「<%= @facility.name %>」さんの二段階認証QRコード表示切替ができます。</h2>
-            <%= link_to yield(:qr_button), update_authenticator_facility_path(@facility), method: :patch,
-                        data: { confirm: "「#{@facility.name}」さんの二段階認証QRコード表示切替をしても宜しいですか？"}, class: "btn-flat-border"%>
+            <% if @facility.display? %>
+              <h2>「<%= @facility.name %>」さんの二段階認証QRコードを非表示にできます。</h2>
+              <%= link_to yield(:qr_hidden), update_authenticator_facility_path(@facility), method: :patch,
+                          data: { confirm: "「#{@facility.name}」さんの二段階認証QRコードを非表示にしてもよろしいですか？"}, class: "btn-flat-border"%>
+            <% else %>
+              <h2>「<%= @facility.name %>」さんの二段階認証QRコードを表示できます。</h2>
+              <%= link_to yield(:qr_display), update_authenticator_facility_path(@facility), method: :patch,
+                          data: { confirm: "「#{@facility.name}」さんの二段階認証QRコードを表示してもよろしいですか？"}, class: "btn-flat-danger"%>
+            <% end %>
             <button type="button" class="btn btn-default" data-dismiss="modal" style="height: 31px;">
               キャンセル
             </button>

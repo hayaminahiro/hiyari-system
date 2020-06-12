@@ -15,7 +15,8 @@
         <td><%= facility.name %></td>
         <td>
           <div style="float: right">
-            <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-success" %>
+            <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-primary" %>
+            <%= link_to "二段階認証使用状況", authenticator_valid_facility_path(facility), remote: true, class: "btn btn-success" %>
             <%= link_to "二段階認証QRコード", authenticator_facility_path(facility), remote: true, class: "btn btn-info" %>
             <% if current_facility.admin? && !current_facility?(facility) %>
               <%= link_to "削除", facility, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
@@ -30,5 +31,6 @@
 </div>
 
 <!--モーダルウインドウ表示-->
+<div id="authenticator_valid" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <div id="authenticator" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
 <div id="edit_facility_info" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

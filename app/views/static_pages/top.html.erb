@@ -24,7 +24,7 @@
     <!-- ログインモーダル -->
     <div class="modal-position">
       <div class="modal fade" id="login-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog modal-lg modal-dialog-center" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-center" role="document" style="margin-top: -70px;">
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title" id="exampleModalLabel">ログイン</h3>
@@ -60,7 +60,7 @@
                       <div class="test-btn">testログイン</div>
                         <%= f.hidden_field :email ,value: "center@email.com" %>
                         <%= f.hidden_field :password ,value: "password" %>
-                        <%= f.submit "試してみる", class: "btn-flat-border-test" %>
+                        <%= f.submit "二段階認証なしで試す", class: "btn-flat-border-test" %>
                       </div>
                   <% end %>
                 </div>
@@ -76,7 +76,7 @@
     <!-- サインアップモーダル -->
     <div class="modal-position">
       <div class="modal fade" id="signup-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog modal-lg modal-dialog-center" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-center" role="document" style="margin-top: -140px;">
           <div class="modal-content">
             <div class="modal-header">
               <h3 class="modal-title" id="exampleModalLabel">施設新規登録</h3>
@@ -102,6 +102,10 @@
 
                     <%= f.label :password_confirmation, class: "label-signup" %>
                     <%= f.password_field :password_confirmation, class: "form-control" %>
+
+                    <%= f.label "二段階認証を使用しない場合のみチェック。セキュリティ上、使用することをお勧めします。", class: "authenticator_label" %>
+                    <%= f.check_box :authenticator_check, class: "authenticator_checkbox" %>
+
                     <div class="btn-position">
                       <div class="login-btn">
                         <%= f.submit "登録", class: "btn-flat-border-signup" %>

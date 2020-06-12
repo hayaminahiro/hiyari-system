@@ -1,0 +1,38 @@
+<% provide(:valid_button, '有効にする') %>
+<% provide(:invalid_button, '無効にする') %>
+
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">二段階認証使用状況</h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <% if @facility.authenticator_check? %>
+            <div style="color: #c3325f; font-size: 25px; text-align: center; font-family: 'M PLUS Rounded 1c', sans-serif;">【現在】無効</div>
+          <% else %>
+            <div style="color: #0055aa; font-size: 25px; text-align: center; font-family: 'M PLUS Rounded 1c', sans-serif;">【現在】有効</div>
+          <% end %>
+          <div class="center">
+            <% if @facility.authenticator_check? %>
+              <h2>「<%= @facility.name %>」さんの二段階認証を有効にできます。</h2>
+              <%= link_to yield(:valid_button), update_authenticator_valid_facility_path(@facility), method: :patch,
+                          data: { confirm: "「#{@facility.name}」さんの二段階認証を有効にしてもよろしいですか？"}, class: "btn-flat-border"%>
+            <% else %>
+              <h2>「<%= @facility.name %>」さんの二段階認証を無効にできます。</h2>
+              <%= link_to yield(:invalid_button), update_authenticator_valid_facility_path(@facility), method: :patch,
+                          data: { confirm: "「#{@facility.name}」さんの二段階認証を無効にしてもよろしいですか？"}, class: "btn-flat-danger"%>
+            <% end %>
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="height: 31px;">
+              キャンセル
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
