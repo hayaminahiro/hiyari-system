@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
     if facility && facility.authenticate(params[:session][:password])
       log_in facility
       params[:session][:remember_me] == '1' ? remember(facility) : forget(facility)
-      if facility.email == "center@email.com"
-        flash[:info] = "テストユーザー「社会福祉法人うみの風」さん、認証コードを入力して下さい。"
+      if facility.authenticator_check?
+        flash[:success] = "「#{facility.name}」さんでログインしました。"
       else
         flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
       end

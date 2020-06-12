@@ -52,7 +52,7 @@
 
 .btn-flat-border-test {
   display: inline-block;
-  padding: 0.2em 2.8em;
+  padding: 0.2em 0.5em;
   text-decoration: none;
   color: #3b75d4;
   border: solid 2px royalblue;
@@ -110,4 +110,27 @@
 
 .test-btn {
   padding-bottom: 12px;
+}
+
+.authenticator_label {
+  text-align: left;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.authenticator_label_new {
+  text-align: left;
+  font-size: 17px;
+  padding-top: 10px;
+}
+
+input#facility_authenticator_check.authenticator_checkbox {
+  width: 80px;
+  height: 80px;
+}
+
+input#facility_authenticator_check.authenticator_checkbox_new {
+  width: 80px;
+  height: 80px;
+  margin-top: 20px;
 }

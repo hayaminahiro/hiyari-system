@@ -1,10 +1,11 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
-                                      :authenticator, :update_authenticator]
-  before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy,
-                                            :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator]
+                                      :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
+  before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
+                                            :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
   before_action :correct_facility, only: [:edit, :update, :show, :show_3f, :show_4f]
-  before_action :admin_facility, only: [:index, :destroy, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator]
+  before_action :admin_facility, only: [:index, :destroy, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator,
+                                        :authenticator_valid, :update_authenticator_valid]
   before_action :set_hat_accident_count, only: [:show, :show_3f, :show_4f]
   before_action :set_accidents, only: [:show, :show_3f, :show_4f]
   before_action :url_self_admin_reject, only: [:show, :show_3f, :show_4f]
@@ -32,7 +33,11 @@ class FacilitiesController < ApplicationController
     if password_valid?
       if @facility.save
         log_in @facility
-        flash[:success] = '新規作成に成功しました。'
+        if @facility.authenticator_check?
+          flash[:success] = '新規作成に成功しました。'
+        else
+          flash[:info] = "「#{@facility.name}」さん、認証コードを入力して下さい。"
+        end
         redirect_to @facility
       else
         flash.now[:danger] = 'このメールアドレスは使用できません。'
@@ -97,10 +102,27 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def authenticator_valid
+  end
+
+  def update_authenticator_valid
+    if @facility.authenticator_check?
+      if @facility.update_attributes(authenticator_check: false)
+        flash[:success] = "「#{@facility.name}」さんの二段階認証を有効にしました。"
+      end
+      redirect_to facilities_path
+    else
+      if @facility.update_attributes(authenticator_check: true)
+        flash[:success] = "「#{@facility.name}」さんの二段階認証を無効にしました。"
+      end
+      redirect_to facilities_path
+    end
+  end
+
     private
 
       def facility_params
-        params.require(:facility).permit(:name, :email, :password, :password_confirmation)
+        params.require(:facility).permit(:name, :email, :password, :password_confirmation, :authenticator_check)
       end
 
       def password_valid?
