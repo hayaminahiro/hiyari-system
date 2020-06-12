@@ -32,7 +32,11 @@ class FacilitiesController < ApplicationController
     if password_valid?
       if @facility.save
         log_in @facility
-        flash[:success] = '新規作成に成功しました。'
+        if @facility.authenticator_check?
+          flash[:success] = '新規作成に成功しました。'
+        else
+          flash[:info] = "「#{@facility.name}」さん、認証コードを入力して下さい。"
+        end
         redirect_to @facility
       else
         flash.now[:danger] = 'このメールアドレスは使用できません。'
@@ -100,7 +104,7 @@ class FacilitiesController < ApplicationController
     private
 
       def facility_params
-        params.require(:facility).permit(:name, :email, :password, :password_confirmation)
+        params.require(:facility).permit(:name, :email, :password, :password_confirmation, :authenticator_check)
       end
 
       def password_valid?
