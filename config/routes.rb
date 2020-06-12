@@ -29,9 +29,12 @@ Rails.application.routes.draw do
       #施設情報編集モーダル
       get 'edit_facility_info'
       patch 'update_facility_info'
-      #二段階認証モーダル
+      #二段階認証QRコードモーダル
       get 'authenticator'
       patch 'update_authenticator'
+      #二段階認証有効化モーダル
+      get 'authenticator_valid'
+      patch 'update_authenticator_valid'
       #3階4階月別ヒヤリ(2階：show)
       get 'show_3f'
       get 'show_4f'
