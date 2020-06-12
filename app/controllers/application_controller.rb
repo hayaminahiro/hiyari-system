@@ -117,8 +117,8 @@ class ApplicationController < ActionController::Base
       def check_mfa
         # もし認証済みでなければ・・・（ログイン前＆ログイン後）
         if !(facility_mfa_session = FacilityMfaSession.find) && (facility_mfa_session ? facility_mfa_session.record == current_facility : !facility_mfa_session) && logged_in?
-          if current_facility.email == "center@email.com"
-            # center@email.com アカウントだけお試し通常ログインできる
+          if current_facility.authenticator_check?
+            # authenticator_checkにチェックを入れてtrueにすると二段階認証をパスできる
           else
             # 認証画面へ遷移
             redirect_to new_facility_mfa_session_url
