@@ -5,6 +5,7 @@ Facility.create!(name:  "社会福祉法人くろねこ協会",
                  password:              "password",
                  password_confirmation: "password",
                  admin: true,
+                 authenticator_check: true
 )
 
 # Sampleで多数のデータ投入
