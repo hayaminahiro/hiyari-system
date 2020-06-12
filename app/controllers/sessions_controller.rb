@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in facility
       params[:session][:remember_me] == '1' ? remember(facility) : forget(facility)
       if facility.email == "center@email.com"
-        flash[:info] = "テストユーザー「社会福祉法人うみの風」さん、認証コードを入力して下さい。"
+        flash[:success] = "「社会福祉法人うみの風」さんでログインしました。"
       else
         flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
       end
