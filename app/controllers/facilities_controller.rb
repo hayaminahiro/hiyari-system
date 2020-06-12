@@ -1,10 +1,11 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
-                                      :authenticator, :update_authenticator]
-  before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy,
-                                            :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator]
+                                      :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
+  before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
+                                            :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
   before_action :correct_facility, only: [:edit, :update, :show, :show_3f, :show_4f]
-  before_action :admin_facility, only: [:index, :destroy, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator]
+  before_action :admin_facility, only: [:index, :destroy, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator,
+                                        :authenticator_valid, :update_authenticator_valid]
   before_action :set_hat_accident_count, only: [:show, :show_3f, :show_4f]
   before_action :set_accidents, only: [:show, :show_3f, :show_4f]
   before_action :url_self_admin_reject, only: [:show, :show_3f, :show_4f]
@@ -96,6 +97,23 @@ class FacilitiesController < ApplicationController
     else
       if @facility.update_attributes(display: true)
         flash[:info] = "「#{@facility.name}」さんの二段階認証QRコードを表示しました。"
+      end
+      redirect_to facilities_path
+    end
+  end
+
+  def authenticator_valid
+  end
+
+  def update_authenticator_valid
+    if @facility.authenticator_check?
+      if @facility.update_attributes(authenticator_check: false)
+        flash[:success] = "「#{@facility.name}」さんの二段階認証を有効にしました。"
+      end
+      redirect_to facilities_path
+    else
+      if @facility.update_attributes(authenticator_check: true)
+        flash[:success] = "「#{@facility.name}」さんの二段階認証を無効にしました。"
       end
       redirect_to facilities_path
     end
