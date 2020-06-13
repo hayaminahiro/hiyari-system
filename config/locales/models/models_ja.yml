@@ -11,7 +11,7 @@ ja:
         name: 施設名
         email: メールアドレス
         password: パスワード
-        password_confirmation: パスワード再入力
+        password_confirmation: パスワード確認
         display: 二段階認証QRコード表示切り替え
         authenticator_check: 二段階認証Authenticator使用
         created_at: 作成日
