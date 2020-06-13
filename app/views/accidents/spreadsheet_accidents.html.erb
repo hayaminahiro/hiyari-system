@@ -6,6 +6,12 @@
 
 <h1 class="title-position-center"><%= params[:month].to_date.strftime("%Y年 %m月 ") %>事故報告書集計</h1>
 
+<div id="change-month">
+  <%= link_to "◀︎ #{@first_day.prev_month.strftime("%Y-%m")}", spreadsheet_accidents_path(current_facility, @first_day.prev_month), local: true, class: "btn-square-shadow-pink" %>
+  <%= link_to "今月", month_spreadsheet_path(current_facility, Date.current), local: true, class: "btn-square-shadow-pink" %>
+  <%= link_to "#{@first_day.next_month.strftime("%Y-%m")} ▶︎", spreadsheet_accidents_path(current_facility, @first_day.next_month), local: true, class: "btn-square-shadow-pink" %>
+</div>
+
 <div class="container">
   <div class="col-md-12 tab-table">
     <div class="vertical-scroll-table">
