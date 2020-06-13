@@ -134,3 +134,18 @@ input#facility_authenticator_check.authenticator_checkbox_new {
   height: 80px;
   margin-top: 20px;
 }
+
+#account_delete {
+  text-align: center;
+  padding-top: 30px;
+}
+
+#delete_request {
+  text-align: center;
+  font-size: 35px;
+  color: #c7254e;
+  background: #FFF0F5;
+  border: solid 1px #c7254e;/*線*/
+  border-radius: 5px;/*角の丸み*/
+  padding: 5px;
+}

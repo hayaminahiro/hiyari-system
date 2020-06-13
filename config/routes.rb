@@ -38,6 +38,9 @@ Rails.application.routes.draw do
       #3階4階月別ヒヤリ(2階：show)
       get 'show_3f'
       get 'show_4f'
+      # 施設アカウント削除
+      get 'destroy_account'
+      patch 'update_destroy_account'
     end
     #施設利用者関連: seniors
     resources :seniors do

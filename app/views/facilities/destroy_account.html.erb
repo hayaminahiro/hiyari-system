@@ -1,0 +1,29 @@
+<% provide(:title, '施設アカウント削除') %>
+<% provide(:delete, '施設アカウント削除依頼する') %>
+<% provide(:delete_stop, '施設アカウント削除依頼をキャンセルする') %>
+
+<h1 id="new-title">施設アカウント削除</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h2>下記は施設アカウントの削除依頼です。</h2>
+    <h2>&emsp;本部で確認後、実際にアカウント削除されます。</h2>
+    <%= form_with(model: @facility, url: update_destroy_account_facility_path(@facility), local: true, method: :patch) do |f| %>
+
+      <%= f.label :password, class: "label-signup" %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <% if @facility.account_delete? %>
+        <h1 id="delete_request">削除依頼中</h1>
+        <%= f.submit yield(:delete_stop), data: { confirm: "「#{@facility.name}」さんの施設アカウント削除依頼を取り消してよろしいですか？"}, class: "btn btn-success btn-block btn-#{yield(:class_text)}" %>
+      <% else %>
+        <h3 id="account_delete">施設アカウントを削除依頼しますか？</h3>
+        <%= f.submit yield(:delete), data: { confirm: "「#{@facility.name}」さんの施設アカウント削除依頼をしてよろしいですか？"}, class: "btn btn-danger btn-block btn-#{yield(:class_text)}" %>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>
+
+
+
