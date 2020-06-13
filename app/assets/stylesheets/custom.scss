@@ -452,9 +452,6 @@ label.label-senior{
 .show-btn-position {
   text-align: center;
   width: 25%;
-  a:visited {
-    color: white;
-  }
   a {
     text-decoration: none;
   }
@@ -510,7 +507,7 @@ td .show-btn-position {
 .btn-square-shadow-red {
   display: inline-block;
   padding: 0.3em 0.6em;
-  text-decoration: none;
+  text-decoration: none !important;
   background: #c7254e;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px #730E15;
@@ -788,6 +785,11 @@ p.left-space {
 
 .btn-flat-logo:hover {
   background: #1ec7bb;
+}
+
+input.btn-flat-logo {
+  border: solid 2px cadetblue;
+  margin-top: -100px;
 }
 
 //ヒヤリ事故集計
