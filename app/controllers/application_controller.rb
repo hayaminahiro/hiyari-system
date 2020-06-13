@@ -74,9 +74,9 @@ class ApplicationController < ActionController::Base
   def set_month
     #@monthは、各月1日〜月末までを表す。accident_datetimeで使用
     day = params[:month].to_date
-    first_day = day.beginning_of_month
-    last_day = first_day.end_of_month
-    @month = first_day..last_day
+    @first_day = day.beginning_of_month
+    last_day = @first_day.end_of_month
+    @month = @first_day..last_day
   end
 
   # ログイン済みのユーザーか確認します。
