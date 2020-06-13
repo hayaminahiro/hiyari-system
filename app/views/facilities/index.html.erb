@@ -15,6 +15,11 @@
         <td><%= facility.name %></td>
         <td>
           <div style="float: right">
+            <div id="ac_delete">
+            <% if facility.account_delete? %>
+              アカウント削除依頼あり
+            <% end %>
+            </div>
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-primary" %>
             <%= link_to "二段階認証使用状況", authenticator_valid_facility_path(facility), remote: true, class: "btn btn-success" %>
             <%= link_to "二段階認証QRコード", authenticator_facility_path(facility), remote: true, class: "btn btn-info" %>
