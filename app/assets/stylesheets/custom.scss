@@ -468,7 +468,7 @@ td .show-btn-position {
 .btn-square-shadow-mini {
   display: inline-block;
   padding: 0.3em 0.6em;
-  text-decoration: none;
+  text-decoration: none !important;
   background: #f0ad4e;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px darkgoldenrod;
@@ -552,7 +552,7 @@ td .show-btn-position {
 .btn-square-shadow-pink {
   display: inline-block;
   padding: 0.3em 0.6em;
-  text-decoration: none;
+  text-decoration: none !important;
   background: lightcoral;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px rgba(115, 14, 21, 0.88);
