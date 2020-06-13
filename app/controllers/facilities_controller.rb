@@ -76,7 +76,6 @@ class FacilitiesController < ApplicationController
   def destroy_account
   end
 
-  # ＝＝＝＝＝＝＝＝
   def update_destroy_account
     if @facility.authenticate(password_params[:password])
       if @facility.account_delete?
