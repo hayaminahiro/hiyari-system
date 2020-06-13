@@ -1,10 +1,10 @@
 class FacilitiesController < ApplicationController
   before_action :set_facility, only: [:show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
-                                      :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
+                                      :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid, :destroy_account, :update_destroy_account]
   before_action :logged_in_facility, only: [:index, :show, :show_3f, :show_4f, :edit, :update, :destroy, :edit_facility_info, :update_facility_info,
-                                            :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid]
-  before_action :correct_facility, only: [:edit, :update, :show, :show_3f, :show_4f]
-  before_action :admin_facility, only: [:index, :destroy, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator,
+                                            :authenticator, :update_authenticator, :authenticator_valid, :update_authenticator_valid, :destroy_account, :update_destroy_account]
+  before_action :correct_facility, only: [:edit, :update, :show, :show_3f, :show_4f, :destroy_account, :update_destroy_account]
+  before_action :admin_facility, only: [:index, :edit_facility_info, :update_facility_info, :authenticator, :update_authenticator,
                                         :authenticator_valid, :update_authenticator_valid]
   before_action :set_hat_accident_count, only: [:show, :show_3f, :show_4f]
   before_action :set_accidents, only: [:show, :show_3f, :show_4f]
@@ -73,6 +73,27 @@ class FacilitiesController < ApplicationController
     redirect_to facilities_url
   end
 
+  def destroy_account
+  end
+
+  # ＝＝＝＝＝＝＝＝
+  def update_destroy_account
+    if @facility.authenticate(password_params[:password])
+      if @facility.account_delete?
+        @facility.update_attributes(account_delete: false)
+        flash[:info] = "施設アカウント削除依頼を取り消しました。"
+        redirect_to destroy_account_facility_url
+      else
+        @facility.update_attributes(account_delete: true)
+        flash[:warning] = "施設アカウントの削除依頼をしました。"
+        redirect_to destroy_account_facility_url
+      end
+    else
+      flash.now[:danger] = "パスワードが間違っています。"
+      render "destroy_account"
+    end
+  end
+
   def edit_facility_info
   end
 
@@ -127,6 +148,10 @@ class FacilitiesController < ApplicationController
 
       def password_valid?
         @facility.name.present? && @facility.email.present? && (facility_params[:password] == facility_params[:password_confirmation])
+      end
+
+      def password_params
+        params.require(:facility).permit(:password)
       end
 
 end
