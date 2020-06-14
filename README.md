@@ -8,6 +8,9 @@
 ***ヒヤリ・事故報告書管理システム***　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
 
 
+![画像名](/sample_image.jpg)
+
+
 
 Things you may want to cover:
 
