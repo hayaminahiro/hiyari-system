@@ -7,7 +7,7 @@
 
 ***ヒヤリ・事故報告書管理システム***　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
 
-![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2018.59.15.png)
+![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/app/assets/images/top_readme.png)
 
 ## Specification
 * 要件定義書<br>
@@ -47,7 +47,7 @@
 **Google Authenticator（二段階認証）**
 -お試しで簡単ログインできるアカウントは準備-
 
-![認証画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2017.42.46.png)
+![認証画面](https://github.com/hayaminahiro/hiyari-system/blob/master/app/assets/images/qr_readme.png)
 
 ## 主な機能一覧
 * 施設新規登録/Login Logout機能(bcrypt), Google Login
