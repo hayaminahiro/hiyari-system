@@ -5,7 +5,7 @@
 ### 介護現場におけるヒヤリハット・事故とは
 ヒヤリハットとは、 例えば介護をしていて「ヒヤッとする場面」です。事故は「起きてしまった事故」の事を指します。介護現場では、このヒヤリハット・事故報告書を積極的に活用する事で、介護事故のリスクマネジメントを行い、大きな事故を未然に防ぐ工夫をしています。
 
-ヒヤリ・事故報告書管理システム　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
+*** ヒヤリ・事故報告書管理システム ***　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
 
 
 
