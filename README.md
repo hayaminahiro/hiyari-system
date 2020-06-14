@@ -44,7 +44,7 @@
 * Chrome
 
 ## Security
-Google Authenticator（二段階認証）
+**Google Authenticator（二段階認証）**
 -お試しで簡単ログインできるアカウントは準備-
 
 ## 機能一覧
