@@ -14,6 +14,7 @@
 [https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0](https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0)
 
 * 説明動画<br>
+ー掲載予定ー
 
 ## Version
 * Ruby 2.6.3
@@ -26,23 +27,29 @@
 * psql (PostgreSQL) 12.3
 
 ## Environment
-* 開発環境　macOS Catalina, RubyMine 2020.1
-* 本番環境  heroku
+* 開発環境：macOS Catalina, RubyMine 2020.1
+* 本番環境：heroku
+
+## Version control tool
+* Git
+* GitHub
+
+## Task Management
+* issue(GitHub)
+
+## 対応端末
+* PC
+
+## 対応ブラウザ
+* Chrome
+
+## Security
+簡単ログインもできる
+
+## 機能一覧
+
+## 使用API
+* Google API(Login)
 
 
-・デバッガー
-・二段階認証
 
-
-
-
-* System dependencies
-
-* Configuration
-
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
