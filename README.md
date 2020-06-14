@@ -8,7 +8,7 @@
 ***ヒヤリ・事故報告書管理システム***　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
 
 
-![画像名](/2020-06-14 15.40.26.png)
+![画像名](2020-06-14 15.40.26.png)
 
 
 
