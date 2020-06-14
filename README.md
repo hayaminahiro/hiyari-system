@@ -10,22 +10,36 @@
 ![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2015.40.26.png)
 
 ## Specification
+* 要件定義書<br>
 [https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0](https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0)
 
+* 説明動画<br>
 
-Things you may want to cover:
+## Version
+* Ruby 2.6.3
 
-* Ruby version
+## Fw
+* Ruby on Rails 5.2.3
+* Bootstrap 4
+
+## Database
+* psql (PostgreSQL) 12.3
+
+## Environment
+* 開発環境　macOS Catalina, RubyMine 2020.1
+* 本番環境  heroku
+
+
+・デバッガー
+・二段階認証
+
+
+
 
 * System dependencies
 
 * Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
