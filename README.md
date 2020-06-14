@@ -44,14 +44,21 @@
 * Chrome
 
 ## Security
-***Google Authenticator（二段階認証）**
+**Google Authenticator（二段階認証）**
 -お試しで簡単ログインできるアカウントは準備-
 
 ![認証画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2017.42.46.png)
 
-
-
-## 機能一覧
+## 主な機能一覧
+* 施設新規登録/Login Logout機能(bcrypt), Google Login
+* 二段階認証(Google Authenticator)
+* ヒヤリハット事故報告書の月別管理
+* ヒヤリハット事故報告書の利用者別管理
+* ヒヤリハット事故報告書のCRUD機能
+* ヒヤリハット事故報告書の管理者捺印機能
+* 介護職員のCRUD機能(施設利用者と連動)
+* 施設利用者のCRUD機能(介護職員と連動)
+* ヒヤリハット事故の表集計・分析(Google Charts)
 
 ## 使用API
 * Google API(Login)
