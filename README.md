@@ -44,12 +44,14 @@
 * Chrome
 
 ## Security
-簡単ログインもできる
+Google Authenticator（二段階認証）
+-お試しで簡単ログインできるアカウントは準備-
 
 ## 機能一覧
 
 ## 使用API
 * Google API(Login)
+* Google Charts
 
 
 
