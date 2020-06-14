@@ -9,8 +9,9 @@
 
 ![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2015.40.26.png)
 
+## Specification
+[https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0](https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0)
 
-https://github.com/hayaminahiro/hiyari-system/blob/master/app/assets/images/1438635.jpg
 
 Things you may want to cover:
 
