@@ -47,7 +47,7 @@
 **Google Authenticator（二段階認証）**
 -お試しで簡単ログインできるアカウントは準備-
 
-![認証画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2017.13.32.png)
+![認証画面](https://github.com/hayaminahiro/hiyari-system/blob/master/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202020-06-14%2017.42.46.png)
 
 
 
