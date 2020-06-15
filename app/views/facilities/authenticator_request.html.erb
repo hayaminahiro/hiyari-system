@@ -39,7 +39,7 @@
         <%= f.password_field :password, class: "form-control" %>
 
         <% if @facility.authenticator_request? %>
-          <h1 class="start_request">利用中止申請中</h1>
+          <h1 class="delete_request">利用中止申請中</h1>
           <%= f.submit yield(:stop_cancel), data: { confirm: "「#{@facility.name}」さんの二段階認証利用中止の申請を取り消してよろしいですか？"}, class: "btn btn-success btn-block" %>
         <% else %>
           <h3 class="account_delete">二段階認証利用中止の申請をしますか？</h3>

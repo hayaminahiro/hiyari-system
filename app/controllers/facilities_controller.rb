@@ -130,12 +130,12 @@ class FacilitiesController < ApplicationController
 
   def update_authenticator_valid
     if @facility.authenticator_check?
-      if @facility.update_attributes(authenticator_check: false)
+      if @facility.update_attributes(authenticator_check: false, authenticator_request: false)
         flash[:success] = "「#{@facility.name}」さんの二段階認証を有効にしました。"
       end
       redirect_to facilities_path
     else
-      if @facility.update_attributes(authenticator_check: true)
+      if @facility.update_attributes(authenticator_check: true, authenticator_request: false)
         flash[:success] = "「#{@facility.name}」さんの二段階認証を無効にしました。"
       end
       redirect_to facilities_path
@@ -147,14 +147,28 @@ class FacilitiesController < ApplicationController
 
   def update_authenticator_request
     if @facility.authenticate(password_params[:password])
-      if @facility.authenticator_request?
-        @facility.update_attributes(authenticator_request: false)
-        flash[:info] = "二段階認証開始の申請を取り消しました。"
-        redirect_to authenticator_request_facility_url
-      else
-        @facility.update_attributes(authenticator_request: true)
-        flash[:warning] = "二段階認証開始の申請をしました。"
-        redirect_to authenticator_request_facility_url
+      if @facility.authenticator_check? # 二段階認証がtrue(無効)の場合の処理
+        # 申請中(開始or中止)authenticator_request == true
+        if @facility.authenticator_request?
+          @facility.update_attributes(authenticator_request: false)
+          flash[:info] = "二段階認証開始の申請を取り消しました。"
+          redirect_to authenticator_request_facility_url
+        else
+          @facility.update_attributes(authenticator_request: true)
+          flash[:info] = "二段階認証開始の申請をしました。"
+          redirect_to authenticator_request_facility_url
+        end
+      else # 二段階認証がfalse(有効)の場合の処理
+        if @facility.authenticator_request?
+          # 申請中(開始or中止)authenticator_request == true
+          @facility.update_attributes(authenticator_request: false)
+          flash[:success] = "二段階認証利用中止の申請を取り消しました。"
+          redirect_to authenticator_request_facility_url
+        else
+          @facility.update_attributes(authenticator_request: true)
+          flash[:success] = "二段階認証利用中止の申請をしました。"
+          redirect_to authenticator_request_facility_url
+        end
       end
     else
       flash.now[:danger] = "パスワードが間違っています。"
