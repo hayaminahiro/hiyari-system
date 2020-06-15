@@ -12,11 +12,6 @@
   <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
 
-  <%# if @facility.authenticator_check? %>
-    <%#= f.label "二段階認証を使用しない場合のみチェック。セキュリティ上、使用することをお勧めします。", class: "authenticator_label_new" %>
-    <%#= f.check_box :authenticator_check, class: "authenticator_checkbox_new" %>
-  <%# end %>
-
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 
 <% end %>

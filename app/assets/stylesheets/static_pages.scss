@@ -125,8 +125,8 @@
 }
 
 input#facility_authenticator_check.authenticator_checkbox {
-  width: 80px;
-  height: 80px;
+  width: 18px;
+  height: 18px;
 }
 
 input#facility_authenticator_check.authenticator_checkbox_new {
@@ -154,7 +154,6 @@ input#facility_authenticator_check.authenticator_checkbox_new {
   text-align: center;
   font-size: 35px;
   color: #0066FF;
-  //color: #3b75d4;
   background: #F0FFFF;
   border: solid 1px #3b75d4;/*線*/
   border-radius: 5px;/*角の丸み*/

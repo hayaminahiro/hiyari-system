@@ -15,10 +15,14 @@
         <td><%= facility.name %></td>
         <td>
           <div style="float: right">
-            <div id="ac_delete">
-            <% if facility.account_delete? %>
-              アカウント削除申請あり
-            <% end %>
+            <div class="request">
+              <% if facility.account_delete? %>
+                アカウント削除申請あり
+              <% elsif facility.authenticator_request? && facility.authenticator_check? && facility.account_delete != true %>
+                二段階認証開始申請あり
+              <% elsif facility.authenticator_request? && facility.authenticator_check == false && facility.account_delete != true %>
+                二段階認証中止申請あり
+              <% end %>
             </div>
             <%= link_to "施設情報編集", edit_facility_info_facility_path(facility), remote: true, class: "btn btn-primary" %>
             <%= link_to "二段階認証使用状況", authenticator_valid_facility_path(facility), remote: true, class: "btn btn-success" %>
