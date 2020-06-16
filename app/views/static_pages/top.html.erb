@@ -103,8 +103,10 @@
                     <%= f.label :password_confirmation, class: "label-signup" %>
                     <%= f.password_field :password_confirmation, class: "form-control" %>
 
-                    <%= f.label "二段階認証を使用しない場合のみチェック。セキュリティ上、使用することをお勧めします。", class: "authenticator_label" %>
-                    <%= f.check_box :authenticator_check, class: "authenticator_checkbox" %>
+                    <div class="authenticator_label">
+                      <%= f.check_box :authenticator_check, class: "authenticator_checkbox" %>
+                      二段階認証の<span style="color: #c7254e">利用なし</span>ではじめる。<span style="color: #c7254e">(利用推奨)</span>
+                    </div>
 
                     <div class="btn-position">
                       <div class="login-btn">
