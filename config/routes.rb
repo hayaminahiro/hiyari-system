@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       # 施設アカウント削除
       get 'destroy_account'
       patch 'update_destroy_account'
+      # 二段階認証使用変更申請
+      get 'authenticator_request'
+      patch 'update_authenticator_request'
     end
     #施設利用者関連: seniors
     resources :seniors do

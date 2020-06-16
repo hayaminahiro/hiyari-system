@@ -21,6 +21,7 @@
             <% unless current_facility.admin? %> <!--管理者閲覧不可-->
               <li><%= link_to "利用者一覧", facility_seniors_path(current_facility) %></li>
               <li><%= link_to "職員一覧", facility_workers_path(current_facility) %></li>
+              <li><%= link_to "二段階認証申請", authenticator_request_facility_path(current_facility) %></li>
               <li><%= link_to "アカウント削除", destroy_account_facility_path(current_facility) %></li>
             <% end %>
             <li><%= link_to "施設情報設定", edit_facility_path(current_facility) %></li>

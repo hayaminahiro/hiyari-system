@@ -1,0 +1,52 @@
+<% provide(:title, '二段階認証') %>
+<% provide(:start_request, '二段階認証の利用開始を申請する') %>
+<% provide(:start_cancel, '二段階認証の利用開始申請をキャンセルする') %>
+<% provide(:stop_request, '二段階認証の利用中止を申請する') %>
+<% provide(:stop_cancel, '二段階認証の利用中止申請をキャンセルする') %>
+
+<!--authenticator_check == true の場合、二段階認証は未使用-->
+<% if @facility.authenticator_check? %>
+  <h1 id="new-title">二段階認証利用開始の申請</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>下記は二段階認証開始の申請です。</h2>
+      <h2>&emsp;本部で確認後、実際に二段階認証が開始されます。</h2>
+      <%= form_with(model: @facility, url: update_authenticator_request_facility_path(@facility), local: true, method: :patch) do |f| %>
+
+        <%= f.label :password, class: "label-signup" %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <% if @facility.authenticator_request? %>
+          <h1 class="start_request">利用開始申請中</h1>
+          <%= f.submit yield(:start_cancel), data: { confirm: "「#{@facility.name}」さんの二段階認証利用開始の申請を取り消してよろしいですか？"}, class: "btn btn-danger btn-block" %>
+        <% else %>
+          <h3 class="account_delete">二段階認証利用開始の申請をしますか？</h3>
+          <%= f.submit yield(:start_request), data: { confirm: "「#{@facility.name}」さんの二段階認証利用開始の申請をしてよろしいですか？"}, class: "btn btn-success btn-block" %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <h1 id="new-title">二段階認証利用中止の申請</h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h2>下記は二段階認証中止の申請です。</h2>
+      <h2>&emsp;本部で確認後、実際に二段階認証が中止されます。</h2>
+      <%= form_with(model: @facility, url: update_authenticator_request_facility_path(@facility), local: true, method: :patch) do |f| %>
+
+        <%= f.label :password, class: "label-signup" %>
+        <%= f.password_field :password, class: "form-control" %>
+
+        <% if @facility.authenticator_request? %>
+          <h1 class="delete_request">利用中止申請中</h1>
+          <%= f.submit yield(:stop_cancel), data: { confirm: "「#{@facility.name}」さんの二段階認証利用中止の申請を取り消してよろしいですか？"}, class: "btn btn-success btn-block" %>
+        <% else %>
+          <h3 class="account_delete">二段階認証利用中止の申請をしますか？</h3>
+          <%= f.submit yield(:stop_request), data: { confirm: "「#{@facility.name}」さんの二段階認証利用中止の申請をしてよろしいですか？"}, class: "btn btn-danger btn-block" %>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+<% end %>
