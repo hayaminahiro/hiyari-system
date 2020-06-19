@@ -80,7 +80,10 @@ class FacilitiesController < ApplicationController
   end
 
   def update_destroy_account
-    if @facility.authenticate(password_params[:password])
+    if @facility.password_digest == nil
+      flash[:danger] = "管理者に直接問い合わせて下さい。"
+      redirect_to authenticator_request_facility_url
+    elsif @facility.authenticate(password_params[:password])
       if @facility.account_delete?
         @facility.update_attributes(account_delete: false)
         flash[:info] = "施設アカウント削除申請を取り消しました。"
@@ -146,7 +149,10 @@ class FacilitiesController < ApplicationController
   end
 
   def update_authenticator_request
-    if @facility.authenticate(password_params[:password])
+    if @facility.password_digest == nil
+      flash[:danger] = "管理者に直接問い合わせて下さい。"
+      redirect_to authenticator_request_facility_url
+    elsif @facility.authenticate(password_params[:password])
       if @facility.authenticator_check? # 二段階認証がtrue(無効)の場合の処理
         # 申請中(開始or中止)authenticator_request == true
         if @facility.authenticator_request?
