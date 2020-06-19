@@ -1,24 +1,26 @@
 <!doctype html>
 <html>
-<head>
-<!--  <meta charset='utf-8' />-->
-  <%= wicked_pdf_stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= wicked_pdf_javascript_include_tag "number_pages" %>
-</head>
+  <head>
+  <!--  <meta charset='utf-8' />-->
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+  </head>
 <body>
-
 
 <% provide(:title, @senior.senior_name + "-印刷画面") %>
 
+
 <% if @accident.which_accident == "ヒヤリハット" %>
-  <h1 class="title-position-print" style="padding-top: 5px;"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h1>
+  <h1 class="pdf-title"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h1>
 <% else %>
-  <h3 class="title-position-print" style="padding-top: 5px;"><%= @senior.senior_name %>&emsp;事故報告書</h3>
+  <h3 class="pdf-title"><%= @senior.senior_name %>&emsp;事故報告書</h3>
 <% end %>
 
 <div class="container">
+
   <div class="row">
-    <div class="col-md-6 col-md-offset-6" style="padding-top: 55px;">
+
+    <div class="col-md-6 col-md-offset-6" style="padding-top: 10px;">
       <table class="table table-bordered table-condensed">
         <thead>
         <tr>
