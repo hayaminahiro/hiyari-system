@@ -29,7 +29,6 @@ class AccidentsController < ApplicationController
                                          :last_chief_sign, :last_reset_chief_sign,
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
                                          :last_facility_manager_sign, :last_reset_facility_manager]
-
   before_action :set_seniors, only: [:index, :index_3f, :index_4f, :new_accidents_index]
   before_action :set_accidents, only: [:index, :index_3f, :index_4f, :new_accidents_index]
   before_action :set_hat_accident_count, only: [:spreadsheet]
