@@ -1,0 +1,2 @@
+. filter=lfs diff=lfs merge=lfs -text
+vender/bundle/ruby/2.6.0/cache/wkhtmltopdf-binary-0.12.6.gem filter=lfs diff=lfs merge=lfs -text
