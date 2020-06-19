@@ -47,6 +47,14 @@ class AccidentsController < ApplicationController
 
   #ヒヤリ印刷画面詳細
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'show',
+        template: 'accidents/show.pdf',
+        layout: 'layouts/pdf.html'
+      end
+    end
   end
 
   #ヒヤリ新規作成

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get '/facilities/:facility_id/accidents/spreadsheet_accidents/:month',
       to: 'accidents#spreadsheet_accidents', as: :spreadsheet_accidents
 
+  get 'pdf/show.pdf', to: 'accidents#show'
+
+
   #施設関連: facilities
   resources :facilities do
     member do #memberはid付与
