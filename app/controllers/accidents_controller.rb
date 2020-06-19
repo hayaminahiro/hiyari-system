@@ -1,6 +1,6 @@
 class AccidentsController < ApplicationController
 
-  before_action :set_facility_id, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :create, :edit, :update, :browsing,
+  before_action :set_facility_id, only: [:index, :index_3f, :index_4f, :show, :show_pdf, :new_accidents_index, :new, :create, :edit, :update, :browsing,
                                          #初回捺印
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign,
                                          :risk_manager_sign, :reset_risk_manager_sign, :director_sign, :reset_director_sign,
@@ -10,18 +10,18 @@ class AccidentsController < ApplicationController
                                          :last_risk_manager_sign, :last_reset_risk_manager_sign, :last_director_sign, :last_reset_director_sign,
                                          :last_facility_manager_sign, :last_reset_facility_manager,
                                          :month_spreadsheet, :destroy]
-  before_action :logged_in_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+  before_action :logged_in_facility, only: [:index, :index_3f, :index_4f, :show, :show_pdf, :new_accidents_index, :new, :edit,
                                             :spreadsheet, :month_spreadsheet, :spreadsheet_accidents]
-  before_action :correct_facility, only: [:index, :index_3f, :index_4f, :show, :new_accidents_index, :new, :edit,
+  before_action :correct_facility, only: [:index, :index_3f, :index_4f, :show, :show_pdf, :new_accidents_index, :new, :edit,
                                           :month_spreadsheet, :edit, :update]
-  before_action :set_senior_id, only: [:show, :new, :create, :edit, :update, :browsing, :destroy,
+  before_action :set_senior_id, only: [:show, :show_pdf, :new, :create, :edit, :update, :browsing, :destroy,
                                        #初回捺印
                                        :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
                                        :director_sign, :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign,
                                        #最終捺印
                                        :last_chief_sign, :last_reset_chief_sign, :last_risk_manager_sign, :last_reset_risk_manager_sign,
                                        :last_director_sign, :last_reset_director_sign, :last_facility_manager_sign, :last_reset_facility_manager]
-  before_action :set_accident_id, only: [:show, :edit, :update, :browsing, :destroy,
+  before_action :set_accident_id, only: [:show, :show_pdf, :edit, :update, :browsing, :destroy,
                                          #初回捺印
                                          :charge_sign, :reset_charge_sign, :chief_sign, :reset_chief_sign, :risk_manager_sign, :reset_risk_manager_sign,
                                          :director_sign, :reset_director_sign, :facility_manager_sign, :reset_facility_manager_sign,
@@ -47,12 +47,16 @@ class AccidentsController < ApplicationController
 
   #ヒヤリ印刷画面詳細
   def show
+  end
+
+  #PDF印刷
+  def show_pdf
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'show',
-        template: 'accidents/show.pdf',
-        layout: 'layouts/pdf.html'
+        render pdf: 'show_pdf',
+               template: 'accidents/show_pdf.pdf',
+               layout: 'layouts/pdf.html'
       end
     end
   end

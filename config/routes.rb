@@ -23,9 +23,6 @@ Rails.application.routes.draw do
   get '/facilities/:facility_id/accidents/spreadsheet_accidents/:month',
       to: 'accidents#spreadsheet_accidents', as: :spreadsheet_accidents
 
-  get 'pdf/show.pdf', to: 'accidents#show'
-
-
   #施設関連: facilities
   resources :facilities do
     member do #memberはid付与
@@ -68,6 +65,8 @@ Rails.application.routes.draw do
         member do
           #ヒヤリ閲覧モーダル
           get 'browsing'
+          #PDF表示
+          get 'show_pdf'
           #担当印押下
           patch 'charge_sign'
           #担当印キャンセル
@@ -88,7 +87,6 @@ Rails.application.routes.draw do
           patch 'facility_manager_sign'
           #施設長印キャンセル
           patch 'reset_facility_manager_sign'
-
           #最終担当係長印押下
           patch 'last_chief_sign'
           #最終担当係長印キャンセル
