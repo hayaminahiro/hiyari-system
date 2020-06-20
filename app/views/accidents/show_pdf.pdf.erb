@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+  <head>
+    <!--  <meta charset='utf-8' />-->
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+  </head>
+  <body>
+
+    <% provide(:title, @senior.senior_name + "-印刷画面") %>
+
+    <% if @accident.which_accident == "ヒヤリハット" %>
+      <h1 class="pdf-title"><%= @senior.senior_name %>&emsp;ヒヤリ報告書<span id="level">（レベル0~2）</span></h1>
+    <% else %>
+      <h3 class="pdf-title"><%= @senior.senior_name %>&emsp;事故報告書</h3>
+    <% end %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-6" style="padding-top: 10px;">
+          <table class="table table-bordered table-condensed">
+            <thead>
+            <tr>
+              <th class="sign-th">施設長</th>
+              <th class="sign-th">次長</th>
+              <th class="sign-th">リスマネ</th>
+              <th class="sign-th">担当係長</th>
+              <th class="sign-th">担当職員</th>
+              <th class="sign-th">家族連絡</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="sign-box">
+              <td class="confirm_sign" style="padding: 2px;"><!--施設長印-->
+                <% if @accident.superior_a.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_a %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--次長印-->
+                <% if @accident.superior_b.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_b %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--リスマネ印-->
+                <% if @accident.superior_c.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_c %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--係長印-->
+                <% if @accident.superior_d.present? || @accident.superior_e.present? || @accident.superior_f.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_d || @accident.superior_e || @accident.superior_f %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--担当印-->
+                <% if @accident.charge_sign? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.charge_sign %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="family-report"><!--家族連絡欄-->
+                <%= @accident.family_comment %>
+              </td>
+            </tr>
+            </tbody>
+            <tbody>
+            <tr>
+              <td colspan="3">
+                <div class="label-inline-flex">
+                  <% if @accident.reporting_date.present? %>
+                    【報告日】<%=  l(@accident.reporting_date, format: :date) %>
+                  <% else %>
+                    【報告日】未登録
+                  <% end %>
+                </div>
+              </td>
+              <td colspan="3">
+                <div class="label-inline-flex">
+                  <% if @accident.last_reporting_date.present? %>
+                    【最終報告日】<%= l(@accident.last_reporting_date, format: :date) %>
+                  <% else %>
+                    【最終報告日】未登録
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-bordered table-condensed table-hover">
+            <thead>
+            <tr>
+              <th class="report-th" colspan="4">部署・報告者</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">部署</th>
+              <td class="report-td">
+                <div>
+                  <p class="left-space"><%= @accident.department %></p>
+                </div>
+              </td>
+              <th class="report-index" style="vertical-align: middle">報告者</th>
+              <td class="report-td"><%= @accident.reporter %></td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+              <th class="report-th" colspan="4">具体的内容</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th class="report-index">日付</th>
+              <td class="report-td"><%= l(@accident.accident_datetime, format: :date) %></td>
+              <th class="report-index">時間</th>
+              <td class="report-td"><%= l(@accident.accident_time, format: :ja_time) %></td>
+            </tr>
+            <tr>
+              <th class="report-index">対象者</th>
+              <td class="report-td" style="color: red"><%= @senior.senior_name %></td>
+              <th class="report-index">関与者</th>
+              <td class="report-td"><%= @accident.accident_worker %></td>
+            </tr>
+            <tr>
+              <th class="report-index">場所</th>
+              <td class="report-td"><%= @accident.accident_place %></td>
+              <th class="report-index">活動等</th>
+              <td class="report-td"><%= @accident.active %></td>
+            </tr>
+            <tr>
+              <th class="report-index"style="vertical-align: middle">状況・職員の動き</th>
+              <td class="report-td-left" colspan="3">
+                <p class="left-space">
+                  <%= @accident.accident_scene %>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">結果</th>
+              <td class="report-td-left" colspan="3">
+                <% if @accident.accident_result.present? %>
+                  <p class="left-space">
+                    【<%= @accident.accident_result %>】<%= @accident.accident_result_comment %>
+                  </p>
+                <% end %>
+              </td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+              <th class="report-th" colspan="4">状況分類</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th class="report-index" style="width: 15%; vertical-align: middle;">場面・活動状況</th>
+              <td class="report-td">
+                <p class="left-space">
+                  <%= @accident.activity_scene %>
+                  <% if @accident.other_activity_scene.present? %>
+                    （<%= @accident.other_activity_scene %>）
+                  <% end %>
+                </p>
+              </td>
+              <th class="report-index" style="width: 15%; vertical-align: middle;">出来事の領域別分類</th>
+              <td class="report-td">
+                <p class="left-space">
+                  <%= @accident.event_classification %>
+                  <% if @accident.other_event.present? %>
+                    （<%= @accident.other_event %>）
+                  <% end %>
+                </p>
+              </td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr>
+              <th class="report-th" colspan="4">原因・対策・効果等</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">原因・要因</th>
+              <td class="report-td-left" colspan="3">
+                <p class="left-space"><%= @accident.result_comment %></p>
+                <p class="left-space">
+                  【職員側】
+                  <%= "支援ミス" if @accident.support_mistake? %>
+                  <%= "スキル不足" if @accident.not_enough_skills? %>
+                  <%= "勤務態度" if @accident.work_attitude? %>
+                  <%= "情報の共有" if @accident.information_sharing_worker? %>
+                  <%= "アセス不足" if @accident.not_enough_assessment? %>
+                  <%= "環境・設備面" if @accident.environment? %>
+                </p>
+                <p class="left-space">
+                  【利用者側】
+                  <%= "体調不良" if @accident.poor_health? %>
+                  <%= "精神的不安定" if @accident.mental_instability? %>
+                  <%= "発作" if @accident.seizure? %>
+                  <%= "特性" if @accident.characteristic? %>
+                  <%= "加齢" if @accident.aging? %>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">教訓・対策</th>
+              <td class="report-td-left" colspan="3">
+                <p class="left-space"><%= @accident.measures_comment %></p>
+                <p class="left-space">
+                  【改善点】
+                  <%= "支援の改善" if @accident.improved_support? %>
+                  <%= "利用者の把握" if @accident.understanding_seniors? %>
+                  <%= "周知の徹底" if @accident.well_known? %>
+                  <%= "マニュアル整備" if @accident.manual_maintenance? %>
+                  <%= "情報の共有" if @accident.information_sharing? %>
+                  <%= "職員教育" if @accident.worker_education? %>
+                  <%= "環境改善" if @accident.environmental_improvement? %>
+                  <%= "その他" if @accident.other? %>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">対策変更</th>
+              <td class="report-td-left" colspan="3">
+                <p class="left-space"><%= @accident.change_measures %></p>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index" style="vertical-align: middle">効果(翌月評価)</th>
+              <td class="report-td-left" colspan="2">
+                <p class="left-space">
+                  【評価日】
+                  <%= l(@accident.evaluation_date, format: :date) if @accident.evaluation_date.present? %><br>
+                  <%= @accident.evaluation_comment %>
+                </p>
+              </td>
+              <td class="report-td-left">
+                <p class="left-space">【解決状況】<br><%= @accident.measures_result %></p>
+              </td>
+            </tr>
+            <tr>
+              <th class="report-index">責任者等コメント</th>
+              <td class="report-td-left" colspan="3">
+                <p class="left-space"><%= @accident.superior_comment %></p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+          <table class="table table-bordered table-condensed sign-table">
+            <thead>
+            <tr>
+              <th class="sign-th">施設長</th>
+              <th class="sign-th">次長</th>
+              <th class="sign-th">リスマネ</th>
+              <th class="sign-th">担当係長</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="sign-box">
+              <td class="confirm_sign" style="padding: 2px;"><!--最終施設長印-->
+                <% if @accident.superior_a_last.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_a_last %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--最終次長印-->
+                <% if @accident.superior_b_last.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_b_last %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--最終リスマネ印-->
+                <% if @accident.superior_c_last.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_c_last %></span>
+                  </div>
+                <% end %>
+              </td>
+              <td class="confirm_sign" style="padding: 2px;"><!--最終係長印-->
+                <% if @accident.superior_d_last.present? || @accident.superior_e_last.present? || @accident.superior_f_last.present? %>
+                  <div class="stamp stamp-approve">
+                    <span><%= l(@accident.updated_at, format: :sign) %></span>
+                    <span><%= @accident.superior_d_last || @accident.superior_e_last || @accident.superior_f_last %></span>
+                  </div>
+                <% end %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

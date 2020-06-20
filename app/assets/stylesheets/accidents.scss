@@ -25,4 +25,15 @@
   padding-left: 480px;
 }
 
-//テスト2
+//PDFアイコン
+.pdf-color {
+  color: crimson;
+  padding: 110px 0 0 20px;
+  position: absolute;
+  float: left;
+}
+
+.pdf-color:hover {
+  color: #FF1A6F;
+  text-decoration: none;
+}

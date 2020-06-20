@@ -21,6 +21,8 @@ gem 'bootsnap', require: false
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'google-authenticator-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug', '9.0.6', platform: :mri

@@ -641,6 +641,12 @@ div#change-month {
   margin: 50px 10px 30px 30px;
 }
 
+.pdf-title {
+  position: absolute;
+  font-size: 30px;
+  margin: -50px 10px 30px 30px;
+}
+
 th.sign-th {
   text-align: center;
   height: 18px;
@@ -765,7 +771,7 @@ input#senior_accidents_accident_result_comment.form-control {
 }
 
 p.left-space {
- margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .btn-flat-logo {
@@ -923,4 +929,3 @@ img.google {
   margin-top: 15px;
   margin-bottom: 10px;
 }
-
