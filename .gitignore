@@ -27,3 +27,5 @@
 /config/master.key
 
 /.env
+
+vender/bundle/ruby/2.6.0/cache/wkhtmltopdf-binary-0.12.6.gem
