@@ -58,10 +58,10 @@
                   <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
                     <div class="login-btn">
                       <div class="test-btn">testログイン</div>
-                        <%= f.hidden_field :email ,value: "center@email.com" %>
-                        <%= f.hidden_field :password ,value: "password" %>
-                        <%= f.submit "二段階認証なしで試す", class: "btn-flat-border-test" %>
-                      </div>
+                      <%= f.hidden_field :email ,value: "center@email.com" %>
+                      <%= f.hidden_field :password ,value: "password" %>
+                      <%= f.submit "二段階認証なしで試す", class: "btn-flat-border-test" %>
+                    </div>
                   <% end %>
                 </div>
               </div>
@@ -105,7 +105,7 @@
 
                     <div class="authenticator_label">
                       <%= f.check_box :authenticator_check, class: "authenticator_checkbox" %>
-                      二段階認証の<span style="color: #c7254e">利用なし</span>ではじめる。<span style="color: #c7254e">(利用推奨)</span>
+                      二段階認証<span style="color: #c7254e">利用なし</span>ではじめる。<span style="color: #c7254e">(利用推奨)</span>
                     </div>
 
                     <div class="btn-position">

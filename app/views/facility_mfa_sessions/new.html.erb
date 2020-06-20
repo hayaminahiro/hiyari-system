@@ -6,7 +6,7 @@
 <h1 class="title-position">認証コード入力</h1>
 <%= link_to "ログインキャンセル", facility_mfa_session_path, method: :delete, class: "btn-cancel" %>
 
-<div class="col-md-6 col-md-offset-2">
+<div class="col-md-6 col-md-offset-2" style="margin-bottom: 200px;">
 
   <!--認証コード入力後にログインできる-->
   <%= form_tag facility_mfa_session_path, method: :post do %>
@@ -22,12 +22,12 @@
     <div class="actions">
       <% if @facility.display? %> <!--現在QRコード表示中-->
         <p>認証コードを入力するとQRコードが非表示になります。<br>
-        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+          <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
         <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
         <%= submit_tag yield(:no_qr_button), class: "btn-flat-vertical-danger" %>
       <% else %> <!--現在QRコード非表示-->
         <p>認証コードを入力するとQRコードが表示されます。<br>
-        <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
+          <span style="color:red">QRコードスキャン後、非表示にする事をお勧めします。</span></p>
         <%= text_field :auth, :mfa_code ,placeholder: "123456" %>
         <%= submit_tag yield(:qr_button), class: "btn-flat-vertical-border" %>
       <% end %>
@@ -84,9 +84,4 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 
