@@ -65,6 +65,8 @@ Rails.application.routes.draw do
         member do
           #ヒヤリ閲覧モーダル
           get 'browsing'
+          #PDF表示
+          get 'show_pdf'
           #担当印押下
           patch 'charge_sign'
           #担当印キャンセル

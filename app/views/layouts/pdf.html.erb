@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= @senior.senior_name %>&emsp;<%= @accident.which_accident %>報告書</title>
+    <%= wicked_pdf_stylesheet_link_tag "application.pdf" -%>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+  </head>
+
+  <body class="A4 landscape sheet">
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+  </body>
+
+</html>

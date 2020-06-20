@@ -33,8 +33,13 @@ class SessionsController < ApplicationController
     facility = Facility.find_or_create_from_auth(request.env['omniauth.auth'])
     if facility.save
       session[:facility_id] = facility.id
-      flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
-      redirect_to facility_url(current_facility)
+      if facility.authenticator_check?
+        flash[:success] = "「#{facility.name}」さんでログインしました。"
+        redirect_to facility_url(current_facility)
+      else
+        flash[:info] = "「#{facility.name}」さん、認証コードを入力して下さい。"
+        redirect_to facility_url(current_facility)
+      end
     else
       flash[:danger] = '認証に失敗しました。'
       redirect_to root_url
