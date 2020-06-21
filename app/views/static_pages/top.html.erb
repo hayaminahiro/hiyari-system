@@ -1,11 +1,50 @@
 <% provide(:title, "ホーム") %>
 
+<head>
+  <style type="text/css">
+    #photo {
+      width: 550px;
+      height: 350px;
+      margin: 30px auto;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px 0 ;
+      color: #666666;
+    }
+    #photo img {
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+  </style>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+      $(function(){
+          var setImg = '#photo';
+          var fadeSpeed = 1600;
+          var switchDelay = 5000;
+          $(setImg).children('img').css({opacity:'0'});
+          $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
+          setInterval(function(){
+              $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
+          },switchDelay);
+      });
+  </script>
+</head>
+
 <body class="contents-frame">
   <div id="hiyari-title">
     <h1 id=top-title>ヒヤリ・事故報告書管理システム</h1>
-    <h2>ヒヤリハット・事故報告書の作成 / 管理 / 集計ができます。</h2>
+    <h2>介護施設のヒヤリハット・事故報告書の作成 / 管理 / 集計ができます。</h2>
     <!--ログイン・ログインボタン--><!--未ログイン時のみ表示-->
     <% if logged_in? %>
+      <div id="photo">
+        <img src="/assets/note_job.jpg" width="550" height="350" alt="" >
+        <img src="/assets/heart.jpg" width="550" height="350" alt="">
+        <img src="/assets/kaigo.jpg" width="550" height="350" alt="">
+      </div>
       <% if current_facility.admin? %>
         <div id="facility-title-name">
           <%= current_facility.name %> （管理ユーザー）
@@ -20,6 +59,11 @@
       </button>
       <button type="button" class="btn-flat-border3" data-toggle="modal" data-target="#signup-Modal">SignUp
       </button>
+      <div id="photo">
+        <img src="/assets/note_job.jpg" width="550" height="350" alt="" >
+        <img src="/assets/heart.jpg" width="550" height="350" alt="">
+        <img src="/assets/kaigo.jpg" width="550" height="350" alt="">
+      </div>
     <% end %>
     <!-- ログインモーダル -->
     <div class="modal-position">
