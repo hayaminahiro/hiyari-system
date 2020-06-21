@@ -37,3 +37,5 @@ vender/bundle/ruby/2.6.0/specifications/wicked_pdf-2.1.0.gemspec
 vender/bundle/ruby/2.6.0/specifications/wkhtmltopdf-binary-0.12.6.gemspec
 
 yarn.lock
+
+vender/bundle/ruby/2.6.0
