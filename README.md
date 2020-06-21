@@ -7,7 +7,7 @@
 
 ***ヒヤリ・事故報告書管理システム***　[https://hiyari-system.herokuapp.com/](https://hiyari-system.herokuapp.com/)
 
-![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/app/assets/images/top_readme.png)
+![TOP画面](https://github.com/hayaminahiro/hiyari-system/blob/master/app/assets/images/readme_top.png)
 
 ## Specification
 * 要件定義書<br>
@@ -56,6 +56,7 @@
 * ヒヤリハット事故報告書の利用者別管理
 * ヒヤリハット事故報告書のCRUD機能
 * ヒヤリハット事故報告書の管理者捺印機能
+* ヒヤリハット事故報告書のPDF変換機能
 * 介護職員のCRUD機能(施設利用者と連動)
 * 施設利用者のCRUD機能(介護職員と連動)
 * ヒヤリハット事故の表集計・分析(Google Charts)
