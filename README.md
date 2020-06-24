@@ -14,7 +14,7 @@
 [https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0](https://docs.google.com/spreadsheets/d/1FYmopdcnR0Voty-uRsZbDPVvxn-ZmCsi_5xR5YiLvyY/edit#gid=0)
 
 * 説明動画<br>
-ー掲載予定ー
+[https://www.youtube.com/watch?v=M8PByh_St_A&feature=youtu.be](https://www.youtube.com/watch?v=M8PByh_St_A&feature=youtu.be)
 
 ## Version
 * Ruby 2.6.3
