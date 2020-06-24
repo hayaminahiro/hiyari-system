@@ -1,157 +1,161 @@
 <% provide(:title, 'ヒヤリ集計') %>
 
-<div id="facility-name" style="margin-bottom: 30px;">
-  <h3><%= current_facility.name %></h3>
-</div>
+<div class="container graph">
 
-<h1 class="title-position-center"><%= params[:month].to_date.strftime("%Y年 %m月 ") %>ヒヤリ報告書集計</h1>
+  <div id="facility-name" style="margin-bottom: 30px;">
+    <h3><%= current_facility.name %></h3>
+  </div>
 
-<div id="change-month">
-  <%= link_to "◀︎ #{@first_day.prev_month.strftime("%Y年%m月")}", month_spreadsheet_path(current_facility, @first_day.prev_month), local: true, class: "btn-square-shadow-pink" %>
-  <%= link_to "今月", month_spreadsheet_path(current_facility, Date.current), local: true, class: "btn-square-shadow-pink" %>
-  <%= link_to "#{@first_day.next_month.strftime("%Y年%m月")} ▶︎", month_spreadsheet_path(current_facility, @first_day.next_month), local: true, class: "btn-square-shadow-pink" %>
-  <%= link_to "#{@first_day.strftime("%Y年%m月")}事故報告書集計", spreadsheet_accidents_path(current_facility, @first_day), local: true, class: "btn-square-shadow-mini" %>
-</div>
+  <h1 class="title-position-center"><%= params[:month].to_date.strftime("%Y年 %m月 ") %>ヒヤリ報告書集計</h1>
 
-<div class="container">
-  <div class="col-md-12 tab-table">
-    <div class="vertical-scroll-table">
-      <table id="table-scroll" class="table table-bordered table-condensed table-hover">
-        <thead>
-          <tr>
-            <th class="month-spreadsheet-thead" style="width: 12%"></th>
-            <th class="month-spreadsheet-thead" colspan="3">7:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">9:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">12:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">14:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">17:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">19:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">22:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">3:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">合計</th>
-          </tr>
-          <tr>
-            <th class="floor-color">出来事</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render "fall_hat" %>
-          <%= render "missing_hat" %>
-          <%= render "meal_hat" %>
-          <%= render "medicine_hat" %>
-          <%= render "scratch_hat" %>
-          <%= render "environment_hat" %>
-          <%= render "info_hat" %>
-          <%= render "personal_hat" %>
-          <%= render "lost_hat" %>
-          <%= render "damage_hat" %>
-          <%= render "money_hat" %>
-          <%= render "medical_hat" %>
-          <%= render "infection_hat" %>
-          <%= render "forget_hat" %>
-          <%= render "other_hat" %>
-          <%= render "total_hat" %>
-        </tbody>
-      </table>
+  <div id="change-month">
+    <%= link_to "◀︎ #{@first_day.prev_month.strftime("%Y年%m月")}", month_spreadsheet_path(current_facility, @first_day.prev_month), local: true, class: "btn-square-shadow-pink" %>
+    <%= link_to "今月", month_spreadsheet_path(current_facility, Date.current), local: true, class: "btn-square-shadow-pink" %>
+    <%= link_to "#{@first_day.next_month.strftime("%Y年%m月")} ▶︎", month_spreadsheet_path(current_facility, @first_day.next_month), local: true, class: "btn-square-shadow-pink" %>
+    <%= link_to "#{@first_day.strftime("%Y年%m月")}事故報告書集計", spreadsheet_accidents_path(current_facility, @first_day), local: true, class: "btn-square-shadow-mini" %>
+  </div>
+
+  <div class="container">
+    <div class="col-md-12 tab-table">
+      <div class="vertical-scroll-table">
+        <table id="table-scroll" class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th class="month-spreadsheet-thead" style="width: 12%"></th>
+              <th class="month-spreadsheet-thead" colspan="3">7:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">9:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">12:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">14:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">17:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">19:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">22:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">3:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">合計</th>
+            </tr>
+            <tr>
+              <th class="floor-color">出来事</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render "fall_hat" %>
+            <%= render "missing_hat" %>
+            <%= render "meal_hat" %>
+            <%= render "medicine_hat" %>
+            <%= render "scratch_hat" %>
+            <%= render "environment_hat" %>
+            <%= render "info_hat" %>
+            <%= render "personal_hat" %>
+            <%= render "lost_hat" %>
+            <%= render "damage_hat" %>
+            <%= render "money_hat" %>
+            <%= render "medical_hat" %>
+            <%= render "infection_hat" %>
+            <%= render "forget_hat" %>
+            <%= render "other_hat" %>
+            <%= render "total_hat" %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="col-md-12 tab-table">
-    <div class="vertical-scroll-table">
-      <table id="table-scroll" class="table table-bordered table-condensed table-hover">
-        <thead>
-          <tr>
-            <th class="month-spreadsheet-thead" style="width: 12%"></th>
-            <th class="month-spreadsheet-thead" colspan="3">7:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">9:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">12:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">14:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">17:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">19:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">22:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">3:00~</th>
-            <th class="month-spreadsheet-thead" colspan="3">合計</th>
-          </tr>
-          <tr>
-            <th class="floor-color">場面</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-            <th class="floor-color">2F</th>
-            <th class="floor-color">3F</th>
-            <th class="floor-color">4F</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render "service" %>
-          <%= render "support" %>
-          <%= render "lunch" %>
-          <%= render "toilet" %>
-          <%= render "bathing" %>
-          <%= render "other_scene" %>
-          <%= render "total_scene" %>
-        </tbody>
-      </table>
+  <div class="container">
+    <div class="col-md-12 tab-table">
+      <div class="vertical-scroll-table">
+        <table id="table-scroll" class="table table-bordered table-condensed table-hover">
+          <thead>
+            <tr>
+              <th class="month-spreadsheet-thead" style="width: 12%"></th>
+              <th class="month-spreadsheet-thead" colspan="3">7:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">9:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">12:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">14:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">17:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">19:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">22:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">3:00~</th>
+              <th class="month-spreadsheet-thead" colspan="3">合計</th>
+            </tr>
+            <tr>
+              <th class="floor-color">場面</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+              <th class="floor-color">2F</th>
+              <th class="floor-color">3F</th>
+              <th class="floor-color">4F</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render "service" %>
+            <%= render "support" %>
+            <%= render "lunch" %>
+            <%= render "toilet" %>
+            <%= render "bathing" %>
+            <%= render "other_scene" %>
+            <%= render "total_scene" %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
 
-<!--Google_Chart_API 事故呼び出し-->
-<h3 class="api_title">出来事のヒヤリ集計</h3>
-<%= render "chart_accidents_event" %>
-<h3 class="api_title">場面のヒヤリ集計</h3>
-<%= render "chart_accidents_scene" %>
-<h3 class="api_title">時間別のヒヤリ集計</h3>
-<%= render "time_chart" %>
+  <!--Google_Chart_API 事故呼び出し-->
+  <h3 class="api_title">出来事のヒヤリ集計</h3>
+  <%= render "chart_accidents_event" %>
+  <h3 class="api_title">場面のヒヤリ集計</h3>
+  <%= render "chart_accidents_scene" %>
+  <h3 class="api_title">時間別のヒヤリ集計</h3>
+  <%= render "time_chart" %>
+
+</div>
 
 
